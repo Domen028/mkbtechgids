@@ -1,103 +1,143 @@
-```astro
 ---
+import Baselayout from '../layouts/Baselayout.astro';
 ---
+<Baselayout title="Home">
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MKB Tech Gids - Tech Tools voor Het MKB</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        h1 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        article {
-            border: 1px solid #ddd;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        article h2 {
-            margin-bottom: 0.5rem;
-            color: #667eea;
-        }
-        
-        article p {
-            color: #666;
-        }
-        
-        footer {
-            background: #f5f5f5;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>MKB Tech Gids</h1>
-        <p>De beste tech tools voor het Nederlandse MKB</p>
-    </header>
-    
-    <div class="container">
-        <h2>Welkom!</h2>
-        <p>Ontdek de beste technologieën voor jouw bedrijf.</p>
-        
-        <div class="articles">
-            <article>
-                <h2>CRM Vergelijking</h2>
-                <p>Vergelijk HubSpot, Pipedrive en Salesforce voor je MKB.</p>
-            </article>
-            <article>
-                <h2>Boekhoudingsoftware</h2>
-                <p>Exact, QuickBooks of Moneybird - wat is het beste?</p>
-            </article>
-            <article>
-                <h2>AI Tools</h2>
-                <p>ChatGPT, Claude en nog meer - voor jouw bedrijf.</p>
-            </article>
-        </div>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-950 to-blue-800 text-white py-20 px-6 -mx-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-blue-300 text-sm font-semibold uppercase tracking-widest mb-4">
+        De techgids voor het Nederlandse MKB
+      </p>
+      <h1 class="text-5xl font-bold leading-tight mb-6">
+        De beste tech tools voor<br />
+        <span class="text-blue-300">jouw bedrijf</span>
+      </h1>
+      <p class="text-xl text-blue-100 leading-relaxed mb-10 max-w-2xl mx-auto">
+        Eerlijke vergelijkingen, praktische gidsen en onafhankelijk advies
+        over CRM, boekhouding, AI en NIS2 voor het MKB.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/artikelen"
+           class="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3 rounded-lg font-semibold text-lg transition">
+          Bekijk alle artikelen
+        </a>
+        <a href="/nis2"
+           class="border border-blue-300 text-blue-100 hover:bg-blue-900 px-8 py-3 rounded-lg font-semibold text-lg transition">
+          NIS2 gids
+        </a>
+      </div>
     </div>
-    
-    <footer>
-        <p>&copy; 2026 MKB Tech Gids. Alle rechten voorbehouden.</p>
-    </footer>
-</body>
-</html>
-```
+  </section>
+
+  <!-- Categories Section -->
+  <section class="py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-blue-950">Ontdek per onderwerp</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+        Alles wat je nodig hebt om slimmer te werken met technologie.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <a href="/crm" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">📊</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">CRM Software</h3>
+        <p class="text-gray-600 leading-relaxed">
+          HubSpot, Pipedrive, Salesforce — welk CRM past bij jouw bedrijf?
+          Vergelijkingen en reviews.
+        </p>
+      </a>
+
+      <a href="/boekhouding" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">💰</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">Boekhoudsoftware</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Exact, Moneybird, QuickBooks — de beste boekhoudtools voor MKB
+          vergeleken.
+        </p>
+      </a>
+
+      <a href="/ai-tools" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">🤖</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">AI Tools</h3>
+        <p class="text-gray-600 leading-relaxed">
+          ChatGPT, Claude, Copilot — hoe gebruik je AI slim in je bedrijf?
+          Praktische gidsen.
+        </p>
+      </a>
+
+      <a href="/nis2" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">🔒</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">NIS2 Compliance</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Wat betekent NIS2 voor jouw bedrijf? Stappenplan, tools en
+          alles wat je moet weten.
+        </p>
+      </a>
+
+      <a href="/automatisering" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">⚡</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">Automatisering</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Make, Zapier, n8n — automatiseer je werkprocessen en bespaar
+          uren per week.
+        </p>
+      </a>
+
+      <a href="/e-facturatie" class="bg-white border-2 border-blue-100 rounded-xl p-6 hover:border-blue-400 hover:shadow-lg transition-all group">
+        <div class="text-3xl mb-4">📄</div>
+        <h3 class="text-xl font-bold text-blue-950 mb-3 group-hover:text-blue-600">E-facturatie</h3>
+        <p class="text-gray-600 leading-relaxed">
+          De e-facturatie verplichting komt eraan. Wat moet je regelen
+          en welke tools helpen?
+        </p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Featured Article Section -->
+  <section class="bg-blue-50 rounded-2xl p-12 my-8">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-blue-500 text-sm font-semibold uppercase tracking-widest mb-3">
+        Uitgelicht artikel
+      </p>
+      <h2 class="text-3xl font-bold text-blue-950 mb-4">
+        NIS2: wat moet het MKB nu echt regelen?
+      </h2>
+      <p class="text-gray-600 text-lg leading-relaxed mb-6">
+        De NIS2-richtlijn is voor veel MKB-bedrijven verplicht. Maar wat
+        betekent dat concreet? We leggen het uit in gewone taal en geven
+        je een praktisch stappenplan.
+      </p>
+      <a href="/nis2"
+         class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold inline-block transition">
+        Lees het artikel →
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 text-center">
+    <h2 class="text-3xl font-bold text-blue-950 mb-4">
+      Blijf op de hoogte
+    </h2>
+    <p class="text-gray-500 text-lg mb-8 max-w-xl mx-auto">
+      Ontvang wekelijks de beste tech tips voor het MKB direct in je inbox.
+      Geen spam, altijd relevant.
+    </p>
+    <div class="flex gap-3 justify-center flex-wrap">
+      <input
+        type="email"
+        placeholder="jouw@email.nl"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-72 focus:outline-none focus:border-blue-400"
+      />
+      <button
+        class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition">
+        Aanmelden
+      </button>
+    </div>
+  </section>
+
+</Baselayout>
