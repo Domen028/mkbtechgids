@@ -127,17 +127,63 @@ import Baselayout from '../layouts/Baselayout.astro';
       Ontvang wekelijks de beste tech tips voor het MKB direct in je inbox.
       Geen spam, altijd relevant.
     </p>
-    <div class="flex gap-3 justify-center flex-wrap">
+    <form id="newsletter-form" class="flex gap-3 justify-center flex-wrap">
       <input
         type="email"
+        id="newsletter-email"
+        name="email"
         placeholder="jouw@email.nl"
+        required
         class="border border-gray-300 rounded-lg px-4 py-3 w-72 focus:outline-none focus:border-blue-400"
       />
       <button
+        type="submit"
+        id="newsletter-btn"
         class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition">
         Aanmelden
       </button>
-    </div>
+    </form>
+    <p id="newsletter-message" class="mt-4 text-sm font-semibold hidden"></p>
   </section>
+
+  <script>
+    const form = document.getElementById('newsletter-form');
+    const message = document.getElementById('newsletter-message');
+    const btn = document.getElementById('newsletter-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.textContent = 'Aanmelden...';
+      btn.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await res.json();
+
+        message.textContent = data.message;
+        message.className = data.success
+          ? 'mt-4 text-sm font-semibold text-green-600'
+          : 'mt-4 text-sm font-semibold text-red-600';
+
+        if (data.success) {
+          form.reset();
+          btn.textContent = 'Aangemeld!';
+        } else {
+          btn.textContent = 'Aanmelden';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        message.textContent = 'Er ging iets mis. Probeer het opnieuw.';
+        message.className = 'mt-4 text-sm font-semibold text-red-600';
+        btn.textContent = 'Aanmelden';
+        btn.disabled = false;
+      }
+    });
+  </script>
 
 </Baselayout>
