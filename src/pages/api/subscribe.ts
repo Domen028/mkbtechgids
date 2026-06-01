@@ -17,6 +17,14 @@ export const POST: APIRoute = async ({ request }) => {
     const apiKey = import.meta.env.BREVO_API_KEY;
     const listId = import.meta.env.BREVO_LIST_ID;
 
+    // Debug - remove after testing
+    if (!apiKey) {
+      return new Response(
+        JSON.stringify({ success: false, message: 'API key missing' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -31,6 +39,8 @@ export const POST: APIRoute = async ({ request }) => {
       }),
     });
 
+    const responseText = await response.text();
+
     if (response.ok || response.status === 204) {
       return new Response(
         JSON.stringify({ success: true, message: 'Aanmelding gelukt!' }),
@@ -38,7 +48,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const error = await response.json();
+    let error;
+    try { error = JSON.parse(responseText); } catch { error = {}; }
 
     if (error.code === 'duplicate_parameter') {
       return new Response(
@@ -48,13 +59,13 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     return new Response(
-      JSON.stringify({ success: false, message: 'Er ging iets mis. Probeer het opnieuw.' }),
+      JSON.stringify({ success: false, message: responseText }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
 
   } catch (err) {
     return new Response(
-      JSON.stringify({ success: false, message: 'Er ging iets mis. Probeer het opnieuw.' }),
+      JSON.stringify({ success: false, message: String(err) }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
