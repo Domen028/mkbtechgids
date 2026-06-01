@@ -27,11 +27,49 @@ const { title, description = 'De techgids voor het Nederlandse MKB' } = Astro.pr
     <main class="max-w-6xl mx-auto px-6">
       <slot />
     </main>
-    <footer class="bg-blue-950 text-blue-200 mt-16 py-8">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <p class="font-semibold text-white">MKBTechGids</p>
-        <p class="text-sm mt-1">De techgids voor het Nederlandse MKB</p>
-        <p class="text-sm mt-4">&copy; 2026 MKBTechGids</p>
+    <footer class="bg-blue-950 text-blue-200 mt-16 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+          <div>
+            <p class="font-bold text-white text-lg mb-2">MKBTechGids</p>
+            <p class="text-sm leading-relaxed">
+              Eerlijke vergelijkingen, praktische gidsen en onafhankelijk
+              advies over tech tools voor het Nederlandse MKB.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white mb-3">Onderwerpen</p>
+            <div class="flex flex-col gap-2">
+              <a href="/crm" class="text-sm hover:text-white">CRM Software</a>
+              <a href="/boekhouding" class="text-sm hover:text-white">Boekhoudsoftware</a>
+              <a href="/ai-tools" class="text-sm hover:text-white">AI Tools</a>
+              <a href="/nis2" class="text-sm hover:text-white">NIS2 Compliance</a>
+              <a href="/automatisering" class="text-sm hover:text-white">Automatisering</a>
+              <a href="/e-facturatie" class="text-sm hover:text-white">E-facturatie</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white mb-3">Hulp nodig bij implementatie?</p>
+            <p class="text-sm leading-relaxed mb-4 text-blue-200">
+              TechLead NL biedt fractional CTO, CIO en Chief Architect
+              services voor het Nederlandse MKB. Senior technologieleiderschap
+              zonder de fulltime kosten.
+            </p>
+            <a href="https://techleadnl.nl"
+               target="_blank"
+               class="inline-block bg-blue-500 hover:bg-blue-400 text-white
+                      px-4 py-2 rounded-lg text-sm font-semibold transition">
+              Bezoek TechLead NL →
+            </a>
+          </div>
+
+        </div>
+        <div class="border-t border-blue-900 pt-6 text-center">
+          <p class="text-sm">&copy; 2026 MKBTechGids. Alle rechten voorbehouden.</p>
+        </div>
       </div>
     </footer>
   </body>
