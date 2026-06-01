@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.formData();
@@ -12,16 +14,19 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    const apiKey = import.meta.env.BREVO_API_KEY;
+    const listId = import.meta.env.BREVO_LIST_ID;
+
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'accept': 'application/json',
         'content-type': 'application/json',
-        'api-key': import.meta.env.BREVO_API_KEY,
+        'api-key': apiKey,
       },
       body: JSON.stringify({
         email: email,
-        listIds: [parseInt(import.meta.env.BREVO_LIST_ID)],
+        listIds: [parseInt(listId)],
         updateEnabled: true,
       }),
     });
