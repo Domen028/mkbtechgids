@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 161.17 171.5">
+  <defs>
+    <style>
+      .st0 {
+        fill: #14532d;
+      }
+
+      .st0, .st1 {
+        font-family: DMSans-Bold, 'DM Sans';
+        font-size: 60px;
+        font-weight: 700;
+      }
+
+      .st1 {
+        fill: #1e293b;
+      }
+    </style>
+  </defs>
+  <text class="st1" transform="translate(0 51)"><tspan x="0" y="0">MKB</tspan></text>
+  <text class="st1" transform="translate(0 154.7)"><tspan x="0" y="0">Gids</tspan></text>
+  <text class="st0" transform="translate(21.13 102)"><tspan x="0" y="0">Tech</tspan></text>
+</svg>
