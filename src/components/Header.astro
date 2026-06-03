@@ -1,0 +1,167 @@
+---
+// Header.astro — Light nav surface so original logo (dark navy + forest green) reads clearly
+---
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Logo: SVG recreation of the uploaded mark -->
+    <a href="/" class="logo" aria-label="MKBTechGids — terug naar home">
+      <svg viewBox="0 0 108 80" height="44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="0" y="27" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#182030">MKB</text>
+        <text x="0" y="52" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#15803d">Tech</text>
+        <text x="0" y="77" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#182030">Gids</text>
+      </svg>
+    </a>
+
+    <!-- Primary nav -->
+    <nav class="nav-links" aria-label="Hoofdnavigatie">
+      <a href="/nis2">NIS2</a>
+      <a href="/ai-tools">AI Tools</a>
+      <a href="/crm">CRM</a>
+      <a href="/e-facturatie">E-facturatie</a>
+      <a href="/artikelen">Artikelen</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="/nis2" class="nav-cta">
+      NIS2 gids <span aria-hidden="true">→</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <a href="/nis2">NIS2</a>
+    <a href="/ai-tools">AI Tools</a>
+    <a href="/crm">CRM</a>
+    <a href="/e-facturatie">E-facturatie</a>
+    <a href="/artikelen">Artikelen</a>
+    <a href="/nis2" class="mobile-cta">NIS2 gids lezen →</a>
+  </div>
+</header>
+
+<style>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--s1);
+  border-bottom: 1px solid var(--s2);
+  box-shadow: 0 1px 8px rgba(24,32,48,0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.logo { flex-shrink: 0; display: flex; align-items: center; }
+.logo svg { display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+}
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--s4);
+  letter-spacing: 0.01em;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--g4);
+  border-bottom-color: var(--g4);
+}
+
+.nav-cta {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--g4);
+  border-radius: var(--r-sm);
+  padding: 8px 18px;
+  transition: background 0.15s;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--g5); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--s4);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background: var(--s1);
+  border-top: 1px solid var(--s2);
+  padding: 12px 28px 20px;
+  gap: 4px;
+}
+.mobile-menu a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--s4);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--s2);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-cta {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--g4);
+  color: #fff !important;
+  padding: 10px 18px !important;
+  border-radius: var(--r-sm);
+  border-bottom: none !important;
+  font-size: 14px !important;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+}
+</style>
+
+<script>
+const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+const menu   = document.getElementById('mobile-menu') as HTMLElement;
+
+toggle?.addEventListener('click', () => {
+  const open = menu.hasAttribute('hidden');
+  if (open) { menu.removeAttribute('hidden'); toggle.setAttribute('aria-expanded','true'); }
+  else       { menu.setAttribute('hidden',''); toggle.setAttribute('aria-expanded','false'); }
+});
+</script>

@@ -1,0 +1,45 @@
+---
+// AffiliateDisclosure.astro — Required Dutch affiliate marketing disclosure
+---
+
+<aside class="affiliate-disclosure" role="note" aria-label="Affiliate disclosure">
+  <svg class="disclosure-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    aria-hidden="true">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="12" y1="8" x2="12" y2="12"/>
+    <line x1="12" y1="16" x2="12.01" y2="16"/>
+  </svg>
+  <p>
+    <strong>Transparantie:</strong> Dit artikel kan affiliate-links bevatten. Als u via deze
+    links een product of dienst aanschaft, ontvangen wij mogelijk een vergoeding — zonder
+    meerkosten voor u. Dit heeft <em>geen invloed</em> op onze beoordeling of aanbeveling.
+    Wij bespreken alleen producten die wij daadwerkelijk hebben beoordeeld.
+  </p>
+</aside>
+
+<style>
+.affiliate-disclosure {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--g1);
+  border: 1px solid rgba(21,128,61,0.18);
+  border-left: 3px solid var(--g4);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  margin: 24px 0;
+}
+.disclosure-icon {
+  flex-shrink: 0;
+  color: var(--g4);
+  margin-top: 2px;
+}
+.affiliate-disclosure p {
+  font-size: 13px;
+  color: var(--s4);
+  line-height: 1.6;
+}
+.affiliate-disclosure strong { color: var(--s5); }
+.affiliate-disclosure em { font-style: italic; }
+</style>

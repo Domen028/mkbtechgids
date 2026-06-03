@@ -1,0 +1,176 @@
+---
+// Footer.astro — Light surface to bookend the page, matching the nav
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="MKBTechGids home">
+        <svg viewBox="0 0 96 72" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <text x="0" y="22" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="22" fill="#182030">MKB</text>
+          <text x="0" y="42" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="22" fill="#15803d">Tech</text>
+          <text x="0" y="62" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="22" fill="#182030">Gids</text>
+        </svg>
+      </a>
+      <p class="footer-tagline">De route al verkend.</p>
+      <p class="footer-desc">
+        Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigatie">
+      <div class="footer-col">
+        <p class="footer-col-title">Onderwerpen</p>
+        <ul>
+          <li><a href="/nis2">NIS2 Compliance</a></li>
+          <li><a href="/ai-governance">AI Governance</a></li>
+          <li><a href="/ai-tools">AI Tools</a></li>
+          <li><a href="/crm">CRM Software</a></li>
+          <li><a href="/e-facturatie">E-facturatie</a></li>
+          <li><a href="/boekhouding">Boekhoudsoftware</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Over ons</p>
+        <ul>
+          <li><a href="/over">Over MKBTechGids</a></li>
+          <li><a href="/methodologie">Onze methodologie</a></li>
+          <li><a href="/artikelen">Alle artikelen</a></li>
+          <li><a href="/privacy">Privacyverklaring</a></li>
+          <li><a href="/affiliate-disclosure">Affiliate disclosure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Fractional Leadership</p>
+        <p class="footer-partner-text">
+          Heeft uw organisatie een fractional CTO, CIO of Chief Architect nodig?
+        </p>
+        <a href="https://techleadnl.nl" class="footer-partner-link" rel="noopener">
+          TechLead NL <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </nav>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">© {year} MKBTechGids. Alle rechten voorbehouden.</p>
+      <p class="footer-affiliate-note">
+        Deze site bevat affiliate-links. Wij ontvangen mogelijk een vergoeding bij aankoop,
+        zonder meerkosten voor u. Dit heeft geen invloed op onze beoordelingen.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background: var(--s1);
+  border-top: 1px solid var(--s2);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  padding-top: 56px;
+  padding-bottom: 48px;
+  align-items: start;
+}
+
+.footer-logo { display: inline-block; margin-bottom: 10px; }
+.footer-tagline {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--g4);
+  margin-bottom: 10px;
+}
+.footer-desc {
+  font-size: 13.5px;
+  color: var(--s4);
+  line-height: 1.65;
+  max-width: 240px;
+}
+
+/* Nav columns */
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--s5);
+  margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul a {
+  font-size: 13.5px;
+  color: var(--s4);
+  transition: color 0.12s;
+}
+.footer-col ul a:hover { color: var(--g4); }
+
+.footer-partner-text {
+  font-size: 13px;
+  color: var(--s4);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.footer-partner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g4);
+  transition: color 0.12s;
+}
+.footer-partner-link:hover { color: var(--g5); }
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid var(--s2);
+  background: var(--s2);
+}
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--s4);
+  white-space: nowrap;
+}
+.footer-affiliate-note {
+  font-size: 11.5px;
+  color: var(--s3);
+  line-height: 1.5;
+  max-width: 560px;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-nav { grid-template-columns: 1fr 1fr; }
+  .footer-desc { max-width: 100%; }
+}
+@media (max-width: 560px) {
+  .footer-nav { grid-template-columns: 1fr; }
+  .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+  .footer-affiliate-note { text-align: left; }
+}
+</style>

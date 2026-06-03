@@ -1,155 +1,88 @@
 ---
+// BaseLayout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { title, description = 'De onafhankelijke technologiegids voor het Nederlandse MKB' } = Astro.props;
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const siteName = 'MKBTechGids';
+const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title} | MKBTechGids</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
 
-    <!-- Navigation -->
-    <header id="site-nav" style="
-      position: sticky; top: 0; z-index: 100;
-      height: var(--nav-height);
-      background: var(--white);
-      border-bottom: 1px solid var(--s2);
-      display: flex; align-items: center;
-      transition: box-shadow 0.2s ease;
-    ">
-      <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+  <!-- Canonical -->
+  <link rel="canonical" href={canonical} />
 
-        <!-- Logo -->
-        <a href="/" style="text-decoration: none; display: flex; align-items: center;">
-          <img src="/logo.svg" alt="MKBTechGids" style="height: 52px; width: auto;" />
-        </a>
+  <!-- Open Graph -->
+  <meta property="og:title"       content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:url"         content={canonical} />
+  <meta property="og:type"        content="website" />
+  <meta property="og:locale"      content="nl_NL" />
+  <meta property="og:site_name"   content={siteName} />
 
-        <!-- Nav links -->
-        <nav style="display: flex; align-items: center; gap: var(--space-2xl);">
-          <a href="/nis2" style="font-size: 14px; font-weight: 500; color: var(--s4); position: relative;" class="nav-link">NIS2</a>
-          <a href="/#ai-tools" style="font-size: 14px; font-weight: 500; color: var(--s4); position: relative;" class="nav-link">AI Tools</a>
-          <a href="/#crm" style="font-size: 14px; font-weight: 500; color: var(--s4); position: relative;" class="nav-link">CRM</a>
-          <a href="/#artikelen" style="font-size: 14px; font-weight: 500; color: var(--s4); position: relative;" class="nav-link">Artikelen</a>
-        </nav>
+  <!-- Twitter -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
 
-        <!-- CTA -->
-        <a href="/nis2" class="btn btn--green" style="font-size: 13px; padding: 8px 18px;">
-          NIS2 gids →
-        </a>
+  <!-- Fonts (preconnect first for performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-      </div>
-    </header>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
 
-    <!-- Page content -->
-    <main>
-      <slot />
-    </main>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Footer -->
-    <footer style="background: var(--s5); padding: var(--space-3xl) 0 var(--space-2xl);">
-      <div class="container">
-        <div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl);">
+  <title>{fullTitle}</title>
 
-          <!-- Brand column -->
-          <div>
-            <div style="margin-bottom: var(--space-sm);">
-              <img src="/logo.svg" alt="MKBTechGids" style="height: 52px; width: auto; filter: brightness(0) invert(1);" />
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 2.5px; color: var(--s3); text-transform: uppercase; margin-bottom: var(--space-md);">
-              De route al verkend.
-            </div>
-            <p style="font-size: 13px; color: var(--s3); line-height: 1.7; max-width: 260px;">
-              Onafhankelijke technologiegids voor het Nederlandse MKB.
-              Eerlijke vergelijkingen, praktische gidsen, direct bruikbaar advies.
-            </p>
-          </div>
-
-          <!-- Onderwerpen -->
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: var(--space-md);">
-              Onderwerpen
-            </div>
-            <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
-              <a href="/nis2" style="font-size: 13px; color: var(--s3);" class="footer-link">NIS2 Compliance</a>
-              <a href="/#ai-tools" style="font-size: 13px; color: var(--s3);" class="footer-link">AI Tools</a>
-              <a href="/#crm" style="font-size: 13px; color: var(--s3);" class="footer-link">CRM Software</a>
-              <a href="/#boekhouding" style="font-size: 13px; color: var(--s3);" class="footer-link">Boekhoudsoftware</a>
-              <a href="/#automatisering" style="font-size: 13px; color: var(--s3);" class="footer-link">Automatisering</a>
-              <a href="/#e-facturatie" style="font-size: 13px; color: var(--s3);" class="footer-link">E-facturatie</a>
-            </div>
-          </div>
-
-          <!-- Over -->
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: var(--space-md);">
-              Over
-            </div>
-            <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
-              <a href="/#hoe-het-werkt" style="font-size: 13px; color: var(--s3);" class="footer-link">Hoe het werkt</a>
-              <a href="/#nieuwsbrief" style="font-size: 13px; color: var(--s3);" class="footer-link">Nieuwsbrief</a>
-            </div>
-          </div>
-
-          <!-- TechLead NL -->
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: var(--space-md);">
-              Hulp nodig?
-            </div>
-            <p style="font-size: 13px; color: var(--s3); line-height: 1.7; margin-bottom: var(--space-md);">
-              Fractional CTO, CIO en Chief Architect voor het Nederlandse MKB.
-            </p>
-            <a href="https://techleadnl.nl" target="_blank"
-               style="font-size: 13px; font-weight: 700; color: var(--g3);" class="footer-link">
-              TechLead NL →
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Divider -->
-        <div style="height: 1px; background: rgba(255,255,255,0.08); margin-bottom: var(--space-lg);"></div>
-
-        <!-- Copyright -->
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--s4);">
-            © 2026 <span style="color: var(--a3);">MKBTechGids</span> · TechLead NL
-          </span>
-          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--s4); letter-spacing: 1px;">
-            ONAFHANKELIJK · GRATIS · NEDERLANDS
-          </span>
-        </div>
-
-      </div>
-    </footer>
-
-    <style>
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -4px; left: 0;
-        width: 0; height: 2px;
-        background: var(--g4);
-        transition: width 0.2s ease;
-      }
-      .nav-link:hover { color: var(--g4) !important; }
-      .nav-link:hover::after { width: 100%; }
-      .footer-link:hover { color: var(--g3) !important; }
-    </style>
-
-    <script>
-      const nav = document.getElementById('site-nav');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 8) {
-          nav.style.boxShadow = '0 1px 3px rgba(0,0,0,.06)';
-        } else {
-          nav.style.boxShadow = 'none';
-        }
-      });
-    </script>
-
-  </body>
+  <!-- JSON-LD: Organisation -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MKBTechGids",
+      "url": "https://www.mkbtechgids.nl",
+      "description": "Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.",
+      "logo": "https://www.mkbtechgids.nl/logo.svg",
+      "sameAs": [
+        "https://www.linkedin.com/company/mkbtechgids"
+      ]
+    })}
+  </script>
+</head>
+<body>
+  <Header />
+  <main id="main-content" tabindex="-1">
+    <slot />
+  </main>
+  <Footer />
+</body>
 </html>

@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Groen */
+  --g1: #f0fdf4; --g2: #bbf7d0; --g3: #4ade80; --g4: #15803d; --g5: #14532d;
+
+  /* Amber */
+  --a1: #fefce8; --a2: #fef08a; --a3: #fbbf24; --a4: #d97706; --a5: #92400e;
+
+  /* Leisteen */
+  --s1: #f8fafc; --s2: #e2e8f0; --s3: #94a3b8; --s4: #475569; --s5: #1e293b;
+
+  /* Wit */
+  --white: #ffffff;
+
+  /* Fonts */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+
+  /* Spatie */
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 80px;
+
+  /* Layout */
+  --max-width: 1100px; --nav-height: 64px;
+
+  /* Radius */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+
+  /* Schaduwen */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.10);
+  --shadow-green: 0 8px 32px rgba(21,128,61,.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--s4);
+  background: var(--white);
+  line-height: 1.7;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--s5);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+p { color: var(--s4); line-height: 1.7; }
+
+a { color: var(--g4); text-decoration: none; }
+a:hover { color: var(--g5); }
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-md); }
+}
+
+/* Sections */
+.section { padding: var(--space-3xl) 0; }
+.section--white { background: var(--white); }
+.section--green-tint { background: var(--g1); }
+.section--slate { background: var(--s1); }
+.section--dark { background: var(--g5); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn--primary { background: var(--a3); color: var(--s5); }
+.btn--primary:hover { background: var(--a2); color: var(--s5); }
+
+.btn--green { background: var(--g4); color: var(--white); }
+.btn--green:hover { background: var(--g5); color: var(--white); }
+
+.btn--ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.btn--ghost:hover { border-color: white; color: white; }
+
+.btn--outline {
+  background: transparent;
+  color: var(--g4);
+  border: 1px solid var(--g4);
+}
+.btn--outline:hover { background: var(--g1); }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.badge--green { background: var(--g1); color: var(--g5); border: 1px solid var(--g2); }
+.badge--amber { background: rgba(251,191,36,0.15); color: var(--a5); border: 1px solid rgba(251,191,36,0.3); }
+.badge--slate { background: var(--s1); color: var(--s4); border: 1px solid var(--s2); }
+
+/* Cards */
+.card {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--g4);
+  height: 0;
+  transition: height 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-green);
+  transform: translateY(-2px);
+  border-color: var(--g2);
+}
+
+.card:hover::before { height: 100%; }
+
+/* Section labels */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--g4);
+}
+
+/* Pulse animation for hero badge */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.pulse { animation: pulse 2s infinite; }
