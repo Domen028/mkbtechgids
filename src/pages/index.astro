@@ -18,6 +18,7 @@ export const prerender = true;
       --navy-light: #1e3a6e;
       --green: #14532d;
       --green-light: #15803d;
+      --green-bg: #f0fdf4;
       --text-dark: #f1f5f9;
       --text-light: #94a3b8;
       --bg-light: #f8fafc;
@@ -32,7 +33,6 @@ export const prerender = true;
     img, svg { display: block; max-width: 100%; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
 
-    /* Header */
     .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); box-shadow: 0 1px 6px rgba(15, 33, 71, 0.07); }
     .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
     .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
@@ -49,9 +49,7 @@ export const prerender = true;
     .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-body); padding: 12px 0; border-bottom: 1px solid var(--bg-gray); }
     .mobile-menu a:hover { color: var(--green); }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-cta { display: inline-block; margin-top: 10px; background: var(--green); color: white !important; padding: 11px 20px !important; border-radius: 6px; border-bottom: none !important; font-size: 14px !important; font-weight: 600 !important; }
 
-    /* Hero */
     .hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 120px 28px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
     .hero-inner { position: relative; max-width: 700px; margin: 0 auto; }
@@ -64,25 +62,26 @@ export const prerender = true;
     .stat-num { font-size: 36px; font-weight: 700; color: var(--green-light); }
     .stat-label { font-size: 12px; color: var(--text-light); text-transform: uppercase; margin-top: 8px; }
 
-    /* Signal strip */
     .signal { background: var(--navy-dark); border-top: 2px solid var(--green); padding: 16px 28px; }
     .signal-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
-    .signal-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .signal-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 24px; }
     .signal-text { font-size: 14px; font-weight: 500; color: var(--text-dark); }
 
-    /* Topics */
     .topics { padding: 80px 28px; background: var(--bg-light); }
     .topics-inner { max-width: 1100px; margin: 0 auto; }
     .topics h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; margin-bottom: 12px; color: var(--navy-dark); }
     .topics-desc { font-size: 16px; color: var(--text-body); margin-bottom: 48px; max-width: 700px; }
     .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
-    .topic-card { background: white; border: 1px solid var(--bg-gray); border-radius: 8px; padding: 28px; transition: all 0.2s; }
-    .topic-card:hover { box-shadow: 0 8px 24px rgba(15, 33, 71, 0.1); transform: translateY(-2px); border-color: var(--green); }
+    .topic-card { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 28px; transition: all 0.2s; }
+    .topic-card.featured { background: var(--green-bg); border-color: var(--green); }
+    .topic-card:hover { box-shadow: 0 8px 24px rgba(15, 33, 71, 0.1); transform: translateY(-2px); }
     .topic-tag { display: inline-block; background: rgba(20, 83, 45, 0.1); color: var(--green); padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+    .topic-card.featured .topic-tag { background: rgba(20, 83, 45, 0.2); }
     .topic-card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
     .topic-card p { font-size: 14px; color: var(--text-body); line-height: 1.7; }
+    .topic-status { display: inline-block; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--green); }
+    .topic-status::before { content: '●'; margin-right: 6px; }
 
-    /* Newsletter */
     .newsletter { background: var(--navy-dark); padding: 80px 28px; position: relative; overflow: hidden; }
     .nl-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .nl-copy h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
@@ -100,22 +99,19 @@ export const prerender = true;
     .nl-form button:hover { background: var(--green-light); }
     .nl-msg { font-size: 13px; margin-top: 12px; min-height: 20px; }
 
-    /* Footer */
     .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
     .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
     .footer p { font-size: 13px; margin: 0; }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .nav-links, .nav-cta { display: none; }
       .nav-toggle { display: flex; margin-left: auto; }
-      .mobile-menu { display: none; }
-      .mobile-menu:not([hidden]) { display: flex; }
       .hero { padding: 80px 28px; }
       .hero h1 { font-size: 32px; }
       .hero-stats { grid-template-columns: 1fr; gap: 24px; }
       .nl-inner { grid-template-columns: 1fr; gap: 40px; }
       .topics-grid { grid-template-columns: 1fr; }
+      .signal-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -168,35 +164,36 @@ export const prerender = true;
 
     <div class="signal">
       <div class="signal-inner">
-        <div class="signal-dot"></div>
-        <div class="signal-text">De Nederlandse Cyberbeveiligingswet (NIS2) wordt verwacht in Q2 2026 — is uw bedrijf voorbereid?</div>
+        <div class="signal-icon">🛡️</div>
+        <div class="signal-text"><strong>NIS2 Cyberbeveiligingswet — verwacht Q2 2026.</strong> Slechts 14% van Nederlandse organisaties is goed voorbereid. Wat betekent dit voor uw aansprakelijkheid als bestuurder?</div>
       </div>
     </div>
 
     <section class="topics">
       <div class="topics-inner">
-        <h2>Onderwerpen</h2>
+        <h2>Wat wij voor u verkennen</h2>
         <p>Praktische gidsen en analyse voor het Nederlandse MKB.</p>
         <div class="topics-grid">
-          <a href="/nis2" class="topic-card">
-            <div class="topic-tag">NIS2 · Compliance</div>
-            <h3>NIS2 Compliance Gids</h3>
-            <p>Wat u nu moet weten over de Cyberbeveiligingswet. Wanneer telt u eronder? Wat zijn de eisen? Hoe implementeert u dit?</p>
+          <a href="/nis2" class="topic-card featured">
+            <div class="topic-tag">Urgent · 2026</div>
+            <h3>NIS2 Compliance</h3>
+            <p>Bestuurdersaansprakelijkheid, boetes en wat uw bedrijf nu moet regelen.</p>
+            <div class="topic-status">Live</div>
           </a>
           <div class="topic-card">
-            <div class="topic-tag">AI · Governance</div>
-            <h3>AI Governance voor Bestuurders</h3>
-            <p>De EU AI Act verandert hoe bedrijven AI mogen inzetten. Welke risico's moet het bestuur kennen?</p>
+            <div class="topic-tag">Strategie</div>
+            <h3>AI voor het MKB</h3>
+            <p>Welke AI-tools leveren daadwerkelijk ROI — en welke niet.</p>
           </div>
           <div class="topic-card">
-            <div class="topic-tag">Tools · Automatie</div>
-            <h3>AI Tools voor het MKB</h3>
-            <p>Welke AI tools verdienen echt uw investering? Onafhankelijke analyse zonder commerciële belangen.</p>
+            <div class="topic-tag">Operations</div>
+            <h3>CRM Software</h3>
+            <p>Welk CRM schaalt mee met uw groei zonder de overhead.</p>
           </div>
           <div class="topic-card">
-            <div class="topic-tag">Software · CRM</div>
-            <h3>CRM Platforms Vergeleken</h3>
-            <p>HubSpot, Pipedrive, Salesforce — welke past bij uw organisatie, budget en groeistrategie?</p>
+            <div class="topic-tag">Verplight · 2026</div>
+            <h3>E-facturatie</h3>
+            <p>Verplichting voor overheidscontracten. Wat u nu moet regelen.</p>
           </div>
         </div>
       </div>
