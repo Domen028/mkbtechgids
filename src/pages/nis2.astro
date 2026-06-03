@@ -1,0 +1,442 @@
+---
+import Baselayout from '../layouts/Baselayout.astro';
+---
+<Baselayout
+  title="NIS2 in Nederland: wat moet uw bedrijf nu regelen?"
+  description="De Nederlandse NIS2-wet komt eraan in Q2 2026. Wat betekent dit voor uw bedrijf en wat moet u nu doen? Een praktische gids voor het MKB.">
+
+  <!-- Article hero -->
+  <section class="section--dark" style="position: relative; overflow: hidden; padding: var(--space-3xl) 0;">
+
+    <!-- Amber accent line -->
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--a3);"></div>
+
+    <!-- Dot texture -->
+    <div style="
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    "></div>
+
+    <div class="container" style="position: relative; max-width: 760px;">
+
+      <!-- Breadcrumb -->
+      <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg);">
+        <a href="/" style="font-family: var(--font-mono); font-size: 11px; color: var(--s3); text-decoration: none;">MKBTechGids</a>
+        <span style="color: var(--s3); font-size: 11px;">→</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--g3);">NIS2 Compliance</span>
+      </div>
+
+      <!-- Category badge -->
+      <div style="margin-bottom: var(--space-md);">
+        <span style="
+          display: inline-block;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          background: var(--a3);
+          color: var(--s5);
+          padding: 6px 14px;
+          border-radius: var(--radius-sm);
+        ">NIS2 · Compliance · Urgent</span>
+      </div>
+
+      <!-- Title -->
+      <h1 style="
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+        margin-bottom: var(--space-lg);
+      ">
+        NIS2 in Nederland:<br>wat moet uw bedrijf<br>
+        <em style="font-style: normal; color: var(--g3);">nu regelen?</em>
+      </h1>
+
+      <!-- Subtitle -->
+      <p style="font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: var(--space-xl);">
+        De Cyberbeveiligingswet komt eraan in Q2 2026.
+        Slechts 14% van de Nederlandse organisaties is goed voorbereid.
+        Dit is wat u nu moet weten — en doen.
+      </p>
+
+      <!-- Meta -->
+      <div style="display: flex; align-items: center; gap: var(--space-lg);">
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">Juni 2026</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">·</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">7 minuten leestijd</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">·</span>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--g3);">Bron: IDC 2026</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SIGNAL STRIP -->
+  <div style="background: var(--a3); padding: 12px 0;">
+    <div class="container" style="display: flex; align-items: center; gap: var(--space-md);">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--g5); flex-shrink: 0;"></span>
+      <span style="font-size: 13px; font-weight: 600; color: var(--s5);">
+        Boetes tot €10 miljoen of 2% van de wereldwijde jaaromzet bij niet-naleving. Bestuurders kunnen persoonlijk aansprakelijk worden gesteld.
+      </span>
+    </div>
+  </div>
+
+  <!-- ARTICLE BODY -->
+  <article style="background: var(--white);">
+    <div class="container" style="max-width: 760px; padding-top: var(--space-3xl); padding-bottom: var(--space-3xl);">
+
+      <!-- Key stats -->
+      <div style="
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 1px; background: var(--s2);
+        border-radius: var(--radius-lg); overflow: hidden;
+        margin-bottom: var(--space-3xl);
+      ">
+        <div style="background: var(--g5); padding: var(--space-xl); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em;">14%</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 6px; line-height: 1.4;">Goed voorbereid in NL</div>
+        </div>
+        <div style="background: var(--g5); padding: var(--space-xl); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em;">70%</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 6px; line-height: 1.4;">Verwacht compliant binnen 12 mnd</div>
+        </div>
+        <div style="background: var(--g5); padding: var(--space-xl); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em;">Q2 2026</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.85); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 6px; line-height: 1.4;">Nederlandse wet verwacht</div>
+        </div>
+      </div>
+      <p style="font-family: var(--font-mono); font-size: 11px; color: var(--s3); text-align: center; margin-top: calc(-1 * var(--space-2xl)); margin-bottom: var(--space-3xl);">
+        Bron: IDC InfoBrief "Preparing for NIS2 and Beyond", januari 2026, n=70 Nederland
+      </p>
+
+      <!-- Section 1 -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">01 — Wat is NIS2?</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          NIS2 in gewone taal
+        </h2>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-md);">
+          NIS2 staat voor Network and Information Security Directive 2 — de Europese richtlijn die
+          organisaties verplicht hun digitale beveiliging op orde te brengen. De EU-deadline was
+          oktober 2024, maar Nederland loopt achter met de nationale implementatie. De verwachting
+          is dat de Nederlandse wet — de Cyberbeveiligingswet — in het tweede kwartaal van 2026
+          van kracht wordt.
+        </p>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7;">
+          Dat klinkt misschien geruststellend. Maar wacht niet. De wet komt er zeker,
+          en de voorbereidingstijd die u nu nog heeft is een voordeel dat snel verdwijnt.
+        </p>
+      </div>
+
+      <!-- Warning box -->
+      <div style="
+        background: var(--a1);
+        border: 1px solid var(--a2);
+        border-left: 4px solid var(--a3);
+        border-radius: var(--radius-lg);
+        padding: var(--space-xl);
+        margin-bottom: var(--space-3xl);
+      ">
+        <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--a5); margin-bottom: var(--space-md);">
+          Wat staat er op het spel?
+        </div>
+        <h3 style="font-size: 20px; font-weight: 800; color: var(--s5); letter-spacing: -0.5px; margin-bottom: var(--space-md);">
+          Boetes én persoonlijke aansprakelijkheid
+        </h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+          <div>
+            <div style="font-size: 28px; font-weight: 800; color: var(--a4); letter-spacing: -0.04em; margin-bottom: 4px;">€10M</div>
+            <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">of 2% van de wereldwijde jaaromzet voor essentiële entiteiten</p>
+          </div>
+          <div>
+            <div style="font-size: 28px; font-weight: 800; color: var(--a4); letter-spacing: -0.04em; margin-bottom: 4px;">€7M</div>
+            <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">of 1,4% van de wereldwijde jaaromzet voor belangrijke entiteiten</p>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: var(--s4); margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--a2);">
+          Bovendien kunnen <strong>bestuurders persoonlijk aansprakelijk</strong> worden gesteld als zij nalatig zijn geweest in het toezicht op cybersecuritymaatregelen.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">02 — Geldt het voor mij?</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          Valt uw bedrijf onder NIS2?
+        </h2>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-xl);">
+          NIS2 is veel breder dan zijn voorganger. De vuistregel voor het MKB:
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-xl);">
+          <div style="background: var(--a1); border: 1px solid var(--a2); border-radius: var(--radius-lg); padding: var(--space-lg);">
+            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--a5); margin-bottom: var(--space-sm);">Essentiële entiteiten</div>
+            <p style="font-size: 14px; color: var(--s4); line-height: 1.6; margin-bottom: var(--space-sm);"><strong>&gt;250 medewerkers</strong> OF <strong>&gt;€50M omzet</strong></p>
+            <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Energie, transport, water, financiën, gezondheidszorg, digitale infrastructuur</p>
+          </div>
+          <div style="background: var(--g1); border: 1px solid var(--g2); border-radius: var(--radius-lg); padding: var(--space-lg);">
+            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g5); margin-bottom: var(--space-sm);">Belangrijke entiteiten</div>
+            <p style="font-size: 14px; color: var(--s4); line-height: 1.6; margin-bottom: var(--space-sm);"><strong>&gt;50 medewerkers</strong> OF <strong>&gt;€10M omzet</strong></p>
+            <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Post, afvalbeheer, chemie, voeding, maakindustrie, digitale aanbieders</p>
+          </div>
+        </div>
+
+        <div style="background: var(--s1); border: 1px solid var(--s2); border-radius: var(--radius-lg); padding: var(--space-lg);">
+          <p style="font-size: 15px; color: var(--s4); line-height: 1.7;">
+            <strong style="color: var(--s5);">Let op de ketenverantwoordelijkheid.</strong>
+            Valt u buiten deze criteria? Als u toeleverancier bent van een organisatie
+            die wel onder NIS2 valt, kunnen zij u contractueel verplichten aan de eisen te voldoen.
+            NIS2 werkt door in de hele toeleveringsketen.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">03 — Nederlandse situatie</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          Nederland: achter, maar niet hopeloos
+        </h2>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-md);">
+          Recent onderzoek van IDC onder 2.000 Europese organisaties laat een helder beeld zien
+          voor Nederland. Slechts 14% bevindt zich in de hoogste gereedheidsklassen —
+          terwijl 70% verwacht compliant te zijn binnen 12 maanden.
+        </p>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-md);">
+          De grootste barrière in Nederland is niet budget. Het is het omschakelen van
+          cybersecurity als aanbeveling naar cybersecurity als verplichting. Nog altijd ziet
+          36% van de Nederlandse organisaties digitale beveiliging als optioneel.
+        </p>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7;">
+          Opvallend: 30% noemt een gebrek aan capabele technologiepartners als topprobleem.
+          Kennis en begeleiding — niet geld — is de bottleneck.
+        </p>
+      </div>
+
+      <!-- Section 4 - Gaps -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">04 — Wat u moet regelen</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          De vijf grootste gaps
+        </h2>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-xl);">
+          Uit het IDC-onderzoek blijkt duidelijk waar de meeste organisaties tekort komen:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+
+          <div style="display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--white); border: 1px solid var(--s2); border-left: 4px solid var(--g4); border-radius: var(--radius-lg);">
+            <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; color: var(--g4); min-width: 32px;">01</div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Risicobeleid en informatiebeveiligingsbeleid</h3>
+              <p style="font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-sm);">NIS2 verplicht een formeel risicobeheerkader — schriftelijk vastgelegd, goedgekeurd door de directie, met jaarlijkse evaluatie.</p>
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--g5); background: var(--g2); border: 1px solid var(--g4); padding: 6px 12px; border-radius: var(--radius-sm); display: inline-block;">
+                Actie: Stel een ISMS in op basis van ISO 27001
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--white); border: 1px solid var(--s2); border-left: 4px solid var(--g4); border-radius: var(--radius-lg);">
+            <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; color: var(--g4); min-width: 32px;">02</div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Beveiliging van netwerk- en informatiesystemen</h3>
+              <p style="font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-sm);">NIS2 vereist security by design — niet als bijgedachte maar als onderdeel van elk technologieproject.</p>
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--g5); background: var(--g2); border: 1px solid var(--g4); padding: 6px 12px; border-radius: var(--radius-sm); display: inline-block;">
+                Actie: Voer een technische kwetsbaarheidsscan uit
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--white); border: 1px solid var(--s2); border-left: 4px solid var(--g4); border-radius: var(--radius-lg);">
+            <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; color: var(--g4); min-width: 32px;">03</div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Beveiliging van de toeleveringsketen</h3>
+              <p style="font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-sm);">U bent verantwoordelijk voor de cybersecurity van uw leveranciers. Als een leverancier gehackt wordt en daardoor uw systemen geraakt worden, ligt de verantwoordelijkheid bij u.</p>
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--g5); background: var(--g2); border: 1px solid var(--g4); padding: 6px 12px; border-radius: var(--radius-sm); display: inline-block;">
+                Actie: Breng kritieke leveranciers in kaart
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--white); border: 1px solid var(--s2); border-left: 4px solid var(--g4); border-radius: var(--radius-lg);">
+            <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; color: var(--g4); min-width: 32px;">04</div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Incidentmelding en respons</h3>
+              <p style="font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-sm);">Bij een significant cyberincident heeft u 24 uur voor een eerste melding en 72 uur voor een volledige melding bij de bevoegde autoriteit.</p>
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--g5); background: var(--g2); border: 1px solid var(--g4); padding: 6px 12px; border-radius: var(--radius-sm); display: inline-block;">
+                Actie: Schrijf een incident response plan
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: var(--space-lg); padding: var(--space-lg); background: var(--white); border: 1px solid var(--s2); border-left: 4px solid var(--g4); border-radius: var(--radius-lg);">
+            <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; color: var(--g4); min-width: 32px;">05</div>
+            <div>
+              <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Bestuurlijke verantwoordelijkheid</h3>
+              <p style="font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-sm);">NIS2 maakt cybersecurity een bestuurszaak. Directieleden kunnen persoonlijk aansprakelijk worden gesteld bij nalatigheid.</p>
+              <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--g5); background: var(--g2); border: 1px solid var(--g4); padding: 6px 12px; border-radius: var(--radius-sm); display: inline-block;">
+                Actie: Zet NIS2 op de directie-agenda
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 5 - Stappenplan -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">05 — Stappenplan</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          Praktisch stappenplan voor het MKB
+        </h2>
+
+        <div style="background: var(--s1); border: 1px solid var(--s2); border-radius: var(--radius-lg); overflow: hidden;">
+          <div style="display: flex; flex-direction: column;">
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg); border-bottom: 1px solid var(--s2);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">1</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Bepaal of NIS2 op u van toepassing is</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Controleer de criteria op sector, omvang en omzet. Vergeet de ketenverantwoordelijkheid niet. Raadpleeg ncsc.nl voor de actuele sectorlijst.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg); border-bottom: 1px solid var(--s2);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">2</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Voer een nulmeting uit</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Waar staat u nu? Een eerlijke nulmeting kost 1-2 dagen en geeft richting aan alle vervolgstappen.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg); border-bottom: 1px solid var(--s2);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">3</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Stel een beleidsframework op</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Informatiebeveiligingsbeleid, risicobeleid en incidentresponsplan. Werkbaar voor uw organisatie — niet perfect.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg); border-bottom: 1px solid var(--s2);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">4</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Breng uw technische kwetsbaarheden in kaart</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Kwetsbaarheidsscan, patchbeleid, toegangsbeheer en encryptie. Dit is het technische fundament waarop alles rust.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg); border-bottom: 1px solid var(--s2);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">5</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Train uw medewerkers</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Bewustwording is verplicht onder NIS2. Medewerkers moeten weten wat phishing is en wanneer zij een incident melden.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg);">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--g4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--white);">6</div>
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700; color: var(--s5); margin-bottom: 4px;">Registreer u bij de bevoegde autoriteit</h3>
+                <p style="font-size: 14px; color: var(--s4); line-height: 1.6;">Zodra de wet van kracht is, moeten entiteiten zich registreren. Houd ncsc.nl in de gaten voor de procedure.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div style="margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g4); margin-bottom: var(--space-md);">06 — De route-conclusie</div>
+        <h2 style="font-size: clamp(24px, 3vw, 32px); margin-bottom: var(--space-lg);">
+          Wat als u niet weet waar te beginnen?
+        </h2>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-md);">
+          Uit het IDC-onderzoek blijkt dat organisaties met een sterke begeleidingspartner
+          drie keer vaker compliant zijn dan organisaties die het alleen proberen.
+          Kennis en begeleiding is de beslissende factor — niet budget.
+        </p>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7; margin-bottom: var(--space-md);">
+          Voor het MKB betekent dit: u hoeft geen fulltime CISO aan te stellen.
+          U heeft iemand nodig die het overzicht heeft, de juiste prioriteiten stelt
+          en u door het proces begeleidt.
+        </p>
+        <p style="font-size: 16px; color: var(--s4); line-height: 1.7;">
+          De wet komt. De deadline is niet ver meer. De organisaties die nu beginnen,
+          hoeven straks niet te haasten.
+        </p>
+      </div>
+
+      <!-- Useful links -->
+      <div style="background: var(--g1); border: 1px solid var(--g2); border-radius: var(--radius-lg); padding: var(--space-xl); margin-bottom: var(--space-3xl);">
+        <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--g5); margin-bottom: var(--space-md);">
+          Nuttige bronnen
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+          <a href="https://www.ncsc.nl/onderwerpen/nis2" target="_blank"
+             style="font-size: 14px; font-weight: 600; color: var(--g4); display: flex; align-items: center; gap: var(--space-sm);">
+            NCSC.nl — Officiële NIS2 informatie voor Nederland →
+          </a>
+          <a href="https://digital-strategy.ec.europa.eu/en/policies/nis2-directive" target="_blank"
+             style="font-size: 14px; font-weight: 600; color: var(--g4); display: flex; align-items: center; gap: var(--space-sm);">
+            Europese Commissie — NIS2 richtlijn →
+          </a>
+          <a href="https://www.rijksoverheid.nl/onderwerpen/cybersecurity" target="_blank"
+             style="font-size: 14px; font-weight: 600; color: var(--g4); display: flex; align-items: center; gap: var(--space-sm);">
+            Rijksoverheid — Cybersecurity voor bedrijven →
+          </a>
+        </div>
+      </div>
+
+      <!-- Source note -->
+      <div style="border-top: 1px solid var(--s2); padding-top: var(--space-lg);">
+        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--s3); line-height: 1.7;">
+          <strong>Bron:</strong> IDC InfoBrief, gesponsord door Microsoft — "Preparing for NIS2 and Beyond:
+          The Next Phase of Cyber Resilience in EMEA", januari 2026. IDC #EUR154204026. n=70 Nederland.
+        </p>
+        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--s3); line-height: 1.7; margin-top: var(--space-sm);">
+          Dit artikel is bedoeld als algemene informatiegids. Raadpleeg voor juridisch advies
+          altijd een gekwalificeerde adviseur en de actuele informatie op ncsc.nl.
+        </p>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- TechLead NL CTA -->
+  <section style="background: var(--g5); padding: var(--space-3xl) 0; position: relative; overflow: hidden;">
+    <div style="
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    "></div>
+    <div class="container" style="text-align: center; position: relative; max-width: 640px;">
+      <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--g3); margin-bottom: var(--space-md);">
+        Hulp nodig bij implementatie?
+      </div>
+      <h2 style="font-size: clamp(26px, 4vw, 36px); color: var(--white); letter-spacing: -0.04em; margin-bottom: var(--space-md);">
+        NIS2 compliant worden zonder gedoe
+      </h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: var(--space-2xl);">
+        TechLead NL begeleidt Nederlandse MKB-bedrijven bij NIS2 compliance,
+        IT-modernisering en cybersecurity. Fractional CIO services —
+        senior expertise zonder de fulltime kosten.
+      </p>
+      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+        <a href="https://techleadnl.nl/services/cio" target="_blank" class="btn btn--primary">
+          Meer over Fractional CIO →
+        </a>
+        <a href="https://techleadnl.nl/contact" target="_blank" class="btn btn--ghost">
+          Gratis kennismaking
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Baselayout>

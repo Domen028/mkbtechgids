@@ -1,312 +1,366 @@
 ---
-// src/pages/index.astro
-// Compatible with output: "server" + @astrojs/vercel adapter
-// prerender: true tells Astro to statically generate this page at build time
-export const prerender = true;
-
-import Hero from '../components/Hero.astro';
-import MethodStrip from '../components/MethodStrip.astro';
-import Topics from '../components/Topics.astro';
-import TechLeadCrosslink from '../components/TechLeadCrosslink.astro';
+import Baselayout from '../layouts/Baselayout.astro';
 ---
+<Baselayout title="MKBTechGids — De route al verkend"
+  description="De onafhankelijke technologiegids voor het Nederlandse MKB. Eerlijke vergelijkingen, praktische gidsen, direct bruikbaar advies.">
 
-<!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Onafhankelijke analyses van tech-regulering, software en digitale strategie voor Nederlandse bestuurders, CFO's en investeerders. Geen jargon. Wel het eerlijke beeld." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#15803d" />
-  <link rel="canonical" href="https://www.mkbtechgids.nl/" />
+  <!-- HERO -->
+  <section class="section--dark" style="position: relative; overflow: hidden;">
 
-  <!-- OG -->
-  <meta property="og:title"       content="MKBTechGids — Technologiegids voor het Nederlandse MKB" />
-  <meta property="og:description" content="Onafhankelijke analyses van tech-regulering, software en digitale strategie voor Nederlandse bestuurders, CFO's en investeerders." />
-  <meta property="og:url"         content="https://www.mkbtechgids.nl/" />
-  <meta property="og:type"        content="website" />
-  <meta property="og:locale"      content="nl_NL" />
-  <meta property="og:site_name"   content="MKBTechGids" />
-  <meta name="twitter:card"       content="summary_large_image" />
+    <!-- Amber accent line -->
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--a3);"></div>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Dot texture overlay -->
+    <div style="
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    "></div>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <div class="container" style="padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); position: relative;">
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "MKBTechGids",
-    "url": "https://www.mkbtechgids.nl",
-    "description": "Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.",
-    "inLanguage": "nl-NL"
-  }
-  </script>
+      <!-- Hero label -->
+      <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-lg);">
+        <span style="
+          display: inline-flex; align-items: center; gap: 8px;
+          font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+          letter-spacing: 2px; text-transform: uppercase;
+          background: rgba(251,191,36,0.15); color: var(--a3);
+          border: 1px solid rgba(251,191,36,0.3);
+          padding: 4px 12px; border-radius: var(--radius-sm);
+        ">
+          <span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--a3); display: inline-block;"></span>
+          Onafhankelijke technologiegids · MKB Nederland
+        </span>
+      </div>
 
-  <title>MKBTechGids — Technologiegids voor het Nederlandse MKB</title>
+      <!-- H1 -->
+      <h1 style="
+        font-size: clamp(40px, 6vw, 68px);
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        max-width: 800px;
+        margin-bottom: var(--space-lg);
+      ">
+        De technologieroute<br>
+        <em style="font-style: normal; color: var(--g3);">al verkend.</em>
+      </h1>
 
-  <style>
-    /* ── Design tokens ─────────────────────────────── */
-    :root {
-      --g1:#f0fdf4; --g2:#bbf7d0; --g4:#15803d; --g5:#14532d;
-      --n4:#0d1d3a; --n5:#182030;
-      --s1:#f8fafc; --s2:#e2e8f0; --s3:#94a3b8; --s4:#475569; --s5:#1e293b;
-      --a3:#fbbf24;
-      --bg-dark:var(--n5); --bg-deeper:var(--n4);
-      --bg-light:var(--s1); --bg-white:#ffffff; --primary:var(--g4);
-      --font-display:'Playfair Display',Georgia,serif;
-      --font-body:'Source Sans 3','Segoe UI',system-ui,sans-serif;
-      --r-xs:4px; --r-sm:6px; --r-md:10px; --r-lg:14px;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--font-body);background:var(--bg-light);color:var(--s5);line-height:1.6;-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none;}
-    img,svg{display:block;max-width:100%;}
-    .container{max-width:1100px;margin:0 auto;padding:0 28px;}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-    .skip-link{position:absolute;top:-100%;left:12px;background:var(--g4);color:#fff;padding:8px 16px;border-radius:var(--r-sm);font-size:14px;font-weight:600;z-index:9999;transition:top .15s;}
-    .skip-link:focus{top:12px;}
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main">Ga naar inhoud</a>
+      <!-- Subtitle -->
+      <p style="
+        font-size: 18px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.6);
+        max-width: 560px;
+        line-height: 1.7;
+        margin-bottom: var(--space-2xl);
+      ">
+        Eerlijke vergelijkingen, praktische gidsen en onafhankelijk advies
+        over tech tools voor het Nederlandse MKB. Geen advertenties. Geen verkooppraatjes.
+      </p>
 
-  <!-- ── HEADER ── -->
-  <header class="site-header">
-    <div class="header-inner container">
-      <a href="/" class="nav-logo" aria-label="MKBTechGids — home">
-        <svg viewBox="0 0 112 84" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <text x="0" y="28" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="29" fill="#182030">MKB</text>
-          <text x="0" y="56" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="29" fill="#15803d">Tech</text>
-          <text x="0" y="84" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="29" fill="#182030">Gids</text>
-        </svg>
+      <!-- CTA buttons -->
+      <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+        <a href="/nis2" class="btn btn--primary">NIS2 gids lezen →</a>
+        <a href="#onderwerpen" class="btn btn--ghost">Alle onderwerpen</a>
+      </div>
+
+      <!-- Stats bar -->
+      <div style="
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(255,255,255,0.08);
+        border-radius: var(--radius-md);
+        margin-top: var(--space-3xl);
+        overflow: hidden;
+      ">
+        <div style="background: var(--g5); padding: var(--space-lg); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em; font-family: var(--font-sans);">100%</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.70); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;">Onafhankelijk</div>
+        </div>
+        <div style="background: var(--g5); padding: var(--space-lg); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em;">Q2 2026</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.70); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;">NIS2 wet NL</div>
+        </div>
+        <div style="background: var(--g5); padding: var(--space-lg); text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--g3); letter-spacing: -0.04em;">Gratis</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.70); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;">Altijd toegankelijk</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SIGNAL STRIP -->
+  <div style="background: var(--a3); padding: 12px 0;">
+    <div class="container" style="display: flex; align-items: center; gap: var(--space-md);">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--g5); flex-shrink: 0;"></span>
+      <span style="font-size: 13px; font-weight: 600; color: var(--s5);">
+        De Nederlandse Cyberbeveiligingswet (NIS2) wordt verwacht in Q2 2026 — is uw bedrijf voorbereid?
+      </span>
+      <a href="/nis2" style="font-size: 13px; font-weight: 700; color: var(--g5); text-decoration: underline; white-space: nowrap; margin-left: auto;">
+        Lees de gids →
       </a>
-      <nav class="nav-links" aria-label="Hoofdnavigatie">
-        <a href="/nis2">NIS2</a>
-        <a href="/ai-governance">AI Governance</a>
-        <a href="/ai-tools">AI Tools</a>
-        <a href="/crm">CRM</a>
-        <a href="/artikelen">Artikelen</a>
-      </nav>
-      <a href="/nis2" class="nav-cta">NIS2 gids →</a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-    <nav id="mobile-menu" class="mobile-menu" hidden>
-      <a href="/nis2">NIS2</a><a href="/ai-governance">AI Governance</a>
-      <a href="/ai-tools">AI Tools</a><a href="/crm">CRM</a>
-      <a href="/artikelen">Artikelen</a>
-      <a href="/nis2" class="mobile-cta">NIS2 gids lezen →</a>
-    </nav>
-  </header>
+  </div>
 
-  <main id="main">
-    <Hero />
-    <MethodStrip />
-    <Topics />
+  <!-- HOW IT WORKS -->
+  <section class="section section--white" id="hoe-het-werkt">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <div class="section-label" style="margin-bottom: var(--space-md);">Hoe het werkt</div>
+        <h2 style="font-size: clamp(28px, 4vw, 42px); margin-bottom: var(--space-md);">Wij verkennen. Jij beslist.</h2>
+        <p style="font-size: 17px; font-weight: 300; color: var(--s4); max-width: 560px; margin: 0 auto;">
+          Elk artikel volgt hetzelfde patroon: wij gaan het terrein in vóórdat u een keuze maakt.
+        </p>
+      </div>
 
-    <!-- Newsletter (wired to existing /api/subscribe) -->
-    <section class="newsletter" aria-labelledby="nl-heading">
-      <div class="nl-glow" aria-hidden="true"></div>
-      <div class="container nl-inner">
-        <div class="nl-copy">
-          <h2 id="nl-heading" class="nl-title">Blijf voorop. Zonder ruis.</h2>
-          <p class="nl-sub">Tweewekelijkse briefing voor bestuurders en investeerders: wat er verandert in tech-regulering, welke tools het waard zijn en wat uw concurrenten al doen. Geen spam. Opzeggen wanneer u wilt.</p>
-          <ul class="nl-promises">
-            <li><span class="pcheck" aria-hidden="true">✓</span> NIS2 &amp; EU AI Act updates</li>
-            <li><span class="pcheck" aria-hidden="true">✓</span> Onafhankelijke tool-analyses</li>
-            <li><span class="pcheck" aria-hidden="true">✓</span> Leestijd: max. 4 minuten</li>
-          </ul>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--s2); border-radius: var(--radius-lg); overflow: hidden;">
+        <div style="background: var(--white); padding: var(--space-xl); text-align: center; position: relative; transition: all 0.2s ease;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--g1); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
+            <span style="font-size: 20px;">🔍</span>
+          </div>
+          <h3 style="font-size: 17px; margin-bottom: var(--space-sm);">Verkennen</h3>
+          <p style="font-size: 14px; color: var(--s4);">Wij testen, vergelijken en analyseren tools op basis van MKB-criteria — niet enterprise-wensen.</p>
         </div>
-        <form class="nl-form" id="newsletter-form" action="/api/subscribe" method="POST" novalidate>
-          <div class="form-field">
-            <label for="nl-email" class="form-label">E-mailadres</label>
-            <input id="nl-email" name="email" type="email" class="form-input" placeholder="u@bedrijf.nl" required autocomplete="email" />
+        <div style="background: var(--white); padding: var(--space-xl); text-align: center;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--g1); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
+            <span style="font-size: 20px;">📋</span>
           </div>
-          <div class="form-field">
-            <label for="nl-role" class="form-label">Uw rol <span class="form-optional">(optioneel)</span></label>
-            <select id="nl-role" name="role" class="form-select">
-              <option value="">Selecteer uw functie</option>
-              <option value="ceo">CEO / Directeur</option>
-              <option value="cfo">CFO / Financieel directeur</option>
-              <option value="dga">DGA</option>
-              <option value="investor">Investeerder / Aandeelhouder</option>
-              <option value="board">Commissaris / RvB</option>
-              <option value="other">Anders</option>
-            </select>
-          </div>
-          <button type="submit" class="form-submit">Aanmelden voor de briefing →</button>
-          <p id="nl-msg" class="form-msg" aria-live="polite"></p>
-          <p class="form-privacy">Door u aan te melden gaat u akkoord met onze <a href="/privacy">privacyverklaring</a>.</p>
-        </form>
-      </div>
-    </section>
-
-    <TechLeadCrosslink />
-  </main>
-
-  <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <a href="/" class="footer-logo">
-            <svg viewBox="0 0 96 72" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <text x="0" y="23" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="23" fill="#182030">MKB</text>
-              <text x="0" y="44" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="23" fill="#15803d">Tech</text>
-              <text x="0" y="65" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="23" fill="#182030">Gids</text>
-            </svg>
-          </a>
-          <p class="footer-tagline">De route al verkend.</p>
-          <p class="footer-desc">Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.</p>
-          <a href="https://www.linkedin.com/company/mkbtechgids" class="footer-linkedin" rel="noopener noreferrer">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
+          <h3 style="font-size: 17px; margin-bottom: var(--space-sm);">Beoordelen</h3>
+          <p style="font-size: 14px; color: var(--s4);">Elke tool krijgt een eerlijke score op prijs, gebruiksgemak, support en geschiktheid voor het MKB.</p>
         </div>
-        <nav class="footer-nav">
-          <div class="footer-col">
-            <p class="footer-col-title">Onderwerpen</p>
-            <ul>
-              <li><a href="/nis2">NIS2 Compliance</a></li>
-              <li><a href="/ai-governance">AI Governance</a></li>
-              <li><a href="/ai-tools">AI Tools</a></li>
-              <li><a href="/crm">CRM Software</a></li>
-              <li><a href="/e-facturatie">E-facturatie</a></li>
-              <li><a href="/boekhouding">Boekhoudsoftware</a></li>
-            </ul>
+        <div style="background: var(--white); padding: var(--space-xl); text-align: center;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--g1); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md);">
+            <span style="font-size: 20px;">✅</span>
           </div>
-          <div class="footer-col">
-            <p class="footer-col-title">Over ons</p>
-            <ul>
-              <li><a href="/over">Over MKBTechGids</a></li>
-              <li><a href="/methodologie">Methodologie</a></li>
-              <li><a href="/artikelen">Artikelen</a></li>
-              <li><a href="/privacy">Privacyverklaring</a></li>
-              <li><a href="/affiliate-disclosure">Affiliate disclosure</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <p class="footer-col-title">Fractional Leadership</p>
-            <p class="footer-partner-text">Heeft uw organisatie een fractional CTO, CIO of Chief Architect nodig?</p>
-            <a href="https://techleadnl.nl" class="footer-partner-link" rel="noopener">TechLead NL →</a>
-          </div>
-        </nav>
+          <h3 style="font-size: 17px; margin-bottom: var(--space-sm);">Adviseren</h3>
+          <p style="font-size: 14px; color: var(--s4);">Elk artikel eindigt met een concreet advies — niet een lijst van overwegingen, maar een aanbeveling.</p>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <p class="footer-copy">© {new Date().getFullYear()} MKBTechGids. Alle rechten voorbehouden.</p>
-        <p class="footer-affiliate-note">Deze site bevat affiliate-links. Wij ontvangen mogelijk een vergoeding bij aankoop, zonder meerkosten voor u. Dit heeft geen invloed op onze beoordelingen.</p>
-      </div>
-    </div>
-  </footer>
+  </section>
 
-  <!-- Nav toggle script -->
+  <!-- TOPICS -->
+  <section class="section section--green-tint" id="onderwerpen">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <div class="section-label" style="margin-bottom: var(--space-md);">Onderwerpen</div>
+        <h2 style="font-size: clamp(28px, 4vw, 42px);">Wat wij voor u verkennen</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);">
+
+        <a href="/nis2" class="card" style="text-decoration: none; display: block;">
+          <div class="badge badge--amber" style="margin-bottom: var(--space-md);">Urgent</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">NIS2 Compliance</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Wat de nieuwe cyberbeveiligingswet betekent voor uw bedrijf en hoe u compliant wordt.</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--g4); display: flex; align-items: center; gap: 6px;" class="card-link">
+            Lees meer <span>→</span>
+          </div>
+        </a>
+
+        <div class="card" id="ai-tools">
+          <div class="badge badge--green" style="margin-bottom: var(--space-md);">AI Tools</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">AI voor het MKB</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">ChatGPT, Claude, Copilot — welke AI tools leveren daadwerkelijk waarde voor uw bedrijf?</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--s3); display: flex; align-items: center; gap: 6px;">
+            Binnenkort
+          </div>
+        </div>
+
+        <div class="card" id="crm">
+          <div class="badge badge--green" style="margin-bottom: var(--space-md);">CRM</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">CRM Software</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">HubSpot, Pipedrive, Salesforce — welk CRM past bij de omvang en budget van uw MKB?</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--s3);">Binnenkort</div>
+        </div>
+
+        <div class="card" id="boekhouding">
+          <div class="badge badge--green" style="margin-bottom: var(--space-md);">Financieel</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Boekhoudsoftware</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Exact, Moneybird, Twinfield — eerlijke vergelijking voor het Nederlandse MKB.</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--s3);">Binnenkort</div>
+        </div>
+
+        <div class="card" id="automatisering">
+          <div class="badge badge--green" style="margin-bottom: var(--space-md);">Automatisering</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">Werkstroomautomatisering</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Make, Zapier, Power Automate — hoe automatiseert u slimmer zonder een IT-afdeling?</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--s3);">Binnenkort</div>
+        </div>
+
+        <div class="card" id="e-facturatie">
+          <div class="badge badge--amber" style="margin-bottom: var(--space-md);">Verplicht 2026</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--s5); margin-bottom: var(--space-sm); letter-spacing: -0.3px;">E-facturatie</h3>
+          <p style="font-size: 13px; color: var(--s4); line-height: 1.6;">Vanaf 2026 verplicht voor overheidscontracten. Wat u nu moet regelen en welke software helpt.</p>
+          <div style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; color: var(--s3);">Binnenkort</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section class="section section--slate" id="artikelen">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <div class="section-label" style="margin-bottom: var(--space-md);">Vers van de verkenning</div>
+        <h2 style="font-size: clamp(28px, 4vw, 42px);">Nieuwste artikelen</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg);">
+
+        <a href="/nis2" style="text-decoration: none; display: block; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--s2); transition: all 0.2s ease;" class="article-card">
+          <div style="height: 4px; background: var(--a3);"></div>
+          <div style="padding: var(--space-lg);">
+            <div class="badge badge--amber" style="margin-bottom: var(--space-md);">NIS2 · Compliance</div>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); letter-spacing: -0.3px; margin-bottom: var(--space-sm); line-height: 1.4;">
+              NIS2 in Nederland: wat moet uw bedrijf nu regelen?
+            </h3>
+            <p style="font-size: 13px; color: var(--s4); line-height: 1.6; margin-bottom: var(--space-md);">
+              De Cyberbeveiligingswet komt eraan in Q2 2026. Slechts 14% van Nederlandse organisaties is voorbereid.
+            </p>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">Juni 2026 · 7 min</span>
+              <span style="font-size: 13px; font-weight: 600; color: var(--g4);">Lees meer →</span>
+            </div>
+          </div>
+        </a>
+
+        <div style="background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--s2); opacity: 0.6;">
+          <div style="height: 4px; background: var(--g4);"></div>
+          <div style="padding: var(--space-lg);">
+            <div class="badge badge--green" style="margin-bottom: var(--space-md);">AI Tools · Vergelijking</div>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); letter-spacing: -0.3px; margin-bottom: var(--space-sm); line-height: 1.4;">
+              ChatGPT vs Claude vs Copilot: welke AI past bij uw MKB?
+            </h3>
+            <p style="font-size: 13px; color: var(--s4); line-height: 1.6; margin-bottom: var(--space-md);">
+              Een eerlijke vergelijking van de drie grootste AI-assistenten voor het Nederlandse MKB.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">Binnenkort</div>
+          </div>
+        </div>
+
+        <div style="background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--s2); opacity: 0.6;">
+          <div style="height: 4px; background: var(--g4);"></div>
+          <div style="padding: var(--space-lg);">
+            <div class="badge badge--green" style="margin-bottom: var(--space-md);">CRM · Vergelijking</div>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--s5); letter-spacing: -0.3px; margin-bottom: var(--space-sm); line-height: 1.4;">
+              HubSpot vs Pipedrive: het eerlijke MKB-oordeel
+            </h3>
+            <p style="font-size: 13px; color: var(--s4); line-height: 1.6; margin-bottom: var(--space-md);">
+              Twee populaire CRM-systemen vergeleken op prijs, gebruiksgemak en MKB-geschiktheid.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--s3);">Binnenkort</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="nieuwsbrief" style="background: var(--g4); padding: var(--space-3xl) 0; position: relative; overflow: hidden;">
+    <div style="
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    "></div>
+    <div class="container" style="text-align: center; position: relative;">
+      <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--g3); margin-bottom: var(--space-md);">
+        Nieuwsbrief
+      </div>
+      <h2 style="font-size: clamp(26px, 4vw, 34px); color: var(--white); letter-spacing: -1px; margin-bottom: var(--space-md);">
+        De route, elke week in je inbox.
+      </h2>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto var(--space-2xl); line-height: 1.65;">
+        Wekelijks de beste tech gidsen, tool vergelijkingen en MKB-nieuws.
+        Geen spam. Altijd gratis. Altijd onafhankelijk.
+      </p>
+
+      <form id="newsletter-form" style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 0 auto;">
+        <input
+          type="email"
+          id="newsletter-email"
+          name="email"
+          placeholder="jouw@bedrijf.nl"
+          required
+          style="
+            flex: 1; min-width: 240px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 12px var(--space-md);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            color: var(--white);
+            outline: none;
+          "
+        />
+        <button type="submit" id="newsletter-btn" class="btn btn--primary">
+          Aanmelden
+        </button>
+      </form>
+      <p id="newsletter-message" style="margin-top: var(--space-md); font-size: 13px; font-weight: 600; display: none;"></p>
+      <p style="font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.35); margin-top: var(--space-md);">
+        Geen spam · Afmelden kan altijd · MKBTechGids
+      </p>
+    </div>
+  </section>
+
   <script>
-    const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-    const menu   = document.getElementById('mobile-menu') as HTMLElement;
-    toggle?.addEventListener('click', () => {
-      const open = !menu.hidden;
-      menu.hidden = open;
-      toggle.setAttribute('aria-expanded', String(!open));
+    const form = document.getElementById("newsletter-form");
+    const message = document.getElementById("newsletter-message");
+    const btn = document.getElementById("newsletter-btn");
+
+    // Input focus styling
+    const input = document.getElementById("newsletter-email");
+    input.addEventListener("focus", () => {
+      input.style.borderColor = "var(--a3)";
+      input.style.background = "rgba(255,255,255,0.12)";
+    });
+    input.addEventListener("blur", () => {
+      input.style.borderColor = "rgba(255,255,255,0.2)";
+      input.style.background = "rgba(255,255,255,0.08)";
     });
 
-    // Newsletter AJAX — keeps existing /api/subscribe endpoint
-    const form = document.getElementById('newsletter-form') as HTMLFormElement;
-    const msg  = document.getElementById('nl-msg') as HTMLElement;
-    form?.addEventListener('submit', async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const btn = form.querySelector('button') as HTMLButtonElement;
+      btn.textContent = "Aanmelden...";
       btn.disabled = true;
-      btn.textContent = 'Moment...';
+
+      const formData = new FormData(form);
+
       try {
-        const res  = await fetch('/api/subscribe', { method:'POST', body: new FormData(form) });
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          body: formData,
+        });
         const data = await res.json();
-        msg.textContent = data.message;
-        msg.style.color = data.success ? 'var(--g2)' : '#f87171';
-        if (data.success) form.reset();
-      } catch {
-        msg.textContent = 'Er ging iets mis. Probeer het opnieuw.';
-        msg.style.color = '#f87171';
-      } finally {
+        message.textContent = data.message;
+        message.style.display = "block";
+        message.style.color = data.success ? "var(--g3)" : "#fca5a5";
+
+        if (data.success) {
+          form.reset();
+          btn.textContent = "Aangemeld!";
+        } else {
+          btn.textContent = "Aanmelden";
+          btn.disabled = false;
+        }
+      } catch (err) {
+        message.textContent = "Er ging iets mis. Probeer het opnieuw.";
+        message.style.display = "block";
+        message.style.color = "#fca5a5";
+        btn.textContent = "Aanmelden";
         btn.disabled = false;
-        btn.textContent = 'Aanmelden voor de briefing →';
       }
     });
   </script>
 
-  <style>
-    /* ── Header ── */
-    .site-header{position:sticky;top:0;z-index:200;background:var(--s1);border-bottom:1px solid var(--s2);box-shadow:0 1px 6px rgba(24,32,48,.07);}
-    .header-inner{display:flex;align-items:center;gap:36px;height:68px;}
-    .nav-logo{flex-shrink:0;display:flex;align-items:center;}
-    .nav-links{display:flex;gap:28px;flex:1;}
-    .nav-links a{font-size:13.5px;font-weight:500;color:var(--s4);letter-spacing:.01em;padding:4px 0;border-bottom:2px solid transparent;transition:color .14s,border-color .14s;}
-    .nav-links a:hover{color:var(--g4);border-bottom-color:var(--g4);}
-    .nav-cta{flex-shrink:0;font-size:13px;font-weight:600;color:#fff;background:var(--g4);border-radius:var(--r-sm);padding:8px 18px;transition:background .14s,transform .14s;}
-    .nav-cta:hover{background:var(--g5);transform:translateY(-1px);}
-    .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;margin-left:auto;}
-    .nav-toggle span{display:block;width:22px;height:2px;background:var(--s4);border-radius:2px;}
-
-    @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}}
-
-    /* ── Newsletter ── */
-    .newsletter{background:var(--bg-dark);padding:76px 0;position:relative;overflow:hidden;}
-    .nl-glow{position:absolute;left:-120px;top:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(21,128,61,.09) 0%,transparent 70%);pointer-events:none;}
-    .nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start;position:relative;z-index:1;}
-    .nl-title{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--g1);letter-spacing:-.02em;margin-bottom:14px;}
-    .nl-sub{font-size:15px;line-height:1.78;color:var(--s3);margin-bottom:22px;}
-    .nl-promises{list-style:none;display:flex;flex-direction:column;gap:9px;}
-    .nl-promises li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--s3);}
-    .pcheck{color:var(--g4);font-weight:700;}
-    .nl-form{display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-lg);padding:30px 26px;}
-    .form-field{display:flex;flex-direction:column;gap:6px;}
-    .form-label{font-size:11.5px;font-weight:600;color:var(--s3);letter-spacing:.04em;text-transform:uppercase;}
-    .form-optional{font-weight:400;color:var(--s4);text-transform:none;letter-spacing:0;}
-    .form-input,.form-select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:var(--r-sm);padding:11px 14px;font-size:14px;color:var(--g1);font-family:var(--font-body);width:100%;transition:border-color .14s,background .14s;}
-    .form-input::placeholder{color:var(--s4);}
-    .form-input:focus,.form-select:focus{outline:none;border-color:var(--g4);background:rgba(21,128,61,.07);}
-    .form-select option{background:var(--n5);color:var(--g1);}
-    .form-submit{background:var(--g4);color:#fff;font-size:14px;font-weight:600;font-family:var(--font-body);padding:13px 20px;border:none;border-radius:var(--r-sm);cursor:pointer;letter-spacing:.01em;margin-top:4px;transition:background .14s,transform .14s;}
-    .form-submit:hover{background:var(--g5);transform:translateY(-1px);}
-    .form-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;}
-    .form-msg{font-size:13px;text-align:center;min-height:18px;}
-    .form-privacy{font-size:11px;color:var(--s4);text-align:center;line-height:1.5;}
-    .form-privacy a{color:var(--s3);text-decoration:underline;}
-    @media(max-width:820px){.nl-inner{grid-template-columns:1fr;gap:36px}}
-
-    /* ── Footer ── */
-    .site-footer{background:var(--s1);border-top:1px solid var(--s2);}
-    .footer-main{padding:56px 0 48px;}
-    .footer-inner{display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:start;}
-    .footer-logo{display:inline-block;margin-bottom:10px;}
-    .footer-tagline{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g4);margin-bottom:8px;}
-    .footer-desc{font-size:13.5px;color:var(--s4);line-height:1.65;max-width:220px;margin-bottom:16px;}
-    .footer-linkedin{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--s4);transition:color .14s;}
-    .footer-linkedin:hover{color:var(--g4);}
-    .footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-    .footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--s5);margin-bottom:14px;}
-    .footer-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;}
-    .footer-col ul a{font-size:13.5px;color:var(--s4);transition:color .12s;}
-    .footer-col ul a:hover{color:var(--g4);}
-    .footer-partner-text{font-size:13px;color:var(--s4);line-height:1.62;margin-bottom:12px;}
-    .footer-partner-link{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--g4);transition:color .12s;}
-    .footer-partner-link:hover{color:var(--g5);}
-    .footer-bottom{border-top:1px solid var(--s2);background:var(--s2);}
-    .footer-bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;}
-    .footer-copy{font-size:12px;color:var(--s4);white-space:nowrap;}
-    .footer-affiliate-note{font-size:11.5px;color:var(--s3);line-height:1.5;max-width:540px;text-align:right;}
-    @media(max-width:900px){.footer-inner{grid-template-columns:1fr;gap:36px}.footer-nav{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.footer-nav{grid-template-columns:1fr}.footer-bottom-inner{flex-direction:column;align-items:flex-start}.footer-affiliate-note{text-align:left}}
-  </style>
-</body>
-</html>
+</Baselayout>
