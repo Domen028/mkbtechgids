@@ -1,167 +1,220 @@
 ---
-// Header.astro — Light nav surface so original logo (dark navy + forest green) reads clearly
+// src/components/Header.astro — FIXED
+// Uses the real /public/logo.svg (DM Sans Bold, Illustrator export)
+// Light nav surface so dark slate + forest green logo reads clearly
 ---
+
+<!-- DM Sans Bold — required for logo.svg to render correctly -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap"
+  rel="stylesheet"
+/>
 
 <header class="site-header">
   <div class="header-inner">
 
-    <!-- Logo: SVG recreation of the uploaded mark -->
-    <a href="/" class="logo" aria-label="MKBTechGids — terug naar home">
-      <svg viewBox="0 0 108 80" height="44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <text x="0" y="27" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#182030">MKB</text>
-        <text x="0" y="52" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#15803d">Tech</text>
-        <text x="0" y="77" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="27" fill="#182030">Gids</text>
-      </svg>
+    <!-- Real logo from public/logo.svg -->
+    <a href="/" class="nav-logo" aria-label="MKBTechGids — terug naar home">
+      <img
+        src="/logo.svg"
+        alt="MKBTechGids"
+        class="logo-img"
+        width="48"
+        height="51"
+      />
     </a>
 
-    <!-- Primary nav -->
+    <!-- Desktop nav -->
     <nav class="nav-links" aria-label="Hoofdnavigatie">
       <a href="/nis2">NIS2</a>
+      <a href="/ai-governance">AI Governance</a>
       <a href="/ai-tools">AI Tools</a>
       <a href="/crm">CRM</a>
-      <a href="/e-facturatie">E-facturatie</a>
       <a href="/artikelen">Artikelen</a>
     </nav>
 
     <!-- CTA -->
-    <a href="/nis2" class="nav-cta">
+    <a href="/nis2" class="nav-cta" aria-label="Lees de NIS2 gids">
       NIS2 gids <span aria-hidden="true">→</span>
     </a>
 
-    <!-- Mobile toggle -->
-    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
+    <!-- Mobile hamburger -->
+    <button
+      class="nav-toggle"
+      aria-label="Menu openen"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      type="button"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
+
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="mobile-menu" hidden>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Mobiele navigatie" hidden>
     <a href="/nis2">NIS2</a>
+    <a href="/ai-governance">AI Governance</a>
     <a href="/ai-tools">AI Tools</a>
     <a href="/crm">CRM</a>
-    <a href="/e-facturatie">E-facturatie</a>
     <a href="/artikelen">Artikelen</a>
     <a href="/nis2" class="mobile-cta">NIS2 gids lezen →</a>
-  </div>
+  </nav>
 </header>
 
 <style>
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: var(--s1);
-  border-bottom: 1px solid var(--s2);
-  box-shadow: 0 1px 8px rgba(24,32,48,0.06);
+  z-index: 200;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 6px rgba(24,32,48,0.07);
 }
 
 .header-inner {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 32px;
-  height: 64px;
+  height: 68px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 28px;
 }
 
-.logo { flex-shrink: 0; display: flex; align-items: center; }
-.logo svg { display: block; }
+.nav-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  display: block;
+  height: 46px;
+  width: auto;
+}
 
 .nav-links {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   gap: 28px;
   flex: 1;
+  margin: 0;
+  padding: 0;
 }
 .nav-links a {
+  display: inline-block;
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--s4);
-  letter-spacing: 0.01em;
+  color: #475569;
+  white-space: nowrap;
+  text-decoration: none;
   padding: 4px 0;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.14s, border-color 0.14s;
 }
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-  color: var(--g4);
-  border-bottom-color: var(--g4);
+  color: #15803d;
+  border-bottom-color: #15803d;
 }
 
 .nav-cta {
   flex-shrink: 0;
+  white-space: nowrap;
   font-size: 13px;
   font-weight: 600;
   color: #fff;
-  background: var(--g4);
-  border-radius: var(--r-sm);
+  background: #15803d;
+  border-radius: 6px;
   padding: 8px 18px;
-  transition: background 0.15s;
-  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.14s, transform 0.14s;
 }
-.nav-cta:hover { background: var(--g5); }
+.nav-cta:hover {
+  background: #14532d;
+  transform: translateY(-1px);
+}
 
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   margin-left: auto;
 }
 .nav-toggle span {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--s4);
+  background: #475569;
   border-radius: 2px;
-  transition: 0.2s;
 }
 
 .mobile-menu {
   display: flex;
   flex-direction: column;
-  background: var(--s1);
-  border-top: 1px solid var(--s2);
-  padding: 12px 28px 20px;
-  gap: 4px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 8px 28px 20px;
 }
 .mobile-menu a {
   font-size: 15px;
   font-weight: 500;
-  color: var(--s4);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--s2);
+  color: #475569;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+  text-decoration: none;
+  transition: color 0.14s;
 }
+.mobile-menu a:hover { color: #15803d; }
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-cta {
   display: inline-block;
-  margin-top: 8px;
-  background: var(--g4);
+  margin-top: 10px;
+  background: #15803d;
   color: #fff !important;
-  padding: 10px 18px !important;
-  border-radius: var(--r-sm);
+  padding: 11px 20px !important;
+  border-radius: 6px;
   border-bottom: none !important;
   font-size: 14px !important;
+  font-weight: 600 !important;
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .nav-links a { font-size: 12.5px; }
+  .header-inner { gap: 20px; }
+}
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-cta { display: none; }
+  .nav-cta   { display: none; }
   .nav-toggle { display: flex; }
 }
 </style>
 
 <script>
-const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
-const menu   = document.getElementById('mobile-menu') as HTMLElement;
-
-toggle?.addEventListener('click', () => {
-  const open = menu.hasAttribute('hidden');
-  if (open) { menu.removeAttribute('hidden'); toggle.setAttribute('aria-expanded','true'); }
-  else       { menu.setAttribute('hidden',''); toggle.setAttribute('aria-expanded','false'); }
-});
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu   = document.getElementById('mobile-menu') as HTMLElement;
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu.hidden;
+    menu.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      menu.hidden = true;
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.focus();
+    }
+  });
 </script>

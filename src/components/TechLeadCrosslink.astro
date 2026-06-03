@@ -1,0 +1,33 @@
+---
+// src/components/TechLeadCrosslink.astro
+---
+<section class="crosslink" aria-labelledby="crosslink-heading">
+  <div class="container crosslink-inner">
+    <div class="crosslink-copy">
+      <p class="crosslink-eyebrow">Fractional Technology Leadership</p>
+      <h2 id="crosslink-heading" class="crosslink-title">
+        Heeft uw organisatie meer nodig dan een gids?
+      </h2>
+      <p class="crosslink-text">
+        MKBTechGids geeft u het overzicht. TechLead NL geeft u de leiding &mdash;
+        als fractional CTO, CIO of Chief Architect, ingebed in uw organisatie,
+        voor een fractie van de kosten van een fulltime hire.
+      </p>
+    </div>
+    <a href="https://techleadnl.nl" class="crosslink-btn" rel="noopener"
+      aria-label="Naar TechLead NL — fractional technology leadership">
+      TechLead NL <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+<style>
+.crosslink { background:var(--bg-light); border-top:1px solid var(--s2); padding:56px 0; }
+.crosslink-inner { display:flex; align-items:center; gap:52px; flex-wrap:wrap; }
+.crosslink-copy { flex:1; min-width:280px; }
+.crosslink-eyebrow { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:var(--g4); margin-bottom:8px; }
+.crosslink-title { font-family:var(--font-display); font-size:clamp(20px,2.5vw,26px); font-weight:700; color:var(--s5); letter-spacing:-0.02em; margin-bottom:12px; line-height:1.2; }
+.crosslink-text { font-size:14.5px; color:var(--s4); line-height:1.72; max-width:480px; }
+.crosslink-btn { display:inline-flex; align-items:center; gap:6px; background:var(--bg-dark); color:var(--g2); font-size:14px; font-weight:600; padding:14px 28px; border-radius:var(--r-sm); white-space:nowrap; flex-shrink:0; text-decoration:none; transition:background 0.14s,transform 0.14s; }
+.crosslink-btn:hover { background:var(--bg-deeper); transform:translateY(-1px); }
+@media(max-width:640px){.crosslink-inner{flex-direction:column;gap:24px}.crosslink-btn{align-self:flex-start}}
+</style>

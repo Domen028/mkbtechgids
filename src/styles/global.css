@@ -1,75 +1,86 @@
 /* ============================================================
-   MKBTechGids — Global Design Tokens
-   Palette: Navy anchor · Forest green primary · Slate neutrals
-   Amber: single accent only (urgency icon, logo beacon)
+   MKBTechGids — Design Tokens
+   DROP INTO: src/styles/global.css
+   IMPORT IN: src/layouts/BaseLayout.astro (or your existing layout)
+   Does NOT conflict with Tailwind — pure CSS custom properties only.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Green scale */
+  /* Green */
   --g1: #f0fdf4;
   --g2: #bbf7d0;
-  --g3: #4ade80;
   --g4: #15803d;
   --g5: #14532d;
 
-  /* Navy scale */
-  --n1: #f0f4ff;
-  --n2: #dbe4f8;
-  --n3: #1e3a6e;
+  /* Navy */
   --n4: #0d1d3a;
-  --n5: #182030;   /* primary dark surface */
-  --n6: #0a1628;   /* deepest navy */
+  --n5: #182030;
 
-  /* Slate scale */
+  /* Slate */
   --s1: #f8fafc;
   --s2: #e2e8f0;
   --s3: #94a3b8;
   --s4: #475569;
   --s5: #1e293b;
 
-  /* Amber — SINGLE USE ONLY: urgency/warning icon */
+  /* Amber — urgency icon ONLY */
   --a3: #fbbf24;
 
   /* Semantic */
-  --color-bg-dark:    var(--n5);
-  --color-bg-deeper:  var(--n4);
-  --color-bg-light:   var(--s1);
-  --color-bg-white:   #ffffff;
-  --color-primary:    var(--g4);
-  --color-primary-lt: var(--g2);
-  --color-text-dark:  #f0fdf4;
-  --color-text-mid:   var(--s3);
-  --color-text-light: var(--s4);
-  --color-border-lt:  var(--s2);
-  --color-border-dk:  rgba(255,255,255,0.06);
+  --bg-dark:   var(--n5);
+  --bg-deeper: var(--n4);
+  --bg-light:  var(--s1);
+  --bg-white:  #ffffff;
+  --primary:   var(--g4);
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body:    'Source Sans 3', system-ui, sans-serif;
+  --font-body:    'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
 
   /* Radius */
-  --r-sm:  6px;
-  --r-md:  10px;
-  --r-lg:  14px;
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+/* Base resets — safe alongside Tailwind */
 html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--color-bg-light);
-  color: var(--s5);
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
 
-/* Utility */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%; left: 12px;
+  background: var(--g4);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 12px; }

@@ -1,0 +1,35 @@
+---
+// src/components/MethodStrip.astro
+---
+<section class="method-strip" aria-label="Onze aanpak">
+  <div class="container method-inner">
+    <div class="method-step">
+      <span class="method-num">01</span>
+      <span class="method-title">Verkennen</span>
+      <span class="method-desc">Onafhankelijk marktonderzoek zonder commerciële belangen.</span>
+    </div>
+    <span class="method-arrow" aria-hidden="true">&rarr;</span>
+    <div class="method-step">
+      <span class="method-num">02</span>
+      <span class="method-title">Beoordelen</span>
+      <span class="method-desc">Gestructureerde analyse op TCO, risico en schaalbaarheid.</span>
+    </div>
+    <span class="method-arrow" aria-hidden="true">&rarr;</span>
+    <div class="method-step">
+      <span class="method-num">03</span>
+      <span class="method-title">Adviseren</span>
+      <span class="method-desc">Helder advies — wat ú als bestuurder moet weten en doen.</span>
+    </div>
+  </div>
+</section>
+<style>
+.method-strip { background:var(--bg-deeper); border-top:1px solid rgba(30,58,110,0.5); border-bottom:1px solid rgba(30,58,110,0.35); padding:28px 0; }
+.method-inner { display:flex; align-items:center; flex-wrap:wrap; }
+.method-step { display:flex; flex-direction:column; gap:3px; flex:1; min-width:160px; padding:0 28px; }
+.method-step:first-of-type { padding-left:0; }
+.method-num { font-size:11px; font-weight:700; color:var(--g4); letter-spacing:0.06em; }
+.method-title { font-size:14px; font-weight:600; color:var(--s2); }
+.method-desc { font-size:12.5px; color:var(--s3); line-height:1.5; }
+.method-arrow { font-size:20px; color:rgba(148,163,184,0.25); flex-shrink:0; margin:0 4px; }
+@media(max-width:640px){.method-inner{flex-direction:column;align-items:flex-start;gap:18px}.method-step{padding:0;min-width:unset;width:100%}.method-arrow{display:none}}
+</style>
