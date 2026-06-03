@@ -1,32 +1,18 @@
 ---
 // src/components/Header.astro — FIXED
-// Uses the real /public/logo.svg (DM Sans Bold, Illustrator export)
-// Light nav surface so dark slate + forest green logo reads clearly
+// Uses real /public/logo.svg, horizontal nav, mobile menu properly hidden on desktop
 ---
 
-<!-- DM Sans Bold — required for logo.svg to render correctly -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet" />
 
 <header class="site-header">
   <div class="header-inner">
-
-    <!-- Real logo from public/logo.svg -->
     <a href="/" class="nav-logo" aria-label="MKBTechGids — terug naar home">
-      <img
-        src="/logo.svg"
-        alt="MKBTechGids"
-        class="logo-img"
-        width="48"
-        height="51"
-      />
+      <img src="/logo.svg" alt="MKBTechGids" class="logo-img" width="48" height="51" />
     </a>
 
-    <!-- Desktop nav -->
     <nav class="nav-links" aria-label="Hoofdnavigatie">
       <a href="/nis2">NIS2</a>
       <a href="/ai-governance">AI Governance</a>
@@ -35,27 +21,15 @@
       <a href="/artikelen">Artikelen</a>
     </nav>
 
-    <!-- CTA -->
-    <a href="/nis2" class="nav-cta" aria-label="Lees de NIS2 gids">
-      NIS2 gids <span aria-hidden="true">→</span>
-    </a>
+    <a href="/nis2" class="nav-cta">NIS2 gids <span aria-hidden="true">→</span></a>
 
-    <!-- Mobile hamburger -->
-    <button
-      class="nav-toggle"
-      aria-label="Menu openen"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      type="button"
-    >
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu" type="button">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </button>
-
   </div>
 
-  <!-- Mobile menu -->
   <nav id="mobile-menu" class="mobile-menu" aria-label="Mobiele navigatie" hidden>
     <a href="/nis2">NIS2</a>
     <a href="/ai-governance">AI Governance</a>
@@ -91,6 +65,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  line-height: 1;
 }
 .logo-img {
   display: block;
@@ -118,8 +93,7 @@
   border-bottom: 2px solid transparent;
   transition: color 0.14s, border-color 0.14s;
 }
-.nav-links a:hover,
-.nav-links a[aria-current="page"] {
+.nav-links a:hover {
   color: #15803d;
   border-bottom-color: #15803d;
 }
@@ -135,6 +109,8 @@
   padding: 8px 18px;
   text-decoration: none;
   transition: background 0.14s, transform 0.14s;
+  border: none;
+  cursor: pointer;
 }
 .nav-cta:hover {
   background: #14532d;
@@ -160,13 +136,20 @@
   border-radius: 2px;
 }
 
+/* Mobile menu — start hidden, only show on mobile when opened */
 .mobile-menu {
+  display: none;
+}
+
+/* When mobile menu is open (not [hidden]), show it */
+.mobile-menu:not([hidden]) {
   display: flex;
   flex-direction: column;
   background: #f8fafc;
   border-top: 1px solid #e2e8f0;
   padding: 8px 28px 20px;
 }
+
 .mobile-menu a {
   font-size: 15px;
   font-weight: 500;
@@ -176,8 +159,13 @@
   text-decoration: none;
   transition: color 0.14s;
 }
-.mobile-menu a:hover { color: #15803d; }
-.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { 
+  color: #15803d; 
+}
+.mobile-menu a:last-child { 
+  border-bottom: none; 
+}
+
 .mobile-cta {
   display: inline-block;
   margin-top: 10px;
@@ -189,32 +177,68 @@
   font-size: 14px !important;
   font-weight: 600 !important;
   text-align: center;
+  text-decoration: none !important;
 }
 
-@media (max-width: 900px) {
-  .nav-links a { font-size: 12.5px; }
-  .header-inner { gap: 20px; }
+/* Desktop: nav links visible, hamburger hidden */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;
+  }
+  .nav-cta {
+    display: inline-block;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .mobile-menu {
+    display: none !important;
+  }
 }
+
+/* Mobile: nav links hidden, hamburger visible, mobile menu hidden until opened */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-cta   { display: none; }
-  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .mobile-menu {
+    display: none;
+  }
+  .mobile-menu:not([hidden]) {
+    display: flex;
+  }
 }
 </style>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
-  const menu   = document.getElementById('mobile-menu') as HTMLElement;
-  toggle?.addEventListener('click', () => {
-    const isOpen = !menu.hidden;
-    menu.hidden = isOpen;
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu.hidden) {
-      menu.hidden = true;
-      toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.focus();
-    }
-  });
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.hasAttribute('hidden');
+      if (isOpen) {
+        menu.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hasAttribute('hidden')) {
+        menu.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+  }
 </script>
