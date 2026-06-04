@@ -1,0 +1,378 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NIS2 Toolbox — Praktische templates en SaaS platform voor Nederlandse MKB's." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>NIS2 Toolbox — Templates & SaaS Platform — MKBTechGids</title>
+  <style>
+    :root {
+      --navy-dark: #0f2147;
+      --navy-light: #1e3a6e;
+      --green: #14532d;
+      --green-light: #15803d;
+      --green-bg: #f0fdf4;
+      --text-dark: #f1f5f9;
+      --text-light: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-gray: #e2e8f0;
+      --text-body: #475569;
+    }
+    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
+    a { color: var(--green); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--green-light); }
+
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
+    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 28px; flex: 1; margin: 0; padding: 0; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown-trigger { background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-dropdown-trigger:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-dropdown-trigger::after { content: '▼'; font-size: 8px; transition: transform 0.2s; }
+    .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -40px; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 340px; padding: 8px 0; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.15); display: none; z-index: 1000; }
+    .nav-dropdown.open { display: block; }
+    .nav-dropdown a { display: block; padding: 14px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
+
+    .page-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .page-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
+    .page-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; }
+
+    .content-section { padding: 60px 28px; background: var(--bg-light); }
+    .content-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
+    .section-subtitle { font-size: 16px; color: var(--text-light); margin-bottom: 40px; }
+
+    /* Tier 1 Section */
+    .tier1-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-top: 40px; }
+    .bundle-card { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 32px 24px; transition: all 0.2s; display: flex; flex-direction: column; }
+    .bundle-card:hover { box-shadow: 0 12px 32px rgba(15, 33, 71, 0.15); transform: translateY(-4px); border-color: var(--green); }
+    .bundle-card.featured { border-color: var(--green); background: var(--green-bg); }
+
+    .bundle-tag { display: inline-block; background: rgba(20, 83, 45, 0.1); color: var(--green); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px; width: fit-content; }
+    .bundle-tag.popular { background: var(--green); color: white; }
+
+    .bundle-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
+    .bundle-card p { font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+
+    .bundle-modules { background: rgba(0,0,0,0.04); padding: 16px; border-radius: 6px; margin-bottom: 20px; font-size: 12px; }
+    .bundle-modules strong { display: block; margin-bottom: 8px; color: var(--navy-dark); }
+    .bundle-modules li { margin-left: 16px; margin-bottom: 4px; }
+
+    .bundle-price { font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 16px; }
+    .bundle-price small { font-size: 14px; color: var(--text-light); font-weight: 400; }
+
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-align: center; text-decoration: none; border: none; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover { background: var(--green-light); }
+    .btn-secondary { background: white; color: var(--green); border: 2px solid var(--green); }
+    .btn-secondary:hover { background: var(--green-bg); }
+
+    /* Tier 2 Section */
+    .tier2-box { background: linear-gradient(135deg, var(--green-bg) 0%, white 100%); border: 2px solid var(--green); border-radius: 8px; padding: 48px 40px; margin-top: 40px; }
+    .tier2-content { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .tier2-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; }
+    .tier2-text p { font-size: 15px; color: var(--text-body); margin-bottom: 12px; line-height: 1.8; }
+    .tier2-text ul { margin: 20px 0; padding-left: 20px; }
+    .tier2-text li { margin-bottom: 8px; }
+
+    .signup-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; }
+    .form-field label { font-size: 13px; font-weight: 600; color: var(--navy-dark); margin-bottom: 6px; }
+    .form-field input { padding: 10px 14px; border: 1px solid var(--bg-gray); border-radius: 4px; font-family: inherit; font-size: 14px; }
+    .form-field input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(20, 83, 45, 0.1); }
+
+    /* Free Sample */
+    .free-sample { background: white; border: 2px dashed var(--green); border-radius: 8px; padding: 40px 28px; text-align: center; margin-top: 40px; }
+    .free-sample h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
+    .free-sample p { font-size: 14px; color: var(--text-body); margin-bottom: 24px; }
+
+    /* FAQ */
+    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 40px; }
+    .faq-item { background: white; padding: 24px; border-radius: 6px; border-left: 4px solid var(--green); }
+    .faq-item strong { display: block; color: var(--navy-dark); margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--text-body); }
+
+    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .footer p { font-size: 13px; margin: 0; }
+    .footer a { color: var(--green-light); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-hero { padding: 48px 28px; }
+      .page-hero h1 { font-size: 28px; }
+      .tier1-grid { grid-template-columns: 1fr; }
+      .tier2-content { grid-template-columns: 1fr; }
+      .content-section { padding: 40px 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="48" height="51" /></a>
+      <nav class="nav-links">
+        <a href="/nis2">NIS2</a>
+        <a href="/">AI Governance</a>
+        <a href="/">AI Tools</a>
+        <a href="/">CRM</a>
+        <div class="nav-item">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Artikelen menu">Artikelen</button>
+          <div class="nav-dropdown">
+            <a href="/nis2">NIS2 Implementatie (beide artikelen)</a>
+            <a href="/articles" style="border-top: 1px solid var(--bg-gray); padding-top: 12px; margin-top: 4px; color: var(--green); font-weight: 600;">Alle artikelen →</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <h1>NIS2 Toolbox</h1>
+        <p>Praktische templates én SaaS platform — alles wat je nodig hebt om NIS2-compliant te worden. Kies templates voor direct gebruik of het SaaS platform voor volledige begeleiding.</p>
+      </div>
+    </section>
+
+    <!-- TIER 1: TEMPLATES -->
+    <section class="content-section">
+      <div class="content-inner">
+        <h2 class="section-title">Tier 1: Templates — Direct downloaden & gebruiken</h2>
+        <p class="section-subtitle">Word + Excel + PDF formaat. Meteen invullen, geen installatie nodig.</p>
+
+        <div class="tier1-grid">
+          <!-- Bundle 1: Module 1 Only -->
+          <div class="bundle-card">
+            <div class="bundle-tag">Starter</div>
+            <h3>Module 1: Zelf beoordelen</h3>
+            <p>Bepaal of jouw bedrijf onder NIS2 valt. Checklist, invulformulier, beslisboom en risico-informatie.</p>
+            <div class="bundle-modules">
+              <strong>Inclusief:</strong>
+              <ul>
+                <li>Sector/grootte checklist</li>
+                <li>Bedrijfsgegevens formulier</li>
+                <li>Essentieel/belangrijk beslisboom</li>
+                <li>Boete & aansprakelijkheid info</li>
+              </ul>
+            </div>
+            <div class="bundle-price">€19</div>
+            <button class="btn btn-primary" onclick="alert('Gumroad link: Module 1')">Naar Gumroad →</button>
+          </div>
+
+          <!-- Bundle 2: Modules 1-3 Quick Start -->
+          <div class="bundle-card featured">
+            <div class="bundle-tag popular">Populair</div>
+            <h3>Quick Start Bundle</h3>
+            <p>Begin hier. Bepaal waar je staat, begrijp de 10 verplichtingen, en zet je incidentenplan op.</p>
+            <div class="bundle-modules">
+              <strong>Inclusief:</strong>
+              <ul>
+                <li>Module 1: Zelf beoordelen</li>
+                <li>Module 2: 10 verplichtingen</li>
+                <li>Module 3: Incidentenplan</li>
+              </ul>
+            </div>
+            <div class="bundle-price">€39</div>
+            <button class="btn btn-primary" onclick="alert('Gumroad link: Quick Start')">Naar Gumroad →</button>
+          </div>
+
+          <!-- Bundle 3: Modules 1-5 Core -->
+          <div class="bundle-card">
+            <div class="bundle-tag">Uitgebreid</div>
+            <h3>Core Bundle</h3>
+            <p>Afdekking van basis- en middenniveau. Inclusief leveranciers, toegangscontrole, back-ups en medewerkers.</p>
+            <div class="bundle-modules">
+              <strong>Inclusief:</strong>
+              <ul>
+                <li>Modules 1-3 (Quick Start)</li>
+                <li>Module 4: Leveranciers</li>
+                <li>Module 5: Wachtwoorden & toegang</li>
+              </ul>
+            </div>
+            <div class="bundle-price">€59</div>
+            <button class="btn btn-primary" onclick="alert('Gumroad link: Core')">Naar Gumroad →</button>
+          </div>
+
+          <!-- Bundle 4: All 8 Modules -->
+          <div class="bundle-card featured">
+            <div class="bundle-tag popular">Compleet</div>
+            <h3>Complete Toolkit</h3>
+            <p>Alle 8 modules + bijlagen. Volledige toolkit voor medewerkers, documentatie, jaarlijkse review en meer.</p>
+            <div class="bundle-modules">
+              <strong>Inclusief:</strong>
+              <ul>
+                <li>Modules 1-5 (Core Bundle)</li>
+                <li>Module 6: Medewerkers</li>
+                <li>Module 7: Documentatie</li>
+                <li>Module 8: Jaarlijkse review</li>
+                <li>Bijlagen & glossary</li>
+              </ul>
+            </div>
+            <div class="bundle-price">€89</div>
+            <button class="btn btn-primary" onclick="alert('Gumroad link: Complete')">Naar Gumroad →</button>
+          </div>
+        </div>
+
+        <!-- Individual Modules Option -->
+        <div style="margin-top: 48px; padding: 24px; background: white; border-radius: 8px; border: 1px solid var(--bg-gray);">
+          <strong style="color: var(--navy-dark);">Of koop modules individueel</strong>
+          <p style="font-size: 14px; color: var(--text-body); margin-top: 8px;">Elke module ook apart beschikbaar — €15 per module.</p>
+          <a href="#" class="btn btn-secondary" style="margin-top: 12px;">Alle modules →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE SAMPLE -->
+    <section class="content-section" style="background: var(--green-bg);">
+      <div class="content-inner">
+        <div class="free-sample">
+          <h3>🎁 Gratis: Module 1 Sample</h3>
+          <p>Download de zelfbeoordeling-checklist van Module 1 gratis. Geen email-adres nodig.</p>
+          <button class="btn btn-primary" onclick="alert('Download Module 1 preview')">Download gratis →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIER 2: SAAS -->
+    <section class="content-section">
+      <div class="content-inner">
+        <h2 class="section-title">Tier 2: SaaS Platform — Begeleide aanpak</h2>
+        <p class="section-subtitle">Interactieve compliance tracking. Het systeem leidt je stap-voor-stap door alle 8 modules.</p>
+
+        <div class="tier2-box">
+          <div class="tier2-content">
+            <div class="tier2-text">
+              <h3>Early Access</h3>
+              <p>Bent u benieuwd naar ons SaaS platform? Wij werken aan een volledige, interactieve compliance tracking tool met:</p>
+              <ul>
+                <li>Zelfbeoordeling → compliance score</li>
+                <li>Interactieve worksheets (alle 8 modules)</li>
+                <li>Voortgang dashboard</li>
+                <li>Incident log & risico register</li>
+                <li>PDF exports voor audits</li>
+                <li>Jaarlijkse review reminders</li>
+              </ul>
+              <p><strong>Interesse?</strong> Meld je aan voor early access en ontvang 25% korting op de eerste 12 maanden.</p>
+            </div>
+            <form class="signup-form" onsubmit="handleSaasSignup(event)">
+              <div class="form-field">
+                <label for="name">Uw naam</label>
+                <input type="text" id="name" name="name" placeholder="Voornaam + Achternaam" required />
+              </div>
+              <div class="form-field">
+                <label for="email">E-mailadres</label>
+                <input type="email" id="email" name="email" placeholder="u@bedrijf.nl" required />
+              </div>
+              <div class="form-field">
+                <label for="company">Bedrijfsnaam</label>
+                <input type="text" id="company" name="company" placeholder="Uw bedrijf" required />
+              </div>
+              <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Aanmelden Early Access</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section">
+      <div class="content-inner">
+        <h2 class="section-title">Veelgestelde vragen</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <strong>Welke template kies ik?</strong>
+            <p>Begin met <strong>Quick Start</strong> (€39) als je snel wilt starten. Upgrade naar <strong>Core</strong> (€59) als je meer aandacht voor medewerkers en leveranciers wilt. <strong>Complete</strong> (€89) is voor volledige documentatie.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Kan ik de templates aanpassen?</strong>
+            <p>Ja! Word en Excel formaten zijn volledig bewerkbaar. Pas ze aan naar jouw bedrijf.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Krijg ik updates?</strong>
+            <p>Templates zijn statisch. Het SaaS platform zal regelmatig updates krijgen naarmate regelgeving verandert.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Hoeveel tijd kost dit?</strong>
+            <p>Templates kosten 4-8 uur per module. Het SaaS platform begeleidt je in stappen (totaal 10-15 uur).</p>
+          </div>
+          <div class="faq-item">
+            <strong>Kan ik samen met mijn ICT-leverancier werken?</strong>
+            <p>Absoluut. De templates en SaaS zijn ontworpen voor samenwerking. Module 4 behandelt leveranciersbeheer.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Geen GDPR/beveiliging problemen?</strong>
+            <p>Templates zijn offline. Het SaaS platform volgt GDPR, NIS2 en ISO27001 naleving.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="https://techleadnl.nl">TechLeadNL</a> | <a href="/nis2">NIS2 Artikelen</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Dropdown menu toggle
+    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+    const dropdown = document.querySelector('.nav-dropdown');
+    
+    if (dropdownTrigger && dropdown) {
+      dropdownTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.classList.contains('open');
+        dropdown.classList.toggle('open');
+        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!dropdownTrigger.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function handleSaasSignup(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const company = document.getElementById('company').value;
+      alert(`Bedankt ${name}! We nemen contact op via ${email} (${company})`);
+      // TODO: Send to Brevo or your email service
+    }
+  </script>
+</body>
+</html>
