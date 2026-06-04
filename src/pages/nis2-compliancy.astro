@@ -80,9 +80,7 @@ export const prerender = true;
     .alert-box strong { color: var(--green); display: block; margin-bottom: 8px; }
     .alert-box p { margin-bottom: 0; }
 
-    .tool-category { background: white; border: 1px solid var(--bg-gray); padding: 20px; margin: 20px 0; border-radius: 6px; }
-    .tool-category h4 { color: var(--navy-dark); margin-bottom: 12px; margin-top: 0; }
-    .tool-types { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 13px; }
+    .tool-types { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 8px; margin-bottom: 20px; font-size: 13px; }
     .tool-type { background: var(--bg-light); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--bg-gray); }
     .tool-type strong { color: var(--green); display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; }
 
@@ -303,71 +301,67 @@ export const prerender = true;
 
         <h3>Stap 4: Technische Controles</h3>
         <p><strong>Doel:</strong> Zet guardrails in plaats: toegangsbeheer, encryptie, monitoren, incident response.</p>
-        
-        <div class="tool-category">
-          <h4>4a. Toegangsbeheer (IAM) — Wie mag wat doen?</h4>
-          <p>Wie mag wat doen, en hoe verifieer je dat?</p>
-          <ul>
-            <li><strong>MFA (Multi-factor authentication):</strong> alles, overal</li>
-            <li><strong>Zero Trust:</strong> Verifieer elke toegang, ongeacht locatie</li>
-            <li><strong>PAM (Privileged Access Management):</strong> Beheer admin-rollen streng</li>
-          </ul>
-          <p><strong>Aanpak:</strong> Zero Trust architectuur implementeren: nooit vertrouwen op basis van locatie, altijd verifiëren. MFA op alle accounts. PAM voor beheerders.</p>
-          <div class="tool-types">
-            <div class="tool-type"><strong>Mainstream</strong>Azure AD, Okta</div>
-            <div class="tool-type"><strong>Nederlands/EU</strong>Envisys IAM</div>
-            <div class="tool-type"><strong>Open Source</strong>Keycloak, FreeIPA</div>
-          </div>
+
+        <h4>4a. Toegangsbeheer (IAM) — Wie mag wat doen?</h4>
+        <p>Wie mag wat doen, en hoe verifieer je dat?</p>
+        <ul>
+          <li><strong>MFA (Multi-factor authentication):</strong> alles, overal</li>
+          <li><strong>Zero Trust:</strong> Verifieer elke toegang, ongeacht locatie</li>
+          <li><strong>PAM (Privileged Access Management):</strong> Beheer admin-rollen streng</li>
+        </ul>
+        <p><strong>Aanpak:</strong> Zero Trust architectuur implementeren: nooit vertrouwen op basis van locatie, altijd verifiëren. MFA op alle accounts. PAM voor beheerders.</p>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type"><strong>Mainstream</strong><br>Azure AD, Okta</div>
+          <div class="tool-type"><strong>Nederlands/EU</strong><br>Envisys IAM</div>
+          <div class="tool-type"><strong>Open Source</strong><br>Keycloak, FreeIPA</div>
         </div>
 
-        <div class="tool-category">
-          <h4>4b. Data Protection & Encryption — Versleuteling overal</h4>
-          <p>Gegevens in rust en in transit moeten versleuteld zijn.</p>
-          <ul>
-            <li><strong>LUKS of BitLocker:</strong> Schijfversleuteling voor laptops/servers</li>
-            <li><strong>TLS 1.3:</strong> In-transit data altijd versleuteld</li>
-            <li><strong>GDPR compliance:</strong> Gegevensminimalisatie, doelbinding</li>
-          </ul>
-          <p><strong>Aanpak:</strong> Versleutel alle data at-rest (schijven, databases, backups). Versleutel al data in-transit (HTTPS/TLS 1.3). Gegevensclassificatie: publiek/intern/vertrouwelijk/persoonlijk.</p>
-          <div class="tool-types">
-            <div class="tool-type"><strong>Mainstream</strong>Azure Data Encryption, AWS KMS</div>
-            <div class="tool-type"><strong>Nederlands/EU</strong>Trustcortex Encryption</div>
-            <div class="tool-type"><strong>Open Source</strong>OpenSSL, GnuPG, LUKS</div>
-          </div>
+        <h4>4b. Data Protection & Encryption — Versleuteling overal</h4>
+        <p>Gegevens in rust en in transit moeten versleuteld zijn.</p>
+        <ul>
+          <li><strong>LUKS of BitLocker:</strong> Schijfversleuteling voor laptops/servers</li>
+          <li><strong>TLS 1.3:</strong> In-transit data altijd versleuteld</li>
+          <li><strong>GDPR compliance:</strong> Gegevensminimalisatie, doelbinding</li>
+        </ul>
+        <p><strong>Aanpak:</strong> Versleutel alle data at-rest (schijven, databases, backups). Versleutel al data in-transit (HTTPS/TLS 1.3). Gegevensclassificatie: publiek/intern/vertrouwelijk/persoonlijk.</p>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type"><strong>Mainstream</strong><br>Azure Data Encryption, AWS KMS</div>
+          <div class="tool-type"><strong>Nederlands/EU</strong><br>Trustcortex Encryption</div>
+          <div class="tool-type"><strong>Open Source</strong><br>OpenSSL, GnuPG, LUKS</div>
         </div>
 
-        <div class="tool-category">
-          <h4>4c. Network & Perimeter Security — Grenzen stellen</h4>
-          <p>Zet grenzen in plaats: firewalls, IDS/IPS, segmentatie.</p>
-          <ul>
-            <li><strong>Host Firewall:</strong> Op elke machine</li>
-            <li><strong>Network Firewall:</strong> Op bedrijfsgrens (DMZ)</li>
-            <li><strong>IDS/IPS:</strong> Intrusion Detection & Prevention</li>
-            <li><strong>Segmentatie:</strong> VLAN's, netwerksegmentatie per kritikaliteit</li>
-          </ul>
-          <p><strong>Aanpak:</strong> Default Deny: alles is afgesloten tenzij expliciet geopend. Segmenteer je netwerk: kritieke systemen gescheiden van general-use. VPN voor remote access. WAF (Web Application Firewall) voor webtoepassingen.</p>
-          <div class="tool-types">
-            <div class="tool-type"><strong>Mainstream</strong>Palo Alto, Fortinet, Cisco</div>
-            <div class="tool-type"><strong>Nederlands/EU</strong>Secrid Firewall, KPN Security</div>
-            <div class="tool-type"><strong>Open Source</strong>Suricata, Snort, pfSense</div>
-          </div>
+        <h4>4c. Network & Perimeter Security — Grenzen stellen</h4>
+        <p>Zet grenzen in plaats: firewalls, IDS/IPS, segmentatie.</p>
+        <ul>
+          <li><strong>Host Firewall:</strong> Op elke machine</li>
+          <li><strong>Network Firewall:</strong> Op bedrijfsgrens (DMZ)</li>
+          <li><strong>IDS/IPS:</strong> Intrusion Detection & Prevention</li>
+          <li><strong>Segmentatie:</strong> VLAN's, netwerksegmentatie per kritikaliteit</li>
+        </ul>
+        <p><strong>Aanpak:</strong> Default Deny: alles is afgesloten tenzij expliciet geopend. Segmenteer je netwerk: kritieke systemen gescheiden van general-use. VPN voor remote access. WAF (Web Application Firewall) voor webtoepassingen.</p>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type"><strong>Mainstream</strong><br>Palo Alto, Fortinet, Cisco</div>
+          <div class="tool-type"><strong>Nederlands/EU</strong><br>Secrid Firewall, KPN Security</div>
+          <div class="tool-type"><strong>Open Source</strong><br>Suricata, Snort, pfSense</div>
         </div>
 
-        <div class="tool-category">
-          <h4>4d. Monitoring & Incident Response — Zie wat gebeurt</h4>
-          <p>Zie wat gebeurt. Reageer snel op anomalieën.</p>
-          <ul>
-            <li><strong>SIEM:</strong> Security Information & Event Management — centraal logging</li>
-            <li><strong>EDR:</strong> Endpoint Detection & Response — detecteer bedreigingen op devices</li>
-            <li><strong>Incident Response Plan:</strong> Procedures voor breaches</li>
-            <li><strong>Breach Notification:</strong> Weet hoe snel je moet rapporteren (GDPR: 72 uur)</li>
-          </ul>
-          <p><strong>Aanpak:</strong> Centraliseer logs van alle systemen (SIEM). Real-time alerting op verdachte activiteiten. Incident Response team benoemd. Testing: jaarlijkse tabletop exercises.</p>
-          <div class="tool-types">
-            <div class="tool-type"><strong>Mainstream</strong>Splunk, Microsoft Sentinel</div>
-            <div class="tool-type"><strong>Nederlands/EU</strong>Secrid SIEM</div>
-            <div class="tool-type"><strong>Open Source</strong>ELK Stack, Wazuh</div>
-          </div>
+        <h4>4d. Monitoring & Incident Response — Zie wat gebeurt</h4>
+        <p>Zie wat gebeurt. Reageer snel op anomalieën.</p>
+        <ul>
+          <li><strong>SIEM:</strong> Security Information & Event Management — centraal logging</li>
+          <li><strong>EDR:</strong> Endpoint Detection & Response — detecteer bedreigingen op devices</li>
+          <li><strong>Incident Response Plan:</strong> Procedures voor breaches</li>
+          <li><strong>Breach Notification:</strong> Weet hoe snel je moet rapporteren (GDPR: 72 uur)</li>
+        </ul>
+        <p><strong>Aanpak:</strong> Centraliseer logs van alle systemen (SIEM). Real-time alerting op verdachte activiteiten. Incident Response team benoemd. Testing: jaarlijkse tabletop exercises.</p>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type"><strong>Mainstream</strong><br>Splunk, Microsoft Sentinel</div>
+          <div class="tool-type"><strong>Nederlands/EU</strong><br>Secrid SIEM</div>
+          <div class="tool-type"><strong>Open Source</strong><br>ELK Stack, Wazuh</div>
         </div>
 
         <h3>Stap 5: Security Awareness Training</h3>
