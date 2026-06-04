@@ -1,0 +1,355 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NIS2 Compliance gids voor Nederlandse MKB-bestuurders. Praktische stappen en risicoanalyse." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>NIS2 Compliance Gids — MKBTechGids</title>
+  <style>
+    :root {
+      --navy-dark: #0f2147;
+      --navy-light: #1e3a6e;
+      --green: #14532d;
+      --green-light: #15803d;
+      --green-bg: #f0fdf4;
+      --text-dark: #f1f5f9;
+      --text-light: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-gray: #e2e8f0;
+      --text-body: #475569;
+    }
+    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
+    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 28px; flex: 1; margin: 0; padding: 0; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { font-size: 13px; font-weight: 600; color: white; background: var(--green); border-radius: 6px; padding: 8px 18px; text-decoration: none; transition: background 0.14s; border: none; cursor: pointer; }
+    .nav-cta:hover { background: var(--green-light); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-body); border-radius: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu:not([hidden]) { display: flex; flex-direction: column; background: var(--bg-light); border-top: 1px solid var(--bg-gray); padding: 8px 28px 20px; }
+    .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-body); padding: 12px 0; border-bottom: 1px solid var(--bg-gray); }
+    .mobile-menu a:hover { color: var(--green); }
+
+    .article-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .article-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--text-light); margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+    .article-tag { display: inline-block; background: rgba(20, 83, 45, 0.2); border: 1px solid var(--green); color: var(--text-dark); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 24px; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
+    .article-hero h1 em { font-style: normal; color: var(--green-light); }
+    .article-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+    .article-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 20px; }
+
+    .signal-strip { background: var(--navy-dark); border-top: 2px solid var(--green); padding: 20px 28px; }
+    .signal-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+    .signal-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .signal-text { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+
+    .article-content { background: var(--bg-light); padding: 60px 28px; }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    
+    h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy-dark); margin-top: 48px; margin-bottom: 20px; line-height: 1.2; }
+    p { margin-bottom: 18px; color: var(--text-body); line-height: 1.8; }
+    strong { color: var(--navy-dark); font-weight: 600; }
+    ul, ol { margin-left: 24px; margin-bottom: 18px; color: var(--text-body); }
+    li { margin-bottom: 12px; line-height: 1.7; }
+
+    .alert-box { background: rgba(20, 83, 45, 0.08); border-left: 4px solid var(--green); padding: 24px; border-radius: 6px; margin: 32px 0; }
+    .alert-box strong { color: var(--green); display: block; margin-bottom: 8px; }
+
+    .criteria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 28px 0; }
+    .criteria-box { border: 2px solid var(--bg-gray); border-radius: 8px; padding: 20px; }
+    .criteria-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; font-size: 14px; }
+    .criteria-box p { font-size: 14px; margin-bottom: 8px; }
+
+    .gap-section { border-left: 4px solid var(--green); padding-left: 24px; margin: 28px 0; }
+    .gap-section h3 { font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; font-size: 16px; }
+    .gap-section p { font-size: 14px; margin-bottom: 8px; }
+
+    .stats-box { background: var(--navy-dark); color: var(--text-dark); border-radius: 8px; padding: 40px 28px; margin: 32px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; text-align: center; }
+    .stat-item { }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--green-light); margin-bottom: 8px; }
+    .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+    .stats-credit { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+    .steps-box { background: var(--green-bg); border: 2px solid var(--green); border-radius: 8px; padding: 32px; margin: 32px 0; }
+    .steps-grid { display: flex; flex-direction: column; gap: 24px; }
+    .step { display: flex; gap: 20px; }
+    .step-number { background: var(--green); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+    .step-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 8px; font-size: 15px; }
+    .step-content p { font-size: 14px; }
+
+    .cta-section { background: var(--navy-dark); color: var(--text-dark); padding: 40px 28px; border-radius: 8px; margin: 56px 0; text-align: center; }
+    .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 12px; }
+    .cta-section p { color: var(--text-light); margin-bottom: 20px; }
+    .cta-btn { display: inline-block; background: var(--green); color: white; font-weight: 600; padding: 12px 28px; border-radius: 6px; text-decoration: none; transition: background 0.14s; }
+    .cta-btn:hover { background: var(--green-light); }
+
+    .resources-box { background: var(--green-bg); border: 2px solid var(--green); border-radius: 8px; padding: 24px; margin: 32px 0; }
+    .resources-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; }
+    .resources-box a { display: block; color: var(--green); font-weight: 600; font-size: 14px; margin-bottom: 12px; transition: color 0.14s; }
+    .resources-box a:hover { color: var(--green-light); }
+
+    .footer-meta { border-top: 1px solid var(--bg-gray); padding-top: 24px; margin-top: 40px; font-size: 13px; color: var(--text-body); line-height: 1.7; }
+
+    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .footer p { font-size: 13px; margin: 0; }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; margin-left: auto; }
+      .article-hero { padding: 48px 28px; }
+      .article-hero h1 { font-size: 32px; }
+      .criteria-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="48" height="51" /></a>
+      <nav class="nav-links">
+        <a href="/nis2-compliance">NIS2</a>
+        <a href="/">AI Governance</a>
+        <a href="/">AI Tools</a>
+        <a href="/">CRM</a>
+        <a href="/">Artikelen</a>
+      </nav>
+      <a href="/nis2-compliance" class="nav-cta">NIS2 gids →</a>
+      <button class="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+      <a href="/nis2-compliance">NIS2</a>
+      <a href="/">AI Governance</a>
+      <a href="/">AI Tools</a>
+      <a href="/">CRM</a>
+      <a href="/">Artikelen</a>
+      <a href="/nis2-compliance" class="mobile-cta">NIS2 gids lezen →</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="article-hero-inner">
+        <div class="breadcrumb">
+          <a href="/">MKBTechGids</a>
+          <span>→</span>
+          <span>NIS2 Compliance</span>
+        </div>
+        <div class="article-tag">NIS2 · Compliance · Urgent</div>
+        <h1>NIS2 in Nederland:<br>wat moet uw bedrijf <em>nu regelen?</em></h1>
+        <p>De Cyberbeveiligingswet komt eraan in Q2 2026. Slechts 14% van Nederlandse organisaties is goed voorbereid. Dit is wat u nu moet weten — en doen.</p>
+        <div class="article-meta">
+          <span>Juni 2026</span>
+          <span>·</span>
+          <span>7 minuten leestijd</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-strip">
+      <div class="signal-inner">
+        <div class="signal-dot"></div>
+        <strong class="signal-text">Wat staat er op het spel? Boetes tot EUR 10 miljoen of 2% van jaaromzet. Bestuurders kunnen persoonlijk aansprakelijk worden gesteld.</strong>
+      </div>
+    </div>
+
+    <article class="article-content">
+      <div class="article-inner">
+        <h2>Wat is NIS2 eigenlijk?</h2>
+        <p>NIS2 staat voor <strong>Network and Information Security Directive 2</strong> — de Europese richtlijn die organisaties verplicht hun digitale beveiliging op orde te brengen. De EU-deadline was oktober 2024, maar Nederland loopt achter met de nationale implementatie. De verwachting is dat de Nederlandse wet — de Cyberbeveiligingswet — in het tweede kwartaal van 2026 van kracht wordt.</p>
+        <p>Dat klinkt misschien geruststellend. Maar wacht niet. De wet komt er zeker, en de voorbereidingstijd die u nu nog heeft is een voordeel dat snel verdwijnt.</p>
+
+        <div class="alert-box">
+          <strong>Wat staat er op het spel?</strong>
+          <p>Bij niet-naleving riskeert u boetes tot <strong>10 miljoen euro</strong> of 2% van de wereldwijde jaaromzet — het hoogste bedrag geldt. Bovendien kunnen bestuurders persoonlijk aansprakelijk worden gesteld.</p>
+        </div>
+
+        <h2>Geldt NIS2 voor mijn bedrijf?</h2>
+        <p>NIS2 is veel breder dan NIS1. Waar de eerste richtlijn alleen grote, kritieke sectoren raakte, treft NIS2 een veel grotere groep organisaties. De vuistregel:</p>
+
+        <div class="criteria-grid">
+          <div class="criteria-box">
+            <h4>Essentiële entiteiten</h4>
+            <p><strong>Meer dan 250 medewerkers</strong><br>OF<br><strong>Meer dan EUR 50M omzet</strong></p>
+            <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">In sectoren als energie, transport, water, financiën, gezondheidszorg, digitale infrastructuur</p>
+          </div>
+          <div class="criteria-box">
+            <h4>Belangrijke entiteiten</h4>
+            <p><strong>Meer dan 50 medewerkers</strong><br>OF<br><strong>Meer dan EUR 10M omzet</strong></p>
+            <p style="font-size: 13px; color: var(--text-light); margin-top: 12px;">In sectoren als post, afvalbeheer, chemie, voeding, maakindustrie</p>
+          </div>
+        </div>
+
+        <p>Valt u buiten deze categorieën? Let dan op de <strong>ketenverantwoordelijkheid</strong>. Als u toeleverancier bent van een organisatie die wel onder NIS2 valt, kunnen zij u contractueel verplichten aan de eisen te voldoen. NIS2 werkt door in de hele toeleveringsketen.</p>
+
+        <h2>De Nederlandse situatie: achter, maar niet hopeloos</h2>
+        <p>Recent onderzoek van IDC onder 2.000 Europese organisaties laat een helder beeld zien voor Nederland. Slechts 14% van de Nederlandse organisaties bevindt zich in de hoogste gereedheidsklassen. Tegelijk verwacht 70% compliant te zijn binnen 12 maanden — wat betekent dat er nu veel werk tegelijkertijd gedaan moet worden.</p>
+
+        <div class="stats-box">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-num">14%</div>
+              <div class="stat-label">van Nederlandse organisaties is goed voorbereid op NIS2</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">70%</div>
+              <div class="stat-label">verwacht compliant te zijn binnen 12 maanden</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">Q2 2026</div>
+              <div class="stat-label">verwachte datum van de Nederlandse Cyberbeveiligingswet</div>
+            </div>
+          </div>
+          <div class="stats-credit">Bron: IDC InfoBrief, Preparing for NIS2 and Beyond, januari 2026</div>
+        </div>
+
+        <h2>Wat moet u concreet regelen? De vijf grootste gaps</h2>
+        <p>Uit het IDC-onderzoek blijkt duidelijk waar de meeste organisaties tekort komen. Dit zijn de vijf gebieden waar u nu aandacht aan moet besteden:</p>
+
+        <div class="gap-section">
+          <h3>1. Risicobeleid en informatiebeveiligingsbeleid</h3>
+          <p>NIS2 verplicht een formeel risicobeheerkader. Dat betekent: schriftelijk vastgelegd beleid, goedgekeurd door de directie, met jaarlijkse evaluatie.</p>
+          <p><strong>Actie:</strong> Stel een Information Security Management System (ISMS) in op basis van ISO 27001.</p>
+        </div>
+
+        <div class="gap-section">
+          <h3>2. Beveiliging van netwerk- en informatiesystemen</h3>
+          <p>Hoe beveiligd zijn uw systemen bij aanschaf, ontwikkeling en onderhoud? NIS2 vereist dat u security by design toepast.</p>
+          <p><strong>Actie:</strong> Voer een technische kwetsbaarheidsscan uit en stel patchbeleid op.</p>
+        </div>
+
+        <div class="gap-section">
+          <h3>3. Beveiliging van de toeleveringsketen</h3>
+          <p>U bent verantwoordelijk voor de cybersecurity van uw leveranciers en partners. Als een leverancier gehackt wordt en daardoor uw systemen worden geraakt, ligt de verantwoordelijkheid bij u.</p>
+          <p><strong>Actie:</strong> Breng uw kritieke leveranciers in kaart en stel minimumvereisten op.</p>
+        </div>
+
+        <div class="gap-section">
+          <h3>4. Incidentmelding en respons</h3>
+          <p>Bij een significant cyberincident heeft u 24 uur om een eerste melding te doen en 72 uur voor een volledige melding. Heeft u nu een incidentresponsplan?</p>
+          <p><strong>Actie:</strong> Schrijf een incident response plan en oefen het minimaal eenmaal per jaar.</p>
+        </div>
+
+        <div class="gap-section">
+          <h3>5. Bestuurlijke verantwoordelijkheid</h3>
+          <p>NIS2 maakt cybersecurity een bestuurszaak. Directieleden kunnen persoonlijk aansprakelijk worden gesteld bij nalatigheid.</p>
+          <p><strong>Actie:</strong> Zet NIS2 op de directie-agenda en wijs een verantwoordelijke aan.</p>
+        </div>
+
+        <h2>Praktisch stappenplan voor het MKB</h2>
+        <p>U hoeft dit niet allemaal tegelijk te doen. Hier is een realistisch stappenplan:</p>
+
+        <div class="steps-box">
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Bepaal of NIS2 op u van toepassing is</h4>
+                <p>Controleer de criteria op basis van sector, omvang en omzet. Raadpleeg ncsc.nl voor de actuele sectorlijst.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Voer een nulmeting uit</h4>
+                <p>Waar staat u nu? Welke van de vijf gaps zijn het grootst? Een eerlijke nulmeting kost 1-2 dagen.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Stel een beleidsframework op</h4>
+                <p>Informatiebeveiligingsbeleid, risicobeleid en incidentresponsplan. Dit hoeft niet perfect te zijn.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Breng uw technische kwetsbaarheden in kaart</h4>
+                <p>Kwetsbaarheidsscan, patchbeleid, toegangsbeheer en encryptie. Dit is het technische fundament.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h4>Train uw medewerkers</h4>
+                <p>Technische maatregelen werken niet als uw medewerkers niet weten wat phishing is. Bewustwording is verplicht.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h4>Registreer u bij de bevoegde autoriteit</h4>
+                <p>Zodra de Nederlandse wet van kracht is, moeten essentiële en belangrijke entiteiten zich registreren.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2>Wat als u niet weet waar u moet beginnen?</h2>
+        <p>Uit het IDC-onderzoek blijkt dat organisaties met een sterke begeleidingspartner drie keer vaker compliant zijn dan organisaties die het alleen proberen. <strong>Kennis en begeleiding is de beslissende factor — niet budget.</strong></p>
+        <p>Voor het MKB betekent dit: u hoeft geen fulltime CISO aan te stellen. U heeft iemand nodig die het overzicht heeft, de juiste prioriteiten stelt en u door het proces begeleidt.</p>
+
+        <div class="resources-box">
+          <h4>Nuttige bronnen</h4>
+          <a href="https://www.ncsc.nl/onderwerpen/nis2" target="_blank">NCSC.nl — Officiële NIS2 informatie voor Nederland →</a>
+          <a href="https://digital-strategy.ec.europa.eu/en/policies/nis2-directive" target="_blank">Europese Commissie — NIS2 richtlijn →</a>
+          <a href="https://www.rijksoverheid.nl/onderwerpen/cybersecurity" target="_blank">Rijksoverheid — Cybersecurity voor bedrijven →</a>
+        </div>
+
+        <div class="cta-section">
+          <h3>Hulp nodig bij NIS2 implementatie?</h3>
+          <p>TechLead NL begeleidt Nederlandse MKB-bedrijven bij NIS2 compliance en cybersecurity. Fractional CIO services — senior expertise zonder de fulltime kosten.</p>
+          <a href="https://techleadnl.nl" class="cta-btn">Neem contact op →</a>
+        </div>
+
+        <div class="footer-meta">
+          <p><strong>Bron:</strong> IDC InfoBrief, gesponsord door Microsoft — "Preparing for NIS2 and Beyond: The Next Phase of Cyber Resilience in EMEA", januari 2026.</p>
+          <p>Dit artikel is bedoeld als algemene informatiegids. Raadpleeg voor juridisch advies altijd een gekwalificeerde adviseur en de actuele informatie op ncsc.nl.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if(toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const isOpen = !menu.hasAttribute('hidden');
+        menu[isOpen ? 'setAttribute' : 'removeAttribute']('hidden', '');
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+  </script>
+</body>
+</html>
