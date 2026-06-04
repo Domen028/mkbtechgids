@@ -31,14 +31,14 @@ export const prerender = true;
     body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
     a { color: var(--green); text-decoration: none; transition: color 0.2s; }
     a:hover { color: var(--green-light); }
-    .nav-item { position: relative; }
-    .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; }
-    .nav-dropdown-trigger::after { content: '▼'; font-size: 9px; transition: transform 0.2s; }
-    .nav-dropdown-trigger:hover { color: var(--green); }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-dropdown-trigger { background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-dropdown-trigger:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-dropdown-trigger::after { content: '▼'; font-size: 8px; transition: transform 0.2s; }
     .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
-    .nav-dropdown { position: absolute; top: 100%; left: 0; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 280px; padding: 8px 0; margin-top: 8px; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.12); display: none; z-index: 100; }
+    .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -40px; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 340px; padding: 8px 0; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.15); display: none; z-index: 1000; }
     .nav-dropdown.open { display: block; }
-    .nav-dropdown a { display: block; padding: 12px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
+    .nav-dropdown a { display: block; padding: 14px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
     .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
     
     img, svg { display: block; max-width: 100%; }
@@ -163,33 +163,38 @@ export const prerender = true;
 
   <script>
     // Dropdown menu toggle
-    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
-    const dropdown = document.querySelector('.nav-dropdown');
-    
-    if (dropdownTrigger && dropdown) {
-      dropdownTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isOpen = dropdown.classList.contains('open');
-        dropdown.classList.toggle('open');
-        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-item')) {
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // Close dropdown when clicking on a link
-      dropdown.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+      const dropdown = document.querySelector('.nav-dropdown');
+      
+      if (dropdownTrigger && dropdown) {
+        // Toggle dropdown on click
+        dropdownTrigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('open');
+          dropdown.classList.toggle('open');
+          dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
         });
-      });
-    }
+
+        // Close dropdown when clicking a link inside
+        dropdown.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdown.classList.remove('open');
+            dropdownTrigger.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!dropdownTrigger.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+            dropdownTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
