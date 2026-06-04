@@ -40,6 +40,15 @@ export const prerender = true;
     .nav-links { display: flex; gap: 28px; flex: 1; margin: 0; padding: 0; }
     .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
     .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-item { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .nav-dropdown-trigger::after { content: '▼'; font-size: 9px; transition: transform 0.2s; }
+    .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 280px; padding: 8px 0; margin-top: 8px; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.12); display: none; z-index: 100; }
+    .nav-dropdown.open { display: block; }
+    .nav-dropdown a { display: block; padding: 12px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; }
+    .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
+    
     .nav-cta { font-size: 13px; font-weight: 600; color: white; background: var(--green); border-radius: 6px; padding: 8px 18px; text-decoration: none; transition: background 0.14s; border: none; cursor: pointer; }
     .nav-cta:hover { background: var(--green-light); }
     .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
@@ -103,20 +112,6 @@ export const prerender = true;
     .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
     .footer p { font-size: 13px; margin: 0; }
 
-    .articles-section { padding: 80px 28px; background: white; }
-    .articles-inner { max-width: 1100px; margin: 0 auto; }
-    .articles-h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; margin-bottom: 12px; color: var(--navy-dark); }
-    .articles-desc { font-size: 16px; color: var(--text-body); margin-bottom: 48px; max-width: 700px; }
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-    .article-card { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 32px; transition: all 0.2s; display: flex; flex-direction: column; }
-    .article-card:hover { box-shadow: 0 12px 32px rgba(15, 33, 71, 0.15); transform: translateY(-4px); border-color: var(--green); }
-    .article-meta { font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
-    .article-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; line-height: 1.3; }
-    .article-card p { font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
-    .article-link { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; color: var(--green); text-decoration: none; transition: color 0.14s; }
-    .article-link:hover { color: var(--green-light); }
-    .article-link::after { content: '→'; margin-left: 8px; }
-
     @media (max-width: 768px) {
       .articles-section { padding: 60px 28px; }
       .articles-h2 { font-size: 24px; }
@@ -142,7 +137,14 @@ export const prerender = true;
         <a href="/">AI Governance</a>
         <a href="/">AI Tools</a>
         <a href="/">CRM</a>
-        <a href="/">Artikelen</a>
+        <div class="nav-item">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Artikelen menu">Artikelen</button>
+          <div class="nav-dropdown">
+            <a href="/nis2">NIS2 Compliance voor Nederlands MKB</a>
+            <a href="/nis2-compliancy">Praktische NIS2 implementatie</a>
+            <a href="/articles" style="border-top: 1px solid var(--bg-gray); padding-top: 12px; margin-top: 4px; color: var(--green); font-weight: 600;">Alle artikelen →</a>
+          </div>
+        </div>
       </nav>
       <a href="/nis2" class="nav-cta">NIS2 gids →</a>
       <button class="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -213,27 +215,6 @@ export const prerender = true;
             <h3>E-facturatie</h3>
             <p>Verplichting voor overheidscontracten. Wat u nu moet regelen.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="articles-section">
-      <div class="articles-inner">
-        <h2 class="articles-h2">NIS2 Implementatiegidsen</h2>
-        <p class="articles-desc">Twee praktische gidsen om je bedrijf NIS2-klaar te maken. Van begrip tot implementatie.</p>
-        <div class="articles-grid">
-          <article class="article-card">
-            <div class="article-meta">Juni 2026 · 8 min</div>
-            <h3>NIS2 Compliance voor Nederlands MKB</h3>
-            <p>Wat NIS2 betekent, of het voor jou van toepassing is, en wat je risico's zijn als je niet compliant bent.</p>
-            <a href="/nis2" class="article-link">Lees het artikel</a>
-          </article>
-          <article class="article-card">
-            <div class="article-meta">Juni 2026 · 8 min</div>
-            <h3>Een praktische aanpak voor NIS2 implementatie</h3>
-            <p>Stap-voor-stap plan met concrete gereedschappen, timeline en een 12-maands roadmap om NIS2-compliant te worden.</p>
-            <a href="/nis2-compliancy" class="article-link">Lees het artikel</a>
-          </article>
         </div>
       </div>
     </section>
