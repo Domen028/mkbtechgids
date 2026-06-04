@@ -292,6 +292,38 @@ export const prerender = true;
         btn.textContent = 'Aanmelden voor de briefing →';
       }
     });
+
+    // Dropdown menu toggle
+    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+    const dropdown = document.querySelector('.nav-dropdown');
+    
+    if (dropdownTrigger && dropdown) {
+      // Toggle dropdown on click
+      dropdownTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.classList.contains('open');
+        dropdown.classList.toggle('open');
+        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      // Close dropdown when clicking a link inside
+      dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.stopPropagation();
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdownTrigger.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   </script>
 </body>
 </html>
