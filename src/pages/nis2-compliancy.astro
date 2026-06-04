@@ -8,12 +8,6 @@ export const prerender = true;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Een praktische toetsing, wat werkt, aanpak en planning voor je organisatie NIS2 compliant te maken." />
-  <meta name="keywords" content="NIS2, NIS2 compliance, cybersecurity, MKB, implementatie" />
-  <meta property="og:title" content="Een praktische aanpak voor NIS2 implementatie in het MKB" />
-  <meta property="og:description" content="Een praktische toetsing, wat werkt, aanpak en planning voor je organisatie NIS2 compliant te maken." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.mkbtechgids.nl/nis2-compliancy" />
-  <link rel="canonical" href="https://www.mkbtechgids.nl/nis2-compliancy" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -74,7 +68,8 @@ export const prerender = true;
     .article-inner { max-width: 760px; margin: 0 auto; }
     
     h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy-dark); margin-top: 48px; margin-bottom: 20px; line-height: 1.2; }
-    h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy-dark); margin-top: 32px; margin-bottom: 16px; }
+    h3 { font-family: 'Source Sans 3', sans-serif; font-size: 16px; font-weight: 600; color: var(--navy-dark); margin-top: 28px; margin-bottom: 14px; }
+    h4 { font-weight: 600; color: var(--navy-dark); margin-bottom: 12px; font-size: 15px; }
     p { margin-bottom: 18px; color: var(--text-body); line-height: 1.8; }
     strong { color: var(--navy-dark); font-weight: 600; }
     ul, ol { margin-left: 24px; margin-bottom: 18px; color: var(--text-body); }
@@ -82,29 +77,17 @@ export const prerender = true;
 
     .alert-box { background: rgba(20, 83, 45, 0.08); border-left: 4px solid var(--green); padding: 24px; border-radius: 6px; margin: 32px 0; }
     .alert-box strong { color: var(--green); display: block; margin-bottom: 8px; }
+    .alert-box p { margin-bottom: 0; }
 
-    .criteria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 28px 0; }
-    .criteria-box { border: 2px solid var(--bg-gray); border-radius: 8px; padding: 20px; }
-    .criteria-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; font-size: 14px; }
-    .criteria-box p { font-size: 14px; margin-bottom: 8px; }
+    .tool-category { background: white; border: 1px solid var(--bg-gray); padding: 20px; margin: 20px 0; border-radius: 6px; }
+    .tool-types { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 13px; }
+    .tool-type { background: var(--bg-light); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--bg-gray); }
+    .tool-type strong { color: var(--green); display: block; margin-bottom: 4px; }
 
-    .gap-section { border-left: 4px solid var(--green); padding-left: 24px; margin: 28px 0; }
-    .gap-section h3 { font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; font-size: 16px; margin-top: 0; }
-    .gap-section p { font-size: 14px; margin-bottom: 8px; }
-
-    .stats-box { background: var(--navy-dark); color: var(--text-dark); border-radius: 8px; padding: 40px 28px; margin: 32px 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; text-align: center; }
-    .stat-item { }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--green-light); margin-bottom: 8px; }
-    .stat-label { font-size: 13px; color: var(--text-light); line-height: 1.6; }
-    .stats-credit { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-
-    .steps-box { background: var(--green-bg); border: 2px solid var(--green); border-radius: 8px; padding: 32px; margin: 32px 0; }
-    .steps-grid { display: flex; flex-direction: column; gap: 24px; }
-    .step { display: flex; gap: 20px; }
-    .step-number { background: var(--green); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
-    .step-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 8px; font-size: 15px; }
-    .step-content p { font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--bg-gray); }
+    th { background: var(--navy-dark); color: var(--text-dark); font-weight: 600; }
+    tr:hover { background: var(--green-bg); }
 
     .cta-section { background: var(--navy-dark); color: var(--text-dark); padding: 40px 28px; border-radius: 8px; margin: 56px 0; text-align: center; }
     .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 12px; color: var(--text-dark); margin-top: 0; }
@@ -114,10 +97,21 @@ export const prerender = true;
 
     .resources-box { background: var(--green-bg); border: 2px solid var(--green); border-radius: 8px; padding: 24px; margin: 32px 0; }
     .resources-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; }
-    .resources-box a { display: block; color: var(--green); font-weight: 600; font-size: 14px; margin-bottom: 12px; transition: color 0.14s; }
+    .resources-box ul { margin: 0; }
+    .resources-box li { margin-bottom: 8px; }
+    .resources-box a { color: var(--green); font-weight: 600; }
     .resources-box a:hover { color: var(--green-light); }
 
-    .footer-meta { border-top: 1px solid var(--bg-gray); padding-top: 24px; margin-top: 40px; font-size: 13px; color: var(--text-body); line-height: 1.7; }
+    .faq-item { margin: 24px 0; padding-bottom: 24px; border-bottom: 1px solid var(--bg-gray); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-weight: 600; color: var(--navy-dark); margin-bottom: 10px; font-size: 15px; }
+    .faq-answer { color: var(--text-body); line-height: 1.7; }
+
+    .checklist { background: white; border: 1px solid var(--bg-gray); padding: 20px; border-radius: 6px; margin: 20px 0; }
+    .checklist h4 { color: var(--navy-dark); font-weight: 600; margin-bottom: 12px; font-size: 15px; margin-top: 0; }
+    .checklist ul { list-style: none; margin: 0; padding: 0; }
+    .checklist li { padding-left: 24px; position: relative; margin-bottom: 8px; font-size: 14px; }
+    .checklist li:before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 600; }
 
     .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
     .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
@@ -128,8 +122,7 @@ export const prerender = true;
       .nav-toggle { display: flex; margin-left: auto; }
       .article-hero { padding: 48px 28px; }
       .article-hero h1 { font-size: 32px; }
-      .criteria-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
+      .tool-types { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -153,7 +146,6 @@ export const prerender = true;
       <a href="/">AI Tools</a>
       <a href="/">CRM</a>
       <a href="/">Artikelen</a>
-      <a href="/nis2-compliancy" class="mobile-cta">NIS2 gids lezen →</a>
     </nav>
   </header>
 
@@ -191,7 +183,8 @@ export const prerender = true;
         <p>Het goede nieuws? Compliance hoeft niet ingewikkeld te zijn. In dit document geven we je een middel om te toetsen of NIS2 voor jou van toepassing is, en hoe je stap voor stap een practische, realistische implementatieplan bouwt.</p>
 
         <div class="alert-box">
-          <strong>Dit is een praktische gids.</strong> We focussen op wat werkt, niet op regelsteksten. De NCSC-hulpmiddelen zijn onze bron; we vertalen ze naar acties die jij kunt uitvoeren.
+          <strong>Dit is een praktische gids.</strong>
+          <p>We focussen op wat werkt, niet op regelsteksten. De NCSC-hulpmiddelen zijn onze bron; we vertalen ze naar acties die jij kunt uitvoeren.</p>
         </div>
 
         <h2>Waarom nu? Drie redenen om direct te beginnen</h2>
@@ -209,112 +202,240 @@ export const prerender = true;
         <h2>Stap 1: Bepaal je scope — ben je essentieel, belangrijk of geen van beide?</h2>
         <p>De NCSC biedt een gratis <a href="https://regelhulpenvoorbedrijven.nl/NIS-2-NL/">zelftoetsingstool</a> hier. Drie uitkomsten:</p>
 
-        <div class="criteria-grid">
-          <div class="criteria-box">
-            <h4>Essentieel</h4>
-            <p><strong>&gt;250 medewerkers OF &gt;€50M omzet</strong></p>
-            <p style="font-size: 13px; margin-top: 8px;">Energie, transport, water, financiën, ziekenhuizen</p>
-          </div>
-          <div class="criteria-box">
-            <h4>Belangrijk</h4>
-            <p><strong>ICT, chemie, voedsel, productie</strong></p>
-            <p style="font-size: 13px; margin-top: 8px;">Ook leveranciers van essentiële bedrijven tellen</p>
-          </div>
-          <div class="criteria-box">
-            <h4>Geen van beide</h4>
-            <p><strong>Kleine bedrijven buiten kritieke sectoren</strong></p>
-            <p style="font-size: 13px; margin-top: 8px;">Geen NIS2-verplichting (wel GDPR)</p>
-          </div>
+        <div class="checklist">
+          <h4>Essentieel (kritieke sectoren)</h4>
+          <ul>
+            <li>Energie (elektriciteit, olie, gas)</li>
+            <li>Vervoer</li>
+            <li>Bankwezen & Financiële markten</li>
+            <li>Gezondheidszorg (ziekenhuizen, medische diensten)</li>
+            <li>Drinkwater- en afvalwatersystemen</li>
+            <li>Digitale infrastructuur (ISP's, DNS, TLD registrar's)</li>
+            <li>Overheid</li>
+          </ul>
         </div>
+
+        <div class="checklist">
+          <h4>Belangrijk (middelgrote sectoren)</h4>
+          <ul>
+            <li>ICT diensten (SaaS, cloud, consulting)</li>
+            <li>Chemie & productie</li>
+            <li>Voedsel & landbouw</li>
+            <li>Ruimtevaart</li>
+            <li>Diensten & ruimtelijke planning</li>
+            <li>Organisaties in uw toeleveringsketen</li>
+          </ul>
+        </div>
+
+        <p><strong>Belangrijk:</strong> Keten positie telt ook. Je kunt "belangrijk" zijn via je rol als leverancier van een essentieel bedrijf, zelfs als je sector zelf niet genoemd is.</p>
 
         <h2>Je 6-Stappen Implementatieplan</h2>
 
-        <div class="steps-box">
-          <div class="steps-grid">
-            <div class="step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h4>Asset Inventory & Risicotoewijzing</h4>
-                <p>Weet wat je hebt: hardware, software, cloud services. Wie raakt het aan, hoe kritisch is het.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h4>Risicoanalyse & Register</h4>
-                <p>Wat kan mislopen? Ransomware, DDoS, insider, supply chain. Score het: waarschijnlijkheid × impact.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h4>Governance & Accountability</h4>
-                <p>Rollen duidelijk, beleid schrift, incident plan gereed. Je bent verantwoordelijk.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <h4>Technische Controles</h4>
-                <p>MFA, encryption, firewalls, monitoring. De guardrails die je beschermen.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">5</div>
-              <div class="step-content">
-                <h4>Security Awareness Training</h4>
-                <p>Jaarlijkse training. Maak je team een verdedigingslinie, niet een zwakte.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-number">6</div>
-              <div class="step-content">
-                <h4>Continuous Monitoring & Auditing</h4>
-                <p>30 minuten per maand. Jaarlijkse penetration test. Zorg dat controles werken.</p>
-              </div>
-            </div>
+        <h3>Stap 1: Asset Inventory & Risicotoewijzing</h3>
+        <p><strong>Doel:</strong> Weet wat je hebt, waar het staat, wie eraan raakt, en wat het waard is.</p>
+        <p><strong>Aanpak:</strong></p>
+        <ul>
+          <li>Maak een CMDB (Configuration Management Database) of eenvoudig spreadsheet</li>
+          <li>Zet op: hardware, software, cloud diensten, vergunningen, data</li>
+          <li>Noteer: eigenaar, locatie, kritikaliteit (hoog/middel/laag), classificatie (openbaar/intern/vertrouwelijk)</li>
+          <li>Tools: Spreadsheet (gratis), Jira Service Management, Snipe-IT</li>
+        </ul>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type">
+            <strong>Mainstream</strong>
+            Excel, Azure AD
+          </div>
+          <div class="tool-type">
+            <strong>Nederlands/EU</strong>
+            Envisys, KPN Compliance
+          </div>
+          <div class="tool-type">
+            <strong>Open Source</strong>
+            Taiga, Snipe-IT
           </div>
         </div>
 
+        <h3>Stap 2: Risicoanalyse & Risicoregister</h3>
+        <p><strong>Doel:</strong> Identificeer wat kan mislopen en hoe waarschijnlijk dat is.</p>
+        <p><strong>Aanpak:</strong></p>
+        <ul>
+          <li>Bouw een risicoregister: identificeer bedreigingen (ransomware, DDoS, insider, supply chain, gegevenslek)</li>
+          <li>Score: waarschijnlijkheid (laag/middel/hoog) × impact (laag/middel/hoog)</li>
+          <li>Bepaal tolerantie: welke risico's accepteer je, welke moet je mitigeren</li>
+          <li>Tools: Jira, Monday.com, of spreadsheet</li>
+        </ul>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type">
+            <strong>Mainstream</strong>
+            Jira, Monday.com
+          </div>
+          <div class="tool-type">
+            <strong>Nederlands/EU</strong>
+            Betabit Risk Manager
+          </div>
+          <div class="tool-type">
+            <strong>Open Source</strong>
+            OpenStack Keystone
+          </div>
+        </div>
+
+        <h3>Stap 3: Governance & Accountability</h3>
+        <p><strong>Doel:</strong> Zorg voor duidelijkheid: wie is verantwoordelijk, wat zijn de processen, hoe reageer je op incidenten.</p>
+        <p><strong>Aanpak:</strong></p>
+        <ul>
+          <li>Benaam een Information Security Officer (kan fractional/extern zijn)</li>
+          <li>Bepaal governance: rollen (CTO/CIO, Security, Compliance), bevoegdheden</li>
+          <li>Schrijf basisbeleid: Incident Response Plan, Password Policy, Data Handling, Breach Notification</li>
+          <li>Tools: Confluence, SharePoint, Notion, Google Docs</li>
+        </ul>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type">
+            <strong>Mainstream</strong>
+            Confluence, SharePoint
+          </div>
+          <div class="tool-type">
+            <strong>Nederlands/EU</strong>
+            PolicyBox
+          </div>
+          <div class="tool-type">
+            <strong>Open Source</strong>
+            BookStack
+          </div>
+        </div>
+
+        <h3>Stap 4: Technische Controles</h3>
+        <p><strong>Doel:</strong> Zet guardrails in plaats: toegangsbeheer, encryptie, monitoren, incident response.</p>
+        
+        <div class="tool-category">
+          <h4>4a. Toegangsbeheer (IAM)</h4>
+          <p>Wie mag wat doen, en hoe verifieer je dat?</p>
+          <ul>
+            <li><strong>MFA (Multi-factor authentication):</strong> alles, overal</li>
+            <li><strong>Zero Trust:</strong> Verifieer elke toegang, ongeacht locatie</li>
+            <li><strong>PAM (Privileged Access Management):</strong> Beheer admin-rollen streng</li>
+          </ul>
+          <div class="tool-types">
+            <div class="tool-type"><strong>Mainstream</strong>Azure AD, Okta</div>
+            <div class="tool-type"><strong>Nederlands/EU</strong>Envisys</div>
+            <div class="tool-type"><strong>Open Source</strong>Keycloak</div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <h4>4b. Data Protection & Encryption</h4>
+          <p>Gegevens in rust en in transit moeten versleuteld zijn.</p>
+          <ul>
+            <li>LUKS of BitLocker voor schijfversleuteling</li>
+            <li>TLS 1.3 voor in-transit data</li>
+            <li>GDPR compliance (gegevensminimalisatie, doelbinding)</li>
+          </ul>
+          <div class="tool-types">
+            <div class="tool-type"><strong>Mainstream</strong>Azure Data Encryption, AWS KMS</div>
+            <div class="tool-type"><strong>Nederlands/EU</strong>Trustcortex Encryption</div>
+            <div class="tool-type"><strong>Open Source</strong>OpenSSL, GnuPG</div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <h4>4c. Network & Perimeter Security</h4>
+          <p>Zet grenzen in plaats: firewalls, IDS/IPS, segmentatie.</p>
+          <ul>
+            <li>Firewall (host + network)</li>
+            <li>IDS/IPS (Intrusion Detection/Prevention)</li>
+            <li>VPN voor remote access</li>
+            <li>Netwerksegmentatie (VLAN's, DMZ)</li>
+          </ul>
+          <div class="tool-types">
+            <div class="tool-type"><strong>Mainstream</strong>Palo Alto, Fortinet</div>
+            <div class="tool-type"><strong>Nederlands/EU</strong>Secrid Firewall</div>
+            <div class="tool-type"><strong>Open Source</strong>Suricata, Snort</div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <h4>4d. Monitoring & Incident Response</h4>
+          <p>Zie wat gebeurt. Reageer snel op anomalieën.</p>
+          <ul>
+            <li>SIEM (Security Information & Event Management)</li>
+            <li>EDR (Endpoint Detection & Response)</li>
+            <li>Log centralisatie</li>
+            <li>Incident Response procedures</li>
+          </ul>
+          <div class="tool-types">
+            <div class="tool-type"><strong>Mainstream</strong>Splunk, Microsoft Sentinel</div>
+            <div class="tool-type"><strong>Nederlands/EU</strong>Secrid SIEM</div>
+            <div class="tool-type"><strong>Open Source</strong>ELK Stack, Wazuh</div>
+          </div>
+        </div>
+
+        <h3>Stap 5: Security Awareness Training</h3>
+        <p><strong>Doel:</strong> Maak je personeel een verdedigingslinie in plaats van een zwakte.</p>
+        <p><strong>Aanpak:</strong></p>
+        <ul>
+          <li>Verplicht jaarlijks training (phishing, social engineering, password hygiene)</li>
+          <li>Quarterly updates op nieuwe bedreigingen</li>
+          <li>Simuleer phishing om bewustzijn te testen</li>
+          <li>Tools: KnowBe4, ISQA, Gremlin</li>
+        </ul>
+        <p><strong>Gereedschappen:</strong></p>
+        <div class="tool-types">
+          <div class="tool-type"><strong>Mainstream</strong>KnowBe4, SANS</div>
+          <div class="tool-type"><strong>Nederlands/EU</strong>ISQA Academy</div>
+          <div class="tool-type"><strong>Open Source</strong>OWASP WebGoat</div>
+        </div>
+
+        <h3>Stap 6: Continuous Monitoring & Auditing</h3>
+        <p><strong>Doel:</strong> Zorg dat controles werken en blijf op de hoogte van veranderingen.</p>
+        <p><strong>Aanpak:</strong></p>
+        <ul>
+          <li>Maandelijks controlewerk: 30 minuten</li>
+          <li>Jaarlijkse penetration testing (intern of extern)</li>
+          <li>Jaarlijkse vulnerability scanning</li>
+          <li>Outsource aan MSSP (Managed Security Service Provider) indien nodig</li>
+        </ul>
+
         <h2>12-Maands Implementatie Roadmap</h2>
-        <table style="width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px;">
+        <table>
           <thead>
-            <tr style="background: var(--navy-dark); color: var(--text-dark);">
-              <th style="padding: 12px; text-align: left; font-weight: 600;">Periode</th>
-              <th style="padding: 12px; text-align: left; font-weight: 600;">Focus</th>
-              <th style="padding: 12px; text-align: left; font-weight: 600;">Deliverables</th>
+            <tr>
+              <th>Periode</th>
+              <th>Focus</th>
+              <th>Deliverables</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid var(--bg-gray);">
-              <td style="padding: 12px;"><strong>M 1–2</strong></td>
-              <td style="padding: 12px;">Initiatie & Assessment</td>
-              <td style="padding: 12px;">Asset inventory, risicoregister, scope bepaling</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--bg-gray);">
-              <td style="padding: 12px;"><strong>M 2–3</strong></td>
-              <td style="padding: 12px;">Governance & Rollen</td>
-              <td style="padding: 12px;">Beleid, incident plan, rollen & verantwoordelijkheden</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--bg-gray);">
-              <td style="padding: 12px;"><strong>M 3–5</strong></td>
-              <td style="padding: 12px;">Technische Controles</td>
-              <td style="padding: 12px;">MFA, encryption, firewalls, monitoring ingericht</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--bg-gray);">
-              <td style="padding: 12px;"><strong>M 5–6</strong></td>
-              <td style="padding: 12px;">Training & Awareness</td>
-              <td style="padding: 12px;">Personeelstraining, phishing simulatie</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--bg-gray);">
-              <td style="padding: 12px;"><strong>M 6–9</strong></td>
-              <td style="padding: 12px;">Testing & Remediatie</td>
-              <td style="padding: 12px;">Penetration test, vulnerability scan, fixes</td>
+            <tr>
+              <td><strong>M 1–2</strong></td>
+              <td>Initiatie & Assessment</td>
+              <td>Asset inventory, risicoregister, scope bepaling</td>
             </tr>
             <tr>
-              <td style="padding: 12px;"><strong>M 9–12</strong></td>
-              <td style="padding: 12px;">Audit Voorbereiding</td>
-              <td style="padding: 12px;">Documentatie, naleving, NCSC-rapportering</td>
+              <td><strong>M 2–3</strong></td>
+              <td>Governance & Rollen</td>
+              <td>Beleid, incident plan, rollen & verantwoordelijkheden</td>
+            </tr>
+            <tr>
+              <td><strong>M 3–5</strong></td>
+              <td>Technische Controles</td>
+              <td>MFA, encryption, firewalls, monitoring ingericht</td>
+            </tr>
+            <tr>
+              <td><strong>M 5–6</strong></td>
+              <td>Training & Awareness</td>
+              <td>Personeelstraining, phishing simulatie</td>
+            </tr>
+            <tr>
+              <td><strong>M 6–9</strong></td>
+              <td>Testing & Remediatie</td>
+              <td>Penetration test, vulnerability scan, fixes</td>
+            </tr>
+            <tr>
+              <td><strong>M 9–12</strong></td>
+              <td>Audit Voorbereiding</td>
+              <td>Documentatie, naleving, NCSC-rapportering</td>
             </tr>
           </tbody>
         </table>
@@ -333,41 +454,68 @@ export const prerender = true;
         <h3>4. Document alles</h3>
         <p>Documentatie kost tijd maar betaalt zich uit bij incidenten, audits en partnerships. Zorg dat je kunt bewijzen wat je hebt gedaan.</p>
 
+        <h2>Veelgestelde vragen</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">Is NIS2 alleen voor grote bedrijven?</div>
+          <div class="faq-answer">Nee. "Belangrijk" organisaties kunnen 50+ werknemers zijn. Supply chain partners tellen ook. Controleer je scope via de NCSC-tool.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Wat is het verschil tussen NIS2 en GDPR?</div>
+          <div class="faq-answer">GDPR gaat over het beschermen van persoonlijke gegevens. NIS2 gaat over de beveiliging van kritieke systemen. Ze overlappen (beide vereisen encryption, access control), maar NIS2 is breder.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Moeten we alles zelf doen of kunnen we outsourcen?</div>
+          <div class="faq-answer">Je mag outsourcen, maar je blijft verantwoordelijk. Zorg dat je leverancier NIS2-compliant is, dat je een SLA hebt, en dat je zijn werk controleert.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Hoeveel kost NIS2-compliance?</div>
+          <div class="faq-answer">Varieert sterk: €10K–€100K+, afhankelijk van je huidge staat, bedrijfsgrootte en tools. Begint klein, schaalt naarmate je groeit.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">NIS2 vs. ISO 27001 — welke moet ik kiezen?</div>
+          <div class="faq-answer">NIS2 is verplicht (voor jouw scope). ISO 27001 is optioneel maar aanvullend. Veel bedrijven doen beide: NIS2 voor compliance, ISO 27001 voor klantvertrouwen.</div>
+        </div>
+
         <h2>Volgende stappen</h2>
 
         <div class="resources-box">
           <h4>Deze week</h4>
-          <ul style="margin-left: 0; padding-left: 0;">
-            <li style="margin-left: 20px;">Voer de <a href="https://regelhulpenvoorbedrijven.nl/NIS-2-NL/">NCSC zelftoetsing</a> uit</li>
-            <li style="margin-left: 20px;">Bepaal je scope (essentieel/belangrijk/geen van beide)</li>
-            <li style="margin-left: 20px;">Stel een projectteam samen</li>
+          <ul>
+            <li>Voer de <a href="https://regelhulpenvoorbedrijven.nl/NIS-2-NL/">NCSC zelftoetsing</a> uit</li>
+            <li>Bepaal je scope (essentieel/belangrijk/geen van beide)</li>
+            <li>Stel een projectteam samen</li>
           </ul>
         </div>
 
         <div class="resources-box">
           <h4>Volgende 30 dagen</h4>
-          <ul style="margin-left: 0; padding-left: 0;">
-            <li style="margin-left: 20px;">Maak een asset inventory</li>
-            <li style="margin-left: 20px;">Identificeer je huidge risico's</li>
-            <li style="margin-left: 20px;">Schrijf een incident response plan</li>
+          <ul>
+            <li>Maak een asset inventory</li>
+            <li>Identificeer je huidge risico's</li>
+            <li>Schrijf een incident response plan</li>
           </ul>
         </div>
 
         <div class="resources-box">
           <h4>6 maanden</h4>
-          <ul style="margin-left: 0; padding-left: 0;">
-            <li style="margin-left: 20px;">Technische controles grotendeels geïmplementeerd</li>
-            <li style="margin-left: 20px;">Personeelstraining afgerond</li>
-            <li style="margin-left: 20px;">Eerste monitoring actief</li>
+          <ul>
+            <li>Technische controles grotendeels geïmplementeerd</li>
+            <li>Personeelstraining afgerond</li>
+            <li>Eerste monitoring actief</li>
           </ul>
         </div>
 
         <div class="resources-box">
           <h4>12 maanden</h4>
-          <ul style="margin-left: 0; padding-left: 0;">
-            <li style="margin-left: 20px;">Volledig NIS2-compliant</li>
-            <li style="margin-left: 20px;">Penetration test afgerond</li>
-            <li style="margin-left: 20px;">Jaarlijkse audit in orde</li>
+          <ul>
+            <li>Volledig NIS2-compliant</li>
+            <li>Penetration test afgerond</li>
+            <li>Jaarlijkse audit in orde</li>
           </ul>
         </div>
 
@@ -379,13 +527,17 @@ export const prerender = true;
           <p>Bespreek jouw NIS2-status, risico's, en stappenplan met een technische expert. Geen verplichtingen, geen verkooppraatje — alleen praktische inzichten.</p>
           <a href="https://calendly.com/domenie-lf-sf/30min" class="cta-btn">Plan nu in</a>
         </div>
+
+        <p style="text-align: center; margin-top: 40px; font-size: 13px; color: var(--text-light);">
+          <strong>Over MKBTechGids:</strong> We helpen Nederlands MKB begrijpen en implementeren van moderne technologie zonder jargon en bullshit.
+        </p>
       </div>
     </article>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      <p>&copy; 2026 MKBTechGids. Praktische technologie voor het Nederlandse MKB.</p>
+      <p>&copy; 2026 MKBTechGids. Praktische technologie voor het Nederlandse MKB. | <a href="/">Home</a> | <a href="https://techleadnl.nl">TechLeadNL</a></p>
     </div>
   </footer>
 </body>
