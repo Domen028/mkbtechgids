@@ -31,6 +31,16 @@ export const prerender = true;
     body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
     a { color: var(--green); text-decoration: none; transition: color 0.2s; }
     a:hover { color: var(--green-light); }
+    .nav-item { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; }
+    .nav-dropdown-trigger::after { content: '▼'; font-size: 9px; transition: transform 0.2s; }
+    .nav-dropdown-trigger:hover { color: var(--green); }
+    .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 280px; padding: 8px 0; margin-top: 8px; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.12); display: none; z-index: 100; }
+    .nav-dropdown.open { display: block; }
+    .nav-dropdown a { display: block; padding: 12px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
+    .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
+    
     img, svg { display: block; max-width: 100%; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
 
@@ -88,11 +98,18 @@ export const prerender = true;
     <div class="header-inner">
       <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="48" height="51" /></a>
       <nav class="nav-links">
-        <a href="/">NIS2</a>
+        <a href="/nis2">NIS2</a>
         <a href="/">AI Governance</a>
         <a href="/">AI Tools</a>
         <a href="/">CRM</a>
-        <a href="/articles">Artikelen</a>
+        <div class="nav-item">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Artikelen menu">Artikelen</button>
+          <div class="nav-dropdown">
+            <a href="/nis2">NIS2 Compliance voor Nederlands MKB</a>
+            <a href="/nis2-compliancy">Praktische NIS2 implementatie</a>
+            <a href="/articles" style="border-top: 1px solid var(--bg-gray); padding-top: 12px; margin-top: 4px; color: var(--green); font-weight: 600;">Alle artikelen →</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -143,5 +160,36 @@ export const prerender = true;
       <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="https://techleadnl.nl">TechLeadNL</a></p>
     </div>
   </footer>
+
+  <script>
+    // Dropdown menu toggle
+    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+    const dropdown = document.querySelector('.nav-dropdown');
+    
+    if (dropdownTrigger && dropdown) {
+      dropdownTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = dropdown.classList.contains('open');
+        dropdown.classList.toggle('open');
+        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item')) {
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close dropdown when clicking on a link
+      dropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          dropdown.classList.remove('open');
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
