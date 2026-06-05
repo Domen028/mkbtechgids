@@ -1,5 +1,4 @@
 ---
-// BaseLayout.astro
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -29,10 +28,8 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
 
-  <!-- Canonical -->
   <link rel="canonical" href={canonical} />
 
-  <!-- Open Graph -->
   <meta property="og:title"       content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:image"       content={ogImage} />
@@ -41,13 +38,12 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
   <meta property="og:locale"      content="nl_NL" />
   <meta property="og:site_name"   content={siteName} />
 
-  <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content={fullTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={ogImage} />
 
-  <!-- Fonts (preconnect first for performance) -->
+  <!-- Fonts: preconnect first, then load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -55,15 +51,11 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     rel="stylesheet"
   />
 
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
-
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <title>{fullTitle}</title>
 
-  <!-- JSON-LD: Organisation -->
   <script type="application/ld+json">
     {JSON.stringify({
       "@context": "https://schema.org",
@@ -72,9 +64,7 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
       "url": "https://www.mkbtechgids.nl",
       "description": "Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.",
       "logo": "https://www.mkbtechgids.nl/logo.svg",
-      "sameAs": [
-        "https://www.linkedin.com/company/mkbtechgids"
-      ]
+      "sameAs": ["https://www.linkedin.com/company/mkbtechgids"]
     })}
   </script>
 </head>
