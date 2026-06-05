@@ -1,0 +1,681 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="NIS2 Scope Checker — Ben jij verplicht?"
+  description="Beantwoord 7 vragen en ontdek in 3 minuten of de NIS2-richtlijn op jouw organisatie van toepassing is."
+>
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="sc-hero">
+    <div class="sc-hero-inner">
+      <h1>NIS2 Scope Checker</h1>
+      <p class="sc-hero-sub">Ontdek in 3 minuten of de NIS2-richtlijn op uw organisatie van toepassing is — en wat u moet doen.</p>
+      <div class="sc-trust-badges">
+        <span class="sc-badge"><i class="ti ti-clock"></i> 3 minuten</span>
+        <span class="sc-badge"><i class="ti ti-shield"></i> 7 vragen</span>
+        <span class="sc-badge"><i class="ti ti-lock"></i> Geen spam</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Checker ───────────────────────────────────────── -->
+  <section class="sc-section">
+    <div class="sc-container">
+
+      <!-- Progress bar -->
+      <div class="sc-progress" id="sc-progress">
+        <div class="sc-progress-header">
+          <span class="sc-progress-label" id="sc-progress-label">Vraag 1 van 7</span>
+          <span class="sc-progress-pct" id="sc-progress-pct">14%</span>
+        </div>
+        <div class="sc-progress-track">
+          <div class="sc-progress-bar" id="sc-progress-bar" style="width: 14%"></div>
+        </div>
+      </div>
+
+      <!-- ── Question 1 ── -->
+      <div class="sc-card" data-question="1" id="q1">
+        <div class="sc-q-num">Vraag 1</div>
+        <h2 class="sc-q-title">Is uw organisatie actief in één van de NIS2-sectoren?</h2>
+        <p class="sc-q-hint">Energie, vervoer, water, gezondheidszorg, digitale infrastructuur, IKT-dienstverlening, financieel, ruimtevaart, post &amp; koeriers, afvalbeheer, voedingsmiddelen, chemie of productie.</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(1, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(1, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 2 ── -->
+      <div class="sc-card" data-question="2" id="q2" style="display:none">
+        <div class="sc-q-num">Vraag 2</div>
+        <h2 class="sc-q-title">Heeft uw organisatie 50 of meer medewerkers?</h2>
+        <p class="sc-q-hint">Tel alle medewerkers in dienst, inclusief deeltijdwerkers en medewerkers bij dochterondernemingen.</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(2, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(2, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 3 ── -->
+      <div class="sc-card" data-question="3" id="q3" style="display:none">
+        <div class="sc-q-num">Vraag 3</div>
+        <h2 class="sc-q-title">Bedraagt uw jaaromzet meer dan €10 miljoen?</h2>
+        <p class="sc-q-hint">Of heeft uw organisatie een balanstotaal van meer dan €10 miljoen?</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(3, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(3, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 4 ── -->
+      <div class="sc-card" data-question="4" id="q4" style="display:none">
+        <div class="sc-q-num">Vraag 4</div>
+        <h2 class="sc-q-title">Heeft uw organisatie 250 of meer medewerkers?</h2>
+        <p class="sc-q-hint">Dit bepaalt of u als essentiële of als belangrijke dienstverlener wordt geclassificeerd.</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(4, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(4, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 5 ── -->
+      <div class="sc-card" data-question="5" id="q5" style="display:none">
+        <div class="sc-q-num">Vraag 5</div>
+        <h2 class="sc-q-title">Bedraagt uw jaaromzet meer dan €50 miljoen?</h2>
+        <p class="sc-q-hint">Of heeft uw organisatie een balanstotaal van meer dan €43 miljoen?</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(5, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(5, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 6 ── -->
+      <div class="sc-card" data-question="6" id="q6" style="display:none">
+        <div class="sc-q-num">Vraag 6</div>
+        <h2 class="sc-q-title">Levert uw organisatie digitale diensten zoals cloud computing, DNS-diensten of datacenters?</h2>
+        <p class="sc-q-hint">Aanbieders van digitale infrastructuur vallen altijd onder NIS2, ongeacht de bedrijfsomvang.</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(6, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(6, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Question 7 ── -->
+      <div class="sc-card" data-question="7" id="q7" style="display:none">
+        <div class="sc-q-num">Vraag 7</div>
+        <h2 class="sc-q-title">Levert uw organisatie diensten aan organisaties die zelf NIS2-verplicht zijn?</h2>
+        <p class="sc-q-hint">Denk aan leveranciers van NIS2-verplichte bedrijven in energie, transport of de overheid. Dit heet ketenverantwoordelijkheid.</p>
+        <div class="sc-btn-group">
+          <button class="sc-btn sc-btn-ja" onclick="recordAnswer(7, true)"><i class="ti ti-check"></i> Ja</button>
+          <button class="sc-btn sc-btn-nee" onclick="recordAnswer(7, false)"><i class="ti ti-x"></i> Nee</button>
+        </div>
+      </div>
+
+      <!-- ── Email screen ── -->
+      <div class="sc-card sc-email-card" id="email-screen" style="display:none">
+        <div class="sc-email-icon"><i class="ti ti-lock"></i></div>
+        <h2 class="sc-email-title">Uw resultaat staat klaar</h2>
+        <p class="sc-email-sub">Vul uw e-mailadres in om uw persoonlijke NIS2-scope analyse te ontvangen. U ontvangt ook Module 1 van onze NIS2-toolkit gratis.</p>
+        <div class="sc-email-form">
+          <input
+            type="email"
+            id="sc-email-input"
+            class="sc-email-input"
+            placeholder="u@bedrijf.nl"
+            autocomplete="email"
+          />
+          <div class="sc-email-error" id="sc-email-error" style="display:none">
+            <i class="ti ti-alert-circle"></i> Vul een geldig e-mailadres in
+          </div>
+          <button class="sc-btn sc-btn-submit" id="sc-submit-btn" onclick="submitEmail()">
+            Bekijk mijn resultaat →
+          </button>
+        </div>
+        <p class="sc-privacy">
+          <i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd afmelden.
+        </p>
+      </div>
+
+      <!-- ── Result: essentieel ── -->
+      <div class="sc-result" id="result-essentieel" style="display:none">
+        <div class="sc-result-icon sc-icon-green"><i class="ti ti-shield-check"></i></div>
+        <span class="sc-result-badge sc-badge-green">Essentiële Dienstverlener</span>
+        <h2 class="sc-result-title">NIS2 is verplicht voor uw organisatie</h2>
+        <p class="sc-result-text">Uw organisatie valt als essentiële dienstverlener onder de strengste NIS2-eisen. U heeft een hogere meldplicht, strengere beveiligingsvereisten en uw bestuurders zijn persoonlijk aansprakelijk bij niet-naleving. Boetes kunnen oplopen tot €10.000.000 of 10% van de jaaromzet.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sc-step-num">1</span><span>Start met Module 1 — bevestig uw scope officieel <strong>(gratis)</strong></span></div>
+          <div class="sc-step"><span class="sc-step-num">2</span><span>Voer een risicoanalyse uit (Module 2)</span></div>
+          <div class="sc-step"><span class="sc-step-num">3</span><span>Stel een implementatieroadmap op</span></div>
+        </div>
+        <a href="/nis2" class="sc-cta-btn sc-cta-green">Download Module 1 gratis</a>
+        <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
+      </div>
+
+      <!-- ── Result: belangrijk ── -->
+      <div class="sc-result" id="result-belangrijk" style="display:none">
+        <div class="sc-result-icon sc-icon-amber"><i class="ti ti-shield-half"></i></div>
+        <span class="sc-result-badge sc-badge-amber">Belangrijke Dienstverlener</span>
+        <h2 class="sc-result-title">NIS2 is verplicht voor uw organisatie</h2>
+        <p class="sc-result-text">Uw organisatie valt als belangrijke dienstverlener onder de standaard NIS2-eisen. U heeft meldplichten bij incidenten, beveiligingsmaatregelen te nemen en bestuurders zijn persoonlijk aansprakelijk. Boetes kunnen oplopen tot €7.000.000 of 1,4% van de jaaromzet.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sc-step-num">1</span><span>Start met Module 1 — bevestig uw scope officieel <strong>(gratis)</strong></span></div>
+          <div class="sc-step"><span class="sc-step-num">2</span><span>Bepaal welke maatregelen prioriteit hebben (Module 3)</span></div>
+          <div class="sc-step"><span class="sc-step-num">3</span><span>Inventariseer uw leveranciers (Module 4)</span></div>
+        </div>
+        <a href="/nis2" class="sc-cta-btn sc-cta-green">Download Module 1 gratis</a>
+        <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
+      </div>
+
+      <!-- ── Result: digitale-aanbieder ── -->
+      <div class="sc-result" id="result-digitale-aanbieder" style="display:none">
+        <div class="sc-result-icon sc-icon-navy"><i class="ti ti-server"></i></div>
+        <span class="sc-result-badge sc-badge-navy">Digitale Dienstverlener — NIS2 Verplicht</span>
+        <h2 class="sc-result-title">NIS2 geldt altijd voor digitale dienstverleners</h2>
+        <p class="sc-result-text">Aanbieders van cloud computing, DNS-diensten, datacenters en gerelateerde digitale infrastructuur vallen altijd onder NIS2 — ongeacht het aantal medewerkers of de omzet. Registratie bij het NCSC is verplicht.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sc-step-num">1</span><span>Registreer uw organisatie bij het NCSC</span></div>
+          <div class="sc-step"><span class="sc-step-num">2</span><span>Start met Module 1 — zelfevaluatie en scope vastleggen</span></div>
+          <div class="sc-step"><span class="sc-step-num">3</span><span>Voer een volledige risicoanalyse uit (Module 2)</span></div>
+        </div>
+        <a href="/nis2" class="sc-cta-btn sc-cta-navy">Start met de NIS2-toolkit</a>
+        <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
+      </div>
+
+      <!-- ── Result: indirect ── -->
+      <div class="sc-result" id="result-indirect" style="display:none">
+        <div class="sc-result-icon sc-icon-amber"><i class="ti ti-link"></i></div>
+        <span class="sc-result-badge sc-badge-amber">Mogelijk Indirect Verplicht</span>
+        <h2 class="sc-result-title">Ketenverantwoordelijkheid kan op u van toepassing zijn</h2>
+        <p class="sc-result-text">Uw organisatie valt niet direct onder NIS2 op basis van sector en omvang. Maar omdat u diensten levert aan NIS2-verplichte organisaties, kunnen uw klanten beveiligingseisen aan u stellen via contracten. Dit heet ketenverantwoordelijkheid. Het is verstandig uw situatie te laten beoordelen.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sc-step-num">1</span><span>Controleer uw contracten op beveiligingsclausules</span></div>
+          <div class="sc-step"><span class="sc-step-num">2</span><span>Bespreek met uw klanten welke NIS2-eisen zij aan u stellen</span></div>
+          <div class="sc-step"><span class="sc-step-num">3</span><span>Overweeg minimale NIS2-maatregelen als concurrentievoordeel</span></div>
+        </div>
+        <a href="/nis2" class="sc-cta-btn sc-cta-amber">Bekijk onze NIS2-artikelen</a>
+        <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
+      </div>
+
+      <!-- ── Result: niet-verplicht ── -->
+      <div class="sc-result" id="result-niet-verplicht" style="display:none">
+        <div class="sc-result-icon sc-icon-green"><i class="ti ti-circle-check"></i></div>
+        <span class="sc-result-badge sc-badge-lightgreen">Waarschijnlijk Niet Verplicht</span>
+        <h2 class="sc-result-title">NIS2 lijkt momenteel niet verplicht</h2>
+        <p class="sc-result-text">Op basis van uw antwoorden valt uw organisatie waarschijnlijk niet direct onder de NIS2-richtlijn. Maar: controleer dit jaarlijks. Als uw organisatie groeit of van sector verandert, kan de situatie wijzigen. Bewaar dit resultaat als onderbouwing van uw besluit.</p>
+        <div class="sc-steps">
+          <div class="sc-step"><span class="sc-step-num">1</span><span>Bewaar dit resultaat als compliance-bewijs</span></div>
+          <div class="sc-step"><span class="sc-step-num">2</span><span>Herhaal deze check jaarlijks of bij grote wijzigingen</span></div>
+          <div class="sc-step"><span class="sc-step-num">3</span><span>Controleer ketenverantwoordelijkheid als u aan grote bedrijven levert</span></div>
+        </div>
+        <a href="/nis2" class="sc-cta-btn sc-cta-green">Lees meer over NIS2</a>
+        <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+/* ── Hero ────────────────────────────────────────────── */
+.sc-hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+  padding: 80px 28px;
+  position: relative; overflow: hidden;
+}
+.sc-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none;
+}
+.sc-hero-inner {
+  position: relative; max-width: 720px; margin: 0 auto; text-align: center;
+}
+.sc-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; color: var(--text-dark);
+  line-height: 1.1; margin-bottom: 20px;
+}
+.sc-hero-sub {
+  font-size: 17px; color: var(--text-light);
+  line-height: 1.7; margin-bottom: 32px; max-width: 600px; margin-inline: auto;
+}
+.sc-trust-badges {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+}
+.sc-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-md); padding: 6px 14px;
+  font-size: 13px; font-weight: 500; color: var(--text-dark);
+}
+
+/* ── Section ─────────────────────────────────────────── */
+.sc-section {
+  background: var(--s1);
+  padding: 60px 28px 80px;
+  min-height: 400px;
+}
+.sc-container {
+  max-width: 640px; margin: 0 auto;
+}
+
+/* ── Progress ────────────────────────────────────────── */
+.sc-progress {
+  margin-bottom: 32px;
+}
+.sc-progress-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.sc-progress-label {
+  font-size: 13px; font-weight: 600; color: var(--s4);
+}
+.sc-progress-pct {
+  font-size: 13px; font-weight: 600; color: var(--green-light);
+}
+.sc-progress-track {
+  height: 6px; background: var(--s2);
+  border-radius: 999px; overflow: hidden;
+}
+.sc-progress-bar {
+  height: 100%; background: var(--green-light);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+/* ── Question card ───────────────────────────────────── */
+.sc-card {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-md);
+}
+.sc-q-num {
+  display: inline-block;
+  background: var(--green-bg);
+  color: var(--green);
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 4px 10px; border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+}
+.sc-q-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700; color: var(--navy-dark);
+  line-height: 1.25; margin-bottom: 16px;
+}
+.sc-q-hint {
+  font-size: 14px; color: var(--s3);
+  line-height: 1.7; margin-bottom: 32px;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.sc-btn-group {
+  display: flex; gap: 16px;
+}
+.sc-btn {
+  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-sans); font-size: 16px; font-weight: 600;
+  padding: 14px 32px; border-radius: var(--radius-md);
+  cursor: pointer; transition: all 0.15s ease; border: 2px solid transparent;
+}
+.sc-btn-ja {
+  background: var(--green); color: var(--white); border-color: var(--green);
+}
+.sc-btn-ja:hover {
+  background: var(--green-light); border-color: var(--green-light);
+  transform: translateY(-1px); box-shadow: var(--shadow-green);
+}
+.sc-btn-nee {
+  background: var(--white); color: var(--s4); border-color: var(--s2);
+}
+.sc-btn-nee:hover {
+  border-color: var(--s3); color: var(--s5);
+  transform: translateY(-1px);
+}
+
+/* ── Email card ──────────────────────────────────────── */
+.sc-email-card {
+  text-align: center;
+}
+.sc-email-icon {
+  width: 64px; height: 64px; margin: 0 auto 24px;
+  background: var(--green-bg); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.sc-email-icon i {
+  font-size: 28px; color: var(--green);
+}
+.sc-email-title {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 700;
+  color: var(--navy-dark); margin-bottom: 12px;
+}
+.sc-email-sub {
+  font-size: 15px; color: var(--s4);
+  line-height: 1.7; margin-bottom: 28px;
+  max-width: 440px; margin-inline: auto;
+}
+.sc-email-form {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.sc-email-input {
+  width: 100%; padding: 14px 16px;
+  font-family: var(--font-sans); font-size: 15px;
+  border: 2px solid var(--s2); border-radius: var(--radius-md);
+  background: var(--white); color: var(--s5);
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+.sc-email-input:focus {
+  outline: none; border-color: var(--green-light);
+  box-shadow: 0 0 0 3px rgba(21,128,61,0.08);
+}
+.sc-email-error {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: #dc2626;
+  padding: 8px 12px; background: #fef2f2;
+  border-radius: var(--radius-sm); border: 1px solid #fecaca;
+}
+.sc-btn-submit {
+  width: 100%; background: var(--green); color: var(--white);
+  border: 2px solid var(--green); font-size: 16px; font-weight: 600;
+  padding: 16px 24px; border-radius: var(--radius-md);
+  cursor: pointer; transition: all 0.15s ease;
+  font-family: var(--font-sans);
+}
+.sc-btn-submit:hover:not(:disabled) {
+  background: var(--green-light); border-color: var(--green-light);
+  transform: translateY(-1px); box-shadow: var(--shadow-green);
+}
+.sc-btn-submit:disabled {
+  opacity: 0.65; cursor: not-allowed;
+}
+.sc-privacy {
+  font-size: 12px; color: var(--s3);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 4px;
+}
+
+/* ── Result card ─────────────────────────────────────── */
+.sc-result {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.sc-result-icon {
+  width: 72px; height: 72px; margin: 0 auto 24px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.sc-result-icon i { font-size: 32px; }
+.sc-icon-green  { background: var(--green-bg); }
+.sc-icon-green i { color: var(--green); }
+.sc-icon-amber  { background: rgba(251,191,36,0.12); }
+.sc-icon-amber i { color: var(--a4); }
+.sc-icon-navy   { background: rgba(15,33,71,0.08); }
+.sc-icon-navy i { color: var(--navy-dark); }
+
+.sc-result-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 5px 14px; border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+}
+.sc-badge-green     { background: var(--green); color: var(--white); }
+.sc-badge-lightgreen { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+.sc-badge-amber     { background: rgba(251,191,36,0.2); color: var(--a5); border: 1px solid rgba(251,191,36,0.4); }
+.sc-badge-navy      { background: var(--navy-dark); color: var(--text-dark); }
+
+.sc-result-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700; color: var(--navy-dark);
+  line-height: 1.25; margin-bottom: 16px;
+}
+.sc-result-text {
+  font-size: 15px; color: var(--s4);
+  line-height: 1.8; margin-bottom: 32px;
+  text-align: left;
+}
+
+/* ── Next steps ──────────────────────────────────────── */
+.sc-steps {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 32px; text-align: left;
+  background: var(--s1); border-radius: var(--radius-md);
+  padding: 24px;
+}
+.sc-step {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.sc-step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--green-light); color: var(--white);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.sc-step span:last-child {
+  font-size: 14px; color: var(--s4); line-height: 1.6; padding-top: 4px;
+}
+
+/* ── CTA buttons ─────────────────────────────────────── */
+.sc-cta-btn {
+  display: inline-block;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 700;
+  padding: 14px 28px; border-radius: var(--radius-md);
+  text-decoration: none; transition: all 0.15s ease;
+  margin-bottom: 16px;
+}
+.sc-cta-green {
+  background: var(--green); color: var(--white);
+}
+.sc-cta-green:hover {
+  background: var(--green-light); color: var(--white);
+  transform: translateY(-1px); box-shadow: var(--shadow-green);
+}
+.sc-cta-navy {
+  background: var(--navy-dark); color: var(--text-dark);
+}
+.sc-cta-navy:hover {
+  background: var(--navy-light); color: var(--text-dark);
+  transform: translateY(-1px);
+}
+.sc-cta-amber {
+  background: var(--a3); color: var(--s5);
+}
+.sc-cta-amber:hover {
+  background: var(--a4); color: var(--white);
+  transform: translateY(-1px);
+}
+
+.sc-restart-link {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-sans); font-size: 13px;
+  color: var(--s3); transition: color 0.14s;
+  margin: 0 auto;
+}
+.sc-restart-link:hover { color: var(--s4); }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 600px) {
+  .sc-card, .sc-result { padding: 28px 20px; }
+  .sc-btn-group { flex-direction: column; }
+  .sc-btn { flex: none; width: 100%; }
+  .sc-hero { padding: 56px 20px; }
+  .sc-section { padding: 40px 16px 60px; }
+}
+</style>
+
+<script>
+  // ── State ──────────────────────────────────────────────
+  const answers: Record<string, boolean> = {};
+  let currentQuestion = 1;
+  const totalQuestions = 7;
+
+  // ── Scoring ────────────────────────────────────────────
+  function calculateResult(): string {
+    if (answers['q6']) return 'digitale-aanbieder';
+
+    if (answers['q1']) {
+      const meetsSize = answers['q2'] || answers['q3'];
+      if (meetsSize) {
+        const isEssential = answers['q4'] || answers['q5'];
+        return isEssential ? 'essentieel' : 'belangrijk';
+      }
+      if (answers['q7']) return 'indirect';
+    }
+
+    if (answers['q7']) return 'indirect';
+
+    return 'niet-verplicht';
+  }
+
+  // ── Progress ───────────────────────────────────────────
+  function updateProgress(n: number) {
+    const pct = Math.round((n / totalQuestions) * 100);
+    const label = document.getElementById('sc-progress-label');
+    const pctEl = document.getElementById('sc-progress-pct');
+    const bar = document.getElementById('sc-progress-bar');
+    if (label) label.textContent = `Vraag ${n} van ${totalQuestions}`;
+    if (pctEl) pctEl.textContent = `${pct}%`;
+    if (bar) bar.style.width = `${pct}%`;
+  }
+
+  // ── Show question ──────────────────────────────────────
+  function showQuestion(n: number) {
+    for (let i = 1; i <= totalQuestions; i++) {
+      const el = document.getElementById(`q${i}`);
+      if (el) el.style.display = i === n ? 'block' : 'none';
+    }
+    const progress = document.getElementById('sc-progress');
+    if (progress) progress.style.display = 'block';
+    const emailScreen = document.getElementById('email-screen');
+    if (emailScreen) emailScreen.style.display = 'none';
+    hideAllResults();
+    updateProgress(n);
+    currentQuestion = n;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Record answer ──────────────────────────────────────
+  function recordAnswer(q: number, val: boolean) {
+    answers[`q${q}`] = val;
+    if (q < totalQuestions) {
+      showQuestion(q + 1);
+    } else {
+      showEmailScreen();
+    }
+  }
+
+  // ── Email screen ───────────────────────────────────────
+  function showEmailScreen() {
+    for (let i = 1; i <= totalQuestions; i++) {
+      const el = document.getElementById(`q${i}`);
+      if (el) el.style.display = 'none';
+    }
+    const progress = document.getElementById('sc-progress');
+    if (progress) progress.style.display = 'none';
+    const emailScreen = document.getElementById('email-screen');
+    if (emailScreen) emailScreen.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Submit email ───────────────────────────────────────
+  async function submitEmail() {
+    const input = document.getElementById('sc-email-input') as HTMLInputElement | null;
+    const errorEl = document.getElementById('sc-email-error');
+    const btn = document.getElementById('sc-submit-btn') as HTMLButtonElement | null;
+
+    if (!input || !errorEl || !btn) return;
+
+    const email = input.value.trim();
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!emailValid) {
+      errorEl.style.display = 'flex';
+      input.focus();
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Even geduld...';
+
+    const result = calculateResult();
+
+    try {
+      const response = await fetch('/api/scope-checker', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, answers, result }),
+      });
+
+      if (!response.ok && response.status >= 500) {
+        throw new Error('Server error');
+      }
+
+      showResult(result);
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Bekijk mijn resultaat →';
+      errorEl.textContent = 'Er is een technische fout opgetreden. Probeer het opnieuw.';
+      errorEl.style.display = 'flex';
+    }
+  }
+
+  // ── Show result ────────────────────────────────────────
+  function hideAllResults() {
+    ['essentieel', 'belangrijk', 'digitale-aanbieder', 'indirect', 'niet-verplicht'].forEach(id => {
+      const el = document.getElementById(`result-${id}`);
+      if (el) el.style.display = 'none';
+    });
+  }
+
+  function showResult(type: string) {
+    const emailScreen = document.getElementById('email-screen');
+    if (emailScreen) emailScreen.style.display = 'none';
+    const progress = document.getElementById('sc-progress');
+    if (progress) progress.style.display = 'none';
+
+    hideAllResults();
+    const resultEl = document.getElementById(`result-${type}`);
+    if (resultEl) resultEl.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Restart ────────────────────────────────────────────
+  function restartChecker() {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    showQuestion(1);
+  }
+
+  // ── Init ───────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => showQuestion(1));
+
+  // Expose to onclick handlers
+  (window as Window & typeof globalThis & {
+    recordAnswer: typeof recordAnswer;
+    submitEmail: typeof submitEmail;
+    restartChecker: typeof restartChecker;
+  }).recordAnswer = recordAnswer;
+  (window as Window & typeof globalThis & {
+    recordAnswer: typeof recordAnswer;
+    submitEmail: typeof submitEmail;
+    restartChecker: typeof restartChecker;
+  }).submitEmail = submitEmail;
+  (window as Window & typeof globalThis & {
+    recordAnswer: typeof recordAnswer;
+    submitEmail: typeof submitEmail;
+    restartChecker: typeof restartChecker;
+  }).restartChecker = restartChecker;
+</script>
