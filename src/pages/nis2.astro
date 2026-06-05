@@ -1,194 +1,110 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 export const prerender = true;
 ---
 
-<!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NIS2 implementatiegidsen — twee praktische artikelen voor Nederlandse MKB's." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <title>NIS2 Implementatie — MKBTechGids</title>
-  <style>
-    :root {
-      --navy-dark: #0f2147;
-      --navy-light: #1e3a6e;
-      --green: #14532d;
-      --green-light: #15803d;
-      --green-bg: #f0fdf4;
-      --text-dark: #f1f5f9;
-      --text-light: #94a3b8;
-      --bg-light: #f8fafc;
-      --bg-gray: #e2e8f0;
-      --text-body: #475569;
-    }
-    
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
-    a { color: var(--green); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--green-light); }
-    img, svg { display: block; max-width: 100%; }
+<BaseLayout
+  title="NIS2 Implementatie"
+  description="NIS2 implementatiegidsen — twee praktische artikelen voor Nederlandse MKB's."
+>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1>NIS2 Implementatie — De volledige gids</h1>
+      <p>Twee praktische artikelen om je bedrijf NIS2-compliant te maken. Van begrip tot concrete implementatie.</p>
+    </div>
+  </section>
 
-    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
-    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
-    .nav-logo img { height: 46px; width: auto; }
-    .nav-links { display: flex; gap: 28px; flex: 1; margin: 0; padding: 0; }
-    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
-    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
-    
-    .nav-item { position: relative; display: flex; align-items: center; }
-    .nav-dropdown-trigger { background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid transparent; transition: color 0.14s; }
-    .nav-dropdown-trigger:hover { color: var(--green); border-bottom-color: var(--green); }
-    .nav-dropdown-trigger::after { content: '▼'; font-size: 8px; transition: transform 0.2s; }
-    .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
-    .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -40px; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 340px; padding: 8px 0; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.15); display: none; z-index: 1000; }
-    .nav-dropdown.open { display: block; }
-    .nav-dropdown a { display: block; padding: 14px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
-    .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
-
-    .page-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-    .page-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
-    .page-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; }
-
-    .articles-content { padding: 60px 28px; background: var(--bg-light); }
-    .articles-inner { max-width: 1100px; margin: 0 auto; }
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 36px; margin-top: 40px; }
-    
-    .article-item { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 36px; transition: all 0.2s; display: flex; flex-direction: column; }
-    .article-item:hover { box-shadow: 0 12px 32px rgba(15, 33, 71, 0.15); transform: translateY(-4px); border-color: var(--green); }
-    
-    .article-category { display: inline-block; background: rgba(20, 83, 45, 0.1); color: var(--green); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px; width: fit-content; }
-    
-    .article-item h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; line-height: 1.3; }
-    .article-item p { font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
-    
-    .article-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 12px; align-items: center; margin-bottom: 20px; }
-    .article-meta-dot { width: 3px; height: 3px; background: var(--bg-gray); border-radius: 50%; }
-    
-    .article-cta { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; color: var(--green); text-decoration: none; transition: color 0.14s; }
-    .article-cta:hover { color: var(--green-light); }
-    .article-cta::after { content: '→'; margin-left: 8px; }
-
-    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .footer p { font-size: 13px; margin: 0; }
-    .footer a { color: var(--green-light); }
-
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .page-hero { padding: 48px 28px; }
-      .page-hero h1 { font-size: 32px; }
-      .articles-grid { grid-template-columns: 1fr; gap: 24px; }
-      .articles-content { padding: 40px 28px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="48" height="51" /></a>
-      <nav class="nav-links">
-        <a href="/nis2">NIS2</a>
-        <a href="/">AI Governance</a>
-        <a href="/">AI Tools</a>
-        <a href="/">CRM</a>
-        <div class="nav-item">
-          <button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Artikelen menu">Artikelen</button>
-          <div class="nav-dropdown">
-            <a href="/nis2">NIS2 Implementatie</a>
-            <a href="/articles" style="border-top: 1px solid var(--bg-gray); padding-top: 12px; margin-top: 4px; color: var(--green); font-weight: 600;">Alle artikelen →</a>
+  <section class="articles-content">
+    <div class="articles-inner">
+      <div class="articles-grid">
+        <article class="article-item">
+          <div class="article-category">Compliance · Begrip</div>
+          <h2>NIS2 Compliance voor Nederlands MKB</h2>
+          <p>Wat NIS2 betekent, of het voor jou van toepassing is, welke risico's je loopt, en waarom dit nu uitstel niet meer toelaat. Een helder overzicht van regelgeving, scope en bestuurdersaansprakelijkheid.</p>
+          <div class="article-meta">
+            <span>Juni 2026</span>
+            <div class="article-meta-dot"></div>
+            <span>8 minuten</span>
           </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+          <a href="/nis2-compliance" class="article-cta">Lees het artikel</a>
+        </article>
 
-  <main>
-    <section class="page-hero">
-      <div class="page-hero-inner">
-        <h1>NIS2 Implementatie — De volledige gids</h1>
-        <p>Twee praktische artikelen om je bedrijf NIS2-compliant te maken. Van begrip tot concrete implementatie.</p>
+        <article class="article-item">
+          <div class="article-category">Implementatie · Praktisch</div>
+          <h2>Een praktische aanpak voor NIS2 implementatie</h2>
+          <p>Stap-voor-stap plan met concrete gereedschappen, tool-aanbevelingen en een 12-maands roadmap. Van asset inventory tot continuous monitoring — alles wat je nodig hebt om NIS2-compliant te worden.</p>
+          <div class="article-meta">
+            <span>Juni 2026</span>
+            <div class="article-meta-dot"></div>
+            <span>8 minuten</span>
+          </div>
+          <a href="/nis2-compliancy" class="article-cta">Lees het artikel</a>
+        </article>
       </div>
-    </section>
-
-    <section class="articles-content">
-      <div class="articles-inner">
-        <div class="articles-grid">
-          <!-- Article 1 -->
-          <article class="article-item">
-            <div class="article-category">Compliance · Begrip</div>
-            <h2>NIS2 Compliance voor Nederlands MKB</h2>
-            <p>Wat NIS2 betekent, of het voor jou van toepassing is, welke risico's je loopt, en waarom dit nu uitstel niet meer toelaat. Een helder overzicht van regelgeving, scope en bestuurdersaansprakelijkheid.</p>
-            <div class="article-meta">
-              <span>Juni 2026</span>
-              <div class="article-meta-dot"></div>
-              <span>8 minuten</span>
-            </div>
-            <a href="/nis2-compliance" class="article-cta">Lees het artikel</a>
-          </article>
-
-          <!-- Article 2 -->
-          <article class="article-item">
-            <div class="article-category">Implementatie · Praktisch</div>
-            <h2>Een praktische aanpak voor NIS2 implementatie</h2>
-            <p>Stap-voor-stap plan met concrete gereedschappen, tool-aanbevelingen en een 12-maands roadmap. Van asset inventory tot continuous monitoring — alles wat je nodig hebt om NIS2-compliant te worden.</p>
-            <div class="article-meta">
-              <span>Juni 2026</span>
-              <div class="article-meta-dot"></div>
-              <span>8 minuten</span>
-            </div>
-            <a href="/nis2-compliancy" class="article-cta">Lees het artikel</a>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="https://techleadnl.nl">TechLeadNL</a></p>
     </div>
-  </footer>
+  </section>
+</BaseLayout>
 
-  <script>
-    // Dropdown menu toggle
-    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
-    const dropdown = document.querySelector('.nav-dropdown');
-    
-    if (dropdownTrigger && dropdown) {
-      // Toggle dropdown on click
-      dropdownTrigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = dropdown.classList.contains('open');
-        dropdown.classList.toggle('open');
-        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
-      });
+<style>
+/* ── Page hero ───────────────────────────────────────── */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+  padding: 80px 28px; position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none;
+}
+.page-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 48px); font-weight: 700;
+  color: var(--text-dark); line-height: 1.15; margin-bottom: 20px;
+}
+.page-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; }
 
-      // Close dropdown when clicking a link inside
-      dropdown.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.stopPropagation();
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
-        });
-      });
+/* ── Articles ────────────────────────────────────────── */
+.articles-content { padding: 60px 28px; background: var(--s1); }
+.articles-inner { max-width: var(--max-width); margin: 0 auto; }
+.articles-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 36px; margin-top: 40px;
+}
+.article-item {
+  background: var(--white); border: 2px solid var(--bg-gray);
+  border-radius: var(--radius-md); padding: 36px;
+  transition: all 0.2s; display: flex; flex-direction: column;
+}
+.article-item:hover { box-shadow: var(--shadow-green); transform: translateY(-4px); border-color: var(--green); }
+.article-category {
+  display: inline-block; background: rgba(20,83,45,0.1); color: var(--green);
+  padding: 6px 12px; border-radius: var(--radius-sm);
+  font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px; width: fit-content;
+}
+.article-item h2 {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; line-height: 1.3;
+}
+.article-item p { font-size: 14px; color: var(--s4); line-height: 1.7; margin-bottom: 24px; flex-grow: 1; }
+.article-meta {
+  font-size: 12px; color: var(--text-light);
+  display: flex; gap: 12px; align-items: center; margin-bottom: 20px;
+}
+.article-meta-dot { width: 3px; height: 3px; background: var(--bg-gray); border-radius: 50%; }
+.article-cta {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 600; color: var(--green-light);
+  text-decoration: none; transition: color 0.14s;
+}
+.article-cta:hover { color: var(--green); }
+.article-cta::after { content: '→'; margin-left: 8px; }
 
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!dropdownTrigger.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-  </script>
-</body>
-</html>
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-hero { padding: 48px 28px; }
+  .page-hero h1 { font-size: 32px; }
+  .articles-grid { grid-template-columns: 1fr; gap: 24px; }
+  .articles-content { padding: 40px 28px; }
+}
+</style>

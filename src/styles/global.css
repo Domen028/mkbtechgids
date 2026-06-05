@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap');
-
 :root {
+  /* ─── Scale tokens ─────────────────────────────────── */
+
   /* Groen */
   --g1: #f0fdf4; --g2: #bbf7d0; --g3: #4ade80; --g4: #15803d; --g5: #14532d;
 
@@ -12,47 +12,68 @@
   /* Leisteen */
   --s1: #f8fafc; --s2: #e2e8f0; --s3: #94a3b8; --s4: #475569; --s5: #1e293b;
 
-  /* Wit */
-  --white: #ffffff;
+  /* ─── Semantic aliases (used by pages & components) ── */
+  --green-bg:   var(--g1);
+  --green-light: var(--g4);
+  --green:      var(--g5);
+  --text-light: var(--s3);
+  --bg-light:   var(--s1);
+  --bg-gray:    var(--s2);
+  --text-body:  var(--s4);
 
-  /* Fonts */
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'DM Mono', 'Courier New', monospace;
+  /* ─── Brand-specific (navy backgrounds) ────────────── */
+  --navy-dark:  #0f2147;
+  --navy-light: #1e3a6e;
+  --text-dark:  #f1f5f9;
+  --white:      #ffffff;
 
-  /* Spatie */
-  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
-  --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 80px;
+  /* ─── Typography ────────────────────────────────────── */
+  --font-sans:    'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
 
-  /* Layout */
-  --max-width: 1100px; --nav-height: 64px;
+  /* ─── Spacing ───────────────────────────────────────── */
+  --space-xs: 4px;  --space-sm: 8px;   --space-md: 16px;
+  --space-lg: 24px; --space-xl: 40px;  --space-2xl: 64px; --space-3xl: 80px;
 
-  /* Radius */
+  /* ─── Layout ────────────────────────────────────────── */
+  --max-width: 1100px;
+  --nav-height: 64px;
+
+  /* ─── Radius ────────────────────────────────────────── */
   --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
 
-  /* Schaduwen */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.10);
+  /* ─── Shadows ───────────────────────────────────────── */
+  --shadow-sm:    0 1px 3px rgba(0,0,0,.06);
+  --shadow-md:    0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,.10);
   --shadow-green: 0 8px 32px rgba(21,128,61,.12);
 }
 
+/* ─── Base reset ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font-sans);
   color: var(--s4);
-  background: var(--white);
+  background: var(--s1);
   line-height: 1.7;
 }
 
-/* Typography */
+img, svg { display: block; max-width: 100%; }
+
+/* ─── Typography ─────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   color: var(--s5);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
@@ -61,7 +82,7 @@ p { color: var(--s4); line-height: 1.7; }
 a { color: var(--g4); text-decoration: none; }
 a:hover { color: var(--g5); }
 
-/* Container */
+/* ─── Layout utilities ───────────────────────────────── */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -72,14 +93,14 @@ a:hover { color: var(--g5); }
   .container { padding: 0 var(--space-md); }
 }
 
-/* Sections */
-.section { padding: var(--space-3xl) 0; }
-.section--white { background: var(--white); }
+/* ─── Section variants ───────────────────────────────── */
+.section           { padding: var(--space-3xl) 0; }
+.section--white    { background: var(--white); }
 .section--green-tint { background: var(--g1); }
-.section--slate { background: var(--s1); }
-.section--dark { background: var(--g5); }
+.section--slate    { background: var(--s1); }
+.section--dark     { background: var(--navy-dark); }
 
-/* Buttons */
+/* ─── Buttons ────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -95,14 +116,13 @@ a:hover { color: var(--g5); }
   transition: all 0.15s ease;
   text-decoration: none;
 }
-
 .btn:hover { transform: translateY(-1px); }
 
-.btn--primary { background: var(--a3); color: var(--s5); }
+.btn--primary       { background: var(--a3); color: var(--s5); }
 .btn--primary:hover { background: var(--a2); color: var(--s5); }
 
-.btn--green { background: var(--g4); color: var(--white); }
-.btn--green:hover { background: var(--g5); color: var(--white); }
+.btn--green         { background: var(--g4); color: var(--white); }
+.btn--green:hover   { background: var(--g5); color: var(--white); }
 
 .btn--ghost {
   background: transparent;
@@ -118,7 +138,7 @@ a:hover { color: var(--g5); }
 }
 .btn--outline:hover { background: var(--g1); }
 
-/* Badges */
+/* ─── Badges ─────────────────────────────────────────── */
 .badge {
   display: inline-block;
   font-family: var(--font-mono);
@@ -129,12 +149,11 @@ a:hover { color: var(--g5); }
   padding: 4px 10px;
   border-radius: var(--radius-sm);
 }
+.badge--green  { background: var(--g1); color: var(--g5); border: 1px solid var(--g2); }
+.badge--amber  { background: rgba(251,191,36,0.15); color: var(--a5); border: 1px solid rgba(251,191,36,0.3); }
+.badge--slate  { background: var(--s1); color: var(--s4); border: 1px solid var(--s2); }
 
-.badge--green { background: var(--g1); color: var(--g5); border: 1px solid var(--g2); }
-.badge--amber { background: rgba(251,191,36,0.15); color: var(--a5); border: 1px solid rgba(251,191,36,0.3); }
-.badge--slate { background: var(--s1); color: var(--s4); border: 1px solid var(--s2); }
-
-/* Cards */
+/* ─── Cards ──────────────────────────────────────────── */
 .card {
   background: var(--white);
   border: 1px solid var(--s2);
@@ -144,7 +163,6 @@ a:hover { color: var(--g5); }
   overflow: hidden;
   transition: all 0.2s ease;
 }
-
 .card::before {
   content: '';
   position: absolute;
@@ -154,16 +172,14 @@ a:hover { color: var(--g5); }
   height: 0;
   transition: height 0.25s ease;
 }
-
 .card:hover {
   box-shadow: var(--shadow-green);
   transform: translateY(-2px);
   border-color: var(--g2);
 }
-
 .card:hover::before { height: 100%; }
 
-/* Section labels */
+/* ─── Section labels ─────────────────────────────────── */
 .section-label {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -173,10 +189,9 @@ a:hover { color: var(--g5); }
   color: var(--g4);
 }
 
-/* Pulse animation for hero badge */
+/* ─── Animations ─────────────────────────────────────── */
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
 }
-
 .pulse { animation: pulse 2s infinite; }
