@@ -1,20 +1,20 @@
-<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .wordmark { font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 700; fill: #0f2147; }
-      .tagline { font-family: 'Inter', sans-serif; font-size: 16px; fill: #15803d; }
+      .wordmark { font-family: 'Inter', 'Liberation Sans', Arial, sans-serif; font-size: 48px; font-weight: 700; fill: #0f2147; }
+      .tagline { font-family: 'Inter', 'Liberation Sans', Arial, sans-serif; font-size: 16px; fill: #15803d; }
     </style>
   </defs>
   
-  <!-- Offset layers -->
+  <!-- Offset layers (icon mark) -->
   <rect x="45" y="70" width="65" height="45" fill="#0f2147" rx="4"/>
-  <rect x="60" y="55" width="65" height="45" fill="#15803d" rx="4"/>
+  <rect x="60" y="55" width="65" height="45" fill="#14532d" rx="4"/>
   <rect x="75" y="40" width="65" height="45" fill="#0284c7" rx="4"/>
   <rect x="90" y="25" width="65" height="45" fill="#d97706" rx="4"/>
   
-  <!-- Wordmark -->
-  <text x="180" y="110" class="wordmark">MKBTechGids</text>
+  <!-- Wordmark — MKBTechGids (full, with s) -->
+  <text x="190" y="100" class="wordmark">MKBTechGids</text>
   
-  <!-- Tagline -->
-  <text x="180" y="135" class="tagline">De route al verkend</text>
+  <!-- Tagline — updated 2026-06-05 -->
+  <text x="190" y="122" class="tagline">Technologie met vertrouwen</text>
 </svg>
