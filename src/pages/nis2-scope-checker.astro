@@ -135,6 +135,9 @@ export const prerender = true;
         <p class="sc-privacy">
           <i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd afmelden.
         </p>
+        <p class="sc-email-sent" id="sc-email-sent" style="display:none; font-size:13px; color:var(--green); text-align:center; margin-top:8px;">
+          <i class="ti ti-circle-check"></i> Module 1 is onderweg naar uw inbox.
+        </p>
       </div>
 
       <!-- ── Result: essentieel ── -->
@@ -148,7 +151,7 @@ export const prerender = true;
           <div class="sc-step"><span class="sc-step-num">2</span><span>Voer een risicoanalyse uit (Module 2)</span></div>
           <div class="sc-step"><span class="sc-step-num">3</span><span>Stel een implementatieroadmap op</span></div>
         </div>
-        <a href="/nis2" class="sc-cta-btn sc-cta-green">Download Module 1 gratis</a>
+        <a href="/downloads/NIS2-Module1-Zelfevaluatie.docx" class="sc-cta-btn sc-cta-green" download>Download Module 1 gratis</a>
         <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
       </div>
 
@@ -163,7 +166,7 @@ export const prerender = true;
           <div class="sc-step"><span class="sc-step-num">2</span><span>Bepaal welke maatregelen prioriteit hebben (Module 3)</span></div>
           <div class="sc-step"><span class="sc-step-num">3</span><span>Inventariseer uw leveranciers (Module 4)</span></div>
         </div>
-        <a href="/nis2" class="sc-cta-btn sc-cta-green">Download Module 1 gratis</a>
+        <a href="/downloads/NIS2-Module1-Zelfevaluatie.docx" class="sc-cta-btn sc-cta-green" download>Download Module 1 gratis</a>
         <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
       </div>
 
@@ -178,7 +181,7 @@ export const prerender = true;
           <div class="sc-step"><span class="sc-step-num">2</span><span>Start met Module 1 — zelfevaluatie en scope vastleggen</span></div>
           <div class="sc-step"><span class="sc-step-num">3</span><span>Voer een volledige risicoanalyse uit (Module 2)</span></div>
         </div>
-        <a href="/nis2" class="sc-cta-btn sc-cta-navy">Start met de NIS2-toolkit</a>
+        <a href="/downloads/NIS2-Module1-Zelfevaluatie.docx" class="sc-cta-btn sc-cta-navy" download>Download Module 1 gratis</a>
         <button class="sc-restart-link" onclick="restartChecker()"><i class="ti ti-refresh"></i> Opnieuw invullen</button>
       </div>
 
@@ -624,7 +627,9 @@ export const prerender = true;
         throw new Error('Server error');
       }
 
-      showResult(result);
+      const sentMsg = document.getElementById('sc-email-sent');
+      if (sentMsg) sentMsg.style.display = 'block';
+      setTimeout(() => showResult(result), 800);
     } catch {
       btn.disabled = false;
       btn.textContent = 'Bekijk mijn resultaat →';
