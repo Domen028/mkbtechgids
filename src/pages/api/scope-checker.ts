@@ -15,7 +15,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const apiKey = import.meta.env.BREVO_API_KEY;
-    const listId = import.meta.env.BREVO_LIST_ID;
+    const listId = import.meta.env.BREVO_SCOPE_LIST_ID;
 
     if (!apiKey) {
       console.error('BREVO_API_KEY missing');
