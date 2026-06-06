@@ -15,7 +15,7 @@ const RESULT_META: Record<string, {
   ctaColor: string;
 }> = {
   essentieel: {
-    subject: 'Uw NIS2 scope resultaat: Essentiële dienstverlener',
+    subject: 'Uw NIS2 scope resultaat: Essentiele dienstverlener',
     badge: 'ESSENTIËLE DIENSTVERLENER',
     badgeColor: '#14532d',
     title: 'NIS2 is verplicht voor uw organisatie',
