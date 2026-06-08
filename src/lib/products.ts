@@ -118,7 +118,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     description: 'De complete toolkit plus e-mailondersteuning bij invulvragen. Ideaal voor organisaties zonder eigen IT-compliance kennis.',
     includes: [
       'Alles uit de Complete Toolkit (20 bestanden, incl. Routekaart, Gap-Analyse & Bewustzijnsverklaring)',
-      'Boardrapportage (PowerPoint) — exclusief in Full Package',
+      'Boardrapportage: deck (PowerPoint) + werkboek (Excel) — exclusief in Full Package',
       '3 × e-mailondersteuning bij invulvragen',
       'Prioriteit bij toekomstige updates',
     ],
@@ -145,7 +145,8 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Routekaart-v7.pdf',
       'NIS2-GapAnalyse-v1.xlsx',
       'NIS2-Bewustzijnsverklaring-v1.docx',
-      'NIS2-Boardrapportage-v1.pptx',
+      'NIS2-Boardrapportage-v2.pptx',
+      'NIS2-Boardrapportage-Werkboek-v1.xlsx',
     ],
   },
 
