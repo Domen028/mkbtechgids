@@ -70,6 +70,104 @@ export const prerender = true;
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <span class="faq-badge">Veelgestelde vragen</span>
+        <h2>Alles wat u wilt weten</h2>
+        <p>De meest gestelde vragen over NIS2, onze toolkit en hoe MKBTechGids werkt.</p>
+      </div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-q">Wat is NIS2 precies?</summary>
+          <div class="faq-a">
+            <p>NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk — van enkele honderden naar duizenden — en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Geldt NIS2 voor mijn bedrijf?</summary>
+          <div class="faq-a">
+            <p>NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie. Gebruik de gratis <a href="/nis2-scope-checker">NIS2 Scope Checker</a> om in 3 minuten te bepalen of uw organisatie verplicht is.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Wat kost de NIS2 toolkit?</summary>
+          <div class="faq-a">
+            <p>Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie. Zie de <a href="/nis2-toolbox">NIS2 Toolbox</a> voor actuele prijzen en bundels.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Hoe onafhankelijk is MKBTechGids?</summary>
+          <div class="faq-a">
+            <p>MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring. Alle content wordt geschreven vanuit het perspectief van de bestuurder — niet de leverancier. Meer informatie: <a href="/over-ons">over ons</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Wat is de NIS2 Scope Checker?</summary>
+          <div class="faq-a">
+            <p>De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt, en zo ja als welk type (essentieel, belangrijk of digitale aanbieder). Na invullen ontvangt u een gepersonaliseerd resultaat per e-mail met concrete vervolgstappen.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat is NIS2 precies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Geldt NIS2 voor mijn bedrijf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie. Gebruik de gratis NIS2 Scope Checker op mkbtechgids.nl om in 3 minuten te bepalen of uw organisatie verplicht is."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat kost de NIS2 toolkit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie. Zie de NIS2 Toolbox-pagina op mkbtechgids.nl voor actuele prijzen en bundels."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe onafhankelijk is MKBTechGids?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring. Alle content wordt geschreven vanuit het perspectief van de bestuurder — niet de leverancier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat is de NIS2 Scope Checker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt. Na invullen ontvangt u een gepersonaliseerd resultaat per e-mail met concrete vervolgstappen."
+        }
+      }
+    ]
+  }
+  </script>
+
   <section class="newsletter">
     <div class="nl-inner">
       <div class="nl-copy">
@@ -170,6 +268,38 @@ export const prerender = true;
 .topic-card p { font-size: 14px; color: var(--s4); line-height: 1.7; }
 .topic-status { display: inline-block; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--green-light); }
 .topic-status::before { content: '●'; margin-right: 6px; }
+
+/* ── FAQ ────────────────────────────────────────────── */
+.faq-section { background: var(--white); padding: var(--space-3xl) 28px; }
+.faq-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
+.faq-badge {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+  border: 1px solid var(--green); border-radius: var(--radius-sm); padding: 5px 12px;
+}
+.faq-header h2 { font-family: var(--font-display); font-size: 28px; color: var(--navy-dark); margin-bottom: 12px; line-height: 1.2; }
+.faq-header p { font-size: 15px; color: var(--s4); line-height: 1.7; }
+.faq-item {
+  border-bottom: 1px solid var(--s2);
+}
+.faq-item:first-child { border-top: 1px solid var(--s2); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 4px; font-size: 15px; font-weight: 600; color: var(--navy-dark);
+  cursor: pointer; list-style: none; gap: 16px;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+'; font-size: 20px; font-weight: 400; color: var(--green);
+  flex-shrink: 0; transition: transform 0.2s;
+}
+.faq-item[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a { padding: 0 4px 20px; }
+.faq-a p { font-size: 14px; color: var(--s4); line-height: 1.75; margin: 0; }
+.faq-a a { color: var(--green); text-decoration: underline; }
+@media (max-width: 768px) {
+  .faq-inner { grid-template-columns: 1fr; gap: 32px; }
+}
 
 /* ── Newsletter ─────────────────────────────────────── */
 .newsletter { background: var(--navy-dark); padding: var(--space-3xl) 28px; position: relative; overflow: hidden; }
