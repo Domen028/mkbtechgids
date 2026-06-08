@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="AI Governance voor Nederlands MKB — MKBTechGids"
+  description="Hoe richt u verantwoord AI-gebruik in uw organisatie in? Praktische gids over de EU AI Act, risicoclassificatie en governance voor het Nederlandse MKB."
+>
+
+  <section class="topic-hero">
+    <div class="container">
+      <div class="topic-hero-inner">
+        <span class="badge badge--slate">Binnenkort beschikbaar</span>
+        <h1>AI Governance</h1>
+        <p class="topic-hero-sub">De EU AI Act is van kracht. Welke AI-systemen in uw organisatie zijn hoog-risico, wat zijn uw verplichtingen als gebruiker, en hoe richt u verantwoord AI-gebruik in — zonder de productiviteitswinst te verliezen.</p>
+        <div class="topic-coming-soon">
+          <div class="topic-coming-meta">
+            <span><i class="ti ti-calendar"></i> Verwacht Q3 2026</span>
+            <span><i class="ti ti-files"></i> 3 artikelen in voorbereiding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-preview section">
+    <div class="container">
+      <h2 class="topic-preview-title">Wat u kunt verwachten</h2>
+      <div class="topic-preview-grid">
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">01</div>
+          <h3>EU AI Act — wat geldt er voor uw organisatie?</h3>
+          <p>Risicoclassificatie, verboden AI-toepassingen, transparantieverplichtingen en wat u nu al moet regelen als organisatie die AI-systemen inzet.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">02</div>
+          <h3>AI-beleid schrijven in een dag</h3>
+          <p>Een praktisch template voor een intern AI-beleidsdocument: acceptabel gebruik, datasecurity bij AI-tools, en verantwoordingsstructuur voor bestuurders.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">03</div>
+          <h3>Welke AI-tools zijn het waard?</h3>
+          <p>Onafhankelijke analyse van de meest gebruikte AI-tools in het MKB — van Microsoft Copilot tot Claude. ROI-inschatting, dataprivacy-risico's en praktische aanbevelingen.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-notify section--green-tint section">
+    <div class="container">
+      <div class="topic-notify-inner">
+        <i class="ti ti-bell topic-notify-icon"></i>
+        <h2>Ontvang een melding zodra dit beschikbaar is</h2>
+        <p>Meld u aan voor de MKBTechGids briefing. U ontvangt tweewekelijks een update over technologieregulering, tools en implementatie — inclusief een melding zodra de AI Governance gids live gaat.</p>
+        <form class="notify-form" action="/api/subscribe" method="POST">
+          <input type="email" name="email" placeholder="uw@bedrijf.nl" required class="notify-input" />
+          <button type="submit" class="btn btn--green">Houd mij op de hoogte →</button>
+        </form>
+        <p class="notify-privacy"><i class="ti ti-shield-check"></i> Geen spam. Altijd afmelden mogelijk.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.topic-hero {
+  background: linear-gradient(135deg, var(--s5) 0%, #0f2147 100%);
+  padding: 80px 0 64px;
+}
+.topic-hero-inner {
+  max-width: 680px;
+}
+.topic-hero h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--white);
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+.topic-hero-sub {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.topic-coming-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.topic-coming-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+  font-family: var(--font-mono);
+}
+
+.topic-preview-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 32px;
+}
+.topic-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.topic-preview-card {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.topic-preview-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--s3);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.topic-preview-card h3 {
+  font-size: 16px;
+  color: var(--s5);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.topic-preview-card p {
+  font-size: 14px;
+  color: var(--s4);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.topic-notify-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.topic-notify-icon {
+  font-size: 32px;
+  color: var(--g4);
+  display: block;
+  margin-bottom: 16px;
+}
+.topic-notify-inner h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 12px;
+}
+.topic-notify-inner p {
+  color: var(--s4);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.notify-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.notify-input {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  background: var(--white);
+}
+.notify-input:focus {
+  outline: none;
+  border-color: var(--g4);
+}
+.notify-privacy {
+  font-size: 12px;
+  color: var(--s3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .topic-hero h1 { font-size: 32px; }
+  .topic-preview-grid { grid-template-columns: 1fr; }
+  .notify-form { flex-direction: column; }
+}
+</style>

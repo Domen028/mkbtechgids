@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Contact — MKBTechGids"
+  description="Neem contact op met MKBTechGids. Vragen over content, redactionele samenwerking of de NIS2 toolkit."
+>
+
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-inner">
+        <span class="badge badge--green">Contact</span>
+        <h1>Neem contact op</h1>
+        <p>Vragen over onze content, redactionele samenwerking of de NIS2 toolkit? We reageren binnen één werkdag.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-body section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-options">
+          <div class="contact-option">
+            <i class="ti ti-mail contact-option-icon"></i>
+            <div>
+              <strong>E-mail</strong>
+              <p>Voor redactionele vragen, samenwerkingen en toolkit-vragen.</p>
+              <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>
+            </div>
+          </div>
+          <div class="contact-option">
+            <i class="ti ti-brand-linkedin contact-option-icon"></i>
+            <div>
+              <strong>LinkedIn</strong>
+              <p>Verbind met Jacques Domenie voor professioneel contact.</p>
+              <a href="https://www.linkedin.com/in/jacquesdomenie" target="_blank" rel="noopener">linkedin.com/in/jacquesdomenie</a>
+            </div>
+          </div>
+          <div class="contact-option">
+            <i class="ti ti-map-pin contact-option-icon"></i>
+            <div>
+              <strong>Locatie</strong>
+              <p>Brielle, Zuid-Holland, Nederland</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-services">
+          <h2>Op zoek naar implementatiehulp?</h2>
+          <p>MKBTechGids levert content en kennis. Voor directe ondersteuning bij NIS2-implementatie, technologiestrategie of fractional leiderschap — bekijk TechLead NL.</p>
+          <a href="https://www.techleadnl.nl" target="_blank" rel="noopener" class="btn btn--green">Plan een gesprek via TechLead NL →</a>
+
+          <div class="contact-topics">
+            <p class="contact-topics-label">Wij behandelen vragen over</p>
+            <ul>
+              <li>NIS2 Toolkit — aankoop, licenties en content</li>
+              <li>Redactionele samenwerking en gastbijdragen</li>
+              <li>Persvragen en media</li>
+              <li>Technische issues op mkbtechgids.nl</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.contact-hero {
+  background: linear-gradient(135deg, var(--s5) 0%, #0f2147 100%);
+  padding: 80px 0 64px;
+}
+.contact-hero-inner { max-width: 560px; }
+.contact-hero h1 {
+  font-family: var(--font-display);
+  font-size: 44px;
+  color: var(--white);
+  margin: 16px 0 16px;
+  line-height: 1.2;
+}
+.contact-hero p {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-option {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--s2);
+}
+.contact-option:first-child { padding-top: 0; }
+.contact-option-icon {
+  font-size: 20px;
+  color: var(--g4);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact-option strong { display: block; color: var(--s5); margin-bottom: 4px; }
+.contact-option p { margin: 0 0 6px; font-size: 14px; color: var(--s4); line-height: 1.5; }
+.contact-option a { font-size: 14px; color: var(--g4); font-weight: 500; }
+.contact-option a:hover { color: var(--g5); }
+
+.contact-services h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--s5);
+  margin-bottom: 12px;
+}
+.contact-services > p {
+  color: var(--s4);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.contact-services .btn { margin-bottom: 32px; display: inline-block; }
+
+.contact-topics-label {
+  font-size: 11px;
+  color: var(--s3);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.contact-topics ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-topics li {
+  font-size: 14px;
+  color: var(--s4);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--s2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-topics li:last-child { border-bottom: none; }
+.contact-topics li::before {
+  content: '→';
+  color: var(--g4);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-hero h1 { font-size: 30px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+</style>

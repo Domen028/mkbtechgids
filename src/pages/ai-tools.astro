@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="AI Tools voor Nederlands MKB — Onafhankelijke vergelijking — MKBTechGids"
+  description="Welke AI-tools leveren daadwerkelijk ROI voor het Nederlandse MKB? Onafhankelijke vergelijkingen van Microsoft Copilot, Claude, ChatGPT en meer."
+>
+
+  <section class="topic-hero">
+    <div class="container">
+      <div class="topic-hero-inner">
+        <span class="badge badge--slate">Binnenkort beschikbaar</span>
+        <h1>AI Tools</h1>
+        <p class="topic-hero-sub">Welke AI-tools leveren daadwerkelijk ROI — en welke zijn duur speelgoed? Onafhankelijke analyses voor bestuurders die willen weten waar ze hun geld aan uitgeven en waarom.</p>
+        <div class="topic-coming-meta">
+          <span><i class="ti ti-calendar"></i> Verwacht Q3 2026</span>
+          <span><i class="ti ti-files"></i> 4 vergelijkingen in voorbereiding</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-preview section">
+    <div class="container">
+      <h2 class="topic-preview-title">Wat u kunt verwachten</h2>
+      <div class="topic-preview-grid">
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">01</div>
+          <h3>Microsoft Copilot vs. Claude — voor het MKB</h3>
+          <p>Een eerlijke vergelijking op productiviteitswinst, dataprivacy, integratiegemak en totale kosten per gebruiker. Inclusief aanbeveling per bedrijfsgrootte.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">02</div>
+          <h3>AI voor klantenservice — wat werkt echt?</h3>
+          <p>Van chatbots tot AI-gestuurde ticketafhandeling. Welke tools leveren meetbare tijdsbesparing en hoe voorkomt u dat uw klanten afhaken.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">03</div>
+          <h3>AI-automatisering zonder IT-afdeling</h3>
+          <p>Make, Zapier, n8n en Power Automate vergeleken voor bedrijven zonder eigen IT. Wat kunt u zelf inrichten, wat heeft een specialist nodig?</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+        <div class="topic-preview-card">
+          <div class="topic-preview-num">04</div>
+          <h3>De AI-gereedschapskist voor bestuurders</h3>
+          <p>Tien tools die elke MKB-directeur zou moeten kennen — geselecteerd op ROI, betrouwbaarheid en dataveiligheid. Geen hype, alleen wat werkt.</p>
+          <span class="badge badge--slate">In voorbereiding</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="topic-notify section--green-tint section">
+    <div class="container">
+      <div class="topic-notify-inner">
+        <i class="ti ti-bell topic-notify-icon"></i>
+        <h2>Ontvang een melding zodra dit beschikbaar is</h2>
+        <p>Meld u aan voor de MKBTechGids briefing en ontvang een melding zodra de AI Tools gids live gaat.</p>
+        <form class="notify-form" action="/api/subscribe" method="POST">
+          <input type="email" name="email" placeholder="uw@bedrijf.nl" required class="notify-input" />
+          <button type="submit" class="btn btn--green">Houd mij op de hoogte →</button>
+        </form>
+        <p class="notify-privacy"><i class="ti ti-shield-check"></i> Geen spam. Altijd afmelden mogelijk.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.topic-hero {
+  background: linear-gradient(135deg, var(--s5) 0%, #0f2147 100%);
+  padding: 80px 0 64px;
+}
+.topic-hero-inner { max-width: 680px; }
+.topic-hero h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--white);
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+.topic-hero-sub {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.topic-coming-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.topic-coming-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+  font-family: var(--font-mono);
+}
+.topic-preview-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 32px;
+}
+.topic-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.topic-preview-card {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.topic-preview-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--s3);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.topic-preview-card h3 {
+  font-size: 16px;
+  color: var(--s5);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.topic-preview-card p {
+  font-size: 14px;
+  color: var(--s4);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.topic-notify-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.topic-notify-icon {
+  font-size: 32px;
+  color: var(--g4);
+  display: block;
+  margin-bottom: 16px;
+}
+.topic-notify-inner h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 12px;
+}
+.topic-notify-inner p {
+  color: var(--s4);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.notify-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.notify-input {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  background: var(--white);
+}
+.notify-input:focus { outline: none; border-color: var(--g4); }
+.notify-privacy {
+  font-size: 12px;
+  color: var(--s3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .topic-hero h1 { font-size: 32px; }
+  .topic-preview-grid { grid-template-columns: 1fr; }
+  .notify-form { flex-direction: column; }
+}
+</style>

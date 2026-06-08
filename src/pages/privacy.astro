@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Privacybeleid — MKBTechGids"
+  description="Privacybeleid van MKBTechGids. Hoe wij omgaan met uw persoonsgegevens conform de AVG/GDPR."
+>
+
+  <section class="privacy-hero">
+    <div class="container">
+      <div class="privacy-hero-inner">
+        <span class="badge badge--slate">Juridisch</span>
+        <h1>Privacybeleid</h1>
+        <p>Laatste update: juni 2026 · KVK 27348456 · BTW NL004968309B61</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-body section">
+    <div class="container">
+      <div class="privacy-content">
+
+        <h2>1. Wie zijn wij?</h2>
+        <p>MKBTechGids is een initiatief van Jacques Domenie, gevestigd te Brielle, Nederland. Wij zijn bereikbaar via <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>.</p>
+
+        <h2>2. Welke gegevens verzamelen wij?</h2>
+        <p>Wij verwerken uitsluitend gegevens die u vrijwillig aan ons verstrekt:</p>
+        <ul>
+          <li><strong>E-mailadres</strong> — wanneer u zich aanmeldt voor de briefing of de NIS2 Scope Checker invult</li>
+          <li><strong>Functietitel</strong> — optioneel, bij aanmelding voor de briefing</li>
+          <li><strong>NIS2 scope resultaat</strong> — het resultaat van de Scope Checker, gekoppeld aan uw e-mailadres</li>
+        </ul>
+        <p>Wij verzamelen geen adresgegevens, telefoonnummers of betalingsgegevens via mkbtechgids.nl.</p>
+
+        <h2>3. Waarvoor gebruiken wij uw gegevens?</h2>
+        <ul>
+          <li>Het verzenden van de tweewekelijkse briefing (indien aangemeld)</li>
+          <li>Het toesturen van uw NIS2 Scope Checker resultaat per e-mail</li>
+          <li>Occasionele berichten over nieuwe content of de NIS2 Toolkit</li>
+        </ul>
+        <p>Wij verkopen uw gegevens nooit aan derden en gebruiken ze niet voor advertentiedoeleinden.</p>
+
+        <h2>4. Hoe lang bewaren wij uw gegevens?</h2>
+        <p>Uw e-mailadres wordt bewaard zolang u aangemeld bent voor de briefing. Na uitschrijving worden uw gegevens binnen 30 dagen verwijderd. U kunt zich te allen tijde uitschrijven via de afmeldlink in elke e-mail of door een bericht te sturen naar <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>.</p>
+
+        <h2>5. Verwerkers</h2>
+        <p>Wij maken gebruik van de volgende verwerkers:</p>
+        <ul>
+          <li><strong>Brevo (Sendinblue SAS)</strong> — voor e-mailverzending en contactbeheer. Brevo is AVG-compliant en heeft een verwerkersovereenkomst met ons. Uw gegevens worden opgeslagen op servers binnen de EU.</li>
+          <li><strong>Vercel Inc.</strong> — voor hosting van mkbtechgids.nl. Vercel verwerkt geen persoonsgegevens anders dan standaard serverlogboeken.</li>
+        </ul>
+
+        <h2>6. Uw rechten</h2>
+        <p>Op grond van de AVG heeft u de volgende rechten:</p>
+        <ul>
+          <li>Recht op inzage in uw persoonsgegevens</li>
+          <li>Recht op correctie van onjuiste gegevens</li>
+          <li>Recht op verwijdering ("recht op vergetelheid")</li>
+          <li>Recht op bezwaar tegen verwerking</li>
+          <li>Recht op gegevensoverdraagbaarheid</li>
+        </ul>
+        <p>Stuur een verzoek naar <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>. Wij reageren binnen 30 dagen.</p>
+
+        <h2>7. Cookies</h2>
+        <p>MKBTechGids gebruikt geen tracking-cookies, advertentie-cookies of analytische cookies van derden. Wij plaatsen uitsluitend technisch noodzakelijke cookies voor de werking van de website.</p>
+
+        <h2>8. Klachten</h2>
+        <p>Heeft u een klacht over de verwerking van uw persoonsgegevens? U kunt een klacht indienen bij de Autoriteit Persoonsgegevens via <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>.</p>
+
+        <h2>9. Wijzigingen</h2>
+        <p>Wij kunnen dit privacybeleid aanpassen. De meest recente versie is altijd te vinden op mkbtechgids.nl/privacy. Bij ingrijpende wijzigingen informeren wij u per e-mail.</p>
+
+        <div class="privacy-contact">
+          <strong>Contact voor privacyvragen:</strong><br />
+          MKBTechGids — Jacques Domenie<br />
+          Brielle, Nederland<br />
+          <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.privacy-hero {
+  background: var(--s5);
+  padding: 64px 0 48px;
+}
+.privacy-hero-inner { max-width: 680px; }
+.privacy-hero h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--white);
+  margin: 16px 0 8px;
+}
+.privacy-hero p {
+  font-size: 13px;
+  color: #64748b;
+  font-family: var(--font-mono);
+  margin: 0;
+}
+
+.privacy-content {
+  max-width: 720px;
+}
+.privacy-content h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--s5);
+  margin: 40px 0 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--s2);
+}
+.privacy-content h2:first-child { border-top: none; margin-top: 0; }
+.privacy-content p { line-height: 1.7; margin-bottom: 12px; }
+.privacy-content ul {
+  margin: 8px 0 16px 0;
+  padding-left: 20px;
+}
+.privacy-content li { line-height: 1.7; margin-bottom: 6px; color: var(--s4); }
+.privacy-content a { color: var(--g4); }
+.privacy-content a:hover { color: var(--g5); }
+.privacy-contact {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--s1);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--s4);
+}
+.privacy-contact strong { color: var(--s5); }
+</style>

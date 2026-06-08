@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Over MKBTechGids — Onafhankelijke technologiegids voor Nederlands MKB"
+  description="MKBTechGids is de onafhankelijke technologiegids voor bestuurders en executives in het Nederlandse MKB. Geen advertenties, geen vendor-belangen — alleen eerlijk advies."
+>
+
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero-inner">
+        <span class="badge badge--green">Over ons</span>
+        <h1>Technologie is te belangrijk om aan IT over te laten.</h1>
+        <p>MKBTechGids is opgericht vanuit één overtuiging: Nederlandse MKB-bestuurders verdienen onafhankelijke, eerlijke informatie over de technologiebeslissingen die hun organisatie raken.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-mission section">
+    <div class="container">
+      <div class="about-two-col">
+        <div class="about-col-text">
+          <h2>Wat wij doen</h2>
+          <p>MKBTechGids schrijft praktische gidsen over technologieregulering, software-evaluaties en implementatiestrategieën — specifiek voor het Nederlandse MKB. We behandelen onderwerpen die bestuurders direct raken: van de NIS2-cyberbeveiligingswet tot AI-tools die daadwerkelijk ROI leveren.</p>
+          <p>Onze content is altijd onafhankelijk. We accepteren geen betaalde plaatsingen, geen affiliate-deals die onze redactionele lijn beïnvloeden, en geen vendor-sponsoring die onze aanbevelingen kleurt.</p>
+        </div>
+        <div class="about-col-values">
+          <div class="about-value">
+            <i class="ti ti-shield-check about-value-icon"></i>
+            <div>
+              <strong>100% onafhankelijk</strong>
+              <p>Geen advertenties. Geen betaalde plaatsingen. Geen vendor-belangen.</p>
+            </div>
+          </div>
+          <div class="about-value">
+            <i class="ti ti-building about-value-icon"></i>
+            <div>
+              <strong>Specifiek voor MKB</strong>
+              <p>Geen enterprise-adviezen die niet passen bij organisaties van 10–500 medewerkers.</p>
+            </div>
+          </div>
+          <div class="about-value">
+            <i class="ti ti-flag about-value-icon"></i>
+            <div>
+              <strong>Nederlands en praktisch</strong>
+              <p>Altijd in de context van Nederlandse wetgeving, markt en bedrijfspraktijk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-person section section--white">
+    <div class="container">
+      <div class="about-person-inner">
+        <div class="about-person-text">
+          <span class="badge badge--slate">Oprichter</span>
+          <h2>Jacques Domenie</h2>
+          <p>Jacques heeft 25 jaar ervaring in technologieleiderschap bij grote Nederlandse en internationale organisaties — waaronder Fugro, Van Oord, NIBC Bank en Trivium Packaging. Hij heeft enterprise-architectuur opgezet, IT/OT-platformen geleverd voor 60 fabrieken en 100 offshore schepen, en ISO 27001-trajecten begeleid.</p>
+          <p>MKBTechGids is zijn antwoord op een vraag die hij steeds vaker hoorde: <em>"Waar kan ik als bestuurder betrouwbare, onafhankelijke informatie over technologie vinden — zonder een consultant in te hoeven huren?"</em></p>
+          <a href="https://www.linkedin.com/in/jacquesdomenie" target="_blank" rel="noopener" class="btn btn--outline">
+            <i class="ti ti-brand-linkedin"></i> Verbind op LinkedIn
+          </a>
+        </div>
+        <div class="about-person-card">
+          <div class="about-person-stats">
+            <div class="about-stat">
+              <span class="about-stat-num">25+</span>
+              <span class="about-stat-label">Jaar ervaring</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">€4B+</span>
+              <span class="about-stat-label">Omzet onder beheer</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">11.000</span>
+              <span class="about-stat-label">Max. medewerkers</span>
+            </div>
+          </div>
+          <div class="about-person-orgs">
+            <p class="about-orgs-label">Ervaring bij</p>
+            <div class="about-orgs-list">
+              <span>Fugro</span>
+              <span>Van Oord</span>
+              <span>NIBC Bank</span>
+              <span>Trivium Packaging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-techleadnl section section--green-tint">
+    <div class="container">
+      <div class="about-techleadnl-inner">
+        <i class="ti ti-link about-tl-icon"></i>
+        <h2>Zoekt u implementatiehulp?</h2>
+        <p>Voor bestuurders die niet alleen willen lezen maar ook willen handelen: TechLead NL levert fractional CTO, CIO en Chief Architect diensten voor het Nederlandse MKB. Dezelfde onafhankelijke aanpak — nu als directe dienstverlening.</p>
+        <a href="https://www.techleadnl.nl" target="_blank" rel="noopener" class="btn btn--green">Bekijk TechLead NL →</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.about-hero {
+  background: linear-gradient(135deg, var(--s5) 0%, #0f2147 100%);
+  padding: 80px 0 64px;
+}
+.about-hero-inner { max-width: 720px; }
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: 44px;
+  color: var(--white);
+  margin: 16px 0 20px;
+  line-height: 1.2;
+}
+.about-hero p {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-col-text h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 16px;
+}
+.about-col-text p { margin-bottom: 16px; line-height: 1.7; }
+
+.about-value {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--s2);
+}
+.about-value:last-child { border-bottom: none; }
+.about-value-icon {
+  font-size: 20px;
+  color: var(--g4);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.about-value strong { display: block; color: var(--s5); margin-bottom: 4px; }
+.about-value p { margin: 0; font-size: 14px; color: var(--s4); }
+
+.about-person-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px;
+  align-items: start;
+}
+.about-person-text .badge { margin-bottom: 12px; display: inline-block; }
+.about-person-text h2 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--s5);
+  margin-bottom: 16px;
+}
+.about-person-text p { margin-bottom: 16px; line-height: 1.7; }
+.about-person-text em { color: var(--s5); font-style: italic; }
+.about-person-text .btn { margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; }
+
+.about-person-card {
+  background: var(--white);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+.about-person-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--s2);
+}
+.about-stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--g4);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.about-stat-label {
+  font-size: 11px;
+  color: var(--s3);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.about-orgs-label {
+  font-size: 11px;
+  color: var(--s3);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.about-orgs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.about-orgs-list span {
+  background: var(--s1);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--s4);
+  font-weight: 500;
+}
+
+.about-techleadnl-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-tl-icon {
+  font-size: 32px;
+  color: var(--g4);
+  display: block;
+  margin-bottom: 16px;
+}
+.about-techleadnl-inner h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--s5);
+  margin-bottom: 12px;
+}
+.about-techleadnl-inner p {
+  color: var(--s4);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 { font-size: 30px; }
+  .about-two-col { grid-template-columns: 1fr; gap: 40px; }
+  .about-person-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-person-stats { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
