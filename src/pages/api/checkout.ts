@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { PRODUCTS, mollieValue } from '../../lib/products.js';
+import { PRODUCTS } from '../../lib/products.js';
 import type { ProductId } from '../../lib/products.js';
 
 export const POST: APIRoute = async ({ request }) => {
@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response('Ongeldig e-mailadres.', { status: 400 });
   }
 
-  const apiKey = import.meta.env.MOLLIE_API_KEY;
+  const apiKey = import.meta.env.STRIPE_SECRET_KEY;
   const siteUrl = (import.meta.env.SITE_URL ?? 'https://www.mkbtechgids.nl').replace(/\/$/, '');
 
   if (!apiKey) {
@@ -23,34 +23,41 @@ export const POST: APIRoute = async ({ request }) => {
 
   const product = PRODUCTS[productId];
 
-  const res = await fetch('https://api.mollie.com/v2/payments', {
+  const body = new URLSearchParams();
+  body.set('mode', 'payment');
+  body.set('customer_email', email);
+  body.set('automatic_payment_methods[enabled]', 'true');
+  body.set('line_items[0][price_data][currency]', 'eur');
+  body.set('line_items[0][price_data][unit_amount]', String(product.priceEurCents));
+  body.set('line_items[0][price_data][product_data][name]', `MKBTechGids — ${product.name}`);
+  body.set('line_items[0][price_data][product_data][description]', product.tagline);
+  body.set('line_items[0][quantity]', '1');
+  body.set('success_url', `${siteUrl}/api/stripe-return?session_id={CHECKOUT_SESSION_ID}`);
+  body.set('cancel_url', `${siteUrl}/nis2-toolbox?betaling=canceled`);
+  body.set('metadata[product]', productId);
+  body.set('metadata[email]', email);
+  body.set('locale', 'nl');
+
+  const res = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify({
-      amount: { currency: 'EUR', value: mollieValue(product.priceEurCents) },
-      description: `MKBTechGids — ${product.name}`,
-      redirectUrl: `${siteUrl}/api/mollie-return`,
-      webhookUrl: `${siteUrl}/api/mollie-webhook`,
-      metadata: { product: productId, email },
-      locale: 'nl_NL',
-    }),
+    body: body.toString(),
   });
 
   if (!res.ok) {
-    console.error('Mollie create payment error:', res.status, await res.text());
+    console.error('Stripe create session error:', res.status, await res.text());
     return Response.redirect(`${siteUrl}/nis2-toolbox?betaling=mislukt`, 303);
   }
 
-  const payment = await res.json();
-  const checkoutUrl: string | undefined = payment._links?.checkout?.href;
+  const session = await res.json();
 
-  if (!checkoutUrl) {
-    console.error('No checkout URL in Mollie response:', JSON.stringify(payment));
+  if (!session.url) {
+    console.error('No session URL in Stripe response:', JSON.stringify(session));
     return Response.redirect(`${siteUrl}/nis2-toolbox?betaling=mislukt`, 303);
   }
 
-  return Response.redirect(checkoutUrl, 303);
+  return Response.redirect(session.url, 303);
 };
