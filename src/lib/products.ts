@@ -64,10 +64,10 @@ export const PRODUCTS: Record<ProductId, Product> = {
   'complete-toolkit': {
     id: 'complete-toolkit',
     name: 'Complete Toolkit',
-    tagline: 'Alle 8 modules + R1–R7 + 2 instrumenten',
+    tagline: 'Alle 8 modules + R1–R7 + 5 instrumenten',
     tag: 'Aanbevolen',
     tagFeatured: true,
-    description: 'Alles wat u nodig heeft voor een volledig NIS2-dossier. 8 Word-modules, 7 Excel-registers en 2 analysetools — klaar voor de toezichthouder.',
+    description: 'Alles wat u nodig heeft voor een volledig NIS2-dossier. 8 Word-modules, 7 Excel-registers en 5 instrumenten (o.a. Routekaart, Gap-Analyse & Bewustzijnsverklaring) — klaar voor de toezichthouder.',
     includes: [
       'M1–M8 — Alle 8 modules (Word)',
       'R1 — Risicoregister (Excel)',
