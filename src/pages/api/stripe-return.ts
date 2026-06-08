@@ -38,7 +38,8 @@ export const GET: APIRoute = async ({ url }) => {
   }
 
   const productId = session.metadata?.product as ProductId | undefined;
-  const email: string = session.metadata?.email ?? session.customer_email ?? '';
+  const email: string =
+    session.metadata?.email ?? session.customer_details?.email ?? session.customer_email ?? '';
 
   if (!productId || !PRODUCTS[productId]) {
     console.error('Unknown product in Stripe session metadata:', session.metadata);
@@ -48,7 +49,7 @@ export const GET: APIRoute = async ({ url }) => {
   const secret = import.meta.env.DOWNLOAD_SECRET ?? '';
   const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
 
-  const token = await completeOrder(sessionId, productId, email, secret, brevoKey, siteUrl);
+  const token = await completeOrder({ session, productId, email, secret, brevoKey, siteUrl });
 
   return Response.redirect(`${siteUrl}/bedankt?token=${encodeURIComponent(token)}`, 303);
 };

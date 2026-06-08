@@ -43,14 +43,15 @@ export const POST: APIRoute = async ({ request }) => {
 
       if (session?.payment_status === 'paid') {
         const productId = session.metadata?.product as ProductId | undefined;
-        const email: string = session.metadata?.email ?? session.customer_email ?? '';
+        const email: string =
+          session.metadata?.email ?? session.customer_details?.email ?? session.customer_email ?? '';
 
         if (productId && PRODUCTS[productId] && email) {
           const secret = import.meta.env.DOWNLOAD_SECRET ?? '';
           const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
           const siteUrl = (import.meta.env.SITE_URL ?? 'https://www.mkbtechgids.nl').replace(/\/$/, '');
 
-          await completeOrder(session.id, productId, email, secret, brevoKey, siteUrl);
+          await completeOrder({ session, productId, email, secret, brevoKey, siteUrl });
         }
       }
     }

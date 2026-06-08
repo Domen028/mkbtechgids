@@ -30,6 +30,11 @@ export const POST: APIRoute = async ({ request }) => {
   body.append('payment_method_types[]', 'ideal');
   body.set('line_items[0][price]', product.stripePriceId);
   body.set('line_items[0][quantity]', '1');
+  // 21% BTW added on top (prices are excl. btw). Rate is exclusive.
+  const taxRateId = import.meta.env.STRIPE_TAX_RATE_ID;
+  if (taxRateId) {
+    body.append('line_items[0][tax_rates][]', taxRateId);
+  }
   body.set('success_url', `${siteUrl}/api/stripe-return?session_id={CHECKOUT_SESSION_ID}`);
   body.set('cancel_url', `${siteUrl}/nis2-toolbox?betaling=canceled`);
   body.set('metadata[product]', productId);
