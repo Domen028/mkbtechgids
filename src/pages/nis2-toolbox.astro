@@ -1,378 +1,766 @@
 ---
 export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PRODUCTS, priceDisplay } from '../lib/products.js';
 ---
 
-<!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NIS2 Toolbox — Praktische templates en SaaS platform voor Nederlandse MKB's." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <title>NIS2 Toolbox — Templates & SaaS Platform — MKBTechGids</title>
-  <style>
-    :root {
-      --navy-dark: #0f2147;
-      --navy-light: #1e3a6e;
-      --green: #14532d;
-      --green-light: #15803d;
-      --green-bg: #f0fdf4;
-      --text-dark: #f1f5f9;
-      --text-light: #94a3b8;
-      --bg-light: #f8fafc;
-      --bg-gray: #e2e8f0;
-      --text-body: #475569;
-    }
-    
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
-    a { color: var(--green); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--green-light); }
+<BaseLayout
+  title="NIS2 Compliance Toolkit — MKBTechGids"
+  description="Praktische Word- en Excel-templates voor NIS2-compliance. Direct bruikbaar voor het Nederlandse MKB. Gratis Module 1 beschikbaar."
+>
 
-    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
-    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
-    .nav-logo img { height: 46px; width: auto; }
-    .nav-links { display: flex; gap: 28px; flex: 1; margin: 0; padding: 0; }
-    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
-    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
-    
-    .nav-item { position: relative; display: flex; align-items: center; }
-    .nav-dropdown-trigger { background: none; border: none; font-family: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid transparent; transition: color 0.14s; }
-    .nav-dropdown-trigger:hover { color: var(--green); border-bottom-color: var(--green); }
-    .nav-dropdown-trigger::after { content: '▼'; font-size: 8px; transition: transform 0.2s; }
-    .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
-    .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -40px; background: white; border: 1px solid var(--bg-gray); border-radius: 6px; min-width: 340px; padding: 8px 0; box-shadow: 0 8px 24px rgba(15, 33, 71, 0.15); display: none; z-index: 1000; }
-    .nav-dropdown.open { display: block; }
-    .nav-dropdown a { display: block; padding: 14px 20px; font-size: 14px; color: var(--text-body); transition: all 0.14s; border-left: 3px solid transparent; text-decoration: none; }
-    .nav-dropdown a:hover { background: var(--green-bg); color: var(--green); border-left-color: var(--green); }
-
-    .page-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-    .page-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
-    .page-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; }
-
-    .content-section { padding: 60px 28px; background: var(--bg-light); }
-    .content-inner { max-width: 1100px; margin: 0 auto; }
-
-    .section-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
-    .section-subtitle { font-size: 16px; color: var(--text-light); margin-bottom: 40px; }
-
-    /* Tier 1 Section */
-    .tier1-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-top: 40px; }
-    .bundle-card { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 32px 24px; transition: all 0.2s; display: flex; flex-direction: column; }
-    .bundle-card:hover { box-shadow: 0 12px 32px rgba(15, 33, 71, 0.15); transform: translateY(-4px); border-color: var(--green); }
-    .bundle-card.featured { border-color: var(--green); background: var(--green-bg); }
-
-    .bundle-tag { display: inline-block; background: rgba(20, 83, 45, 0.1); color: var(--green); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px; width: fit-content; }
-    .bundle-tag.popular { background: var(--green); color: white; }
-
-    .bundle-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
-    .bundle-card p { font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
-
-    .bundle-modules { background: rgba(0,0,0,0.04); padding: 16px; border-radius: 6px; margin-bottom: 20px; font-size: 12px; }
-    .bundle-modules strong { display: block; margin-bottom: 8px; color: var(--navy-dark); }
-    .bundle-modules li { margin-left: 16px; margin-bottom: 4px; }
-
-    .bundle-price { font-size: 28px; font-weight: 700; color: var(--green); margin-bottom: 16px; }
-    .bundle-price small { font-size: 14px; color: var(--text-light); font-weight: 400; }
-
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; text-align: center; text-decoration: none; border: none; }
-    .btn-primary { background: var(--green); color: white; }
-    .btn-primary:hover { background: var(--green-light); }
-    .btn-secondary { background: white; color: var(--green); border: 2px solid var(--green); }
-    .btn-secondary:hover { background: var(--green-bg); }
-
-    /* Tier 2 Section */
-    .tier2-box { background: linear-gradient(135deg, var(--green-bg) 0%, white 100%); border: 2px solid var(--green); border-radius: 8px; padding: 48px 40px; margin-top: 40px; }
-    .tier2-content { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .tier2-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; }
-    .tier2-text p { font-size: 15px; color: var(--text-body); margin-bottom: 12px; line-height: 1.8; }
-    .tier2-text ul { margin: 20px 0; padding-left: 20px; }
-    .tier2-text li { margin-bottom: 8px; }
-
-    .signup-form { display: flex; flex-direction: column; gap: 12px; }
-    .form-field { display: flex; flex-direction: column; }
-    .form-field label { font-size: 13px; font-weight: 600; color: var(--navy-dark); margin-bottom: 6px; }
-    .form-field input { padding: 10px 14px; border: 1px solid var(--bg-gray); border-radius: 4px; font-family: inherit; font-size: 14px; }
-    .form-field input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(20, 83, 45, 0.1); }
-
-    /* Free Sample */
-    .free-sample { background: white; border: 2px dashed var(--green); border-radius: 8px; padding: 40px 28px; text-align: center; margin-top: 40px; }
-    .free-sample h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; }
-    .free-sample p { font-size: 14px; color: var(--text-body); margin-bottom: 24px; }
-
-    /* FAQ */
-    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 40px; }
-    .faq-item { background: white; padding: 24px; border-radius: 6px; border-left: 4px solid var(--green); }
-    .faq-item strong { display: block; color: var(--navy-dark); margin-bottom: 8px; }
-    .faq-item p { font-size: 14px; color: var(--text-body); }
-
-    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .footer p { font-size: 13px; margin: 0; }
-    .footer a { color: var(--green-light); }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .page-hero { padding: 48px 28px; }
-      .page-hero h1 { font-size: 28px; }
-      .tier1-grid { grid-template-columns: 1fr; }
-      .tier2-content { grid-template-columns: 1fr; }
-      .content-section { padding: 40px 28px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="120" height="46" /></a>
-      <nav class="nav-links">
-        <a href="/nis2">NIS2</a>
-        <a href="/">AI Governance</a>
-        <a href="/">AI Tools</a>
-        <a href="/">CRM</a>
-        <div class="nav-item">
-          <button class="nav-dropdown-trigger" aria-expanded="false" aria-label="Artikelen menu">Artikelen</button>
-          <div class="nav-dropdown">
-            <a href="/nis2">NIS2 Implementatie (beide artikelen)</a>
-            <a href="/articles" style="border-top: 1px solid var(--bg-gray); padding-top: 12px; margin-top: 4px; color: var(--green); font-weight: 600;">Alle artikelen →</a>
-          </div>
-        </div>
-      </nav>
+  <!-- Hero -->
+  <section class="tk-hero">
+    <div class="tk-hero-inner">
+      <span class="tk-hero-badge">NIS2 Compliance Toolkit</span>
+      <h1>Alles wat u nodig heeft om NIS2-compliant te worden</h1>
+      <p>
+        8 invulklare Word-modules + 7 Excel-registers + 2 analysetools.
+        Ontwikkeld door compliance-professionals. Geauditeerd en goedgekeurd.
+      </p>
+      <div class="tk-hero-meta">
+        <span><i class="ti ti-shield-check"></i> Alle NIS2 Art. 21(2) verplichtingen gedekt</span>
+        <span><i class="ti ti-file-check"></i> Direct invulbaar, geen installatie</span>
+        <span><i class="ti ti-award"></i> Big 4 kwaliteitsniveau</span>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="page-hero">
-      <div class="page-hero-inner">
-        <h1>NIS2 Toolbox</h1>
-        <p>Praktische templates én SaaS platform — alles wat je nodig hebt om NIS2-compliant te worden. Kies templates voor direct gebruik of het SaaS platform voor volledige begeleiding.</p>
-      </div>
-    </section>
+  <!-- Flash messages -->
+  <div id="flash-wrapper"></div>
 
-    <!-- TIER 1: TEMPLATES -->
-    <section class="content-section">
-      <div class="content-inner">
-        <h2 class="section-title">Tier 1: Templates — Direct downloaden & gebruiken</h2>
-        <p class="section-subtitle">Word + Excel + PDF formaat. Meteen invullen, geen installatie nodig.</p>
+  <!-- Free module CTA bar -->
+  <div class="tk-free-bar">
+    <div class="tk-free-inner">
+      <span><strong>Gratis:</strong> Module 1 (NIS2 Zelfevaluatie) — download zonder betaling</span>
+      <a href="/downloads/NIS2-Module1-Zelfevaluatie.docx" download class="tk-free-btn">
+        <i class="ti ti-download"></i> Download gratis
+      </a>
+    </div>
+  </div>
 
-        <div class="tier1-grid">
-          <!-- Bundle 1: Module 1 Only -->
-          <div class="bundle-card">
-            <div class="bundle-tag">Starter</div>
-            <h3>Module 1: Zelf beoordelen</h3>
-            <p>Bepaal of jouw bedrijf onder NIS2 valt. Checklist, invulformulier, beslisboom en risico-informatie.</p>
-            <div class="bundle-modules">
-              <strong>Inclusief:</strong>
-              <ul>
-                <li>Sector/grootte checklist</li>
-                <li>Bedrijfsgegevens formulier</li>
-                <li>Essentieel/belangrijk beslisboom</li>
-                <li>Boete & aansprakelijkheid info</li>
-              </ul>
+  <!-- Product bundles -->
+  <section class="tk-section">
+    <div class="tk-inner">
+      <h2 class="tk-section-title">Kies uw pakket</h2>
+      <p class="tk-section-sub">
+        Eenmalige aankoop · Direct downloaden · 7 dagen downloadlink geldig
+      </p>
+
+      <div class="tk-grid">
+        {Object.values(PRODUCTS).map((product) => (
+          <div class={`tk-card${product.featured ? ' tk-card--featured' : ''}`}>
+            <div class={`tk-tag${product.tagFeatured ? ' tk-tag--featured' : ''}`}>
+              {product.tag}
             </div>
-            <div class="bundle-price">€19</div>
-            <button class="btn btn-primary" onclick="alert('Gumroad link: Module 1')">Naar Gumroad →</button>
-          </div>
 
-          <!-- Bundle 2: Modules 1-3 Quick Start -->
-          <div class="bundle-card featured">
-            <div class="bundle-tag popular">Populair</div>
-            <h3>Quick Start Bundle</h3>
-            <p>Begin hier. Bepaal waar je staat, begrijp de 10 verplichtingen, en zet je incidentenplan op.</p>
-            <div class="bundle-modules">
-              <strong>Inclusief:</strong>
-              <ul>
-                <li>Module 1: Zelf beoordelen</li>
-                <li>Module 2: 10 verplichtingen</li>
-                <li>Module 3: Incidentenplan</li>
-              </ul>
+            <h3 class="tk-card-name">{product.name}</h3>
+            <p class="tk-card-tagline">{product.tagline}</p>
+            <p class="tk-card-desc">{product.description}</p>
+
+            <ul class="tk-includes">
+              {product.includes.map((item) => (
+                <li><i class="ti ti-check"></i> {item}</li>
+              ))}
+            </ul>
+
+            <div class="tk-price">
+              {priceDisplay(product.priceEurCents)}
+              <span class="tk-price-note">excl. btw · eenmalig</span>
             </div>
-            <div class="bundle-price">€39</div>
-            <button class="btn btn-primary" onclick="alert('Gumroad link: Quick Start')">Naar Gumroad →</button>
-          </div>
 
-          <!-- Bundle 3: Modules 1-5 Core -->
-          <div class="bundle-card">
-            <div class="bundle-tag">Uitgebreid</div>
-            <h3>Core Bundle</h3>
-            <p>Afdekking van basis- en middenniveau. Inclusief leveranciers, toegangscontrole, back-ups en medewerkers.</p>
-            <div class="bundle-modules">
-              <strong>Inclusief:</strong>
-              <ul>
-                <li>Modules 1-3 (Quick Start)</li>
-                <li>Module 4: Leveranciers</li>
-                <li>Module 5: Wachtwoorden & toegang</li>
-              </ul>
-            </div>
-            <div class="bundle-price">€59</div>
-            <button class="btn btn-primary" onclick="alert('Gumroad link: Core')">Naar Gumroad →</button>
-          </div>
-
-          <!-- Bundle 4: All 8 Modules -->
-          <div class="bundle-card featured">
-            <div class="bundle-tag popular">Compleet</div>
-            <h3>Complete Toolkit</h3>
-            <p>Alle 8 modules + bijlagen. Volledige toolkit voor medewerkers, documentatie, jaarlijkse review en meer.</p>
-            <div class="bundle-modules">
-              <strong>Inclusief:</strong>
-              <ul>
-                <li>Modules 1-5 (Core Bundle)</li>
-                <li>Module 6: Medewerkers</li>
-                <li>Module 7: Documentatie</li>
-                <li>Module 8: Jaarlijkse review</li>
-                <li>Bijlagen & glossary</li>
-              </ul>
-            </div>
-            <div class="bundle-price">€89</div>
-            <button class="btn btn-primary" onclick="alert('Gumroad link: Complete')">Naar Gumroad →</button>
-          </div>
-        </div>
-
-        <!-- Individual Modules Option -->
-        <div style="margin-top: 48px; padding: 24px; background: white; border-radius: 8px; border: 1px solid var(--bg-gray);">
-          <strong style="color: var(--navy-dark);">Of koop modules individueel</strong>
-          <p style="font-size: 14px; color: var(--text-body); margin-top: 8px;">Elke module ook apart beschikbaar — €15 per module.</p>
-          <a href="#" class="btn btn-secondary" style="margin-top: 12px;">Alle modules →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FREE SAMPLE -->
-    <section class="content-section" style="background: var(--green-bg);">
-      <div class="content-inner">
-        <div class="free-sample">
-          <h3>🎁 Gratis: Module 1 Sample</h3>
-          <p>Download de zelfbeoordeling-checklist van Module 1 gratis. Geen email-adres nodig.</p>
-          <button class="btn btn-primary" onclick="alert('Download Module 1 preview')">Download gratis →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TIER 2: SAAS -->
-    <section class="content-section">
-      <div class="content-inner">
-        <h2 class="section-title">Tier 2: SaaS Platform — Begeleide aanpak</h2>
-        <p class="section-subtitle">Interactieve compliance tracking. Het systeem leidt je stap-voor-stap door alle 8 modules.</p>
-
-        <div class="tier2-box">
-          <div class="tier2-content">
-            <div class="tier2-text">
-              <h3>Early Access</h3>
-              <p>Bent u benieuwd naar ons SaaS platform? Wij werken aan een volledige, interactieve compliance tracking tool met:</p>
-              <ul>
-                <li>Zelfbeoordeling → compliance score</li>
-                <li>Interactieve worksheets (alle 8 modules)</li>
-                <li>Voortgang dashboard</li>
-                <li>Incident log & risico register</li>
-                <li>PDF exports voor audits</li>
-                <li>Jaarlijkse review reminders</li>
-              </ul>
-              <p><strong>Interesse?</strong> Meld je aan voor early access en ontvang 25% korting op de eerste 12 maanden.</p>
-            </div>
-            <form class="signup-form" onsubmit="handleSaasSignup(event)">
-              <div class="form-field">
-                <label for="name">Uw naam</label>
-                <input type="text" id="name" name="name" placeholder="Voornaam + Achternaam" required />
-              </div>
-              <div class="form-field">
-                <label for="email">E-mailadres</label>
-                <input type="email" id="email" name="email" placeholder="u@bedrijf.nl" required />
-              </div>
-              <div class="form-field">
-                <label for="company">Bedrijfsnaam</label>
-                <input type="text" id="company" name="company" placeholder="Uw bedrijf" required />
-              </div>
-              <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Aanmelden Early Access</button>
+            <form method="POST" action="/api/checkout" class="tk-buy-form">
+              <input type="hidden" name="product" value={product.id} />
+              <input
+                type="email"
+                name="email"
+                class="tk-email-input"
+                placeholder="uw@bedrijf.nl"
+                required
+                autocomplete="email"
+              />
+              <button type="submit" class={`tk-buy-btn${product.featured ? ' tk-buy-btn--primary' : ''}`}>
+                <i class="ti ti-credit-card"></i>
+                Kopen — {priceDisplay(product.priceEurCents)}
+              </button>
             </form>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="content-section">
-      <div class="content-inner">
-        <h2 class="section-title">Veelgestelde vragen</h2>
-        <div class="faq-grid">
-          <div class="faq-item">
-            <strong>Welke template kies ik?</strong>
-            <p>Begin met <strong>Quick Start</strong> (€39) als je snel wilt starten. Upgrade naar <strong>Core</strong> (€59) als je meer aandacht voor medewerkers en leveranciers wilt. <strong>Complete</strong> (€89) is voor volledige documentatie.</p>
+            <p class="tk-mollie-note">
+              <i class="ti ti-lock"></i> Veilig betalen via iDEAL · Mastercard · Visa
+            </p>
           </div>
-          <div class="faq-item">
-            <strong>Kan ik de templates aanpassen?</strong>
-            <p>Ja! Word en Excel formaten zijn volledig bewerkbaar. Pas ze aan naar jouw bedrijf.</p>
-          </div>
-          <div class="faq-item">
-            <strong>Krijg ik updates?</strong>
-            <p>Templates zijn statisch. Het SaaS platform zal regelmatig updates krijgen naarmate regelgeving verandert.</p>
-          </div>
-          <div class="faq-item">
-            <strong>Hoeveel tijd kost dit?</strong>
-            <p>Templates kosten 4-8 uur per module. Het SaaS platform begeleidt je in stappen (totaal 10-15 uur).</p>
-          </div>
-          <div class="faq-item">
-            <strong>Kan ik samen met mijn ICT-leverancier werken?</strong>
-            <p>Absoluut. De templates en SaaS zijn ontworpen voor samenwerking. Module 4 behandelt leveranciersbeheer.</p>
-          </div>
-          <div class="faq-item">
-            <strong>Geen GDPR/beveiliging problemen?</strong>
-            <p>Templates zijn offline. Het SaaS platform volgt GDPR, NIS2 en ISO27001 naleving.</p>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="https://techleadnl.nl">TechLeadNL</a> | <a href="/nis2">NIS2 Artikelen</a></p>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Dropdown menu toggle
-    const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
-    const dropdown = document.querySelector('.nav-dropdown');
-    
-    if (dropdownTrigger && dropdown) {
-      dropdownTrigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = dropdown.classList.contains('open');
-        dropdown.classList.toggle('open');
-        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
-      });
+  <!-- What's inside — full module list -->
+  <section class="tk-section tk-section--alt">
+    <div class="tk-inner">
+      <h2 class="tk-section-title">Wat zit er in de Complete Toolkit?</h2>
+      <p class="tk-section-sub">17 bestanden — alle NIS2 Art. 21(2) verplichtingen volledig gedekt</p>
 
-      dropdown.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.stopPropagation();
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
-        });
-      });
+      <div class="tk-contents-grid">
+        <div class="tk-contents-col">
+          <h4 class="tk-contents-head"><i class="ti ti-file-word"></i> 8 Word-modules</h4>
+          <ul class="tk-contents-list">
+            <li>M1 — NIS2 Zelfevaluatie</li>
+            <li>M2 — Risicoanalyse</li>
+            <li>M3 — Beveiligingsmaatregelen</li>
+            <li>M4 — Leveranciersbeveiliging</li>
+            <li>M5 — Bedrijfscontinuïteit & DRP</li>
+            <li>M6 — Medewerkers & Bewustzijn</li>
+            <li>M7 — Documentatie & Logging</li>
+            <li>M8 — Jaarlijkse Review & Directieverklaring</li>
+          </ul>
+        </div>
+        <div class="tk-contents-col">
+          <h4 class="tk-contents-head"><i class="ti ti-file-spreadsheet"></i> 7 Excel-registers</h4>
+          <ul class="tk-contents-list">
+            <li>R1 — Risicoregister</li>
+            <li>R2 — Activainventaris</li>
+            <li>R3 — Leveranciersregister</li>
+            <li>R4 — Incidentenlog (Art. 23 gereed)</li>
+            <li>R5 — Compliance Dashboard (M1–M8)</li>
+            <li>R6 — Trainingsregister</li>
+            <li>R7 — Logregister</li>
+          </ul>
+        </div>
+        <div class="tk-contents-col">
+          <h4 class="tk-contents-head"><i class="ti ti-chart-bar"></i> 2 Analysetools</h4>
+          <ul class="tk-contents-list">
+            <li>Beheersmaatregelkaart</li>
+            <li>Dreigingscatalogus</li>
+          </ul>
+          <div class="tk-audit-badge">
+            <i class="ti ti-shield-check"></i>
+            <div>
+              <strong>Geauditeerd</strong>
+              <p>Alle 10 NIS2 Art. 21(2) verplichtingen gedekt. 8-perspectief validatie inclusief NIS2-expert, CISO, Big 4 consultant en CFO-perspectief.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      document.addEventListener('click', function(e) {
-        if (!dropdownTrigger.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.classList.remove('open');
-          dropdownTrigger.setAttribute('aria-expanded', 'false');
-        }
-      });
+  <!-- Comparison: consultant vs toolkit -->
+  <section class="tk-section">
+    <div class="tk-inner">
+      <h2 class="tk-section-title">Onafhankelijk advies besparen</h2>
+      <div class="tk-compare">
+        <div class="tk-compare-col tk-compare-col--them">
+          <div class="tk-compare-head">Consultant quickscan</div>
+          <div class="tk-compare-price">€2.000 – €5.000</div>
+          <ul>
+            <li>Eenmalig adviesrapport</li>
+            <li>Geen invulbare templates</li>
+            <li>Geen dossier voor toezichthouder</li>
+            <li>Afhankelijk van externe partij</li>
+          </ul>
+        </div>
+        <div class="tk-compare-vs">vs.</div>
+        <div class="tk-compare-col tk-compare-col--us">
+          <div class="tk-compare-head">Complete Toolkit</div>
+          <div class="tk-compare-price">€249</div>
+          <ul>
+            <li><i class="ti ti-check"></i> 17 direct invulbare bestanden</li>
+            <li><i class="ti ti-check"></i> Volledig NIS2-dossier voor toezichthouder</li>
+            <li><i class="ti ti-check"></i> Onafhankelijk — uw eigen bezit</li>
+            <li><i class="ti ti-check"></i> Direct beschikbaar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tk-section tk-section--alt">
+    <div class="tk-inner">
+      <h2 class="tk-section-title">Veelgestelde vragen</h2>
+      <div class="tk-faq">
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Welk pakket kies ik?</summary>
+          <div class="tk-faq-a">
+            Begin met de <strong>Complete Toolkit (€249)</strong> als u een volledig NIS2-dossier wilt voor de toezichthouder.
+            De <strong>Core Bundle (€129)</strong> dekt het fundament (M1–M5 + risicoregister). <strong>Quick Start (€49)</strong> is voor wie snel wil starten met de basics.
+          </div>
+        </details>
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Kan ik de templates aanpassen?</summary>
+          <div class="tk-faq-a">
+            Ja. Alle Word-bestanden zijn volledig bewerkbaar. De Excel-registers hebben beschermde formules maar invulbare cellen. U past alles aan naar uw organisatie.
+          </div>
+        </details>
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Hoe lang duurt invullen?</summary>
+          <div class="tk-faq-a">
+            Elke module kost gemiddeld 2–4 uur. De volledige Complete Toolkit kost 24–30 uur totaal, afhankelijk van uw organisatie. Verdeeld over meerdere sessies is dit prima te behappen.
+          </div>
+        </details>
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Hoe ontvang ik de bestanden?</summary>
+          <div class="tk-faq-a">
+            Direct na betaling wordt u doorgestuurd naar een beveiligde downloadpagina. U ontvangt ook een bevestigingsmail met de downloadlink (geldig 7 dagen). Sla de bestanden op zodra u ze heeft gedownload.
+          </div>
+        </details>
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Geldt er btw?</summary>
+          <div class="tk-faq-a">
+            De getoonde prijzen zijn exclusief btw (21%). Bij afrekening wordt de btw opgeteld. Btw-nummer: NL004968309B61.
+          </div>
+        </details>
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Wat als ik vragen heb bij het invullen?</summary>
+          <div class="tk-faq-a">
+            Elke module bevat een uitgewerkt invulvoorbeeld (§7) en instructies. Bij het <strong>Full Package (€349)</strong> is e-mailondersteuning inbegrepen. Voor losse vragen: <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Show flash message based on URL param
+  const params = new URLSearchParams(window.location.search);
+  const betaling = params.get('betaling');
+  const wrapper = document.getElementById('flash-wrapper');
+
+  if (betaling && wrapper) {
+    const messages: Record<string, { type: string; text: string }> = {
+      canceled:    { type: 'warn', text: 'Betaling geannuleerd. U kunt het opnieuw proberen.' },
+      failed:      { type: 'err',  text: 'Betaling mislukt. Probeer een andere betaalmethode.' },
+      expired:     { type: 'warn', text: 'Sessie verlopen. U kunt het opnieuw proberen.' },
+      mislukt:     { type: 'err',  text: 'Er is iets misgegaan. Probeer het opnieuw of mail info@mkbtechgids.nl.' },
+      verwerking:  { type: 'info', text: 'Uw betaling wordt verwerkt. U ontvangt een bevestigingsmail zodra dit gereed is.' },
+      'config-fout': { type: 'err', text: 'Betaling tijdelijk niet beschikbaar. Mail info@mkbtechgids.nl.' },
+    };
+
+    const msg = messages[betaling];
+    if (msg) {
+      wrapper.innerHTML = `<div class="tk-flash tk-flash--${msg.type}" role="alert">${msg.text}</div>`;
     }
+  }
+</script>
 
-    function handleSaasSignup(event) {
-      event.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const company = document.getElementById('company').value;
-      alert(`Bedankt ${name}! We nemen contact op via ${email} (${company})`);
-      // TODO: Send to Brevo or your email service
-    }
-  </script>
-</body>
-</html>
+<style>
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .tk-hero {
+    background: linear-gradient(135deg, var(--navy-dark, #0f2147) 0%, #1a3366 100%);
+    padding: 72px 28px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tk-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  .tk-hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .tk-hero-badge {
+    display: inline-block;
+    background: rgba(21, 128, 61, 0.3);
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+  }
+
+  .tk-hero h1 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .tk-hero p {
+    font-size: 17px;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 0 0 28px;
+    max-width: 620px;
+  }
+
+  .tk-hero-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .tk-hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .tk-hero-meta .ti {
+    color: #4ade80;
+    font-size: 16px;
+  }
+
+  /* ── Flash ─────────────────────────────────────────────────── */
+  .tk-flash {
+    max-width: 1100px;
+    margin: 16px auto 0;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .tk-flash--warn { background: #fffbeb; border: 1px solid #fcd34d; color: #92400e; }
+  .tk-flash--err  { background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626; }
+  .tk-flash--info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+
+  /* ── Free bar ──────────────────────────────────────────────── */
+  .tk-free-bar {
+    background: var(--g1, #f0fdf4);
+    border-bottom: 1px solid #bbf7d0;
+    padding: 14px 28px;
+  }
+
+  .tk-free-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--navy-dark, #0f2147);
+  }
+
+  .tk-free-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    background: var(--green, #15803d);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.14s;
+  }
+
+  .tk-free-btn:hover { background: #14532d; }
+
+  /* ── Sections ──────────────────────────────────────────────── */
+  .tk-section { padding: 72px 28px; }
+  .tk-section--alt { background: var(--g1, #f0fdf4); }
+
+  .tk-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .tk-section-title {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin: 0 0 8px;
+  }
+
+  .tk-section-sub {
+    font-size: 15px;
+    color: #64748b;
+    margin: 0 0 44px;
+  }
+
+  /* ── Product grid ──────────────────────────────────────────── */
+  .tk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .tk-card {
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+
+  .tk-card:hover {
+    box-shadow: 0 8px 32px rgba(15, 33, 71, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .tk-card--featured {
+    border-color: var(--green, #15803d);
+    background: #f0fdf4;
+  }
+
+  .tk-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #475569;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+
+  .tk-tag--featured {
+    background: var(--green, #15803d);
+    color: #fff;
+  }
+
+  .tk-card-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin: 0 0 4px;
+  }
+
+  .tk-card-tagline {
+    font-size: 0.85rem;
+    color: var(--green, #15803d);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  .tk-card-desc {
+    font-size: 0.875rem;
+    color: #475569;
+    line-height: 1.65;
+    margin: 0 0 18px;
+    flex-grow: 1;
+  }
+
+  .tk-includes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tk-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: #374151;
+    line-height: 1.5;
+  }
+
+  .tk-includes .ti {
+    color: var(--green, #15803d);
+    font-size: 14px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .tk-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .tk-price-note {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #94a3b8;
+  }
+
+  /* ── Checkout form ──────────────────────────────────────────── */
+  .tk-buy-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tk-email-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    color: #1f2937;
+    background: #f9fafb;
+    box-sizing: border-box;
+    transition: border-color 0.14s;
+  }
+
+  .tk-email-input:focus {
+    outline: none;
+    border-color: var(--green, #15803d);
+    background: #fff;
+  }
+
+  .tk-buy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--navy-dark, #0f2147);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.14s, opacity 0.14s;
+    width: 100%;
+    text-align: center;
+  }
+
+  .tk-buy-btn:hover { opacity: 0.88; }
+
+  .tk-buy-btn--primary {
+    background: var(--green, #15803d);
+    font-size: 0.95rem;
+    padding: 14px 20px;
+  }
+
+  .tk-buy-btn--primary:hover { background: #14532d; opacity: 1; }
+
+  .tk-mollie-note {
+    margin: 8px 0 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ── Contents grid ──────────────────────────────────────────── */
+  .tk-contents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+  }
+
+  .tk-contents-head {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tk-contents-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tk-contents-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .tk-contents-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--green, #15803d);
+    font-weight: 700;
+  }
+
+  .tk-audit-badge {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    align-items: flex-start;
+  }
+
+  .tk-audit-badge > .ti {
+    font-size: 20px;
+    color: var(--green, #15803d);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tk-audit-badge strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--navy-dark, #0f2147);
+    margin-bottom: 4px;
+  }
+
+  .tk-audit-badge p {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Comparison ────────────────────────────────────────────── */
+  .tk-compare {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 740px;
+    flex-wrap: wrap;
+  }
+
+  .tk-compare-col {
+    flex: 1;
+    min-width: 220px;
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .tk-compare-col--them {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+  }
+
+  .tk-compare-col--us {
+    background: #f0fdf4;
+    border: 2px solid var(--green, #15803d);
+  }
+
+  .tk-compare-head {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+
+  .tk-compare-col--us .tk-compare-head { color: var(--green, #15803d); }
+
+  .tk-compare-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin-bottom: 16px;
+  }
+
+  .tk-compare-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .tk-compare-col li {
+    font-size: 0.875rem;
+    color: #475569;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .tk-compare-col--us li .ti {
+    color: var(--green, #15803d);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tk-compare-vs {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #94a3b8;
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ────────────────────────────────────────────────────── */
+  .tk-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 720px;
+  }
+
+  .tk-faq-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .tk-faq-q {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy-dark, #0f2147);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .tk-faq-q::after {
+    content: '+';
+    font-size: 1.1rem;
+    color: var(--green, #15803d);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .tk-faq-item[open] .tk-faq-q::after { transform: rotate(45deg); }
+
+  .tk-faq-a {
+    padding: 0 20px 16px;
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.7;
+  }
+
+  .tk-faq-a a {
+    color: var(--green, #15803d);
+    text-decoration: underline;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .tk-free-inner { flex-direction: column; align-items: flex-start; }
+    .tk-compare { flex-direction: column; }
+    .tk-compare-vs { display: none; }
+  }
+</style>
