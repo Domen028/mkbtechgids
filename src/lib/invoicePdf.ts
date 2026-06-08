@@ -1,4 +1,5 @@
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import { MKB_LOGO_PNG_BASE64 } from './logoBase64.js';
 
 export interface InvoiceData {
   invoiceNumber: string;
@@ -44,6 +45,11 @@ function dutchDate(d: Date): string {
   return `${dd}-${mm}-${d.getFullYear()}`;
 }
 
+// Keep long Stripe ids short so the value never overlaps its label.
+function shortRef(ref: string): string {
+  return ref.length <= 20 ? ref : `${ref.slice(0, 11)}…${ref.slice(-6)}`;
+}
+
 export async function buildInvoicePdf(data: InvoiceData): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
   doc.setTitle(`Factuur ${data.invoiceNumber}`);
@@ -77,9 +83,12 @@ export async function buildInvoicePdf(data: InvoiceData): Promise<Uint8Array> {
     color = BLACK,
   ) => page.drawText(s, { x: xr - f.widthOfTextAtSize(s, size), y: yy, size, font: f, color });
 
-  // ── Header ──────────────────────────────────────────────────────────────
-  text(SELLER.name, M, y, 22, bold, NAVY);
-  text('NIS2 Compliance Toolkit', M, y - 16, 9, font, SLATE);
+  // ── Header (logo + wordmark left, FACTUUR right) ─────────────────────────
+  const logo = await doc.embedPng(MKB_LOGO_PNG_BASE64);
+  page.drawImage(logo, { x: M, y: y - 24, width: 40, height: 40 });
+  const tx = M + 52;
+  text(SELLER.name, tx, y, 22, bold, NAVY);
+  text('NIS2 Compliance Toolkit', tx, y - 16, 9, font, SLATE);
   textRight('FACTUUR', right, y, 20, bold, NAVY);
   y -= 54;
 
@@ -99,18 +108,18 @@ export async function buildInvoicePdf(data: InvoiceData): Promise<Uint8Array> {
     sy -= 14;
   }
 
-  // meta block (right)
-  const metaX = 330;
+  // meta block (right) — label left, value right-aligned; never let them collide
+  const metaX = 308;
   const metaValX = right;
   let my = y;
-  const metaRow = (label: string, value: string, vBold = false) => {
+  const metaRow = (label: string, value: string, vBold = false, small = false) => {
     text(label, metaX, my, 9, font, SLATE);
-    textRight(value, metaValX, my, 10, vBold ? bold : font, BLACK);
+    textRight(value, metaValX, my, small ? 9 : 10, vBold ? bold : font, BLACK);
     my -= 16;
   };
   metaRow('Factuurnummer', data.invoiceNumber, true);
   metaRow('Factuurdatum', dutchDate(data.issuedAt));
-  metaRow('Betaalreferentie', data.paymentRef.slice(0, 28));
+  metaRow('Betaalreferentie', shortRef(data.paymentRef), false, true);
   if (data.paymentMethod) metaRow('Betaalwijze', data.paymentMethod);
 
   y = Math.min(sy, my) - 18;
