@@ -1,4 +1,4 @@
-import { PRODUCTS, mollieValue } from './products.js';
+import { PRODUCTS } from './products.js';
 import { generateToken } from './token.js';
 import type { ProductId } from './products.js';
 
@@ -15,9 +15,11 @@ export async function completeOrder(
 
   if (brevoKey && email) {
     const product = PRODUCTS[productId];
-    sendReceiptEmail(brevoKey, email, product.name, downloadUrl).catch(
-      (err) => console.error('Receipt email failed:', err),
-    );
+    try {
+      await sendReceiptEmail(brevoKey, email, product.name, downloadUrl);
+    } catch (err) {
+      console.error('Receipt email failed:', err);
+    }
   }
 
   return token;
