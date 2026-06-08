@@ -80,6 +80,8 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Beheersmaatregelkaart (Excel)',
       'Dreigingscatalogus (Excel)',
       'NIS2-Routekaart (PDF)',
+      'Gap-Analyse (Excel)',
+      'Bewustzijnsverklaring (Word)',
     ],
     priceEurCents: 24900,
     stripePriceId: 'price_1Tg2llV05y71WJqDuPhYYwLD',
@@ -103,6 +105,8 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
       'NIS2-Dreigingscatalogus-v2.xlsx',
       'NIS2-Routekaart-v7.pdf',
+      'NIS2-GapAnalyse-v1.xlsx',
+      'NIS2-Bewustzijnsverklaring-v1.docx',
     ],
   },
 
@@ -113,7 +117,8 @@ export const PRODUCTS: Record<ProductId, Product> = {
     tag: 'Volledig',
     description: 'De complete toolkit plus e-mailondersteuning bij invulvragen. Ideaal voor organisaties zonder eigen IT-compliance kennis.',
     includes: [
-      'Alles uit de Complete Toolkit (18 bestanden, incl. NIS2-Routekaart)',
+      'Alles uit de Complete Toolkit (20 bestanden, incl. Routekaart, Gap-Analyse & Bewustzijnsverklaring)',
+      'Boardrapportage (PowerPoint) — exclusief in Full Package',
       '3 × e-mailondersteuning bij invulvragen',
       'Prioriteit bij toekomstige updates',
     ],
@@ -138,6 +143,9 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
       'NIS2-Dreigingscatalogus-v2.xlsx',
       'NIS2-Routekaart-v7.pdf',
+      'NIS2-GapAnalyse-v1.xlsx',
+      'NIS2-Bewustzijnsverklaring-v1.docx',
+      'NIS2-Boardrapportage-v1.pptx',
     ],
   },
 
