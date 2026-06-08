@@ -151,7 +151,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Direct koppelbaar aan Module 2 Risicoanalyse',
     ],
     priceEurCents: 14900,
-    stripePriceId: 'STRIPE_PRICE_ID_PENDING',  // TODO: vervang na aanmaken in Stripe Dashboard
+    stripePriceId: 'price_1Tg301V05y71WJqDo4anHwv7',
     files: [
       'NIS2-Dreigingscatalogus-v2.xlsx',
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
