@@ -27,7 +27,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'M3 — Beveiligingsmaatregelen (Word)',
     ],
     priceEurCents: 4900,
-    stripePriceId: 'price_1Tg2QpV05AHLZlHhxGunugOJ',
+    stripePriceId: 'price_1Tg2lRV05y71WJqDV3jiPqro',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -50,7 +50,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'R1 — Risicoregister (Excel)',
     ],
     priceEurCents: 12900,
-    stripePriceId: 'price_1Tg2R7V05AHLZlHhPUIrJmqo',
+    stripePriceId: 'price_1Tg2lYV05y71WJqDV6teiULO',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -81,7 +81,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Dreigingscatalogus (Excel)',
     ],
     priceEurCents: 24900,
-    stripePriceId: 'price_1Tg2RPV05AHLZlHhkDC2EUUj',
+    stripePriceId: 'price_1Tg2llV05y71WJqDuPhYYwLD',
     featured: true,
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
@@ -116,7 +116,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Prioriteit bij toekomstige updates',
     ],
     priceEurCents: 34900,
-    stripePriceId: 'price_1Tg2TCV05AHLZlHhCZT7HRap',
+    stripePriceId: 'price_1Tg2lvV05y71WJqDC4Uzj6aw',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
