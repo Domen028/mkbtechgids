@@ -26,7 +26,8 @@ export const POST: APIRoute = async ({ request }) => {
   const body = new URLSearchParams();
   body.set('mode', 'payment');
   body.set('customer_email', email);
-  body.set('automatic_payment_methods[enabled]', 'true');
+  body.append('payment_method_types[]', 'card');
+  body.append('payment_method_types[]', 'ideal');
   body.set('line_items[0][price_data][currency]', 'eur');
   body.set('line_items[0][price_data][unit_amount]', String(product.priceEurCents));
   body.set('line_items[0][price_data][product_data][name]', `MKBTechGids — ${product.name}`);
