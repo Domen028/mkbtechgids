@@ -79,6 +79,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'R7 — Logregister (Excel)',
       'Beheersmaatregelkaart (Excel)',
       'Dreigingscatalogus (Excel)',
+      'NIS2-Routekaart (PDF)',
     ],
     priceEurCents: 24900,
     stripePriceId: 'price_1Tg2llV05y71WJqDuPhYYwLD',
@@ -101,6 +102,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Logregister-v2.xlsx',
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
       'NIS2-Dreigingscatalogus-v2.xlsx',
+      'NIS2-Routekaart-v7.pdf',
     ],
   },
 
@@ -111,7 +113,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     tag: 'Volledig',
     description: 'De complete toolkit plus e-mailondersteuning bij invulvragen. Ideaal voor organisaties zonder eigen IT-compliance kennis.',
     includes: [
-      'Alles uit de Complete Toolkit (17 bestanden)',
+      'Alles uit de Complete Toolkit (18 bestanden, incl. NIS2-Routekaart)',
       '3 × e-mailondersteuning bij invulvragen',
       'Prioriteit bij toekomstige updates',
     ],
@@ -135,6 +137,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Logregister-v2.xlsx',
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
       'NIS2-Dreigingscatalogus-v2.xlsx',
+      'NIS2-Routekaart-v7.pdf',
     ],
   },
 
