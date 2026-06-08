@@ -1,18 +1,19 @@
 import { PRODUCTS } from './products.js';
 import { generateToken } from './token.js';
 import type { ProductId } from './products.js';
-import { getOrCreateInvoice, isInvoiceStoreConfigured } from './invoiceStore.js';
 import { buildInvoicePdf, toBase64 } from './invoicePdf.js';
 
 const BCC_EMAIL = 'info@mkbtechgids.nl';
 
 export interface StripeSessionLike {
   id: string;
+  created?: number | null;
   amount_subtotal?: number | null;
   amount_total?: number | null;
   total_details?: { amount_tax?: number | null } | null;
   customer_details?: { name?: string | null; email?: string | null } | null;
   customer_email?: string | null;
+  payment_intent?: string | { id?: string } | null;
   metadata?: Record<string, string> | null;
 }
 
@@ -23,15 +24,20 @@ export interface CompleteOrderInput {
   secret: string;
   brevoKey: string;
   siteUrl: string;
+  stripeKey?: string;
 }
 
 /**
  * Idempotent across the redirect (stripe-return) and webhook paths.
- * Returns the download token. Issues exactly one invoice per Stripe session
- * and emails the buyer a receipt with the BTW-factuur PDF attached.
+ * Returns the download token. Issues one invoice per order and emails the
+ * buyer a receipt with the BTW-factuur PDF attached.
+ *
+ * No external store: the invoice number is derived deterministically from the
+ * Stripe session, so both paths compute the SAME number. A best-effort flag on
+ * the PaymentIntent metadata prevents the email being sent twice.
  */
 export async function completeOrder(input: CompleteOrderInput): Promise<string> {
-  const { session, productId, email, secret, brevoKey, siteUrl } = input;
+  const { session, productId, email, secret, brevoKey, siteUrl, stripeKey } = input;
   const product = PRODUCTS[productId];
 
   const token = generateToken(secret, productId, email, session.id);
@@ -39,51 +45,88 @@ export async function completeOrder(input: CompleteOrderInput): Promise<string> 
 
   if (!brevoKey || !email) return token;
 
+  const paymentIntentId =
+    typeof session.payment_intent === 'string'
+      ? session.payment_intent
+      : session.payment_intent?.id;
+
+  // Idempotency guard: skip if this order's invoice was already sent.
+  if (stripeKey && paymentIntentId) {
+    try {
+      if (await invoiceAlreadySent(stripeKey, paymentIntentId)) return token;
+    } catch (err) {
+      console.error('Invoice idempotency check failed (continuing):', err);
+    }
+  }
+
   // Amounts (cents). Fall back gracefully if tax wasn't applied.
   const totalCents = session.amount_total ?? product.priceEurCents;
   const vatCents = session.total_details?.amount_tax ?? 0;
   const netCents = session.amount_subtotal ?? totalCents - vatCents;
   const buyerName = session.customer_details?.name ?? undefined;
 
-  // Issue the invoice (idempotent). Degrade to a plain receipt if the store
-  // isn't configured yet, so a purchase is never blocked by missing infra.
-  let invoiceAttachment: { content: string; name: string } | undefined;
-  let invoiceNumber: string | undefined;
-  if (isInvoiceStoreConfigured()) {
-    try {
-      const year = new Date().getFullYear();
-      const rec = await getOrCreateInvoice(session.id, year);
-      invoiceNumber = rec.number;
-      const pdf = await buildInvoicePdf({
-        invoiceNumber: rec.number,
-        issuedAt: new Date(rec.issuedAt * 1000),
-        buyerEmail: email,
-        buyerName,
-        productName: product.name,
-        netCents,
-        vatCents,
-        totalCents,
-        vatRatePct: 21,
-        paymentRef: session.id,
-      });
-      invoiceAttachment = { content: toBase64(pdf), name: `Factuur-${rec.number}.pdf` };
-    } catch (err) {
-      console.error('Invoice generation failed (sending receipt without invoice):', err);
-    }
-  } else {
-    console.error('Invoice store not configured — sending receipt without invoice (set KV_REST_API_* env vars).');
+  const issuedAt = new Date((session.created ?? Math.floor(Date.now() / 1000)) * 1000);
+  const invoiceNumber = deriveInvoiceNumber(session.id, issuedAt);
+
+  let attachment: { content: string; name: string } | undefined;
+  try {
+    const pdf = await buildInvoicePdf({
+      invoiceNumber,
+      issuedAt,
+      buyerEmail: email,
+      buyerName,
+      productName: product.name,
+      netCents,
+      vatCents,
+      totalCents,
+      vatRatePct: 21,
+      paymentRef: session.id,
+    });
+    attachment = { content: toBase64(pdf), name: `Factuur-${invoiceNumber}.pdf` };
+  } catch (err) {
+    console.error('Invoice PDF generation failed (sending receipt without invoice):', err);
   }
 
-  await sendReceiptEmail({
-    apiKey: brevoKey,
-    to: email,
-    productName: product.name,
-    downloadUrl,
-    invoiceNumber,
-    attachment: invoiceAttachment,
-  });
+  await sendReceiptEmail({ apiKey: brevoKey, to: email, productName: product.name, downloadUrl, invoiceNumber: attachment ? invoiceNumber : undefined, attachment });
+
+  // Mark sent so the other path (return/webhook) doesn't email again.
+  if (stripeKey && paymentIntentId) {
+    try {
+      await markInvoiceSent(stripeKey, paymentIntentId);
+    } catch (err) {
+      console.error('Marking invoice as sent failed (possible duplicate email):', err);
+    }
+  }
 
   return token;
+}
+
+/** WEB-YYYYMMDD-XXXXXX — deterministic, date-ordered, unique per Stripe session. */
+function deriveInvoiceNumber(sessionId: string, issuedAt: Date): string {
+  const y = issuedAt.getUTCFullYear();
+  const m = String(issuedAt.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(issuedAt.getUTCDate()).padStart(2, '0');
+  const suffix = sessionId.replace(/[^a-zA-Z0-9]/g, '').slice(-6).toUpperCase();
+  return `WEB-${y}${m}${d}-${suffix}`;
+}
+
+async function invoiceAlreadySent(stripeKey: string, paymentIntentId: string): Promise<boolean> {
+  const res = await fetch(`https://api.stripe.com/v1/payment_intents/${paymentIntentId}`, {
+    headers: { Authorization: `Bearer ${stripeKey}` },
+  });
+  if (!res.ok) return false;
+  const pi = await res.json();
+  return pi?.metadata?.invoice_sent === 'true';
+}
+
+async function markInvoiceSent(stripeKey: string, paymentIntentId: string): Promise<void> {
+  const body = new URLSearchParams();
+  body.set('metadata[invoice_sent]', 'true');
+  await fetch(`https://api.stripe.com/v1/payment_intents/${paymentIntentId}`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${stripeKey}`, 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: body.toString(),
+  });
 }
 
 async function sendReceiptEmail(opts: {

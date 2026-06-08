@@ -49,9 +49,10 @@ export const POST: APIRoute = async ({ request }) => {
         if (productId && PRODUCTS[productId] && email) {
           const secret = import.meta.env.DOWNLOAD_SECRET ?? '';
           const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
+          const stripeKey = import.meta.env.STRIPE_SECRET_KEY ?? '';
           const siteUrl = (import.meta.env.SITE_URL ?? 'https://www.mkbtechgids.nl').replace(/\/$/, '');
 
-          await completeOrder({ session, productId, email, secret, brevoKey, siteUrl });
+          await completeOrder({ session, productId, email, secret, brevoKey, siteUrl, stripeKey });
         }
       }
     }

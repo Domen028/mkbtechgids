@@ -49,7 +49,7 @@ export const GET: APIRoute = async ({ url }) => {
   const secret = import.meta.env.DOWNLOAD_SECRET ?? '';
   const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
 
-  const token = await completeOrder({ session, productId, email, secret, brevoKey, siteUrl });
+  const token = await completeOrder({ session, productId, email, secret, brevoKey, siteUrl, stripeKey: apiKey });
 
   return Response.redirect(`${siteUrl}/bedankt?token=${encodeURIComponent(token)}`, 303);
 };
