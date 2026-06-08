@@ -88,7 +88,7 @@ const RESULT_META: Record<string, {
 
 // ── HTML email builder ───────────────────────────────────────────────────────
 
-function buildEmailHtml(meta: typeof RESULT_META[string], downloadUrl: string): string {
+function buildEmailHtml(meta: typeof RESULT_META[string], downloadUrl: string, email: string): string {
   const stepsHtml = meta.steps
     .map((step, i) => `
       <tr>
@@ -216,6 +216,12 @@ function buildEmailHtml(meta: typeof RESULT_META[string], downloadUrl: string): 
               <p style="margin: 12px 0 0; font-size: 11px; color: #94a3b8;">
                 U ontvangt dit e-mailbericht omdat u de NIS2 Scope Checker heeft ingevuld op mkbtechgids.nl.
               </p>
+              <p style="margin: 8px 0 0; font-size: 11px; color: #94a3b8;">
+                <a href="https://www.mkbtechgids.nl/unsubscribe?email=${encodeURIComponent(email)}&list=4"
+                   style="color: #94a3b8; text-decoration: underline;">
+                  Uitschrijven van deze mailinglijst
+                </a>
+              </p>
             </td>
           </tr>
 
@@ -290,7 +296,7 @@ export const POST: APIRoute = async ({ request }) => {
     // ── 2. Send transactional result email ───────────────────────────────────
     const meta = RESULT_META[result] ?? RESULT_META['niet-verplicht'];
     const downloadUrl = 'https://www.mkbtechgids.nl/downloads/NIS2-Module1-Zelfevaluatie.docx';
-    const emailHtml = buildEmailHtml(meta, downloadUrl);
+    const emailHtml = buildEmailHtml(meta, downloadUrl, email);
 
     const emailRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -307,6 +313,10 @@ export const POST: APIRoute = async ({ request }) => {
         to: [{ email }],
         subject: meta.subject,
         htmlContent: emailHtml,
+        headers: {
+          'List-Unsubscribe': `<https://www.mkbtechgids.nl/api/unsubscribe?email=${encodeURIComponent(email)}&list=4>`,
+          'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+        },
       }),
     });
 

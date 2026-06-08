@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const emailParam = Astro.url.searchParams.get('email') || '';
+const listParam  = Astro.url.searchParams.get('list')  || '3';
+
+const listNames: Record<string, string> = {
+  '3': 'MKBTechGids Nieuwsbrief',
+  '4': 'NIS2 Scope Checker resultaten',
+};
+const listName = listNames[listParam] ?? 'MKBTechGids mailinglijst';
+
+let done  = false;
+let error = '';
+
+if (Astro.request.method === 'POST') {
+  const form     = await Astro.request.formData();
+  const email    = form.get('email')?.toString().trim() || emailParam;
+  const list     = form.get('list')?.toString()          || listParam;
+  const listId   = parseInt(list) || 3;
+  const apiKey   = import.meta.env.BREVO_API_KEY;
+
+  try {
+    const res = await fetch(`https://api.brevo.com/v3/contacts/lists/${listId}/contacts/remove`, {
+      method: 'POST',
+      headers: { 'api-key': apiKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ emails: [email] }),
+    });
+    if (res.ok || res.status === 404) {
+      done = true;
+    } else {
+      error = 'Er is iets misgegaan. Stuur ons een e-mail via info@mkbtechgids.nl.';
+    }
+  } catch {
+    error = 'Verbindingsfout. Probeer het later opnieuw.';
+  }
+}
+---
+
+<BaseLayout
+  title="Uitschrijven — MKBTechGids"
+  description="Verwijder uw e-mailadres van de MKBTechGids mailinglijst."
+>
+  <main class="unsub-main">
+    <div class="unsub-card">
+
+      {done ? (
+        <div class="unsub-success">
+          <div class="unsub-icon unsub-icon--ok">
+            <i class="ti ti-circle-check"></i>
+          </div>
+          <h1 class="unsub-title">U bent uitgeschreven</h1>
+          <p class="unsub-body">
+            Uw e-mailadres is verwijderd uit de <strong>{listName}</strong>.
+            U ontvangt geen verdere e-mails van deze lijst.
+          </p>
+          <p class="unsub-body unsub-body--muted">
+            Vergissen is menselijk — als u zich opnieuw wilt inschrijven kunt u dat altijd doen
+            via <a href="/">mkbtechgids.nl</a>.
+          </p>
+          <a href="/" class="unsub-btn">Terug naar de homepage</a>
+        </div>
+      ) : (
+        <>
+          <div class="unsub-icon">
+            <i class="ti ti-mail-off"></i>
+          </div>
+          <h1 class="unsub-title">Uitschrijven</h1>
+          <p class="unsub-body">
+            Bevestig hieronder uw uitschrijving van de <strong>{listName}</strong>.
+            Uw gegevens worden direct verwijderd.
+          </p>
+
+          {error && (
+            <div class="unsub-error" role="alert">{error}</div>
+          )}
+
+          <form method="POST" class="unsub-form">
+            <input type="hidden" name="list" value={listParam} />
+
+            <label class="unsub-label" for="email">E-mailadres</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              class="unsub-input"
+              value={emailParam}
+              required
+              placeholder="uw@email.nl"
+            />
+
+            <button type="submit" class="unsub-btn unsub-btn--danger">
+              <i class="ti ti-trash"></i>
+              Bevestig uitschrijving
+            </button>
+          </form>
+        </>
+      )}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .unsub-main {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    background: var(--g1, #f0fdf4);
+  }
+
+  .unsub-card {
+    background: var(--white, #fff);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(15, 33, 71, 0.06);
+  }
+
+  .unsub-icon {
+    width: 56px;
+    height: 56px;
+    background: #fff1f2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 28px;
+    color: #dc2626;
+  }
+
+  .unsub-icon--ok {
+    background: #f0fdf4;
+    color: var(--green, #15803d);
+  }
+
+  .unsub-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy-dark, #0f2147);
+    margin: 0 0 16px;
+  }
+
+  .unsub-body {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .unsub-body--muted {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 24px;
+  }
+
+  .unsub-body a {
+    color: var(--green, #15803d);
+    text-decoration: underline;
+  }
+
+  .unsub-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    color: #dc2626;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .unsub-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  .unsub-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy-dark, #0f2147);
+  }
+
+  .unsub-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    background: #f9fafb;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+  }
+
+  .unsub-input:focus {
+    outline: none;
+    border-color: var(--green, #15803d);
+    background: #fff;
+  }
+
+  .unsub-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: var(--navy-dark, #0f2147);
+    color: #fff;
+    margin-top: 8px;
+    transition: background 0.15s, opacity 0.15s;
+    width: 100%;
+  }
+
+  .unsub-btn:hover {
+    opacity: 0.9;
+  }
+
+  .unsub-btn--danger {
+    background: #dc2626;
+  }
+
+  .unsub-btn--danger:hover {
+    background: #b91c1c;
+  }
+</style>
