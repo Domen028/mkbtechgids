@@ -1,4 +1,4 @@
-export type ProductId = 'quick-start' | 'core-bundle' | 'complete-toolkit' | 'full-package';
+export type ProductId = 'quick-start' | 'core-bundle' | 'complete-toolkit' | 'full-package' | 'sectorpakket';
 
 export interface Product {
   id: ProductId;
@@ -135,6 +135,26 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'NIS2-Logregister-v2.xlsx',
       'NIS2-Beheersmaatregelkaart-v1.xlsx',
       'NIS2-Dreigingscatalogus-v2.xlsx',
+    ],
+  },
+
+  'sectorpakket': {
+    id: 'sectorpakket',
+    name: 'NIS2 Sectorpakket',
+    tagline: 'Pre-gescoorde dreigingen per sector',
+    tag: 'Sectorspecifiek',
+    description: 'Dreigingscatalogus met 30–50 pre-gescoorde, sectorspecifieke risico\'s voor Energie, Transport of Zorg. Direct bruikbaar als input voor Module 2 Risicoanalyse.',
+    includes: [
+      'Dreigingscatalogus v2 (Excel) — Energie, Transport & Zorg',
+      'Beheersmaatregelkaart v1 (Excel)',
+      '30–50 pre-gescoorde risico\'s per sector',
+      'Direct koppelbaar aan Module 2 Risicoanalyse',
+    ],
+    priceEurCents: 14900,
+    stripePriceId: 'STRIPE_PRICE_ID_PENDING',  // TODO: vervang na aanmaken in Stripe Dashboard
+    files: [
+      'NIS2-Dreigingscatalogus-v2.xlsx',
+      'NIS2-Beheersmaatregelkaart-v1.xlsx',
     ],
   },
 };
