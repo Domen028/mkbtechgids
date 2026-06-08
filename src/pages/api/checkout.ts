@@ -28,10 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
   body.set('customer_email', email);
   body.append('payment_method_types[]', 'card');
   body.append('payment_method_types[]', 'ideal');
-  body.set('line_items[0][price_data][currency]', 'eur');
-  body.set('line_items[0][price_data][unit_amount]', String(product.priceEurCents));
-  body.set('line_items[0][price_data][product_data][name]', `MKBTechGids — ${product.name}`);
-  body.set('line_items[0][price_data][product_data][description]', product.tagline);
+  body.set('line_items[0][price]', product.stripePriceId);
   body.set('line_items[0][quantity]', '1');
   body.set('success_url', `${siteUrl}/api/stripe-return?session_id={CHECKOUT_SESSION_ID}`);
   body.set('cancel_url', `${siteUrl}/nis2-toolbox?betaling=canceled`);
