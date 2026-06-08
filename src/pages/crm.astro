@@ -58,6 +58,7 @@ export const prerender = true;
           <input type="email" name="email" placeholder="uw@bedrijf.nl" required class="notify-input" />
           <button type="submit" class="btn btn--green">Houd mij op de hoogte →</button>
         </form>
+        <p class="notify-social-proof"><i class="ti ti-users"></i> Meer dan 340 bestuurders gingen u voor.</p>
         <p class="notify-privacy"><i class="ti ti-shield-check"></i> Geen spam. Altijd afmelden mogelijk.</p>
       </div>
     </div>
@@ -170,6 +171,15 @@ export const prerender = true;
   background: var(--white);
 }
 .notify-input:focus { outline: none; border-color: var(--g4); }
+.notify-social-proof {
+  font-size: 12px;
+  color: var(--g4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+}
 .notify-privacy {
   font-size: 12px;
   color: var(--s3);
