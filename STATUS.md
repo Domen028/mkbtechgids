@@ -33,5 +33,18 @@ BTW 21% + automatische BTW-factuur (PDF, met logo) geverifieerd via een echte te
 - Correcte `sitemap-index.xml` ingediend in Google Search Console (Succesvol).
 - Alle NIS2-pagina's ingediend voor indexering.
 
+## Zakelijke metrics (werkelijk — 09-06-2026)
+*Eerlijke nulmeting, live uit Stripe + Brevo. Net gelanceerd = dag 1.*
+
+- **Stripe (live account "MKBTechGids"):** 2 transacties, **beide eigen testaankopen** (domenie@techleadnl.nl):
+  - €59,29 — BTW-verificatietest, **terugbetaald**
+  - €49,00 — Quick Start, niet terugbetaald (pending payout €48,42 na fees)
+  - **Externe betalende klanten: 0.** Bruto €108,29 · terugbetaald €59,29 · netto €49 (self-test).
+- **E-mail (Brevo):** Newsletter 1 subscriber · NIS2 Scope Checker 3 subscribers = **~4 contacten**.
+- **Conclusie:** techniek live en transactie-/factuurketen bewezen, maar **commercieel dag 1** — nog geen externe omzet of tractie. Volgende stap: LinkedIn-lancering verkeer laten genereren en conversie meten.
+- *Tip:* overweeg de €49 self-test ook te refunden zodat de boekhouding schoon op €0 externe omzet staat.
+
+---
+
 > Volledige inhoudelijke onderbouwing: zie `TechLead-Imperium` repo →
 > `MKBTechGids/Content/NIS2-Toolkit-Evidence.md` en `PROJECT_MEMORY.md`.
