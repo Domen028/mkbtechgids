@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mkbtechgids.nl/sitemap.xml
+Sitemap: https://www.mkbtechgids.nl/sitemap-index.xml
