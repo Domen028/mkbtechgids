@@ -1,0 +1,65 @@
+---
+// AVG/GDPR cookie consent banner — controls Google Analytics (Consent Mode v2).
+// Only rendered when PUBLIC_GA4_ID is set (see BaseLayout).
+---
+<div id="cookie-consent" class="cc" hidden>
+  <p class="cc-text">
+    Wij gebruiken analytische cookies (Google Analytics) om deze website te verbeteren.
+    U kunt dit weigeren. Lees meer in ons <a href="/privacy">privacybeleid</a>.
+  </p>
+  <div class="cc-actions">
+    <button id="cc-reject" class="cc-btn cc-btn--ghost" type="button">Weigeren</button>
+    <button id="cc-accept" class="cc-btn cc-btn--primary" type="button">Accepteren</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'mkb-cookie-consent';
+    var el = document.getElementById('cookie-consent');
+    if (!el) return;
+    function apply(choice) {
+      try { localStorage.setItem(KEY, choice); } catch (e) {}
+      el.hidden = true;
+      if (choice === 'granted' && typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+    }
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (stored) { el.hidden = true; return; }
+    el.hidden = false;
+    var a = document.getElementById('cc-accept');
+    var r = document.getElementById('cc-reject');
+    if (a) a.addEventListener('click', function () { apply('granted'); });
+    if (r) r.addEventListener('click', function () { apply('denied'); });
+  })();
+</script>
+
+<style>
+  .cc {
+    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 9999;
+    max-width: 720px; margin: 0 auto;
+    background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(15, 33, 71, 0.15);
+    padding: 18px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  }
+  .cc-text { margin: 0; flex: 1 1 320px; font-size: 14px; line-height: 1.6; color: #374151; }
+  .cc-text a { color: #15803d; text-decoration: underline; }
+  .cc-actions { display: flex; gap: 10px; margin-left: auto; }
+  .cc-btn {
+    font-size: 14px; font-weight: 600; border-radius: 8px; padding: 10px 18px;
+    cursor: pointer; border: 1px solid transparent; transition: all .15s; white-space: nowrap;
+  }
+  .cc-btn--ghost { background: #fff; color: #374151; border-color: #e2e8f0; }
+  .cc-btn--ghost:hover { background: #f8fafc; }
+  .cc-btn--primary { background: #14532d; color: #fff; }
+  .cc-btn--primary:hover { background: #166534; }
+  @media (max-width: 520px) {
+    .cc { flex-direction: column; align-items: stretch; }
+    .cc-actions { margin-left: 0; }
+    .cc-btn { flex: 1; }
+  }
+</style>
