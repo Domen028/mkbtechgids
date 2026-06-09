@@ -23,8 +23,10 @@ const {
 const siteName = 'MKBTechGids';
 const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 
-// Google Analytics 4 — only loads when PUBLIC_GA4_ID is set (Vercel env + .env).
-const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
+// Google Analytics 4 — Measurement ID is public (ships in page HTML), so it's
+// safe to default in code. Env var overrides; only loads in production builds
+// (no GA hits during local `astro dev`). Consent Mode keeps it denied until opt-in.
+const GA4_ID = import.meta.env.PUBLIC_GA4_ID || (import.meta.env.PROD ? 'G-C8SGBGYYE9' : undefined);
 ---
 
 <!doctype html>
