@@ -11,7 +11,13 @@ export default defineConfig({
   security: {
     checkOrigin: false
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Keep noindex stub pages out of the sitemap so Google focuses on NIS2.
+      filter: (page) =>
+        !['/crm/', '/ai-tools/', '/ai-governance/'].some((p) => page.endsWith(p)),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()]
   },
