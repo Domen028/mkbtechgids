@@ -67,7 +67,7 @@ const GA4_ID = import.meta.env.PUBLIC_GA4_ID || (import.meta.env.PROD ? 'G-C8SGB
   <title>{fullTitle}</title>
 
   <script type="application/ld+json">
-    {JSON.stringify({
+    {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "MKBTechGids",
@@ -75,7 +75,7 @@ const GA4_ID = import.meta.env.PUBLIC_GA4_ID || (import.meta.env.PROD ? 'G-C8SGB
       "description": "Onafhankelijke techgids voor Nederlandse MKB-bestuurders, CFO's en investeerders.",
       "logo": "https://www.mkbtechgids.nl/logo.svg",
       "sameAs": ["https://www.linkedin.com/company/mkbtechgids"]
-    })}
+    }
   </script>
 
   {GA4_ID && (
