@@ -1,0 +1,474 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EU AI Act Compliance Guide voor Nederlands MKB: deadline 2 augustus 2026 | MKBTechGids</title>
+  <meta name="description" content="De EU AI Act is deels al van kracht. Wat moet uw MKB-bedrijf doen voor 2 augustus 2026? Praktische compliance-checklist met tijdsinvestering, boetes en de AP als toezichthouder." />
+  <link rel="canonical" href="https://mkbtechgids.nl/eu-ai-act-compliance-guide" />
+  <meta property="og:title" content="EU AI Act Compliance Guide voor Nederlands MKB" />
+  <meta property="og:description" content="Deadline 2 augustus 2026 nadert. Wat zijn uw verplichtingen, wat zijn de boetes, en hoe pakt u het aan in 4–8 uur?" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mkbtechgids.nl/eu-ai-act-compliance-guide" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8SGBGYYE9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C8SGBGYYE9');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "EU AI Act Compliance Guide voor Nederlands MKB: deadline 2 augustus 2026",
+    "description": "Praktische compliance-checklist voor de EU AI Act — verplichtingen, boetes en tijdsinvestering voor MKB.",
+    "author": {"@type": "Organization", "name": "MKBTechGids"},
+    "publisher": {"@type": "Organization", "name": "MKBTechGids", "url": "https://mkbtechgids.nl"},
+    "datePublished": "2026-06-15",
+    "dateModified": "2026-06-15",
+    "mainEntityOfPage": "https://mkbtechgids.nl/eu-ai-act-compliance-guide"
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy-dark: #0f2147; --navy-light: #1e3a6e; --green: #14532d;
+      --green-light: #15803d; --green-bg: #f0fdf4; --text-dark: #f1f5f9;
+      --text-light: #94a3b8; --bg-light: #f8fafc; --bg-gray: #e2e8f0; --text-body: #475569;
+      --eu-blue: #003399; --eu-gold: #FFCC00; --amber: #d97706;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
+    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 28px; flex: 1; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { font-size: 13px; font-weight: 600; color: white; background: var(--green); border-radius: 6px; padding: 8px 18px; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-body); border-radius: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu:not([hidden]) { display: flex; flex-direction: column; background: var(--bg-light); border-top: 1px solid var(--bg-gray); padding: 8px 28px 20px; }
+    .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-body); padding: 12px 0; border-bottom: 1px solid var(--bg-gray); }
+    .article-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--eu-blue) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .article-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--text-light); margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+    .article-tag { display: inline-block; background: rgba(255,204,0,0.2); border: 1px solid var(--eu-gold); color: var(--eu-gold); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 24px; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
+    .article-hero h1 em { font-style: normal; color: var(--eu-gold); }
+    .article-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+    .article-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 20px; }
+    .deadline-strip { background: #7f1d1d; padding: 18px 28px; }
+    .deadline-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+    .deadline-text { font-size: 14px; font-weight: 700; color: white; }
+    .deadline-text span { color: #fca5a5; }
+    .article-content { background: white; padding: 60px 28px; }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy-dark); margin-top: 52px; margin-bottom: 20px; line-height: 1.2; }
+    p { margin-bottom: 18px; color: var(--text-body); line-height: 1.8; }
+    strong { color: var(--navy-dark); font-weight: 600; }
+
+    .timeline-grid { margin: 32px 0; }
+    .timeline-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--bg-gray); align-items: flex-start; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date { background: var(--navy-dark); color: white; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; flex-shrink: 0; white-space: nowrap; text-align: center; min-width: 80px; }
+    .timeline-date.done { background: var(--green); }
+    .timeline-date.urgent { background: #b91c1c; }
+    .timeline-date.future { background: #374151; }
+    .timeline-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; font-size: 14px; }
+    .timeline-content p { font-size: 13px; margin-bottom: 0; }
+
+    .risk-levels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+    .risk-card { border-radius: 8px; padding: 20px; border: 2px solid var(--bg-gray); }
+    .risk-card.unacceptable { border-color: #fecaca; background: #fff5f5; }
+    .risk-card.high { border-color: #fed7aa; background: #fffbf5; }
+    .risk-card.limited { border-color: #fef08a; background: #fefdf5; }
+    .risk-card.minimal { border-color: #bbf7d0; background: #f0fff4; }
+    .risk-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .risk-card.unacceptable .risk-label { color: #7f1d1d; }
+    .risk-card.high .risk-label { color: #7c2d12; }
+    .risk-card.limited .risk-label { color: #713f12; }
+    .risk-card.minimal .risk-label { color: var(--green); }
+    .risk-card h4 { font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 6px; }
+    .risk-card p { font-size: 13px; margin-bottom: 0; }
+
+    .checklist-box { border: 2px solid var(--bg-gray); border-radius: 8px; overflow: hidden; margin: 28px 0; }
+    .checklist-header { background: var(--navy-dark); color: white; padding: 14px 20px; font-weight: 700; font-size: 15px; }
+    .checklist-item { display: flex; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--bg-gray); align-items: flex-start; }
+    .checklist-item:last-child { border-bottom: none; }
+    .check-box { width: 20px; height: 20px; border: 2px solid var(--bg-gray); border-radius: 4px; flex-shrink: 0; margin-top: 3px; }
+    .check-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; font-size: 14px; }
+    .check-content p { font-size: 13px; color: var(--text-body); margin-bottom: 0; }
+    .check-time { font-size: 11px; font-weight: 700; color: var(--amber); margin-top: 4px; }
+
+    .fine-table { width: 100%; border-collapse: collapse; margin: 28px 0; border-radius: 8px; overflow: hidden; border: 2px solid #fecaca; }
+    .fine-table thead tr { background: #7f1d1d; }
+    .fine-table th { color: white; padding: 14px 16px; font-size: 13px; font-weight: 600; text-align: left; }
+    .fine-table td { padding: 14px 16px; border-bottom: 1px solid var(--bg-gray); font-size: 14px; }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-amount { font-weight: 800; color: #7f1d1d; }
+
+    .omnibus-box { background: #eff6ff; border: 2px solid #93c5fd; border-radius: 8px; padding: 28px; margin: 32px 0; }
+    .omnibus-box h3 { font-weight: 700; color: var(--navy-dark); margin-bottom: 12px; font-size: 15px; }
+    .omnibus-box p { margin-bottom: 10px; }
+
+    .action-plan { margin: 32px 0; }
+    .action-step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--bg-gray); }
+    .action-step:last-child { border-bottom: none; }
+    .step-number { width: 36px; height: 36px; background: var(--eu-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+    .step-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; font-size: 14px; }
+    .step-content p { font-size: 13px; margin-bottom: 4px; }
+    .step-effort { font-size: 11px; font-weight: 700; color: var(--green); }
+
+    .cta-section { background: var(--eu-blue); color: white; padding: 48px 36px; border-radius: 8px; margin: 56px 0; text-align: center; }
+    .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; }
+    .cta-section p { opacity: 0.9; margin-bottom: 28px; font-size: 15px; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { display: inline-block; background: white; color: var(--eu-blue); font-weight: 700; padding: 14px 32px; border-radius: 6px; font-size: 15px; }
+    .cta-btn-secondary { display: inline-block; background: transparent; color: white; font-weight: 600; padding: 14px 32px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.6); font-size: 15px; }
+    .related-box { background: var(--bg-light); border: 2px solid var(--bg-gray); border-radius: 8px; padding: 28px; margin: 32px 0; }
+    .related-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; font-size: 15px; }
+    .related-link { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--bg-gray); color: var(--text-body); font-size: 14px; }
+    .related-link:last-child { border-bottom: none; }
+    .related-link::before { content: '→'; color: var(--green); font-weight: 700; }
+    .sources-section { border-top: 1px solid var(--bg-gray); padding-top: 28px; margin-top: 48px; }
+    .sources-section h4 { font-size: 13px; font-weight: 700; color: var(--navy-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .sources-section p { font-size: 12px; color: var(--text-body); line-height: 1.7; }
+    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .footer p { font-size: 13px; }
+    .footer a { color: #4ade80; }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .article-hero { padding: 48px 20px; }
+      .risk-levels { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="120" height="46" /></a>
+      <nav class="nav-links">
+        <a href="/nis2">NIS2</a>
+        <a href="/articles">Artikelen</a>
+        <a href="/nis2-scope-checker">Scope Checker</a>
+      </nav>
+      <a href="https://techleadnl.nl" class="nav-cta">TechLeadNL →</a>
+      <button class="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+      <a href="/eu-ai-act-compliance-guide">EU AI Act</a>
+      <a href="/nis2-compliance-checklist-2026">NIS2 Checklist</a>
+      <a href="/articles">Alle artikelen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="article-hero-inner">
+        <div class="breadcrumb">
+          <a href="/" style="color: var(--text-light)">MKBTechGids</a>
+          <span>→</span>
+          <a href="/articles" style="color: var(--text-light)">Artikelen</a>
+          <span>→</span>
+          <span>EU AI Act</span>
+        </div>
+        <div class="article-tag">EU AI Act · Compliance · Deadline augustus 2026</div>
+        <h1>EU AI Act voor Nederlands MKB:<br><em>deadline 2 augustus 2026</em></h1>
+        <p>De EU AI Act is al gedeeltelijk van kracht — en de deadline voor hoog-risico AI-systemen en transparantieverplichtingen nadert snel. Dit is wat uw bedrijf nu moet doen, hoe lang het duurt, en wat er op het spel staat.</p>
+        <div class="article-meta">
+          <span>15 juni 2026</span>
+          <span>·</span>
+          <span>10 minuten leestijd</span>
+          <span>·</span>
+          <span>MKBTechGids</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="deadline-strip">
+      <div class="deadline-inner">
+        <strong class="deadline-text">Deadline: <span>2 augustus 2026</span> — verplichtingen voor hoog-risico AI en transparantie worden van kracht. Artikel 4 (AI-geletterdheid) was al verplicht per 2 februari 2025.</strong>
+      </div>
+    </div>
+
+    <article class="article-content">
+      <div class="article-inner">
+
+        <p>De EU AI Act (Verordening 2024/1689) is officieel van kracht op 1 augustus 2024. Maar de verplichtingen worden gefaseerd ingevoerd. Veel MKB-directeuren denken dat het nog ver weg is — dat klopt niet. Artikel 4 over AI-geletterdheid is al verplicht per 2 februari 2025. De hoofdverplichtingen voor hoog-risico AI-systemen gelden per 2 augustus 2026.</p>
+
+        <p>Dit artikel vertaalt de Europese verordening naar wat het voor uw bedrijf betekent: wat u moet doen, hoe lang het kost, en welke risico's u loopt als u niets doet.</p>
+
+        <h2>Tijdlijn: wat is al van kracht, wat staat te komen?</h2>
+
+        <div class="timeline-grid">
+          <div class="timeline-item">
+            <div class="timeline-date done">Aug 2024</div>
+            <div class="timeline-content">
+              <h4>EU AI Act van kracht — verboden AI-systemen</h4>
+              <p>Verboden praktijken gelden direct: biometrische surveillance in openbare ruimte, sociale credit scoring, manipulatieve AI. Niet relevant voor de meeste MKB-bedrijven.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date done">Feb 2025</div>
+            <div class="timeline-content">
+              <h4>Artikel 4: AI-geletterdheid — nu verplicht</h4>
+              <p>U bent al verplicht te zorgen dat medewerkers die AI-systemen gebruiken of beheren, over voldoende kennis en begrip beschikken om die systemen te beoordelen. Dit geldt voor alle bedrijven die AI inzetten.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date urgent">2 aug 2026</div>
+            <div class="timeline-content">
+              <h4>Hoog-risico AI en transparantieverplichtingen</h4>
+              <p>Verplichtingen voor hoog-risico AI-systemen (Bijlage III), plus transparantievereisten voor chatbots en deepfakes die aan gebruikers worden aangeboden. Dit is de deadline die nu urgent is.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date future">Aug 2027</div>
+            <div class="timeline-content">
+              <h4>GPAI-modellen — algemene AI-verplichtingen</h4>
+              <p>Aanvullende verplichtingen voor aanbieders van general-purpose AI-modellen (bijv. bedrijven die eigen LLM's bouwen). Relevant voor tech-bedrijven, minder voor regulier MKB.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date future">Dec 2027*</div>
+            <div class="timeline-content">
+              <h4>Bijlage III verschuift — EU Omnibus (onder voorbehoud)</h4>
+              <p>*Het EU Omnibus-voorstel (april 2026) stelt voor de zwaarste verplichtingen voor Bijlage III-systemen te verschuiven naar december 2027. Dit is nog NIET aangenomen — act nu op de huidige deadline van augustus 2026.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Risiconiveaus: in welke categorie valt uw AI-gebruik?</h2>
+
+        <div class="risk-levels">
+          <div class="risk-card unacceptable">
+            <div class="risk-label">🚫 Onaanvaardbaar risico — verboden</div>
+            <h4>Verboden AI-toepassingen</h4>
+            <p>Sociale scoring, manipulatieve technieken, biometrische massa-surveillance. Van toepassing op vrijwel geen enkel regulier MKB-bedrijf.</p>
+          </div>
+          <div class="risk-card high">
+            <div class="risk-label">⚠️ Hoog risico — zware eisen</div>
+            <h4>Bijlage III-systemen</h4>
+            <p>AI in HR/personeelswerving, kredietbeoordeling, kritieke infrastructuur, onderwijs. Hier gelden de eisen van augustus 2026. Controleer of uw HR-software of creditassessment-tool AI bevat.</p>
+          </div>
+          <div class="risk-card limited">
+            <div class="risk-label">ℹ️ Beperkt risico — transparantie</div>
+            <h4>Chatbots en AI-content</h4>
+            <p>Als u een AI-chatbot op uw website heeft, of AI-gegenereerde content deelt: u moet gebruikers transparant informeren dat ze met AI te maken hebben. Geldt ook voor deepfakes.</p>
+          </div>
+          <div class="risk-card minimal">
+            <div class="risk-label">✓ Minimaal risico</div>
+            <h4>Standaard AI-tools</h4>
+            <p>AI-spamfilters, aanbevelingssystemen, de meeste generatieve AI-tools die intern worden gebruikt. Geen specifieke AI Act-verplichtingen, maar Artikel 4 (AI-geletterdheid) geldt wel.</p>
+          </div>
+        </div>
+
+        <h2>Uw compliance-checklist: 5 verplichte stappen</h2>
+
+        <div class="checklist-box">
+          <div class="checklist-header">EU AI Act MKB Compliance Checklist — 2 augustus 2026</div>
+          <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="check-content">
+              <h4>1. AI-register opstellen</h4>
+              <p>Inventariseer alle AI-systemen die uw bedrijf gebruikt: kopen, huren, zelf bouwen. Per systeem: naam, leverancier, doel, risicocategorie. Inclusief ChatGPT-gebruik, AI in HR-software, CRM met AI-functies.</p>
+              <div class="check-time">Tijdsinvestering: 2–4 uur eenmalig</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="check-content">
+              <h4>2. AI-beleid opstellen</h4>
+              <p>Minimaal één pagina intern beleid: welke AI-tools zijn toegestaan, hoe worden ze ingezet, wie is verantwoordelijk. Klanten- en persoonsgegevens mogen niet worden ingevoerd in publieke AI-diensten zonder toestemming.</p>
+              <div class="check-time">Tijdsinvestering: 1–2 uur eenmalig</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="check-content">
+              <h4>3. AI-geletterdheidsbeleid (Artikel 4)</h4>
+              <p>Al verplicht per februari 2025: zorg dat medewerkers die AI gebruiken begrijpen wat het systeem doet en de beperkingen ervan kennen. Documenteer dit: een korte instructie, e-learning of teambijeenkomst is voldoende.</p>
+              <div class="check-time">Tijdsinvestering: 1–2 uur setup + 30 min per medewerker</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="check-content">
+              <h4>4. Transparantie naar klanten</h4>
+              <p>Gebruikt u een AI-chatbot op uw website of klantenservice? Of deelt u AI-gegenereerde content? Dan bent u verplicht dit kenbaar te maken. Voeg een label toe: "Dit gesprek wordt gevoerd door een AI-assistent."</p>
+              <div class="check-time">Tijdsinvestering: 30 min eenmalig</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="check-content">
+              <h4>5. Verwerkersovereenkomst / AI-clausule bij leveranciers</h4>
+              <p>Controleer uw contracten met AI-leveranciers: worden uw bedrijfs- of klantgegevens gebruikt voor modeltraining? Zo ja, is dit AVG-compliant? Veel SaaS-tools voegen AI-functies toe aan bestaande contracten — lees de updates.</p>
+              <div class="check-time">Tijdsinvestering: 1–2 uur contractreview</div>
+            </div>
+          </div>
+        </div>
+
+        <p><strong>Totale tijdsinvestering voor basisniveau compliance: 4–8 uur eenmalig, daarna 1–2 uur per kwartaal</strong> voor het bijhouden van het AI-register en eventuele updates in beleid.</p>
+
+        <h2>Boetes: wat staat er op het spel?</h2>
+
+        <table class="fine-table">
+          <thead>
+            <tr>
+              <th>Overtreding</th>
+              <th>Maximale boete</th>
+              <th>MKB-relevantie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verboden AI-toepassingen (Artikel 5)</td>
+              <td class="fine-amount">€35M of 7% omzet</td>
+              <td>Laag — verboden praktijken gebruikt vrijwel niemand</td>
+            </tr>
+            <tr>
+              <td>Verplichtingen hoog-risico AI niet nagekomen</td>
+              <td class="fine-amount">€15M of 3% omzet</td>
+              <td>Matig — relevant als u AI inzet in HR, krediet of kritieke processen</td>
+            </tr>
+            <tr>
+              <td>Transparantievereisten niet nageleefd</td>
+              <td class="fine-amount">€7,5M of 1,5% omzet</td>
+              <td>Hoog — iedereen met AI-chatbot op website</td>
+            </tr>
+            <tr>
+              <td>Onjuiste informatie aan toezichthouder</td>
+              <td class="fine-amount">€7,5M of 1,5% omzet</td>
+              <td>Relevant bij onderzoek door AP</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>De Nederlandse toezichthouder is de <strong>Autoriteit Persoonsgegevens (AP)</strong>. De AP heeft aangekondigd actief te handhaven, te beginnen bij grote bedrijven en hoog-risico sectoren. MKB-bedrijven met aantoonbare compliance-inspanning lopen in de praktijk laag risico — maar aantoonbaar is het sleutelwoord.</p>
+
+        <h2>Het EU Omnibus-voorstel: wat verandert er mogelijk?</h2>
+
+        <div class="omnibus-box">
+          <h3>EU Omnibus (april 2026): mogelijke aanpassing van de tijdlijn</h3>
+          <p>In april 2026 publiceerde de Europese Commissie het Omnibus-voorstel. Dit voorstel stelt voor om de zwaarste verplichtingen voor hoog-risico AI-systemen (Bijlage III) te verschuiven van augustus 2026 naar <strong>december 2027</strong> — een verlenging van 16 maanden.</p>
+          <p>Het voorstel is echter nog <strong>niet aangenomen</strong> door het Europees Parlement en de Raad. Zolang dat niet het geval is, geldt de huidige deadline van 2 augustus 2026.</p>
+          <p><strong>Ons advies:</strong> Act nu op de huidige deadline. Als het voorstel wordt aangenomen, heeft u ruimte gewonnen. Als het niet wordt aangenomen, bent u op tijd. Wachten op onzekerheid is een risico-vergroting, geen risicoverlaging.</p>
+        </div>
+
+        <h2>Actieplan: dit doet u de komende 6 weken</h2>
+
+        <div class="action-plan">
+          <div class="action-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Week 1: AI-inventarisatie uitvoeren</h4>
+              <p>Ga met uw team door alle software die AI bevat of gebruikt. Documenteer per tool: leverancier, doel, verwerkt het klantgegevens, welke risicocategorie.</p>
+              <div class="step-effort">⏱ Tijdsinvestering: 2–3 uur</div>
+            </div>
+          </div>
+          <div class="action-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Week 2: Intern AI-beleid opstellen</h4>
+              <p>Schrijf een korte AI-gebruiksrichtlijn. Welke tools zijn goedgekeurd? Wat mag niet (klantdata invoeren in ChatGPT)? Wie is de AI-verantwoordelijke binnen uw bedrijf?</p>
+              <div class="step-effort">⏱ Tijdsinvestering: 1–2 uur</div>
+            </div>
+          </div>
+          <div class="action-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Week 3: Team informeren (Artikel 4)</h4>
+              <p>Organiseer een korte sessie van 30–60 minuten: "Hoe gebruiken wij AI, wat zijn de risico's, wat mag en wat niet?" Documenteer aanwezigheid. Hiermee voldoet u aan Artikel 4.</p>
+              <div class="step-effort">⏱ Tijdsinvestering: 2–3 uur incl. voorbereiding</div>
+            </div>
+          </div>
+          <div class="action-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Week 4: Website en klantenservice controleren</h4>
+              <p>Heeft u een chatbot of AI-assistent op uw website? Voeg een duidelijke vermelding toe. Reviewen ook uw leverancierscontracten op AI-clausules en gegevensgebruik voor training.</p>
+              <div class="step-effort">⏱ Tijdsinvestering: 1–2 uur</div>
+            </div>
+          </div>
+          <div class="action-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>Week 5–6: Documentatie samenvoegen en bewaren</h4>
+              <p>Compileer uw AI-register, beleid, trainingsregistratie en contractdocumentatie in één compliance-map. Dit is het bewijs dat u bij een eventuele AP-vraag kunt overleggen. Bewaar minimaal 3 jaar.</p>
+              <div class="step-effort">⏱ Tijdsinvestering: 1 uur</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3>AI Governance Framework voor uw MKB-bedrijf</h3>
+          <p>TechLeadNL levert een kant-en-klaar AI Governance Framework: AI-register, beleidsdocument, trainingsmateriaal en contractchecklists — afgestemd op uw specifieke AI-gebruik. Inclusief AP-bewijs documentatie. Vaste prijs: €2.500.</p>
+          <div class="cta-buttons">
+            <a href="/nis2-compliance-checklist-2026" class="cta-btn-secondary">NIS2 Checklist 2026 →</a>
+            <a href="https://techleadnl.nl" class="cta-btn-primary">AI Governance Framework →</a>
+          </div>
+        </div>
+
+        <div class="related-box">
+          <h4>Gerelateerde artikelen</h4>
+          <a href="/nis2-compliance-checklist-2026" class="related-link">NIS2 Compliance Checklist 2026 — alles wat MKB moet weten</a>
+          <a href="/cloud-soevereiniteit-mkb" class="related-link">Cloud soevereiniteit: CLOUD Act en Europese alternatieven</a>
+          <a href="/microsoft-vs-google-cloud-mkb" class="related-link">Microsoft 365 vs Google Workspace — privacy en kosten vergeleken</a>
+        </div>
+
+        <div class="sources-section">
+          <h4>Bronnen</h4>
+          <p>
+            EUR-Lex 2024/1689 — EU AI Act officiële tekst (eur-lex.europa.eu) |
+            Autoriteit Persoonsgegevens — Kunstmatige intelligentie en de AVG (autoriteitpersoonsgegevens.nl) |
+            Europese Commissie — AI Act Overview (digital-strategy.ec.europa.eu) |
+            SIDN — Wat is de AI-verordening en wat moeten bedrijven doen? (sidn.nl) |
+            Legal Tree — AI Act: wat verandert er voor uw bedrijf? |
+            Deloitte — EU AI Act: praktische gids voor MKB (deloitte.com/nl) |
+            Europese Commissie — Omnibus Simplification Package (april 2026) |
+            Netherlands Enterprise Agency — AI verordening voor het MKB (rvo.nl)
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="/articles">Artikelen</a> | <a href="https://techleadnl.nl">TechLeadNL</a> | <a href="/privacy">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = !menu.hasAttribute('hidden');
+        menu[open ? 'setAttribute' : 'removeAttribute']('hidden', '');
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+</body>
+</html>

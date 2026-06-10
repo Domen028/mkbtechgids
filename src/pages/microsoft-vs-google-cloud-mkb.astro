@@ -1,0 +1,470 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft 365 vs Google Workspace voor MKB: de eerlijke vergelijking 2026 | MKBTechGids</title>
+  <meta name="description" content="Microsoft 365 of Google Workspace? Kosten, features, privacy en de impact van de prijsverhoging per juli 2026. De beslissingsmatrix voor Nederlands MKB." />
+  <link rel="canonical" href="https://mkbtechgids.nl/microsoft-vs-google-cloud-mkb" />
+  <meta property="og:title" content="Microsoft 365 vs Google Workspace voor MKB: de eerlijke vergelijking 2026" />
+  <meta property="og:description" content="Kosten, features, privacy en de CLOUD Act. Alles wat MKB-directeuren moeten weten om de juiste keuze te maken." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mkbtechgids.nl/microsoft-vs-google-cloud-mkb" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8SGBGYYE9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C8SGBGYYE9');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Microsoft 365 vs Google Workspace voor MKB: de eerlijke vergelijking 2026",
+    "description": "Kosten, features, privacy en de CLOUD Act. Alles wat MKB-directeuren moeten weten.",
+    "author": {"@type": "Organization", "name": "MKBTechGids"},
+    "publisher": {"@type": "Organization", "name": "MKBTechGids", "url": "https://mkbtechgids.nl"},
+    "datePublished": "2026-06-11",
+    "dateModified": "2026-06-11",
+    "mainEntityOfPage": "https://mkbtechgids.nl/microsoft-vs-google-cloud-mkb"
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy-dark: #0f2147;
+      --navy-light: #1e3a6e;
+      --green: #14532d;
+      --green-light: #15803d;
+      --green-bg: #f0fdf4;
+      --text-dark: #f1f5f9;
+      --text-light: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-gray: #e2e8f0;
+      --text-body: #475569;
+      --ms-blue: #0078d4;
+      --g-red: #ea4335;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
+    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 28px; flex: 1; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { font-size: 13px; font-weight: 600; color: white; background: var(--green); border-radius: 6px; padding: 8px 18px; transition: background 0.14s; }
+    .nav-cta:hover { background: var(--green-light); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-body); border-radius: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu:not([hidden]) { display: flex; flex-direction: column; background: var(--bg-light); border-top: 1px solid var(--bg-gray); padding: 8px 28px 20px; }
+    .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-body); padding: 12px 0; border-bottom: 1px solid var(--bg-gray); }
+
+    .article-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .article-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--text-light); margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+    .article-tag { display: inline-block; background: rgba(20,83,45,0.2); border: 1px solid var(--green); color: var(--text-dark); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 24px; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 5vw, 46px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
+    .article-hero h1 em { font-style: normal; color: #4ade80; }
+    .article-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+    .article-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 20px; }
+
+    .signal-strip { background: #0a1628; border-top: 2px solid var(--green); padding: 20px 28px; }
+    .signal-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+    .signal-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .signal-text { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+
+    .article-content { background: white; padding: 60px 28px; }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy-dark); margin-top: 52px; margin-bottom: 20px; line-height: 1.2; }
+    p { margin-bottom: 18px; color: var(--text-body); line-height: 1.8; }
+    strong { color: var(--navy-dark); font-weight: 600; }
+
+    .alert-box { background: #fff7ed; border-left: 4px solid #ea580c; padding: 24px; border-radius: 6px; margin: 32px 0; }
+    .alert-box strong { color: #9a3412; display: block; margin-bottom: 8px; font-size: 15px; }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--bg-gray); }
+    .compare-table th { padding: 14px 16px; text-align: left; font-size: 13px; font-weight: 700; }
+    .compare-table th:first-child { background: var(--navy-dark); color: white; }
+    .compare-table th.ms { background: #0078d4; color: white; }
+    .compare-table th.google { background: #188038; color: white; }
+    .compare-table td { padding: 14px 16px; border-bottom: 1px solid var(--bg-gray); font-size: 14px; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--bg-light); }
+    .compare-table td:first-child { font-weight: 600; color: var(--navy-dark); background: white !important; }
+    .win { color: #15803d; font-weight: 700; }
+    .neutral { color: var(--text-body); }
+
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+    .price-card { border-radius: 8px; padding: 28px; border: 2px solid; }
+    .price-card.ms { border-color: #bfdbfe; background: #eff6ff; }
+    .price-card.google { border-color: #bbf7d0; background: #f0fdf4; }
+    .price-card h3 { font-weight: 700; font-size: 16px; margin-bottom: 16px; }
+    .price-card.ms h3 { color: #1e40af; }
+    .price-card.google h3 { color: #15803d; }
+    .price-line { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-size: 14px; }
+    .price-line:last-child { border-bottom: none; }
+    .price-amount { font-weight: 700; }
+    .price-note { font-size: 12px; color: var(--text-body); margin-top: 12px; line-height: 1.6; }
+
+    .warning-box { background: #fef9c3; border: 2px solid #fde047; border-radius: 8px; padding: 24px; margin: 32px 0; }
+    .warning-box strong { color: #854d0e; display: block; margin-bottom: 8px; }
+
+    .decision-box { background: white; border: 2px solid var(--bg-gray); border-radius: 8px; padding: 8px 0; margin: 32px 0; }
+    .decision-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 24px; border-bottom: 1px solid var(--bg-gray); }
+    .decision-item:last-child { border-bottom: none; }
+    .decision-badge { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 12px; flex-shrink: 0; margin-top: 2px; }
+    .decision-badge.ms { background: #dbeafe; color: #1e40af; }
+    .decision-badge.google { background: #dcfce7; color: #15803d; }
+    .decision-badge.both { background: #f3f4f6; color: #374151; }
+    .decision-content h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; font-size: 14px; }
+    .decision-content p { font-size: 14px; margin-bottom: 0; }
+
+    .cta-section { background: var(--green); color: white; padding: 48px 36px; border-radius: 8px; margin: 56px 0; text-align: center; }
+    .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; }
+    .cta-section p { opacity: 0.9; margin-bottom: 28px; font-size: 15px; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { display: inline-block; background: white; color: var(--green); font-weight: 700; padding: 14px 32px; border-radius: 6px; transition: all 0.14s; font-size: 15px; }
+    .cta-btn-primary:hover { background: var(--green-bg); }
+    .cta-btn-secondary { display: inline-block; background: transparent; color: white; font-weight: 600; padding: 14px 32px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.6); transition: all 0.14s; font-size: 15px; }
+    .cta-btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    .related-box { background: var(--bg-light); border: 2px solid var(--bg-gray); border-radius: 8px; padding: 28px; margin: 32px 0; }
+    .related-box h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 16px; font-size: 15px; }
+    .related-link { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--bg-gray); color: var(--text-body); font-size: 14px; transition: color 0.14s; }
+    .related-link:last-child { border-bottom: none; }
+    .related-link:hover { color: var(--green); }
+    .related-link::before { content: '→'; color: var(--green); font-weight: 700; }
+
+    .sources-section { border-top: 1px solid var(--bg-gray); padding-top: 28px; margin-top: 48px; }
+    .sources-section h4 { font-size: 13px; font-weight: 700; color: var(--navy-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .sources-section p { font-size: 12px; color: var(--text-body); line-height: 1.7; }
+
+    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .footer p { font-size: 13px; }
+    .footer a { color: #4ade80; }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .article-hero { padding: 48px 20px; }
+      .price-grid { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; }
+      .compare-table { font-size: 13px; }
+      .compare-table td, .compare-table th { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="120" height="46" /></a>
+      <nav class="nav-links">
+        <a href="/nis2">NIS2</a>
+        <a href="/articles">Artikelen</a>
+        <a href="/nis2-scope-checker">Scope Checker</a>
+      </nav>
+      <a href="https://techleadnl.nl" class="nav-cta">TechLeadNL →</a>
+      <button class="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+      <a href="/cloud-soevereiniteit-mkb">Cloud Soevereiniteit</a>
+      <a href="/microsoft-vs-google-cloud-mkb">Microsoft vs Google Cloud</a>
+      <a href="/crm-kiezen-10-dagen">CRM kiezen</a>
+      <a href="/articles">Alle artikelen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="article-hero-inner">
+        <div class="breadcrumb">
+          <a href="/" style="color: var(--text-light)">MKBTechGids</a>
+          <span>→</span>
+          <a href="/articles" style="color: var(--text-light)">Artikelen</a>
+          <span>→</span>
+          <span>Microsoft vs Google Cloud</span>
+        </div>
+        <div class="article-tag">Cloud · Vergelijking · Kosten 2026</div>
+        <h1>Microsoft 365 vs Google Workspace:<br><em>de beslissing die uw werkplek bepaalt</em></h1>
+        <p>Beide platformen kosten nu ruim €12 per gebruiker per maand — maar Microsoft verhoogt per 1 juli 2026. En Copilot stuurt uw data standaard buiten Europa. Dit is de vergelijking die u helpt kiezen.</p>
+        <div class="article-meta">
+          <span>11 juni 2026</span>
+          <span>·</span>
+          <span>8 minuten leestijd</span>
+          <span>·</span>
+          <span>MKBTechGids</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-strip">
+      <div class="signal-inner">
+        <div class="signal-dot"></div>
+        <strong class="signal-text">Microsoft verhoogt prijzen per 1 juli 2026: Business Basic +16%, Business Standard +12%. En Copilot Flex Routing verwerkt uw data buiten Europa — standaard ingeschakeld.</strong>
+      </div>
+    </div>
+
+    <article class="article-content">
+      <div class="article-inner">
+
+        <p>Voor de meeste MKB-directeuren is de keuze tussen Microsoft 365 en Google Workspace een instinctieve beslissing gebaseerd op wat het personeel gewend is. Maar in 2026 spelen er meer factoren: een aanstaande prijsverhoging bij Microsoft, privacyzorgen rond AI-functies, en de vraag of uw data eigenlijk binnen Europa blijft.</p>
+
+        <p>Dit artikel geeft u de feiten om een weloverwogen keuze te maken — of te bevestigen dat u de juiste keuze al heeft gemaakt.</p>
+
+        <h2>De basis: wat krijgt u voor uw geld?</h2>
+
+        <div class="price-grid">
+          <div class="price-card ms">
+            <h3>Microsoft 365 Business</h3>
+            <div class="price-line">
+              <span>Business Basic</span>
+              <span class="price-amount">€6,50 → €7,55*</span>
+            </div>
+            <div class="price-line">
+              <span>Business Standard</span>
+              <span class="price-amount">€12,50 → €14,00*</span>
+            </div>
+            <div class="price-line">
+              <span>Business Premium</span>
+              <span class="price-amount">€22,00 (ongewijzigd)</span>
+            </div>
+            <div class="price-line">
+              <span>Copilot add-on</span>
+              <span class="price-amount">+€30,00/maand</span>
+            </div>
+            <div class="price-line">
+              <span>Opslag</span>
+              <span class="price-amount">1 TB/gebruiker</span>
+            </div>
+            <p class="price-note">* Nieuwe prijzen per 1 juli 2026. Van toepassing bij eerstvolgende contractverlenging na die datum.</p>
+          </div>
+          <div class="price-card google">
+            <h3>Google Workspace Business</h3>
+            <div class="price-line">
+              <span>Business Starter</span>
+              <span class="price-amount">€6,00/maand</span>
+            </div>
+            <div class="price-line">
+              <span>Business Standard</span>
+              <span class="price-amount">€12,00/maand</span>
+            </div>
+            <div class="price-line">
+              <span>Business Plus</span>
+              <span class="price-amount">€18,00/maand</span>
+            </div>
+            <div class="price-line">
+              <span>Gemini Advanced add-on</span>
+              <span class="price-amount">+€20,00/maand</span>
+            </div>
+            <div class="price-line">
+              <span>Opslag</span>
+              <span class="price-amount">2 TB/gebruiker (gedeeld)</span>
+            </div>
+            <p class="price-note">Geen aangekondigde prijsverhoging voor 2026. Google biedt meer opslag per gebruiker bij Standard-plan.</p>
+          </div>
+        </div>
+
+        <h2>Feature-vergelijking: wat telt voor MKB?</h2>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Functie</th>
+              <th class="ms">Microsoft 365</th>
+              <th class="google">Google Workspace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>E-mail en agenda</td>
+              <td>Outlook — uitgebreid, enterprise-bewezen</td>
+              <td class="win">Gmail — sneller, uitstekende zoekfunctie</td>
+            </tr>
+            <tr>
+              <td>Office-toepassingen</td>
+              <td class="win">Word, Excel, PowerPoint — de standaard voor documenten</td>
+              <td>Docs, Sheets, Slides — functioneel, minder features</td>
+            </tr>
+            <tr>
+              <td>Real-time samenwerking</td>
+              <td>Verbeterd, maar later toegevoegd</td>
+              <td class="win">Multi-cursor editing, sneller en volwassener</td>
+            </tr>
+            <tr>
+              <td>Videoconferenties</td>
+              <td class="win">Teams — brede functionaliteit, agenda-integratie</td>
+              <td>Google Meet — eenvoudig en betrouwbaar</td>
+            </tr>
+            <tr>
+              <td>Opslag</td>
+              <td class="neutral">1 TB per gebruiker (OneDrive)</td>
+              <td class="win">2 TB per gebruiker (gedeeld in pool)</td>
+            </tr>
+            <tr>
+              <td>Excel / data-analyse</td>
+              <td class="win">Excel is de industriestandaard voor financiële modellen</td>
+              <td>Sheets — voldoende voor basisgebruik</td>
+            </tr>
+            <tr>
+              <td>AI-assistent</td>
+              <td>Copilot +€30/mnd — krachtig, maar data buiten EU standaard</td>
+              <td class="win">Gemini +€20/mnd — iets goedkoper, Europese verwerking beter</td>
+            </tr>
+            <tr>
+              <td>Beheer en beveiliging</td>
+              <td class="win">Uitgebreidere enterprise controls (Intune, Entra ID)</td>
+              <td>Goed, maar minder granulaire controls</td>
+            </tr>
+            <tr>
+              <td>Prijs stabiliteit</td>
+              <td>Verhoging per 1 jul 2026 (12–16%)</td>
+              <td class="win">Geen aangekondigde verhogingen 2026</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Het privacyvraagstuk: wat u moet weten</h2>
+        <p>Beide Microsoft en Google zijn Amerikaanse bedrijven — beide vallen onder de CLOUD Act. Dat betekent dat de Amerikaanse overheid op rechterlijk bevel toegang kan vragen tot uw bedrijfsdata, ongeacht waar die data staat. Dit geldt voor <em>beide platformen gelijk</em>.</p>
+
+        <div class="alert-box">
+          <strong>⚠️ Microsoft Copilot verwerkt uw data buiten Europa — standaard</strong>
+          Sinds 17 april 2026 staat Microsoft Copilot Flex Routing standaard ingeschakeld. Dit houdt in dat AI-verwerking van uw documenten en e-mails buiten de EU kan plaatsvinden. U betaalt meer voor AI dat uw data standaard naar buiten Europa stuurt — tenzij u dit actief uitzet.<br><br>
+          <strong>Fix:</strong> Microsoft 365 Admin Center → Instellingen → Org-instellingen → Copilot → Flex Routing → uitschakelen.
+        </div>
+
+        <p>Google Workspace verwerkt AI standaard in Europese datacenters voor EU-klanten — een concreet privacyvoordeel als AI-gebruik een factor is in uw keuze.</p>
+
+        <h2>Wanneer kiest u Microsoft 365?</h2>
+
+        <div class="decision-box">
+          <div class="decision-item">
+            <span class="decision-badge ms">Microsoft</span>
+            <div class="decision-content">
+              <h4>Uw organisatie werkt intensief met Excel en Office-bestanden</h4>
+              <p>Financiële modellen, complexe spreadsheets, macro's — Excel heeft geen gelijkwaardige vervanging. Als dit uw kernactiviteit is, is Microsoft de logische keuze.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge ms">Microsoft</span>
+            <div class="decision-content">
+              <h4>U heeft al een Microsoft-ecosystem (Azure, Dynamics, Teams)</h4>
+              <p>Als u Azure, Dynamics 365 of andere Microsoft-diensten gebruikt, is de integratie met Microsoft 365 een duidelijk voordeel. Alles werkt samen zonder extra configuratie.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge ms">Microsoft</span>
+            <div class="decision-content">
+              <h4>Uw branche of klanten verwachten .docx / .xlsx bestanden</h4>
+              <p>Accountancy, juridische diensten, financiën, maakindustrie — in veel sectoren is Microsoft Office de geïmpliceerde standaard voor documentuitwisseling.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Wanneer kiest u Google Workspace?</h2>
+
+        <div class="decision-box">
+          <div class="decision-item">
+            <span class="decision-badge google">Google</span>
+            <div class="decision-content">
+              <h4>Real-time samenwerking is uw kern</h4>
+              <p>Teams die tegelijk aan dezelfde documenten werken — marketing, creatief, projectmanagement — profiteren van Google's superieure real-time samenwerking. Multi-cursor editing is nog steeds beter dan Microsoft's implementatie.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge google">Google</span>
+            <div class="decision-content">
+              <h4>Uw team is jong en remote-first</h4>
+              <p>Google Workspace heeft een lagere leercurve, werkt volledig browser-based, en heeft geen installaties nodig. Voor jonge teams of remote-first bedrijven werkt dit sneller.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge google">Google</span>
+            <div class="decision-content">
+              <h4>Kostenstabiliteit is een prioriteit</h4>
+              <p>Microsoft verhoogt per 1 juli 2026 met 12–16%. Google heeft geen prijsverhoging aangekondigd. Bij 20 medewerkers op Business Standard scheelt dit al snel €400–600/jaar.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>De hybride aanpak: steeds gebruikelijker</h2>
+        <p>Steeds meer Nederlandse MKB-bedrijven kiezen niet exclusief voor één platform. Een veelgebruikte combinatie: <strong>Google Workspace voor dagelijkse communicatie en samenwerking</strong>, aangevuld met <strong>Microsoft 365 losse licenties voor gebruikers die Excel-intensief werken</strong>.</p>
+
+        <p>Dit kan kostenefficiënter zijn dan een volledige Microsoft-suite voor iedereen. De valkuil: twee platforms beheren vereist meer ICT-aandacht. Weeg dit mee voor uw schaal.</p>
+
+        <div class="warning-box">
+          <strong>Prijsverhoging Microsoft: wanneer voelt u het?</strong>
+          De verhoging per 1 juli 2026 geldt bij eerstvolgende contractverlenging. Heeft u een jaarcontract dat na juli 2026 verloopt? Dan betaalt u de nieuwe prijs. Overweeg of vervroegde verlenging vóór 1 juli aantrekkelijk is — u vergrendelt dan de oude prijs voor nog een jaar.
+        </div>
+
+        <div class="cta-section">
+          <h3>Weet u welk platform bij uw bedrijf past?</h3>
+          <p>TechLeadNL helpt MKB-directeuren met onafhankelijke technologiekeuzes. Geen licentiebelang — alleen het advies dat bij uw situatie past. Technology Stack Review: 20 uur, inclusief Microsoft/Google-analyse en kostenoptimalisatie.</p>
+          <div class="cta-buttons">
+            <a href="/cloud-soevereiniteit-mkb" class="cta-btn-secondary">Lees ook: Cloud Soevereiniteit →</a>
+            <a href="https://techleadnl.nl" class="cta-btn-primary">Onafhankelijk advies aanvragen →</a>
+          </div>
+        </div>
+
+        <div class="related-box">
+          <h4>Gerelateerde artikelen</h4>
+          <a href="/cloud-soevereiniteit-mkb" class="related-link">Cloud Soevereiniteit voor NL MKB — de CLOUD Act uitgelegd</a>
+          <a href="/crm-kiezen-10-dagen" class="related-link">CRM kiezen in 10 dagen — het MKB stappenplan</a>
+          <a href="/nis2-compliance-checklist-2026" class="related-link">NIS2 Compliance Checklist 2026</a>
+        </div>
+
+        <div class="sources-section">
+          <h4>Bronnen</h4>
+          <p>
+            Universal.cloud — Microsoft 365 prijsverhoging juli 2026: alle wijzigingen |
+            Enreach.com — Microsoft wordt per 1 juli duurder: wat betaal je dan precies? |
+            Chefdata.nl — Google Workspace vs Microsoft 365 voor MKB |
+            Nicebyte.nl — Microsoft 365 vs Google Workspace: wat past beter bij jouw bedrijf? |
+            Oxilion.nl — Microsoft 365 vs Google Workspace: kies slim op security en samenwerken |
+            Microsoft — Copilot Flex Routing documentatie (april 2026) |
+            Intermax.nl — De CLOUD Act: wat overheidsorganisaties moeten weten |
+            Qualtir.com — Google Workspace vs Microsoft 365: Complete 2026 Comparison
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="/articles">Artikelen</a> | <a href="https://techleadnl.nl">TechLeadNL</a> | <a href="/privacy">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = !menu.hasAttribute('hidden');
+        menu[open ? 'setAttribute' : 'removeAttribute']('hidden', '');
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+---
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamics 365 vs Salesforce vs HubSpot: de eerlijke kostenvergelijking 2026 | MKBTechGids</title>
+  <meta name="description" content="Wat kost Dynamics 365, Salesforce of HubSpot echt voor uw MKB? Complete vergelijking van licenties, AI-add-ons, verborgen kosten en welk CRM wanneer de beste keuze is." />
+  <link rel="canonical" href="https://mkbtechgids.nl/dynamics-vs-salesforce-vs-hubspot" />
+  <meta property="og:title" content="Dynamics 365 vs Salesforce vs HubSpot: de eerlijke kostenvergelijking" />
+  <meta property="og:description" content="Licenties, AI-add-ons, verborgen kosten — alles wat u moet weten voor uw CRM-keuze in 2026." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mkbtechgids.nl/dynamics-vs-salesforce-vs-hubspot" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8SGBGYYE9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C8SGBGYYE9');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Dynamics 365 vs Salesforce vs HubSpot: de eerlijke kostenvergelijking 2026",
+    "description": "Licenties, AI-add-ons en verborgen kosten — complete vergelijking voor Nederlands MKB.",
+    "author": {"@type": "Organization", "name": "MKBTechGids"},
+    "publisher": {"@type": "Organization", "name": "MKBTechGids", "url": "https://mkbtechgids.nl"},
+    "datePublished": "2026-06-12",
+    "dateModified": "2026-06-12",
+    "mainEntityOfPage": "https://mkbtechgids.nl/dynamics-vs-salesforce-vs-hubspot"
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy-dark: #0f2147; --navy-light: #1e3a6e; --green: #14532d;
+      --green-light: #15803d; --green-bg: #f0fdf4; --text-dark: #f1f5f9;
+      --text-light: #94a3b8; --bg-light: #f8fafc; --bg-gray: #e2e8f0; --text-body: #475569;
+      --ms-blue: #0078d4; --sf-blue: #00a1e0; --hs-orange: #ff7a59;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--bg-light); color: var(--text-body); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--bg-light); border-bottom: 1px solid var(--bg-gray); }
+    .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 28px; flex: 1; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-body); padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.14s; }
+    .nav-links a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .nav-cta { font-size: 13px; font-weight: 600; color: white; background: var(--green); border-radius: 6px; padding: 8px 18px; transition: background 0.14s; }
+    .nav-cta:hover { background: var(--green-light); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: auto; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-body); border-radius: 2px; }
+    .mobile-menu { display: none; }
+    .mobile-menu:not([hidden]) { display: flex; flex-direction: column; background: var(--bg-light); border-top: 1px solid var(--bg-gray); padding: 8px 28px 20px; }
+    .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-body); padding: 12px 0; border-bottom: 1px solid var(--bg-gray); }
+    .article-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .article-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--text-light); margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+    .article-tag { display: inline-block; background: rgba(20,83,45,0.2); border: 1px solid var(--green); color: var(--text-dark); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 24px; }
+    .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 700; color: var(--text-dark); line-height: 1.15; margin-bottom: 20px; }
+    .article-hero h1 em { font-style: normal; color: #4ade80; }
+    .article-hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+    .article-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 20px; }
+    .signal-strip { background: #fff3cd; border-top: 2px solid #ffc107; padding: 16px 28px; }
+    .signal-inner { max-width: 1100px; margin: 0 auto; font-size: 14px; font-weight: 600; color: #7c5700; }
+    .article-content { background: white; padding: 60px 28px; }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy-dark); margin-top: 52px; margin-bottom: 20px; line-height: 1.2; }
+    p { margin-bottom: 18px; color: var(--text-body); line-height: 1.8; }
+    strong { color: var(--navy-dark); font-weight: 600; }
+
+    .vendor-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+    .vendor-card { border-radius: 8px; border: 2px solid var(--bg-gray); background: white; overflow: hidden; }
+    .vendor-header { padding: 16px 20px; }
+    .vendor-header.ms { background: var(--ms-blue); }
+    .vendor-header.sf { background: var(--sf-blue); }
+    .vendor-header.hs { background: var(--hs-orange); }
+    .vendor-name { font-weight: 700; font-size: 15px; color: white; }
+    .vendor-tagline { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+    .vendor-body { padding: 20px; }
+    .vendor-price { font-size: 22px; font-weight: 800; color: var(--navy-dark); }
+    .vendor-price-label { font-size: 12px; color: var(--text-body); margin-bottom: 12px; }
+    .vendor-tier { font-size: 13px; color: var(--text-body); padding: 6px 0; border-bottom: 1px solid var(--bg-gray); }
+    .vendor-tier:last-child { border-bottom: none; }
+    .tier-name { font-weight: 600; color: var(--navy-dark); }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--bg-gray); }
+    .compare-table th { background: var(--navy-dark); color: white; padding: 14px 16px; font-size: 13px; font-weight: 600; text-align: left; }
+    .compare-table th.ms-col { background: var(--ms-blue); }
+    .compare-table th.sf-col { background: var(--sf-blue); }
+    .compare-table th.hs-col { background: var(--hs-orange); }
+    .compare-table td { padding: 13px 16px; border-bottom: 1px solid var(--bg-gray); font-size: 13.5px; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--bg-light); }
+    .compare-table .row-label { font-weight: 600; color: var(--navy-dark); white-space: nowrap; }
+    .win { font-weight: 700; color: var(--green); }
+
+    .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+    .ai-card { border-radius: 8px; padding: 20px; border: 2px solid var(--bg-gray); background: white; }
+    .ai-card h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 8px; font-size: 14px; }
+    .ai-price { font-size: 20px; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px; }
+    .ai-label { font-size: 12px; color: var(--text-body); margin-bottom: 12px; }
+    .ai-feature { font-size: 13px; color: var(--text-body); padding: 4px 0; }
+
+    .alert-box { background: #fff7ed; border-left: 4px solid #ea580c; padding: 24px; border-radius: 6px; margin: 32px 0; }
+    .alert-box strong { color: #9a3412; display: block; margin-bottom: 8px; font-size: 15px; }
+    .hidden-cost-box { background: #fef2f2; border: 2px solid #fecaca; border-radius: 8px; padding: 28px; margin: 32px 0; }
+    .hidden-cost-box h3 { font-weight: 700; color: #7f1d1d; margin-bottom: 16px; font-size: 15px; }
+    .cost-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #fecaca; font-size: 14px; }
+    .cost-row:last-child { border-bottom: none; }
+    .cost-row .label { color: #374151; }
+    .cost-row .amount { font-weight: 700; color: #7f1d1d; }
+
+    .decision-grid { margin: 32px 0; }
+    .decision-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--bg-gray); align-items: flex-start; }
+    .decision-item:last-child { border-bottom: none; }
+    .decision-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 4px; flex-shrink: 0; white-space: nowrap; }
+    .badge-ms { background: #dbeafe; color: var(--ms-blue); }
+    .badge-sf { background: #e0f2fe; color: var(--sf-blue); }
+    .badge-hs { background: #fff7ed; color: #ea580c; }
+    .decision-text h4 { font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; font-size: 14px; }
+    .decision-text p { font-size: 13px; margin-bottom: 0; }
+
+    .total-cost-table { width: 100%; border-collapse: collapse; margin: 28px 0; border: 2px solid var(--navy-dark); border-radius: 8px; overflow: hidden; }
+    .total-cost-table th { background: var(--navy-dark); color: white; padding: 14px 20px; font-size: 14px; font-weight: 700; text-align: left; }
+    .total-cost-table td { padding: 14px 20px; border-bottom: 1px solid var(--bg-gray); font-size: 14px; }
+    .total-cost-table tr:last-child td { border-bottom: none; }
+    .total-cost-table .total-row td { font-weight: 800; color: var(--navy-dark); font-size: 15px; background: var(--bg-light); }
+
+    .cta-section { background: var(--green); color: white; padding: 48px 36px; border-radius: 8px; margin: 56px 0; text-align: center; }
+    .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; }
+    .cta-section p { opacity: 0.9; margin-bottom: 28px; font-size: 15px; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { display: inline-block; background: white; color: var(--green); font-weight: 700; padding: 14px 32px; border-radius: 6px; font-size: 15px; }
+    .cta-btn-secondary { display: inline-block; background: transparent; color: white; font-weight: 600; padding: 14px 32px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.6); font-size: 15px; }
+    .sources-section { border-top: 1px solid var(--bg-gray); padding-top: 28px; margin-top: 48px; }
+    .sources-section h4 { font-size: 13px; font-weight: 700; color: var(--navy-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .sources-section p { font-size: 12px; color: var(--text-body); line-height: 1.7; }
+    .footer { background: var(--navy-dark); color: var(--text-light); padding: 48px 28px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .footer p { font-size: 13px; }
+    .footer a { color: #4ade80; }
+    @media (max-width: 900px) {
+      .vendor-cards, .ai-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .article-hero { padding: 48px 20px; }
+      .cta-buttons { flex-direction: column; }
+      .compare-table { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="nav-logo"><img src="/logo.svg" alt="MKBTechGids" width="120" height="46" /></a>
+      <nav class="nav-links">
+        <a href="/nis2">NIS2</a>
+        <a href="/articles">Artikelen</a>
+        <a href="/nis2-scope-checker">Scope Checker</a>
+      </nav>
+      <a href="https://techleadnl.nl" class="nav-cta">TechLeadNL →</a>
+      <button class="nav-toggle" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" hidden>
+      <a href="/crm-kiezen-10-dagen">CRM kiezen in 10 dagen</a>
+      <a href="/dynamics-vs-salesforce-vs-hubspot">Dynamics vs Salesforce</a>
+      <a href="/articles">Alle artikelen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="article-hero-inner">
+        <div class="breadcrumb">
+          <a href="/" style="color: var(--text-light)">MKBTechGids</a>
+          <span>→</span>
+          <a href="/articles" style="color: var(--text-light)">Artikelen</a>
+          <span>→</span>
+          <span>CRM Kostenvergelijking</span>
+        </div>
+        <div class="article-tag">CRM · Kostenvergelijking · MKB 2026</div>
+        <h1>Dynamics 365 vs Salesforce vs HubSpot:<br><em>de eerlijke kostenvergelijking</em></h1>
+        <p>Alle drie groeien snel richting €200–500 per gebruiker per maand zodra u AI-functies toevoegt. Dit artikel legt de werkelijke kosten naast elkaar — inclusief wat de verkopers liever niet vertellen.</p>
+        <div class="article-meta">
+          <span>12 juni 2026</span>
+          <span>·</span>
+          <span>9 minuten leestijd</span>
+          <span>·</span>
+          <span>MKBTechGids</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-strip">
+      <div class="signal-inner">
+        ⚠️ Let op: HubSpot verhoogde de Professional-prijs van €890 naar €1.600/maand in 2025. Oude contracten lopen af — controleer uw verlengingsdatum.
+      </div>
+    </div>
+
+    <article class="article-content">
+      <div class="article-inner">
+
+        <p>De drie grote CRM-spelers voor het MKB — Microsoft Dynamics 365, Salesforce en HubSpot — positioneren zich op een manier die vergelijken lastig maakt. Dynamics zit gebundeld in Microsoft-pakketten, Salesforce communiceert in dollars terwijl u in euro's betaalt, en HubSpot heeft een ogenschijnlijk lage instapprijs die snel oploopt.</p>
+
+        <p>Dit artikel geeft u de gestandaardiseerde vergelijking — alles in euro's, per gebruiker, per maand, met de AI-add-ons die u bij normale bedrijfsvoering in 2026 waarschijnlijk nodig heeft.</p>
+
+        <h2>Basislicenties: de startprijzen vergeleken</h2>
+
+        <div class="vendor-cards">
+          <div class="vendor-card">
+            <div class="vendor-header ms">
+              <div class="vendor-name">Microsoft Dynamics 365</div>
+              <div class="vendor-tagline">Sterk met Office 365-integratie</div>
+            </div>
+            <div class="vendor-body">
+              <div class="vendor-price">€56</div>
+              <div class="vendor-price-label">/gebruiker/maand (instap)</div>
+              <div class="vendor-tier"><span class="tier-name">Sales Professional</span> — €56/gebruiker</div>
+              <div class="vendor-tier"><span class="tier-name">Sales Enterprise</span> — €97/gebruiker</div>
+              <div class="vendor-tier"><span class="tier-name">Sales Premium</span> — €135/gebruiker</div>
+              <div class="vendor-tier"><span class="tier-name">Microsoft 365 E3 bundel</span> — apart geprijsd</div>
+            </div>
+          </div>
+          <div class="vendor-card">
+            <div class="vendor-header sf">
+              <div class="vendor-name">Salesforce</div>
+              <div class="vendor-tagline">Meest uitgebreid, hoogste kosten</div>
+            </div>
+            <div class="vendor-body">
+              <div class="vendor-price">~€23</div>
+              <div class="vendor-price-label">/gebruiker/maand (instap)</div>
+              <div class="vendor-tier"><span class="tier-name">Starter Suite</span> — ~€23/gebruiker (€25)</div>
+              <div class="vendor-tier"><span class="tier-name">Pro Suite</span> — ~€83/gebruiker (€90)</div>
+              <div class="vendor-tier"><span class="tier-name">Enterprise</span> — ~€151/gebruiker (€165)</div>
+              <div class="vendor-tier"><span class="tier-name">Unlimited</span> — ~€275/gebruiker (€300)</div>
+            </div>
+          </div>
+          <div class="vendor-card">
+            <div class="vendor-header hs">
+              <div class="vendor-name">HubSpot</div>
+              <div class="vendor-tagline">Beste UX, instapkosten laag</div>
+            </div>
+            <div class="vendor-body">
+              <div class="vendor-price">€0</div>
+              <div class="vendor-price-label">instap (gratis CRM)</div>
+              <div class="vendor-tier"><span class="tier-name">Free CRM</span> — €0 (beperkt)</div>
+              <div class="vendor-tier"><span class="tier-name">Starter</span> — ~€20/gebruiker</div>
+              <div class="vendor-tier"><span class="tier-name">Professional</span> — €1.600/maand (5 users)</div>
+              <div class="vendor-tier"><span class="tier-name">Enterprise</span> — ~€4.000/maand</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-box">
+          <strong>⚠️ HubSpot Professional: van €890 naar €1.600/maand — een stijging van 80%</strong>
+          In 2025 verhoogde HubSpot de Professional Sales Hub-prijs drastisch. Bestaande contracten zijn verlengd tegen de oude prijs, maar bij contract-verlenging betaalt u de nieuwe tarief. Controleer uw verlengingsdatum — dit is voor veel MKB-bedrijven een schok bij de renewal.
+        </div>
+
+        <h2>De volledige vergelijking: functies, AI en kosten</h2>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Criterium</th>
+              <th class="ms-col">Dynamics 365</th>
+              <th class="sf-col">Salesforce</th>
+              <th class="hs-col">HubSpot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="row-label">Instapprijs MKB</td>
+              <td>€56/user/mnd</td>
+              <td>~€83/user/mnd (Pro)</td>
+              <td class="win">€0–20/user (instap)</td>
+            </tr>
+            <tr>
+              <td class="row-label">Prijs mid-market (10+ users)</td>
+              <td>€97/user/mnd</td>
+              <td>€151/user/mnd</td>
+              <td class="win">~€80/user eq. (Pro 5 seats)</td>
+            </tr>
+            <tr>
+              <td class="row-label">AI-add-on (Copilot/Einstein/Breeze)</td>
+              <td>+€30–50/user</td>
+              <td>+€50–75/user</td>
+              <td>+€20–35/user</td>
+            </tr>
+            <tr>
+              <td class="row-label">Microsoft 365 integratie</td>
+              <td class="win">Nativ, Teams, Outlook</td>
+              <td>Koppeling vereist</td>
+              <td>Koppeling vereist</td>
+            </tr>
+            <tr>
+              <td class="row-label">Implementatietijd</td>
+              <td>6–16 weken</td>
+              <td>8–24 weken</td>
+              <td class="win">2–8 weken</td>
+            </tr>
+            <tr>
+              <td class="row-label">Gebruiksgemak (UX)</td>
+              <td>Gemiddeld</td>
+              <td>Complex</td>
+              <td class="win">Intuïtief</td>
+            </tr>
+            <tr>
+              <td class="row-label">Marketing automation</td>
+              <td>Aparte licentie</td>
+              <td>Aparte licentie</td>
+              <td class="win">Ingebouwd (Pro+)</td>
+            </tr>
+            <tr>
+              <td class="row-label">Nederlandse ondersteuning</td>
+              <td class="win">Partners landelijk</td>
+              <td>Beperkte NL-partners</td>
+              <td class="win">Uitgebreid NL-support</td>
+            </tr>
+            <tr>
+              <td class="row-label">Aanpassings-mogelijkheden</td>
+              <td class="win">Zeer hoog (Power Platform)</td>
+              <td class="win">Zeer hoog (Apex)</td>
+              <td>Matig (Enterprise)</td>
+            </tr>
+            <tr>
+              <td class="row-label">Contract minimum</td>
+              <td>12 maanden</td>
+              <td>12 maanden</td>
+              <td class="win">Maandelijks (Starter)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>AI-add-ons: de nieuwe realiteit van €200–500 per gebruiker</h2>
+
+        <p>Elk van de drie vendoren heeft in 2025–2026 AI-functionaliteiten ingevoerd die als add-on worden gefactureerd. Het resultaat: de totale kosten zijn voor veel bedrijven in 2026 fors hoger dan in hun oorspronkelijke selectie was meegenomen.</p>
+
+        <div class="ai-grid">
+          <div class="ai-card">
+            <h4>Microsoft Copilot for Sales</h4>
+            <div class="ai-price">+€30/user/mnd</div>
+            <div class="ai-label">Bovenop Dynamics Enterprise</div>
+            <div class="ai-feature">→ E-mailsuggesties in Outlook</div>
+            <div class="ai-feature">→ Meeting samenvatting (Teams)</div>
+            <div class="ai-feature">→ Deal insights in Dynamics</div>
+            <div class="ai-feature">→ Vereist M365 Business Premium</div>
+          </div>
+          <div class="ai-card">
+            <h4>Salesforce Einstein Copilot</h4>
+            <div class="ai-price">+€50–75/user/mnd</div>
+            <div class="ai-label">Bovenop Enterprise/Unlimited</div>
+            <div class="ai-feature">→ Predictive lead scoring</div>
+            <div class="ai-feature">→ Automatische follow-up suggesties</div>
+            <div class="ai-feature">→ Opportunity forecasting</div>
+            <div class="ai-feature">→ Vereist Enterprise tier</div>
+          </div>
+          <div class="ai-card">
+            <h4>HubSpot Breeze AI</h4>
+            <div class="ai-price">+€20–35/user/mnd</div>
+            <div class="ai-label">Bovenop Professional/Enterprise</div>
+            <div class="ai-feature">→ Content-suggesties</div>
+            <div class="ai-feature">→ Prospect research</div>
+            <div class="ai-feature">→ Deal health scores</div>
+            <div class="ai-feature">→ Beschikbaar vanaf Professional</div>
+          </div>
+        </div>
+
+        <h2>Verborgen kosten: wat de verkopers niet vertellen</h2>
+
+        <div class="hidden-cost-box">
+          <h3>Verborgen kosten bij 10 gebruikers — jaar 1</h3>
+          <div class="cost-row">
+            <span class="label">Implementatie (partnerkosten)</span>
+            <span class="amount">€5.000–25.000</span>
+          </div>
+          <div class="cost-row">
+            <span class="label">Datamigratietraject</span>
+            <span class="amount">€1.500–5.000</span>
+          </div>
+          <div class="cost-row">
+            <span class="label">Maatwerk-koppelingen (ERP, boekhoud)</span>
+            <span class="amount">€3.000–15.000</span>
+          </div>
+          <div class="cost-row">
+            <span class="label">Trainingen en adoptie-begeleiding</span>
+            <span class="amount">€1.000–4.000</span>
+          </div>
+          <div class="cost-row">
+            <span class="label">Interne uren implementatieteam (50–120 uur à €75)</span>
+            <span class="amount">€3.750–9.000</span>
+          </div>
+          <div class="cost-row">
+            <span class="label"><strong>Totale verborgen eenmalige kosten</strong></span>
+            <span class="amount">€14.250–58.000</span>
+          </div>
+        </div>
+
+        <h2>Totale eigendomskosten: 3-jaar vergelijking (10 gebruikers)</h2>
+
+        <table class="total-cost-table">
+          <thead>
+            <tr>
+              <th>Kostenpost</th>
+              <th>Dynamics 365</th>
+              <th>Salesforce</th>
+              <th>HubSpot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Licenties (3 jaar, Enterprise)</strong></td>
+              <td>€34.920</td>
+              <td>€54.360</td>
+              <td>€57.600</td>
+            </tr>
+            <tr>
+              <td><strong>AI-add-ons (3 jaar)</strong></td>
+              <td>€10.800</td>
+              <td>€21.600</td>
+              <td>€7.200</td>
+            </tr>
+            <tr>
+              <td><strong>Implementatie (eenmalig)</strong></td>
+              <td>€15.000</td>
+              <td>€20.000</td>
+              <td>€8.000</td>
+            </tr>
+            <tr>
+              <td><strong>Support en onderhoud</strong></td>
+              <td>€3.600</td>
+              <td>€5.400</td>
+              <td>€2.400</td>
+            </tr>
+            <tr class="total-row">
+              <td>Totaal 3 jaar TCO</td>
+              <td>€64.320</td>
+              <td>€101.360</td>
+              <td>€75.200</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>Gebaseerd op Dynamics Enterprise €97/user, Salesforce Enterprise €151/user, HubSpot Pro €1.600/maand voor 10 users. Implementatiekosten zijn gemiddeld marktschatting voor MKB-implementaties in Nederland.</em></p>
+
+        <h2>Wanneer kiest u welk systeem?</h2>
+
+        <div class="decision-grid">
+          <div class="decision-item">
+            <span class="decision-badge badge-ms">Dynamics 365</span>
+            <div class="decision-text">
+              <h4>Kies Dynamics als u al diep in Microsoft zit</h4>
+              <p>Microsoft 365 Business Premium, Teams als primaire communicatietool, Azure-infrastructuur — dan is Dynamics de logische keuze. De integratie is native en bespaart u koppelingskosten. Minpunt: hogere leerdrempel en duurdere implementatiepartners.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge badge-sf">Salesforce</span>
+            <div class="decision-text">
+              <h4>Kies Salesforce als u complexe, aanpasbare verkoopprocessen heeft</h4>
+              <p>Meerdere verkoopkanalen, complexe deals met langere doorlooptijden, of sterke behoefte aan maatwerk rapportages. Salesforce heeft het rijkste ecosysteem aan add-ons en integraties. Maar het is ook het duurste — reken vanaf €100.000 TCO over 3 jaar voor 10 gebruikers inclusief implementatie.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge badge-hs">HubSpot</span>
+            <div class="decision-text">
+              <h4>Kies HubSpot als u marketing en sales in één tool wilt</h4>
+              <p>HubSpot is de enige van de drie die marketing automation, CRM en service in één product combineert zonder aparte licenties. Ideaal voor MKB met inbound salesstrategie en actief contentmarketing. Let op: zodra u Professional of Enterprise nodig heeft, stijgen de kosten snel.</p>
+            </div>
+          </div>
+          <div class="decision-item">
+            <span class="decision-badge" style="background: #f0fdf4; color: var(--green);">Geen van drie</span>
+            <div class="decision-text">
+              <h4>Overweeg een alternatief als u onder 20 medewerkers bent</h4>
+              <p>Pipedrive (€15–50/user), Zoho CRM (€14–40/user) of Monday CRM bieden voor kleinere MKB-bedrijven voldoende functionaliteit tegen een fractie van de kosten. De drie grote namen zijn ontworpen voor mid-market en enterprise, niet voor 5–15 gebruikers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h3>Onafhankelijk CRM-advies voor uw bedrijf</h3>
+          <p>TechLeadNL voert CRM-selectie uit zonder leveranciersgebondenheid. Inclusief kostensimulatie, democoördinatie en implementatieplan. Technology Stack Review: €3.500 vaste prijs.</p>
+          <div class="cta-buttons">
+            <a href="/crm-kiezen-10-dagen" class="cta-btn-secondary">CRM kiezen in 10 dagen →</a>
+            <a href="https://techleadnl.nl" class="cta-btn-primary">Onafhankelijk CRM-advies →</a>
+          </div>
+        </div>
+
+        <div class="sources-section">
+          <h4>Bronnen</h4>
+          <p>
+            Softwarekiezer.nl — Dynamics 365 CRM vs. HubSpot: een eerlijke vergelijking |
+            Compenda.nl — Dynamics 365 vs Salesforce (2026): volledige vergelijking |
+            HubSpot.com/pricing — officiële prijspagina (geraadpleegd juni 2026) |
+            Salesforce.com/nl/pricing — officiële prijspagina (geraadpleegd juni 2026) |
+            Microsoft Dynamics 365 pricing — learn.microsoft.com (juni 2026) |
+            Automatisering.net — HubSpot prijswijziging 2025: van €890 naar €1.600 |
+            G2.com — CRM Comparison: Salesforce vs HubSpot vs Dynamics 365
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 MKBTechGids. Alle rechten voorbehouden. | <a href="/">Home</a> | <a href="/articles">Artikelen</a> | <a href="https://techleadnl.nl">TechLeadNL</a> | <a href="/privacy">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = !menu.hasAttribute('hidden');
+        menu[open ? 'setAttribute' : 'removeAttribute']('hidden', '');
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+  </script>
+</body>
+</html>
