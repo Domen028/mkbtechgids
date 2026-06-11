@@ -2,6 +2,7 @@ import { PRODUCTS } from './products.js';
 import { generateToken } from './token.js';
 import type { ProductId } from './products.js';
 import { buildInvoicePdf, toBase64 } from './invoicePdf.js';
+import { sendAlert } from './alert.js';
 
 const BCC_EMAIL = 'info@mkbtechgids.nl';
 
@@ -87,7 +88,26 @@ export async function completeOrder(input: CompleteOrderInput): Promise<string> 
     console.error('Invoice PDF generation failed (sending receipt without invoice):', err);
   }
 
-  await sendReceiptEmail({ apiKey: brevoKey, to: email, productName: product.name, downloadUrl, invoiceNumber: attachment ? invoiceNumber : undefined, attachment });
+  const emailSent = await sendReceiptEmailWithRetry(
+    { apiKey: brevoKey, to: email, productName: product.name, downloadUrl, invoiceNumber: attachment ? invoiceNumber : undefined, attachment },
+    3,
+  );
+
+  if (!emailSent) {
+    await sendAlert({
+      subject: `Bestelmail NIET verzonden — ${email}`,
+      body: [
+        `Product:    ${product.name} (${productId})`,
+        `Klant:      ${email}`,
+        `Factuur:    ${invoiceNumber}`,
+        `Session:    ${session.id}`,
+        `Download:   ${downloadUrl}`,
+        '',
+        'Stuur handmatig een e-mail naar de klant met de downloadlink hierboven.',
+      ].join('\n'),
+      brevoKey,
+    });
+  }
 
   // Mark sent so the other path (return/webhook) doesn't email again.
   if (stripeKey && paymentIntentId) {
@@ -129,6 +149,26 @@ async function markInvoiceSent(stripeKey: string, paymentIntentId: string): Prom
   });
 }
 
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function sendReceiptEmailWithRetry(
+  opts: Parameters<typeof sendReceiptEmail>[0],
+  maxAttempts: number,
+): Promise<boolean> {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      await sendReceiptEmail(opts);
+      return true;
+    } catch (err) {
+      console.error(`sendReceiptEmail attempt ${attempt}/${maxAttempts} failed:`, err);
+      if (attempt < maxAttempts) await delay(2000 * attempt);
+    }
+  }
+  return false;
+}
+
 async function sendReceiptEmail(opts: {
   apiKey: string;
   to: string;
@@ -156,7 +196,7 @@ async function sendReceiptEmail(opts: {
 
   if (!res.ok) {
     const detail = await res.text().catch(() => '');
-    console.error('Brevo receipt email failed:', res.status, detail);
+    throw new Error(`Brevo receipt email failed: ${res.status} ${detail}`);
   }
 }
 
