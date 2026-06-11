@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Retour- & Klachtenbeleid — MKBTechGids"
+  description="Retour- en klachtenbeleid van MKBTechGids. Hoe wij omgaan met terugbetalingen, klachten en geschillen."
+>
+
+  <section class="legal-hero">
+    <div class="container">
+      <div class="legal-hero-inner">
+        <span class="badge badge--slate">Juridisch</span>
+        <h1>Retour- &amp; Klachtenbeleid</h1>
+        <p>Versie 1.0 · Juni 2026 · MKBTechGids / Life Surfing · KvK 27348456</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="legal-body section">
+    <div class="container">
+      <div class="legal-content">
+
+        <h2>1. Herroepingsrecht</h2>
+        <p>MKBTechGids levert uitsluitend aan zakelijke afnemers (B2B). Het wettelijk herroepingsrecht voor consumenten (artikel 6:230o BW) is derhalve <strong>niet van toepassing</strong>.</p>
+
+        <h2>2. Tevredenheidsgarantie</h2>
+        <p>Wij staan achter de kwaliteit van onze producten. Indien u na aankoop van een digitaal product van MKBTechGids van oordeel bent dat het product niet voldoet aan de omschrijving op de productpagina, kunt u binnen <strong>14 kalenderdagen</strong> na aankoopdatum een terugbetalingsverzoek indienen.</p>
+        <div class="callout callout--blue">
+          <strong>Hoe een verzoek indienen:</strong> Stuur een e-mail naar <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a> met uw ordernummer, de reden van uw verzoek en een beschrijving van het specifieke punt waarop het product niet aan de omschrijving voldeed. Wij reageren binnen 3 werkdagen.
+        </div>
+        <p>MKBTechGids beoordeelt elk verzoek individueel. Bij een gegrond verzoek wordt het aankoopbedrag teruggestort op de originele betaalmethode binnen 7 werkdagen.</p>
+        <p>De garantie geldt niet indien het product is aangepast, gedeeld met derden of al is gebruikt als basis voor een ingediend compliance-document.</p>
+
+        <h2>3. Klachten over de dienstverlening</h2>
+        <p>Heeft u een klacht over de dienstverlening, een technisch probleem bij de download, of bent u anderszins niet tevreden? Volg de volgende stappen:</p>
+        <ul>
+          <li><strong>Stap 1 — Contact opnemen:</strong> Stuur een e-mail naar <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a> met een duidelijke omschrijving van uw klacht en uw ordernummer. Wij streven ernaar uw klacht binnen 2 werkdagen in behandeling te nemen.</li>
+          <li><strong>Stap 2 — Reactie en oplossing:</strong> U ontvangt binnen 5 werkdagen een inhoudelijke reactie. Wij streven naar een bevredigende oplossing, zoals een vervangend bestand, een gecorrigeerde versie of een gedeeltelijke terugbetaling.</li>
+          <li><strong>Stap 3 — Escalatie:</strong> Indien wij niet tot een bevredigende oplossing kunnen komen, kunt u het geschil voorleggen aan de bevoegde rechter van de Rechtbank Rotterdam conform de <a href="/voorwaarden">Algemene Voorwaarden</a>.</li>
+        </ul>
+
+        <h2>4. Technische problemen bij download</h2>
+        <p>Ontvangt u geen downloadlink na betaling, of werkt de link niet? Neem direct contact op via <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a> met uw ordernummer. Wij sturen u zo snel mogelijk een nieuwe downloadlink toe, uiterlijk binnen 1 werkdag.</p>
+
+        <h2>5. Klachten over persoonsgegevens</h2>
+        <p>Heeft u een klacht over de verwerking van uw persoonsgegevens? U kunt dit melden via <a href="mailto:privacy@mkbtechgids.nl">privacy@mkbtechgids.nl</a> of een klacht indienen bij de Autoriteit Persoonsgegevens via <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>.</p>
+
+        <div class="legal-contact">
+          <strong>MKBTechGids / Life Surfing</strong><br />
+          Koningsdiep 25, 3232PG Brielle, Nederland<br />
+          KvK: 27348456 · BTW: NL004968309B61<br />
+          <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.legal-hero {
+  background: var(--s5);
+  padding: 64px 0 48px;
+}
+.legal-hero-inner { max-width: 680px; }
+.legal-hero h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--white);
+  margin: 16px 0 8px;
+}
+.legal-hero p {
+  font-size: 13px;
+  color: #64748b;
+  font-family: var(--font-mono);
+  margin: 0;
+}
+.legal-content {
+  max-width: 720px;
+}
+.legal-content h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--s5);
+  margin: 40px 0 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--s2);
+}
+.legal-content h2:first-child { border-top: none; margin-top: 0; }
+.legal-content p { line-height: 1.7; margin-bottom: 12px; }
+.legal-content ul {
+  margin: 8px 0 16px 0;
+  padding-left: 20px;
+}
+.legal-content ul li { line-height: 1.7; margin-bottom: 10px; color: var(--s4); }
+.legal-content a { color: var(--g4); }
+.legal-content a:hover { color: var(--g5); }
+.callout--blue {
+  background: #eff6ff;
+  border-left: 4px solid var(--g4);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--s4);
+}
+.callout--blue strong { color: var(--s5); }
+.legal-contact {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--s1);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--s4);
+}
+.legal-contact strong { color: var(--s5); }
+</style>

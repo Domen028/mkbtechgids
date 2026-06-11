@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Service & Contact — MKBTechGids"
+  description="Vragen over uw bestelling, de NIS2-toolkit of onze dienstverlening? Hier vindt u alle contactmogelijkheden en ons servicebeleid."
+>
+
+  <section class="service-hero">
+    <div class="container">
+      <div class="service-hero-inner">
+        <span class="badge badge--green">Service</span>
+        <h1>Service &amp; Contact</h1>
+        <p>Wij helpen u snel en gericht. Responstijden en contactgegevens hieronder.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-body section">
+    <div class="container">
+      <div class="service-grid">
+
+        <!-- Linkerkolom: contactkanalen -->
+        <div class="service-main">
+
+          <h2>Contactkanalen</h2>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">✉</div>
+            <div>
+              <strong>E-mail — algemene vragen &amp; bestellingen</strong>
+              <p><a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a></p>
+              <p class="meta">Responstijd: binnen 2 werkdagen</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">✉</div>
+            <div>
+              <strong>E-mail — privacyvragen &amp; AVG-verzoeken</strong>
+              <p><a href="mailto:privacy@mkbtechgids.nl">privacy@mkbtechgids.nl</a></p>
+              <p class="meta">Responstijd: binnen 5 werkdagen (wettelijk: 30 dagen)</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">📅</div>
+            <div>
+              <strong>Kennismakingsgesprek — 30 minuten, gratis</strong>
+              <p>Voor vragen over maatwerk, licenties of TechLeadNL-diensten kunt u direct een gesprek inplannen.</p>
+              <p><a href="https://calendly.com/domenie-lf-sf/30min" target="_blank" rel="noopener" class="cta-link">Plan een gesprek →</a></p>
+            </div>
+          </div>
+
+          <h2>Responstijdentabel</h2>
+          <div class="response-table">
+            <table>
+              <thead>
+                <tr><th>Type vraag</th><th>Kanaal</th><th>Responstijd</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Download-probleem / technisch</td><td>info@mkbtechgids.nl</td><td>Binnen 1 werkdag</td></tr>
+                <tr><td>Terugbetalingsverzoek</td><td>info@mkbtechgids.nl</td><td>Binnen 3 werkdagen</td></tr>
+                <tr><td>Algemene productvragen</td><td>info@mkbtechgids.nl</td><td>Binnen 2 werkdagen</td></tr>
+                <tr><td>Factuur / BTW-vragen</td><td>info@mkbtechgids.nl</td><td>Binnen 3 werkdagen</td></tr>
+                <tr><td>AVG / privacyverzoeken</td><td>privacy@mkbtechgids.nl</td><td>Binnen 5 werkdagen</td></tr>
+                <tr><td>Multi-seat licentieverzoek</td><td>info@mkbtechgids.nl</td><td>Binnen 3 werkdagen</td></tr>
+                <tr><td>Klacht over dienstverlening</td><td>info@mkbtechgids.nl</td><td>Binnen 5 werkdagen</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Juridische documenten</h2>
+          <ul class="doc-links">
+            <li><a href="/voorwaarden">Algemene Voorwaarden</a></li>
+            <li><a href="/productvoorwaarden">Productvoorwaarden NIS2-toolkit</a></li>
+            <li><a href="/privacy">Privacyverklaring (AVG)</a></li>
+            <li><a href="/retourbeleid">Retour- &amp; Klachtenbeleid</a></li>
+            <li><a href="/faq">Veelgestelde vragen (FAQ)</a></li>
+          </ul>
+
+        </div>
+
+        <!-- Rechterkolom: bedrijfsgegevens + TechLeadNL cross-sell -->
+        <div class="service-sidebar">
+
+          <div class="sidebar-card">
+            <h3>Bedrijfsgegevens</h3>
+            <dl>
+              <dt>Handelsnaam</dt><dd>MKBTechGids</dd>
+              <dt>Geregistreerd onder</dt><dd>Life Surfing</dd>
+              <dt>KvK-nummer</dt><dd>27348456</dd>
+              <dt>BTW-nummer</dt><dd>NL004968309B61</dd>
+              <dt>Adres</dt><dd>Koningsdiep 25<br />3232PG Brielle<br />Nederland</dd>
+              <dt>Toepasselijk recht</dt><dd>Nederlands recht</dd>
+              <dt>Bevoegde rechter</dt><dd>Rechtbank Rotterdam</dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-card sidebar-card--cta">
+            <h3>Meer nodig dan een toolkit?</h3>
+            <p>Voor persoonlijke NIS2-begeleiding, architectuurbeoordeling of fractional CTO/CISO-ondersteuning biedt TechLeadNL maatwerk voor de Nederlandse middle market.</p>
+            <a href="https://techleadnl.nl" target="_blank" rel="noopener" class="btn-cta">Naar TechLeadNL →</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+.service-hero {
+  background: var(--s5);
+  padding: 64px 0 48px;
+}
+.service-hero-inner { max-width: 680px; }
+.service-hero h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--white);
+  margin: 16px 0 8px;
+}
+.service-hero p {
+  font-size: 16px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+
+.service-main h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--s5);
+  margin: 40px 0 16px;
+  padding-top: 8px;
+  border-top: 1px solid var(--s2);
+}
+.service-main h2:first-child { border-top: none; margin-top: 0; }
+
+.contact-card {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: var(--s1);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+}
+.contact-card-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+  margin-top: 2px;
+}
+.contact-card strong { display: block; color: var(--s5); margin-bottom: 4px; font-family: var(--font-display); }
+.contact-card p { margin: 0 0 4px; line-height: 1.6; font-size: 14px; color: var(--s4); }
+.contact-card p.meta { font-size: 12px; color: #64748b; font-family: var(--font-mono); }
+.contact-card a { color: var(--g4); }
+.cta-link { font-weight: 600; font-family: var(--font-display); }
+
+.response-table { overflow-x: auto; margin-bottom: 8px; }
+.response-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.response-table th {
+  background: var(--s5);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 12px;
+}
+.response-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--s2);
+  color: var(--s4);
+  line-height: 1.5;
+}
+.response-table tr:nth-child(even) td { background: var(--s1); }
+
+.doc-links { list-style: none; padding: 0; margin: 8px 0 0; }
+.doc-links li { margin-bottom: 10px; }
+.doc-links a {
+  color: var(--g4);
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.doc-links a::before { content: '→'; font-size: 12px; }
+.doc-links a:hover { color: var(--g5); text-decoration: underline; }
+
+.sidebar-card {
+  background: var(--s1);
+  border: 1px solid var(--s2);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.sidebar-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--s5);
+  margin: 0 0 16px;
+}
+.sidebar-card dl { margin: 0; }
+.sidebar-card dt {
+  font-size: 11px;
+  color: #64748b;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+.sidebar-card dt:first-child { margin-top: 0; }
+.sidebar-card dd { margin: 2px 0 0; font-size: 14px; color: var(--s4); line-height: 1.5; }
+
+.sidebar-card--cta {
+  background: var(--s5);
+  border-color: var(--s5);
+}
+.sidebar-card--cta h3 { color: var(--white); }
+.sidebar-card--cta p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 16px; }
+.btn-cta {
+  display: inline-block;
+  background: var(--g4);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-cta:hover { background: var(--g5); }
+</style>
