@@ -3,6 +3,7 @@ import { createHmac, timingSafeEqual } from 'crypto';
 import { PRODUCTS } from '../../lib/products.js';
 import type { ProductId } from '../../lib/products.js';
 import { completeOrder } from '../../lib/orderComplete.js';
+import { sendAlert } from '../../lib/alert.js';
 
 function verifySignature(rawBody: string, header: string, secret: string): boolean {
   const parts = header.split(',');
@@ -52,7 +53,23 @@ export const POST: APIRoute = async ({ request }) => {
           const stripeKey = import.meta.env.STRIPE_SECRET_KEY ?? '';
           const siteUrl = (import.meta.env.SITE_URL ?? 'https://www.mkbtechgids.nl').replace(/\/$/, '');
 
-          await completeOrder({ session, productId, email, secret, brevoKey, siteUrl, stripeKey });
+          try {
+            await completeOrder({ session, productId, email, secret, brevoKey, siteUrl, stripeKey });
+          } catch (orderErr) {
+            console.error('stripe-webhook completeOrder error:', orderErr);
+            await sendAlert({
+              subject: `Webhook order verwerking mislukt — ${email}`,
+              body: [
+                `Session: ${session.id}`,
+                `Product: ${productId}`,
+                `Klant:   ${email}`,
+                `Fout:    ${String(orderErr)}`,
+                '',
+                'Verwerk deze order handmatig via het Stripe dashboard.',
+              ].join('\n'),
+              brevoKey,
+            });
+          }
         }
       }
     }
