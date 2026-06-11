@@ -22,6 +22,7 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
         <span><i class="ti ti-shield-check"></i> Alle NIS2 Art. 21(2) verplichtingen gedekt</span>
         <span><i class="ti ti-file-check"></i> Direct invulbaar, geen installatie</span>
         <span><i class="ti ti-award"></i> Big 4 kwaliteitsniveau</span>
+        <span><i class="ti ti-certificate"></i> Klaar voor NIS2 SC10-audit</span>
       </div>
     </div>
   </section>
@@ -90,6 +91,23 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
             </p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SC10 audit callout -->
+  <section class="tk-section">
+    <div class="tk-inner">
+      <div class="tk-sc10-callout">
+        <div class="tk-sc10-icon"><i class="ti ti-certificate"></i></div>
+        <div class="tk-sc10-body">
+          <strong>Bereidt u voor op het NIS2 SC10-certificaat</strong>
+          <p>
+            Het NIS2 Supply Chain SC10-certificaat (voorheen QM10) toont uw klanten en opdrachtgevers aantoonbaar aan dat uw digitale beveiliging op orde is.
+            De Complete Toolkit levert precies wat een erkende SC10-auditor verwacht: risicoregister, beveiligingsbeleid, verantwoordelijkheidsmatrix en volledig managementsysteemdocumentatie.
+            <a href="https://www.stichting-kwaliteitsinnovatie.nl/nis2-supply-chain-certificering-voor-europa/" target="_blank" rel="noopener">Meer over het SC10-certificaat →</a>
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -182,6 +200,13 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
     <div class="tk-inner">
       <h2 class="tk-section-title">Veelgestelde vragen</h2>
       <div class="tk-faq">
+        <details class="tk-faq-item">
+          <summary class="tk-faq-q">Helpt de toolkit bij het behalen van het NIS2 SC10-certificaat?</summary>
+          <div class="tk-faq-a">
+            Ja. Het NIS2 Supply Chain SC10-certificaat (voorheen QM10) vereist een aantoonbaar werkend managementsysteem met risicoregister, beveiligingsbeleid, verantwoordelijkheidsmatrix en documentatie van alle maatregelen. De <strong>Complete Toolkit</strong> levert al deze componenten kant-en-klaar. U vult de templates in op uw organisatie, en heeft direct het dossier dat een erkende SC10-auditor verwacht. Voor de formele audit heeft u een externe, gecertificeerde auditor nodig — de toolkit bereidt u voor, zodat u die audit met vertrouwen ingaat.
+          </div>
+        </details>
+
         <details class="tk-faq-item">
           <summary class="tk-faq-q">Welk pakket kies ik?</summary>
           <div class="tk-faq-a">
@@ -671,6 +696,46 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
   }
 
   .tk-compare-col--us .tk-compare-head { color: var(--green, #15803d); }
+
+  /* ── SC10 callout ───────────────────────────────────────────── */
+  .tk-sc10-callout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    border-radius: var(--radius-md, 10px);
+    padding: 20px 24px;
+    max-width: 800px;
+  }
+
+  .tk-sc10-icon {
+    font-size: 28px;
+    color: #2563eb;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tk-sc10-body strong {
+    display: block;
+    color: var(--navy-dark, #0f2147);
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .tk-sc10-body p {
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .tk-sc10-body a {
+    color: #2563eb;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
 
   .tk-compare-price {
     font-size: 2rem;
