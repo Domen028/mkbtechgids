@@ -29,34 +29,51 @@ const fileIcons: Record<string, string> = {
           </div>
           <h1 class="ty-title">Bedankt voor uw bestelling!</h1>
           <p class="ty-sub">
-            Uw <strong>{product.name}</strong> is gereed. Download de bestanden hieronder.
+            Uw <strong>{product.name}</strong> is gereed. Download alle bestanden in één klik als ZIP-archief.
             De links zijn 7 dagen geldig — sla de bestanden direct op.
+            Bij problemen: <a href="mailto:support@mkbtechgids.nl">support@mkbtechgids.nl</a>.
           </p>
 
-          <div class="ty-files">
-            {product.files.map((filename) => {
-              const ext = filename.split('.').pop()?.toLowerCase() ?? 'docx';
-              const icon = fileIcons[ext] ?? 'ti-file';
-              const label = filename.replace(/^NIS2-/, '').replace(/\.(docx|xlsx)$/, '').replace(/-/g, ' ').replace(/_/g, ' ');
-              return (
-                <a
-                  href={`/downloads/${filename}`}
-                  download={filename}
-                  class="ty-file-row"
-                >
-                  <span class="ty-file-icon"><i class={`ti ${icon}`}></i></span>
-                  <span class="ty-file-name">{label}</span>
-                  <span class="ty-file-ext">.{ext}</span>
-                  <span class="ty-file-dl"><i class="ti ti-download"></i></span>
-                </a>
-              );
-            })}
-          </div>
+          <a
+            href={`/api/dl?file=${encodeURIComponent(product.zipFile)}&token=${encodeURIComponent(tokenParam)}`}
+            class="ty-zip-btn"
+          >
+            <span class="ty-zip-icon"><i class="ti ti-file-zip"></i></span>
+            <span class="ty-zip-text">
+              <strong>Download complete toolkit (ZIP)</strong>
+              <small>{product.files.length} bestanden · één archief</small>
+            </span>
+            <span class="ty-zip-dl"><i class="ti ti-download"></i></span>
+          </a>
+
+          <details class="ty-files-details">
+            <summary class="ty-files-summary">
+              <i class="ti ti-list"></i> Bestanden afzonderlijk downloaden ({product.files.length})
+            </summary>
+            <div class="ty-files">
+              {product.files.map((filename) => {
+                const ext = filename.split('.').pop()?.toLowerCase() ?? 'docx';
+                const icon = fileIcons[ext] ?? 'ti-file';
+                const label = filename.replace(/^NIS2-/, '').replace(/\.(docx|xlsx|pdf|pptx)$/, '').replace(/-/g, ' ').replace(/_/g, ' ');
+                return (
+                  <a
+                    href={`/api/dl?file=${encodeURIComponent(filename)}&token=${encodeURIComponent(tokenParam)}`}
+                    class="ty-file-row"
+                  >
+                    <span class="ty-file-icon"><i class={`ti ${icon}`}></i></span>
+                    <span class="ty-file-name">{label}</span>
+                    <span class="ty-file-ext">.{ext}</span>
+                    <span class="ty-file-dl"><i class="ti ti-download"></i></span>
+                  </a>
+                );
+              })}
+            </div>
+          </details>
 
           <p class="ty-email-note">
             Een bevestigingsmail met deze downloadlink en uw <strong>btw-factuur (PDF)</strong> is verstuurd naar het door u opgegeven e-mailadres.
             Niet ontvangen? Controleer uw spammap of mail naar
-            <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a>.
+            <a href="mailto:support@mkbtechgids.nl">support@mkbtechgids.nl</a>.
           </p>
 
           <a href="/nis2-toolbox" class="ty-btn">Terug naar de toolkit pagina</a>
@@ -69,7 +86,7 @@ const fileIcons: Record<string, string> = {
           <h1 class="ty-title">Downloadlink verlopen of ongeldig</h1>
           <p class="ty-sub">
             Deze link is niet meer geldig (links verlopen na 7 dagen). Controleer uw e-mail voor de originele link,
-            of neem contact op via <a href="mailto:info@mkbtechgids.nl">info@mkbtechgids.nl</a> met uw bestelnummer.
+            of neem contact op via <a href="mailto:support@mkbtechgids.nl">support@mkbtechgids.nl</a> met uw bestelnummer.
           </p>
           <a href="/nis2-toolbox" class="ty-btn">Naar de toolkit pagina</a>
         </>
@@ -140,11 +157,78 @@ const fileIcons: Record<string, string> = {
     text-decoration: underline;
   }
 
+  .ty-zip-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--green, #15803d);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 20px;
+    transition: opacity 0.15s;
+  }
+
+  .ty-zip-btn:hover {
+    opacity: 0.9;
+  }
+
+  .ty-zip-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .ty-zip-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ty-zip-text strong {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .ty-zip-text small {
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+
+  .ty-zip-dl {
+    font-size: 22px;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .ty-files-details {
+    margin-bottom: 28px;
+  }
+
+  .ty-files-summary {
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #64748b;
+    padding: 8px 4px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+
+  .ty-files-summary::-webkit-details-marker { display: none; }
+
+  .ty-files-summary:hover {
+    color: var(--navy-dark, #0f2147);
+  }
+
   .ty-files {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 28px;
+    margin-top: 8px;
   }
 
   .ty-file-row {

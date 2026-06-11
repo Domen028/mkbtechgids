@@ -11,6 +11,7 @@ export interface Product {
   priceEurCents: number;
   stripePriceId: string;
   files: string[];
+  zipFile: string;
   featured?: boolean;
 }
 
@@ -28,6 +29,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     ],
     priceEurCents: 4900,
     stripePriceId: 'price_1Tg2lRV05y71WJqDV3jiPqro',
+    zipFile: 'NIS2-QuickStart-v1.zip',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -51,6 +53,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     ],
     priceEurCents: 12900,
     stripePriceId: 'price_1Tg2lYV05y71WJqDV6teiULO',
+    zipFile: 'NIS2-CoreBundle-v1.zip',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -86,6 +89,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     priceEurCents: 24900,
     stripePriceId: 'price_1Tg2llV05y71WJqDuPhYYwLD',
     featured: true,
+    zipFile: 'NIS2-CompleteToolkit-v1.zip',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -124,6 +128,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     ],
     priceEurCents: 34900,
     stripePriceId: 'price_1Tg2lvV05y71WJqDC4Uzj6aw',
+    zipFile: 'NIS2-FullPackage-v1.zip',
     files: [
       'NIS2-Module1-Zelfevaluatie-v7.docx',
       'NIS2-Module2-Risicoanalyse-v1.docx',
@@ -166,6 +171,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     ],
     priceEurCents: 14900,
     stripePriceId: 'price_1Tg301V05y71WJqDo4anHwv7',
+    zipFile: 'NIS2-Sectorpakket-v1.zip',
     files: [
       'NIS2-Dreigingscatalogus-Energie-v1.xlsx',
       'NIS2-Dreigingscatalogus-Transport-v1.xlsx',

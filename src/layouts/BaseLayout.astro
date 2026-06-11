@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import '../styles/global.css';
 
 interface Props {
@@ -103,5 +104,6 @@ const GA4_ID = import.meta.env.PUBLIC_GA4_ID || (import.meta.env.PROD ? 'G-C8SGB
   </main>
   <Footer />
   {GA4_ID && <CookieConsent />}
+  <SpeedInsights />
 </body>
 </html>
