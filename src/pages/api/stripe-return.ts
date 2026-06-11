@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { PRODUCTS } from '../../lib/products.js';
 import type { ProductId } from '../../lib/products.js';
 import { completeOrder } from '../../lib/orderComplete.js';
+import { sendAlert } from '../../lib/alert.js';
 
 // Stripe redirects here after checkout with ?session_id=cs_xxx
 export const GET: APIRoute = async ({ url }) => {
@@ -41,13 +42,25 @@ export const GET: APIRoute = async ({ url }) => {
   const email: string =
     session.metadata?.email ?? session.customer_details?.email ?? session.customer_email ?? '';
 
+  const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
+
   if (!productId || !PRODUCTS[productId]) {
     console.error('Unknown product in Stripe session metadata:', session.metadata);
+    await sendAlert({
+      subject: `Onbekend product na betaling — sessie ${sessionId}`,
+      body: [
+        `Session: ${sessionId}`,
+        `Metadata: ${JSON.stringify(session.metadata)}`,
+        `Klant:    ${email}`,
+        '',
+        'Controleer het Stripe dashboard en verwerk de order handmatig.',
+      ].join('\n'),
+      brevoKey,
+    });
     return Response.redirect(`${siteUrl}/nis2-toolbox?betaling=mislukt`, 303);
   }
 
   const secret = import.meta.env.DOWNLOAD_SECRET ?? '';
-  const brevoKey = import.meta.env.BREVO_API_KEY ?? '';
 
   const token = await completeOrder({ session, productId, email, secret, brevoKey, siteUrl, stripeKey: apiKey });
 
