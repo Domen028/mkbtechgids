@@ -77,6 +77,12 @@ const fileIcons: Record<string, string> = {
           </p>
 
           <a href="/nis2-toolbox" class="ty-btn">Terug naar de toolkit pagina</a>
+
+          <div class="ty-bridge">
+            <p class="ty-bridge-label">Heeft uw directieteam iemand nodig die dit overziet op strategisch niveau?</p>
+            <p class="ty-bridge-sub">TechLeadNL biedt fractional technology leadership voor groeiende Nederlandse organisaties — permanent deeltijds lid van uw directieteam.</p>
+            <a href="https://www.techleadnl.nl" class="ty-bridge-btn" target="_blank" rel="noopener">Bekijk TechLeadNL →</a>
+          </div>
         </>
       ) : (
         <>
@@ -302,6 +308,44 @@ const fileIcons: Record<string, string> = {
   .ty-btn:hover {
     opacity: 0.88;
   }
+
+  .ty-bridge {
+    margin-top: 32px;
+    padding: 24px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .ty-bridge-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 8px;
+  }
+
+  .ty-bridge-sub {
+    font-size: 0.875rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .ty-bridge-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #1e3a8a;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.14s;
+  }
+
+  .ty-bridge-btn:hover { background: #172554; }
 
   @media (max-width: 600px) {
     .ty-card {

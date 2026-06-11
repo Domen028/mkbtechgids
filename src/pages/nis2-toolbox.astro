@@ -195,6 +195,21 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
     </div>
   </section>
 
+  <!-- Conversion bridge to TechLeadNL -->
+  <section class="tk-section">
+    <div class="tk-inner">
+      <div class="tk-bridge">
+        <div class="tk-bridge-text">
+          <h3>Heeft uw directieteam iemand nodig die dit overziet op strategisch niveau?</h3>
+          <p>De toolkit geeft u de tools om NIS2-compliant te worden. TechLeadNL geeft u de technologieleider die dit strategisch aanstuurt — als permanent deeltijds lid van uw directieteam.</p>
+        </div>
+        <a href="https://www.techleadnl.nl" class="tk-bridge-btn" target="_blank" rel="noopener">
+          Bekijk TechLeadNL →
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="tk-section tk-section--alt">
     <div class="tk-inner">
@@ -824,6 +839,52 @@ import { PRODUCTS, priceDisplay } from '../lib/products.js';
     color: var(--green, #15803d);
     text-decoration: underline;
   }
+
+  /* ── Conversion bridge ──────────────────────────────────────── */
+  .tk-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #1e3a8a;
+    border-radius: var(--radius-md, 10px);
+    padding: 28px 32px;
+    flex-wrap: wrap;
+  }
+
+  .tk-bridge-text h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 8px;
+  }
+
+  .tk-bridge-text p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  .tk-bridge-btn {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 12px 24px;
+    background: #1e3a8a;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.14s;
+    flex-shrink: 0;
+  }
+
+  .tk-bridge-btn:hover { background: #172554; }
 
   /* ── Responsive ─────────────────────────────────────────────── */
   @media (max-width: 640px) {
