@@ -35,8 +35,7 @@ const fileIcons: Record<string, string> = {
           </p>
 
           <a
-            href={`/downloads/${product.zipFile}`}
-            download={product.zipFile}
+            href={`/api/dl?file=${encodeURIComponent(product.zipFile)}&token=${encodeURIComponent(tokenParam)}`}
             class="ty-zip-btn"
           >
             <span class="ty-zip-icon"><i class="ti ti-file-zip"></i></span>
@@ -58,8 +57,7 @@ const fileIcons: Record<string, string> = {
                 const label = filename.replace(/^NIS2-/, '').replace(/\.(docx|xlsx|pdf|pptx)$/, '').replace(/-/g, ' ').replace(/_/g, ' ');
                 return (
                   <a
-                    href={`/downloads/${filename}`}
-                    download={filename}
+                    href={`/api/dl?file=${encodeURIComponent(filename)}&token=${encodeURIComponent(tokenParam)}`}
                     class="ty-file-row"
                   >
                     <span class="ty-file-icon"><i class={`ti ${icon}`}></i></span>
