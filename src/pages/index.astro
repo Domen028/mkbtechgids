@@ -7,342 +7,540 @@ export const prerender = true;
   title="MKBTechGids — Onafhankelijke technologiegids voor het Nederlandse MKB"
   description="Praktische gidsen over NIS2, AI en technologieregulering voor bestuurders en CFO's in het Nederlandse MKB. 100% onafhankelijk — geen advertenties, geen vendor-belangen."
 >
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">● Onafhankelijk · Geen advertenties · Nederlands MKB</div>
-      <h1>Technologie snapt u.<br><em>Of u leert het hier.</em></h1>
-      <p>Voor IT-managers, toegewezen managers en verantwoordelijken in het Nederlandse MKB die technologie in de praktijk willen begrijpen — van NIS2-compliance tot CRM-keuzes en AI-implementatie. Altijd in Nederlandse context, altijd bruikbaar.</p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Onafhankelijk</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">Q2 2026</div>
-          <div class="stat-label">NIS2 Wet NL</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">Gratis</div>
-          <div class="stat-label">Altijd toegankelijk</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="signal">
-    <div class="signal-inner">
-      <div class="signal-icon">🛡️</div>
-      <div class="signal-text">
-        <strong><a href="/nis2-scope-checker" style="color: inherit; text-decoration: underline;">NIS2 is nu actief in de EU — Cyberbeveiligingswet NL verwacht Q2/Q3 2026.</a></strong>
-        Slechts 14% van Nederlandse organisaties is goed voorbereid.
-        <a href="/nis2-scope-checker" style="color: var(--green-light); font-weight:600; text-decoration:none; margin-left:8px;">Controleer uw plicht in 3 minuten →</a>
+<!-- ── Hero ──────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill" data-aos="fade-up">
+      <span class="pill-dot"></span>
+      Onafhankelijk · Geen advertenties · Nederlands MKB
+    </div>
+    <h1 data-aos="fade-up" data-aos-delay="60">
+      Technologie snapt u.<br>
+      <em>Of u leert het hier.</em>
+    </h1>
+    <p data-aos="fade-up" data-aos-delay="120">
+      Voor IT-managers en bestuurders in het Nederlandse MKB die technologie in de praktijk willen begrijpen — van NIS2-compliance tot AI-implementatie. Altijd in Nederlandse context.
+    </p>
+    <div class="hero-cta" data-aos="fade-up" data-aos-delay="180">
+      <a href="/nis2-scope-checker" class="btn-primary">Controleer uw NIS2-plicht gratis →</a>
+      <a href="/nis2-toolbox" class="btn-ghost">Bekijk de toolkit</a>
+    </div>
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="240">
+      <div class="hstat">
+        <span class="hstat-num">100%</span>
+        <span class="hstat-label">Onafhankelijk</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">Q2 2026</span>
+        <span class="hstat-label">Cyberbeveiligingswet NL</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">Gratis</span>
+        <span class="hstat-label">Altijd toegankelijk</span>
       </div>
     </div>
   </div>
+</section>
 
-  <section class="topics">
-    <div class="topics-inner">
-      <h2>Wat wij voor u verkennen</h2>
-      <p class="topics-desc">Praktische gidsen en analyse voor het Nederlandse MKB.</p>
-      <div class="topics-grid">
-        <a href="/nis2" class="topic-card featured">
-          <div class="topic-tag">Urgent · 2026</div>
-          <h3>NIS2 Implementatie</h3>
-          <p><strong>2 praktische artikelen:</strong> begrip van regelgeving + stap-voor-stap implementatie met tools en roadmap.</p>
-          <div class="topic-status">Actief</div>
+<!-- ── NIS2 Urgency Strip ─────────────────────────────────────────── -->
+<div class="signal" data-aos="fade-up">
+  <div class="signal-inner">
+    <div class="signal-icon">🛡️</div>
+    <div class="signal-text">
+      <strong>
+        <a href="/nis2-scope-checker" style="color: inherit; text-decoration: underline;">
+          NIS2 is nu actief in de EU — Cyberbeveiligingswet NL verwacht Q2/Q3 2026.
         </a>
-        <div class="topic-card">
-          <div class="topic-tag">Strategie</div>
-          <h3>AI voor het MKB</h3>
-          <p>Welke AI-tools leveren daadwerkelijk ROI — en welke niet.</p>
-        </div>
-        <div class="topic-card">
-          <div class="topic-tag">Operations</div>
-          <h3>CRM Software</h3>
-          <p>Welk CRM schaalt mee met uw groei zonder de overhead.</p>
-        </div>
-        <div class="topic-card">
-          <div class="topic-tag">Verplicht · 2026</div>
-          <h3>E-facturatie</h3>
-          <p>Verplichting voor overheidscontracten. Wat u nu moet regelen.</p>
-        </div>
-      </div>
+      </strong>
+      Slechts 14% van Nederlandse organisaties is goed voorbereid.
     </div>
-  </section>
+    <a href="/nis2-scope-checker" class="signal-cta">Controleer uw plicht →</a>
+  </div>
+</div>
 
-  <!-- FAQ Section -->
-  <section class="faq-section">
-    <div class="faq-inner">
-      <div class="faq-header">
-        <span class="faq-badge">Veelgestelde vragen</span>
-        <h2>Alles wat u wilt weten</h2>
-        <p>De meest gestelde vragen over NIS2, onze toolkit en hoe MKBTechGids werkt.</p>
+<!-- ── Bento Topics ───────────────────────────────────────────────── -->
+<section class="topics">
+  <div class="topics-inner">
+    <div class="section-label" data-aos="fade-up">Onderwerpen</div>
+    <h2 data-aos="fade-up" data-aos-delay="40">Wat wij voor u verkennen</h2>
+
+    <div class="bento" data-aos="fade-up" data-aos-delay="80">
+
+      <!-- Featured: NIS2 — large card -->
+      <a href="/nis2" class="bcard bcard-featured bcard-lg">
+        <div class="bcard-tag bcard-tag-urgent">Urgent · 2026</div>
+        <h3>NIS2 Implementatie</h3>
+        <p>Twee praktische artikelen: begrip van regelgeving én stap-voor-stap implementatie met tools, templates en roadmap.</p>
+        <div class="bcard-status">
+          <span class="status-dot"></span> Actief
+        </div>
+        <div class="bcard-arrow">→</div>
+      </a>
+
+      <!-- AI voor MKB -->
+      <div class="bcard bcard-dark bcard-md">
+        <div class="bcard-tag">Strategie</div>
+        <h3>AI voor het MKB</h3>
+        <p>Welke AI-tools leveren daadwerkelijk ROI — en welke zijn hype.</p>
+        <div class="bcard-coming">Binnenkort</div>
       </div>
-      <div class="faq-list">
 
-        <details class="faq-item">
-          <summary class="faq-q">Wat is NIS2 precies?</summary>
-          <div class="faq-a">
-            <p>NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk — van enkele honderden naar duizenden — en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Geldt NIS2 voor mijn bedrijf?</summary>
-          <div class="faq-a">
-            <p>NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie. Gebruik de gratis <a href="/nis2-scope-checker">NIS2 Scope Checker</a> om in 3 minuten te bepalen of uw organisatie verplicht is.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Wat kost de NIS2 toolkit?</summary>
-          <div class="faq-a">
-            <p>Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie. Zie de <a href="/nis2-toolbox">NIS2 Toolbox</a> voor actuele prijzen en bundels.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Hoe onafhankelijk is MKBTechGids?</summary>
-          <div class="faq-a">
-            <p>MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring. Alle content wordt geschreven vanuit het perspectief van de bestuurder — niet de leverancier. Meer informatie: <a href="/contact">neem contact op</a>.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-q">Wat is de NIS2 Scope Checker?</summary>
-          <div class="faq-a">
-            <p>De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt, en zo ja als welk type (essentieel, belangrijk of digitale aanbieder). Na invullen ontvangt u een gepersonaliseerd resultaat per e-mail met concrete vervolgstappen.</p>
-          </div>
-        </details>
-
+      <!-- CRM -->
+      <div class="bcard bcard-light bcard-sm">
+        <div class="bcard-tag bcard-tag-green">Operations</div>
+        <h3>CRM Software</h3>
+        <p>Welk CRM schaalt mee met uw groei.</p>
+        <div class="bcard-coming">Binnenkort</div>
       </div>
+
+      <!-- E-facturatie — wide bottom -->
+      <div class="bcard bcard-accent bcard-wide">
+        <div class="bcard-tag bcard-tag-urgent">Verplicht · 2026</div>
+        <h3>E-facturatie</h3>
+        <p>Verplichting voor overheidscontracten. Wat u nú moet regelen om boetes te voorkomen.</p>
+        <div class="bcard-coming">Binnenkort</div>
+      </div>
+
+      <!-- Scope checker promo -->
+      <a href="/nis2-scope-checker" class="bcard bcard-green bcard-sm">
+        <div class="bcard-tag" style="border-color:rgba(255,255,255,0.3);color:#fff;">Gratis tool</div>
+        <h3 style="color:#fff;">NIS2 Scope<br>Checker</h3>
+        <p style="color:rgba(255,255,255,0.75);">In 3 minuten weten of u verplicht bent.</p>
+        <div class="bcard-arrow" style="color:#fff;">→</div>
+      </a>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Wat is NIS2 precies?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Geldt NIS2 voor mijn bedrijf?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie. Gebruik de gratis NIS2 Scope Checker op mkbtechgids.nl om in 3 minuten te bepalen of uw organisatie verplicht is."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat kost de NIS2 toolkit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie. Zie de NIS2 Toolbox-pagina op mkbtechgids.nl voor actuele prijzen en bundels."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hoe onafhankelijk is MKBTechGids?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring. Alle content wordt geschreven vanuit het perspectief van de bestuurder — niet de leverancier."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat is de NIS2 Scope Checker?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt. Na invullen ontvangt u een gepersonaliseerd resultaat per e-mail met concrete vervolgstappen."
-        }
+<!-- ── FAQ ────────────────────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-sidebar" data-aos="fade-right">
+      <span class="section-label">Veelgestelde vragen</span>
+      <h2>Alles wat u wilt weten</h2>
+      <p>De meest gestelde vragen over NIS2, onze toolkit en hoe MKBTechGids werkt.</p>
+    </div>
+    <div class="faq-list" data-aos="fade-left" data-aos-delay="60">
+
+      <details class="faq-item">
+        <summary class="faq-q">Wat is NIS2 precies?</summary>
+        <div class="faq-a">
+          <p>NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk — van enkele honderden naar duizenden — en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Geldt NIS2 voor mijn bedrijf?</summary>
+        <div class="faq-a">
+          <p>NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie. Gebruik de gratis <a href="/nis2-scope-checker">NIS2 Scope Checker</a> om in 3 minuten te bepalen of uw organisatie verplicht is.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Wat kost de NIS2 toolkit?</summary>
+        <div class="faq-a">
+          <p>Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie. Zie de <a href="/nis2-toolbox">NIS2 Toolbox</a> voor actuele prijzen en bundels.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Hoe onafhankelijk is MKBTechGids?</summary>
+        <div class="faq-a">
+          <p>MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring. Alle content wordt geschreven vanuit het perspectief van de bestuurder — niet de leverancier.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Wat is de NIS2 Scope Checker?</summary>
+        <div class="faq-a">
+          <p>De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt, en zo ja als welk type (essentieel, belangrijk of digitale aanbieder). Na invullen ontvangt u een gepersonaliseerd resultaat per e-mail met concrete vervolgstappen.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is NIS2 precies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NIS2 (Network and Information Security Directive 2) is de herziene EU-richtlijn voor cyberbeveiliging. In Nederland wordt deze omgezet via de Cyberbeveiligingswet, naar verwachting van kracht in Q2/Q3 2026. De wet vergroot het aantal verplichte organisaties sterk en introduceert directe aansprakelijkheid voor bestuurders bij overtredingen."
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Question",
+      "name": "Geldt NIS2 voor mijn bedrijf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NIS2 geldt voor organisaties in 18 kritische sectoren aangemerkt als 'essentieel' of 'belangrijk' — waaronder energie, transport, gezondheidszorg, water, digitale infrastructuur, financiële diensten en maakindustrie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat kost de NIS2 toolkit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Module 1 (Zelfevaluatie) is gratis te downloaden. De volledige toolkit bevat zes modules met kant-en-klare Word-documenten voor directe implementatie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe onafhankelijk is MKBTechGids?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MKBTechGids accepteert geen betaalde plaatsingen, geen affiliate-deals die de redactionele lijn beïnvloeden en geen vendor-sponsoring."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is de NIS2 Scope Checker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De NIS2 Scope Checker is een gratis interactieve tool waarbij u in vijf stappen bepaalt of uw organisatie onder NIS2 valt."
+      }
+    }
+  ]
+}
+</script>
 
-  <section class="newsletter">
-    <div class="nl-inner">
-      <div class="nl-copy">
-        <h2>Blijf bij. Zonder ruis.</h2>
-        <p>Tweewekelijkse update voor IT-managers en toegewezen managers: wat er verandert in tech-regulering, welke tools het waard zijn en hoe u het in de praktijk toepast.</p>
-        <ul class="nl-promises">
-          <li>NIS2 & EU AI Act updates</li>
-          <li>Onafhankelijke tool-analyses</li>
-          <li>Leestijd: max. 4 minuten</li>
-        </ul>
-      </div>
-      <form class="nl-form" id="newsletter-form" action="/api/subscribe" method="POST" novalidate>
-        <div class="form-field">
-          <label for="nl-email" class="form-label">E-mailadres</label>
-          <input id="nl-email" name="email" type="email" placeholder="u@bedrijf.nl" required />
-        </div>
-        <div class="form-field">
-          <label for="nl-role" class="form-label">Uw rol</label>
-          <select id="nl-role" name="role">
-            <option value="">— Optioneel —</option>
-            <option value="bestuurder">Bestuurder/CEO</option>
-            <option value="cfo">CFO/Controller</option>
-            <option value="cto">CTO/IT Director</option>
-            <option value="investor">Investor</option>
-            <option value="other">Overig</option>
-          </select>
-        </div>
-        <button type="submit">Aanmelden voor de briefing →</button>
-        <p class="nl-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
-        <div id="nl-msg"></div>
-      </form>
+<!-- ── Newsletter ─────────────────────────────────────────────────── -->
+<section class="newsletter" data-aos="fade-up">
+  <div class="nl-inner">
+    <div class="nl-copy">
+      <span class="section-label section-label-light">Briefing</span>
+      <h2>Blijf bij. Zonder ruis.</h2>
+      <p>Tweewekelijkse update voor IT-managers en bestuurders: wat er verandert in tech-regulering, welke tools het waard zijn en hoe u het in de praktijk toepast.</p>
+      <ul class="nl-promises">
+        <li>NIS2 & EU AI Act updates</li>
+        <li>Onafhankelijke tool-analyses</li>
+        <li>Leestijd: max. 4 minuten</li>
+      </ul>
     </div>
-  </section>
+    <form class="nl-form" id="newsletter-form" action="/api/subscribe" method="POST" novalidate>
+      <div class="form-field">
+        <label for="nl-email" class="form-label">E-mailadres</label>
+        <input id="nl-email" name="email" type="email" placeholder="u@bedrijf.nl" required />
+      </div>
+      <div class="form-field">
+        <label for="nl-role" class="form-label">Uw rol</label>
+        <select id="nl-role" name="role">
+          <option value="">— Optioneel —</option>
+          <option value="bestuurder">Bestuurder/CEO</option>
+          <option value="cfo">CFO/Controller</option>
+          <option value="cto">CTO/IT Director</option>
+          <option value="investor">Investor</option>
+          <option value="other">Overig</option>
+        </select>
+      </div>
+      <button type="submit">Aanmelden voor de briefing →</button>
+      <p class="nl-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
+      <div id="nl-msg"></div>
+    </form>
+  </div>
+</section>
+
 </BaseLayout>
 
 <style>
+/* ── Design tokens (page-level overrides/additions) ──── */
+:root {
+  --max: 1100px;
+}
+
+/* ── Section label ───────────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--green-light); margin-bottom: 12px;
+}
+.section-label-light { color: var(--g3); }
+
 /* ── Hero ───────────────────────────────────────────── */
 .hero {
-  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
-  padding: 120px 28px;
+  background: var(--navy-dark);
+  padding: clamp(80px, 12vw, 140px) 28px clamp(60px, 8vw, 100px);
   position: relative; overflow: hidden;
 }
 .hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 32px 32px; pointer-events: none;
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
 }
-.hero-inner { position: relative; max-width: 700px; margin: 0 auto; }
-.hero-badge {
-  display: inline-block; border: 1px solid var(--green); border-radius: var(--radius-sm);
-  padding: 8px 16px; margin-bottom: 24px;
+.hero-inner {
+  position: relative; max-width: var(--max); margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(74, 222, 128, 0.35); border-radius: 100px;
+  padding: 7px 18px; margin-bottom: 28px;
   font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--text-dark);
+  color: var(--g3);
+}
+.pill-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--g3);
+  box-shadow: 0 0 6px var(--g3);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 56px); font-weight: 700;
-  color: var(--text-dark); line-height: 1.1; margin-bottom: 20px;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 700; color: var(--text-dark); line-height: 1.1;
+  margin-bottom: 20px; max-width: 700px;
 }
-.hero h1 em { font-style: normal; color: var(--green-light); }
-.hero p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 32px; max-width: 600px; }
-.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
-.stat { border-left: 2px solid var(--green-light); padding-left: 20px; }
-.stat-num { font-size: 36px; font-weight: 700; color: var(--green-light); }
-.stat-label { font-size: 12px; color: var(--text-light); text-transform: uppercase; margin-top: 8px; }
+.hero h1 em { font-style: italic; color: var(--g3); }
+.hero p {
+  font-size: clamp(15px, 1.5vw, 17px); color: var(--s3); line-height: 1.8;
+  margin-bottom: 36px; max-width: 560px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 56px; }
+.btn-primary {
+  background: var(--green-light); color: #fff;
+  padding: 14px 28px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--green); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--text-dark);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+  padding: 14px 28px; font-size: 15px; font-weight: 500; text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.05); }
+
+/* Stat row */
+.hero-stats {
+  display: flex; align-items: center; gap: 0;
+  padding: 28px 40px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+}
+.hstat { padding: 0 40px; text-align: center; }
+.hstat:first-child { padding-left: 0; }
+.hstat:last-child { padding-right: 0; }
+.hstat-num { display: block; font-size: 26px; font-weight: 700; color: var(--g3); margin-bottom: 4px; }
+.hstat-label { display: block; font-size: 11px; color: var(--s3); text-transform: uppercase; letter-spacing: 0.7px; }
+.hstat-divider { width: 1px; height: 48px; background: rgba(255,255,255,0.12); flex-shrink: 0; }
 
 /* ── Signal strip ───────────────────────────────────── */
-.signal { background: var(--navy-dark); border-top: 2px solid var(--green-light); padding: 16px 28px; }
-.signal-inner { max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+.signal {
+  background: rgba(15, 33, 71, 0.95);
+  border-top: 2px solid var(--green-light);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 28px;
+}
+.signal-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; gap: 20px;
+}
 .signal-icon {
-  width: 48px; height: 48px; flex-shrink: 0;
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
 }
-.signal-text { font-size: 14px; font-weight: 500; color: var(--text-dark); }
+.signal-text { font-size: 14px; font-weight: 500; color: var(--text-dark); flex: 1; }
+.signal-cta {
+  white-space: nowrap; flex-shrink: 0;
+  background: var(--green-light); color: #fff;
+  padding: 9px 18px; border-radius: 7px;
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  transition: background 0.15s;
+}
+.signal-cta:hover { background: var(--green); }
 
-/* ── Topics ─────────────────────────────────────────── */
-.topics { padding: var(--space-3xl) 28px; background: var(--s1); }
-.topics-inner { max-width: var(--max-width); margin: 0 auto; }
-.topics h2 { font-size: 32px; margin-bottom: 12px; color: var(--navy-dark); }
-.topics-desc { font-size: 16px; color: var(--s4); margin-bottom: 48px; max-width: 700px; }
-.topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
-.topic-card {
-  background: var(--white); border: 2px solid var(--bg-gray);
-  border-radius: var(--radius-md); padding: 28px;
-  transition: all 0.2s; text-decoration: none; display: block; color: inherit;
+/* ── Topics / Bento ─────────────────────────────────── */
+.topics { padding: clamp(60px,8vw,100px) 28px; background: var(--s1); }
+.topics-inner { max-width: var(--max); margin: 0 auto; }
+.topics h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem); color: var(--s5);
+  margin-bottom: 40px;
 }
-.topic-card.featured { background: var(--green-bg); border-color: var(--green); }
-.topic-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.topic-tag {
-  display: inline-block; background: rgba(20,83,45,0.1); color: var(--green);
-  padding: 4px 10px; border-radius: var(--radius-sm);
-  font-size: 10px; font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
+
+/* 12-column bento grid */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
 }
-.topic-card.featured .topic-tag { background: rgba(20,83,45,0.2); }
-.topic-card h3 { font-size: 18px; color: var(--navy-dark); margin-bottom: 12px; }
-.topic-card p { font-size: 14px; color: var(--s4); line-height: 1.7; }
-.topic-status { display: inline-block; margin-top: 16px; font-size: 13px; font-weight: 600; color: var(--green-light); }
-.topic-status::before { content: '●'; margin-right: 6px; }
+.bcard {
+  border-radius: 14px; padding: 28px; position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bcard:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+.bcard h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 10px; line-height: 1.2; }
+.bcard p { font-size: 14px; line-height: 1.7; }
+.bcard-arrow {
+  position: absolute; bottom: 24px; right: 24px;
+  font-size: 20px; opacity: 0.45; transition: opacity 0.15s, transform 0.15s;
+}
+.bcard:hover .bcard-arrow { opacity: 1; transform: translate(2px, -2px); }
+
+/* Card variants */
+.bcard-featured {
+  background: var(--navy-dark); color: var(--text-dark);
+  text-decoration: none; display: block;
+}
+.bcard-featured h3 { color: #fff; }
+.bcard-featured p { color: var(--s3); }
+.bcard-dark { background: var(--navy-light); }
+.bcard-dark h3 { color: #fff; }
+.bcard-dark p { color: var(--s3); }
+.bcard-light { background: #fff; border: 1px solid var(--s2); }
+.bcard-light h3 { color: var(--s5); }
+.bcard-light p { color: var(--s4); }
+.bcard-accent { background: var(--g1); border: 1px solid var(--g2); }
+.bcard-accent h3 { color: var(--green); }
+.bcard-accent p { color: var(--s4); }
+.bcard-green { background: var(--green-light); text-decoration: none; display: block; }
+
+/* Grid placements */
+.bcard-lg   { grid-column: span 5; grid-row: span 2; }
+.bcard-md   { grid-column: span 4; }
+.bcard-sm   { grid-column: span 3; }
+.bcard-wide { grid-column: span 7; }
+
+/* Tags */
+.bcard-tag {
+  display: inline-block; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 100px; padding: 4px 12px; margin-bottom: 16px;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--s3);
+}
+.bcard-featured .bcard-tag { color: var(--s3); }
+.bcard-tag-urgent { border-color: rgba(251, 191, 36, 0.5); color: #fbbf24; }
+.bcard-tag-green { border-color: var(--g4); color: var(--g4); }
+.bcard-light .bcard-tag-green { background: var(--g1); }
+
+/* Status indicator */
+.bcard-status {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 20px; font-size: 12px; font-weight: 600; color: var(--g3);
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--g3); box-shadow: 0 0 5px var(--g3);
+}
+.bcard-coming {
+  margin-top: 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase; opacity: 0.45;
+}
+
+/* Responsive bento */
+@media (max-width: 900px) {
+  .bcard-lg   { grid-column: span 12; grid-row: auto; }
+  .bcard-md   { grid-column: span 6; }
+  .bcard-sm   { grid-column: span 6; }
+  .bcard-wide { grid-column: span 12; }
+}
+@media (max-width: 600px) {
+  .bcard-lg, .bcard-md, .bcard-sm, .bcard-wide { grid-column: span 12; }
+}
 
 /* ── FAQ ────────────────────────────────────────────── */
-.faq-section { background: var(--white); padding: var(--space-3xl) 28px; }
-.faq-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
-.faq-badge {
-  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--green); margin-bottom: 12px;
-  border: 1px solid var(--green); border-radius: var(--radius-sm); padding: 5px 12px;
+.faq-section { background: var(--white); padding: clamp(60px,8vw,100px) 28px; }
+.faq-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 300px 1fr; gap: 80px; align-items: start;
 }
-.faq-header h2 { font-family: var(--font-display); font-size: 28px; color: var(--navy-dark); margin-bottom: 12px; line-height: 1.2; }
-.faq-header p { font-size: 15px; color: var(--s4); line-height: 1.7; }
-.faq-item {
-  border-bottom: 1px solid var(--s2);
+.faq-sidebar h2 {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 2vw, 1.9rem);
+  color: var(--s5); margin-bottom: 12px; line-height: 1.2;
 }
+.faq-sidebar p { font-size: 14px; color: var(--s4); line-height: 1.75; }
+.faq-item { border-bottom: 1px solid var(--s2); }
 .faq-item:first-child { border-top: 1px solid var(--s2); }
 .faq-q {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 4px; font-size: 15px; font-weight: 600; color: var(--navy-dark);
+  padding: 20px 4px; font-size: 15px; font-weight: 600; color: var(--s5);
   cursor: pointer; list-style: none; gap: 16px;
 }
 .faq-q::-webkit-details-marker { display: none; }
 .faq-q::after {
-  content: '+'; font-size: 20px; font-weight: 400; color: var(--green);
+  content: '+'; font-size: 22px; font-weight: 300; color: var(--green-light);
   flex-shrink: 0; transition: transform 0.2s;
 }
 .faq-item[open] .faq-q::after { transform: rotate(45deg); }
 .faq-a { padding: 0 4px 20px; }
 .faq-a p { font-size: 14px; color: var(--s4); line-height: 1.75; margin: 0; }
-.faq-a a { color: var(--green); text-decoration: underline; }
+.faq-a a { color: var(--green-light); text-decoration: underline; }
 @media (max-width: 768px) {
-  .faq-inner { grid-template-columns: 1fr; gap: 32px; }
+  .faq-inner { grid-template-columns: 1fr; gap: 36px; }
 }
 
 /* ── Newsletter ─────────────────────────────────────── */
-.newsletter { background: var(--navy-dark); padding: var(--space-3xl) 28px; position: relative; overflow: hidden; }
-.nl-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.nl-copy h2 { font-size: 28px; color: var(--text-dark); margin-bottom: 16px; }
-.nl-copy p { font-size: 15px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
-.nl-promises { list-style: none; margin: 0; padding: 0; }
-.nl-promises li { font-size: 14px; color: var(--text-light); padding: 8px 0 8px 24px; position: relative; }
-.nl-promises li::before { content: '✓'; position: absolute; left: 0; color: var(--green-light); font-weight: 700; }
+.newsletter {
+  background: var(--navy-dark); padding: clamp(60px,8vw,100px) 28px;
+  position: relative; overflow: hidden;
+}
+.newsletter::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.nl-inner {
+  position: relative; max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.nl-copy h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--text-dark); margin-bottom: 16px; }
+.nl-copy p { font-size: 15px; color: var(--s3); line-height: 1.8; margin-bottom: 20px; }
+.nl-promises { list-style: none; }
+.nl-promises li {
+  font-size: 14px; color: var(--s3); padding: 8px 0 8px 24px; position: relative;
+}
+.nl-promises li::before { content: '✓'; position: absolute; left: 0; color: var(--g3); font-weight: 700; }
 .nl-form { display: flex; flex-direction: column; gap: 16px; }
-.form-field { display: flex; flex-direction: column; gap: 10px; }
-.form-label { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+.form-field { display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.3px; }
 .nl-form input,
 .nl-form select {
   background: rgba(255,255,255,0.95); border: 1px solid var(--s2);
-  border-radius: var(--radius-sm); padding: 14px; font-size: 15px; font-family: inherit;
+  border-radius: 8px; padding: 14px 16px; font-size: 15px; font-family: inherit;
   height: 48px; line-height: 1.2;
 }
 .nl-form input:focus,
-.nl-form select:focus { outline: none; border-color: var(--green-light); box-shadow: 0 0 0 2px rgba(21,128,61,0.1); }
+.nl-form select:focus { outline: none; border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(21,128,61,0.15); }
 .nl-form select {
   appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat; background-position: right 10px center; background-size: 20px; padding-right: 36px;
 }
 .nl-form button {
-  background: var(--green-light); color: var(--white); border: none;
-  border-radius: var(--radius-sm); padding: 14px 24px; font-size: 15px; font-weight: 600;
-  cursor: pointer; transition: background 0.14s; height: 48px; line-height: 1.2;
+  background: var(--green-light); color: #fff; border: none;
+  border-radius: 8px; padding: 14px 24px; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s; height: 48px; line-height: 1.2;
   display: flex; align-items: center; justify-content: center;
 }
 .nl-form button:hover { background: var(--green); }
-.nl-msg { font-size: 13px; margin-top: 12px; min-height: 20px; }
-.nl-social-proof { font-size: 12px; color: var(--green); display: flex; align-items: center; gap: 6px; margin-top: 2px; }
-
-/* ── Responsive ─────────────────────────────────────── */
+.nl-social-proof {
+  font-size: 12px; color: var(--g3); display: flex; align-items: center; gap: 6px; margin-top: 2px;
+}
 @media (max-width: 768px) {
-  .hero { padding: 80px 28px; }
-  .hero h1 { font-size: 32px; }
-  .hero-stats { grid-template-columns: 1fr; gap: 24px; }
   .nl-inner { grid-template-columns: 1fr; gap: 40px; }
-  .topics-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 24px; padding: 24px 28px; }
+  .hstat-divider { width: 100%; height: 1px; }
+  .hstat { padding: 0; }
   .signal-inner { flex-direction: column; text-align: center; }
+  .signal-cta { width: 100%; text-align: center; }
 }
 </style>
 

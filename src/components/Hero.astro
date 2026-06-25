@@ -59,25 +59,6 @@
   </div>
 </section>
 
-<div class="urgency-strip" role="complementary" aria-label="Actuele waarschuwing">
-  <div class="container urgency-inner">
-    <div class="urgency-icon" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2.2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <line x1="12" y1="8" x2="12" y2="12"/>
-        <line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
-    </div>
-    <p class="urgency-text">
-      <strong>NIS2 Cyberbeveiligingswet &mdash; verwacht Q2 2026.</strong>
-      Slechts 14% van Nederlandse organisaties is voorbereid.
-      Wat betekent dit voor uw aansprakelijkheid als bestuurder?
-    </p>
-    <a href="/nis2" class="urgency-link">Lees de gids <span aria-hidden="true">→</span></a>
-  </div>
-</div>
 
 <style>
 .hero {
@@ -184,34 +165,6 @@
   animation: fadeUp 0.55s 0.34s ease both;
 }
 .tagline-line { flex: 1; height: 1px; background: rgba(255,255,255,0.05); }
-
-/* Urgency strip */
-.urgency-strip {
-  background: var(--bg-deeper);
-  border-top: 1px solid rgba(30,58,110,0.55);
-  border-bottom: 1px solid rgba(30,58,110,0.35);
-}
-.urgency-inner {
-  display: flex; align-items: center; gap: 14px;
-  padding-top: 16px; padding-bottom: 16px;
-}
-.urgency-icon {
-  flex-shrink: 0; width: 36px; height: 36px;
-  border-radius: var(--r-sm);
-  background: rgba(251,191,36,0.10);
-  border: 1px solid rgba(251,191,36,0.20);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--a3);
-}
-.urgency-text { font-size: 13.5px; line-height: 1.55; color: var(--s3); }
-.urgency-text strong { color: var(--s2); font-weight: 600; }
-.urgency-link {
-  margin-left: auto; flex-shrink: 0;
-  font-size: 13px; font-weight: 600; color: var(--g2);
-  white-space: nowrap; text-decoration: none;
-  transition: color 0.14s;
-}
-.urgency-link:hover { color: var(--g1); }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
