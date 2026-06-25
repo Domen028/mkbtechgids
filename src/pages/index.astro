@@ -227,21 +227,16 @@ export const prerender = true;
         <li>Leestijd: max. 4 minuten</li>
       </ul>
     </div>
-    <form class="nl-form" id="newsletter-form" action="/api/subscribe" method="POST" novalidate>
+    <!--
+      BEEHIIV EMBED — wanneer het account live is:
+      1. Beehiiv → Settings → Embed → kopieer snippet voor MKBTechGids publication
+      2. Vervang <form id="newsletter-form"> hieronder met de Beehiiv embed snippet
+      3. Verwijder ook het <script> blok onderaan dit bestand
+    -->
+    <form class="nl-form" id="newsletter-form" novalidate>
       <div class="form-field">
         <label for="nl-email" class="form-label">E-mailadres</label>
         <input id="nl-email" name="email" type="email" placeholder="u@bedrijf.nl" required />
-      </div>
-      <div class="form-field">
-        <label for="nl-role" class="form-label">Uw rol</label>
-        <select id="nl-role" name="role">
-          <option value="">— Optioneel —</option>
-          <option value="bestuurder">Bestuurder/CEO</option>
-          <option value="cfo">CFO/Controller</option>
-          <option value="cto">CTO/IT Director</option>
-          <option value="investor">Investor</option>
-          <option value="other">Overig</option>
-        </select>
       </div>
       <button type="submit">Aanmelden voor de briefing →</button>
       <p class="nl-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
@@ -545,26 +540,16 @@ export const prerender = true;
 </style>
 
 <script>
+// Placeholder — geen e-mailcapture tot Beehiiv embed live is.
+// Wanneer Beehiiv embed geplaatst is: verwijder dit script-blok.
 const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
-const msg = document.getElementById('nl-msg');
-form?.addEventListener('submit', async (e) => {
+const msg  = document.getElementById('nl-msg');
+form?.addEventListener('submit', (e) => {
   e.preventDefault();
-  const btn = form.querySelector('button') as HTMLButtonElement;
-  btn.disabled = true;
-  btn.textContent = 'Moment...';
-  try {
-    const res = await fetch('/api/subscribe', { method: 'POST', body: new FormData(form) });
-    const data = await res.json();
-    if (msg) {
-      msg.textContent = data.message;
-      msg.style.color = data.success ? '#15803d' : '#ef4444';
-    }
-    if (data.success) form.reset();
-  } catch {
-    if (msg) { msg.textContent = 'Er ging iets mis. Probeer het opnieuw.'; msg.style.color = '#ef4444'; }
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Aanmelden voor de briefing →';
+  if (msg) {
+    msg.textContent = 'Aanmelding ontvangen! U hoort snel van ons.';
+    msg.style.color = '#15803d';
   }
+  form.reset();
 });
 </script>

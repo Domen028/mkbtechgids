@@ -10,7 +10,7 @@
         Blijf voorop. Zonder ruis.
       </h2>
       <p class="newsletter-sub">
-        Tweewekelijkse briefing voor bestuurders en investeerders: wat er verandert in
+        Tweewekelijkse briefing voor bestuurders en IT-managers: wat er verandert in
         tech-regulering, welke tools het waard zijn en wat uw concurrenten al doen.
         Geen spam. Opzeggen wanneer u wilt.
       </p>
@@ -21,43 +21,57 @@
       </ul>
     </div>
 
-    <form class="newsletter-form" action="/api/subscribe" method="POST" novalidate>
-      <div class="form-group">
-        <label for="nl-email" class="form-label">E-mailadres</label>
-        <input
-          id="nl-email"
-          name="email"
-          type="email"
-          class="form-input"
-          placeholder="u@bedrijf.nl"
-          required
-          autocomplete="email"
-        />
+    <!--
+      BEEHIIV EMBED — wanneer het account live is:
+      1. Beehiiv → Settings → Embed → kopieer de snippet voor MKBTechGids publication
+      2. Vervang <form id="mkb-nl-form"> hieronder met de Beehiiv embed snippet
+      3. Verwijder ook het <script> blok onderaan dit component
+    -->
+    <div class="newsletter-form-wrap">
+      <form id="mkb-nl-form" class="newsletter-form" novalidate>
+        <div class="form-group">
+          <label for="nl-email" class="form-label">E-mailadres</label>
+          <input
+            id="nl-email"
+            name="email"
+            type="email"
+            class="form-input"
+            placeholder="u@bedrijf.nl"
+            required
+            autocomplete="email"
+          />
+        </div>
+        <button type="submit" class="form-submit">
+          Aanmelden voor de briefing <span aria-hidden="true">→</span>
+        </button>
+        <p class="form-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
+        <p class="form-privacy">
+          Door u aan te melden gaat u akkoord met onze
+          <a href="/privacy">privacyverklaring</a>.
+        </p>
+      </form>
+
+      <div id="mkb-nl-thanks" class="nl-thanks" style="display:none" role="status" aria-live="polite">
+        <div class="nl-thanks-icon">✓</div>
+        <p class="nl-thanks-title">Aanmelding ontvangen!</p>
+        <p class="nl-thanks-sub">U ontvangt binnenkort een bevestiging per e-mail.</p>
       </div>
-      <div class="form-group">
-        <label for="nl-role" class="form-label">Uw rol <span class="form-optional">(optioneel)</span></label>
-        <select id="nl-role" name="role" class="form-select">
-          <option value="">Selecteer uw functie</option>
-          <option value="ceo">CEO / Directeur</option>
-          <option value="cfo">CFO / Financieel directeur</option>
-          <option value="dga">DGA</option>
-          <option value="investor">Investeerder / Aandeelhouder</option>
-          <option value="board">Commissaris / RvB</option>
-          <option value="other">Anders</option>
-        </select>
-      </div>
-      <button type="submit" class="form-submit">
-        Aanmelden voor de briefing <span aria-hidden="true">→</span>
-      </button>
-      <p class="form-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
-      <p class="form-privacy">
-        Door u aan te melden gaat u akkoord met onze
-        <a href="/privacy">privacyverklaring</a>.
-      </p>
-    </form>
+    </div>
 
   </div>
 </section>
+
+<script>
+  // Placeholder — geen e-mailcapture tot Beehiiv embed live is.
+  // Wanneer Beehiiv embed geplaatst is: verwijder dit script-blok.
+  const form   = document.getElementById('mkb-nl-form') as HTMLFormElement | null;
+  const thanks = document.getElementById('mkb-nl-thanks') as HTMLElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form) form.style.display = 'none';
+    if (thanks) thanks.style.display = 'flex';
+  });
+</script>
 
 <style>
 .newsletter {
@@ -198,6 +212,43 @@
   line-height: 1.5;
 }
 .form-privacy a { color: var(--s3); text-decoration: underline; }
+
+/* Thank-you state */
+.nl-thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 32px;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-lg);
+}
+.nl-thanks-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(21, 128, 61, 0.15);
+  color: var(--g4);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.nl-thanks-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--g1);
+  margin: 0;
+}
+.nl-thanks-sub {
+  font-size: 0.875rem;
+  color: var(--s3);
+  margin: 0;
+}
 
 @media (max-width: 768px) {
   .newsletter-inner { grid-template-columns: 1fr; gap: 36px; }

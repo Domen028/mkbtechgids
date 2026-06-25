@@ -61,10 +61,16 @@ export const prerender = true;
         <i class="ti ti-bell topic-notify-icon"></i>
         <h2>Ontvang een melding zodra dit beschikbaar is</h2>
         <p>Meld u aan voor de MKBTechGids briefing en ontvang een melding zodra de AI Tools gids live gaat.</p>
-        <form class="notify-form" action="/api/subscribe" method="POST">
+        <!--
+          BEEHIIV EMBED — vervang deze <form> met Beehiiv embed snippet wanneer account live is
+        -->
+        <form class="notify-form" id="notify-form-tools" novalidate>
           <input type="email" name="email" placeholder="uw@bedrijf.nl" required class="notify-input" />
           <button type="submit" class="btn btn--green">Houd mij op de hoogte →</button>
         </form>
+        <p id="notify-thanks-tools" style="display:none;color:var(--green-light);font-size:0.9rem;margin-top:0.75rem">
+          Ontvangen! U hoort van ons zodra de gids live gaat.
+        </p>
         <p class="notify-social-proof"><i class="ti ti-shield-check"></i> Geen spam. U kunt zich altijd uitschrijven.</p>
         <p class="notify-privacy"><i class="ti ti-shield-check"></i> Geen spam. Altijd afmelden mogelijk.</p>
       </div>
@@ -202,3 +208,10 @@ export const prerender = true;
   .notify-form { flex-direction: column; }
 }
 </style>
+
+<script>
+// Placeholder — geen e-mailcapture tot Beehiiv embed live is.
+const f = document.getElementById('notify-form-tools') as HTMLFormElement | null;
+const t = document.getElementById('notify-thanks-tools');
+f?.addEventListener('submit', (e) => { e.preventDefault(); if (f) f.style.display = 'none'; if (t) t.style.display = 'block'; });
+</script>
